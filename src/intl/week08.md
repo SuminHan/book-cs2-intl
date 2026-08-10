@@ -1,6 +1,6 @@
 # Week 8: For Loops II
 
-## Opener: Count the Positive Numbers
+## 1. Opener: Count the Positive Numbers
 
 ```python
 L = [3, -1, 4, -5, 2]
@@ -39,3 +39,12 @@ print(count)      # 3
 **The question to ask every counter:** "Does this line need to happen
 *once*, or *every time around*?" Setting up belongs outside. Only the
 counting belongs inside.
+
+## 2. Topics Covered
+
+- `for` loop pattern: counter (count elements satisfying a condition)
+- Toy Robot: basic moves (`move()`, `turn_left()`, `turn_right()`)
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*

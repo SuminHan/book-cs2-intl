@@ -1,6 +1,6 @@
 # Week 4: Conditionals
 
-## Opener: 45 Minutes
+## 1. Opener: 45 Minutes
 
 **1 August 2012, 9:30 a.m.** Knight Capital was the largest trader of US
 stocks. Its software started buying high and selling low — thousands of
@@ -40,3 +40,13 @@ changed — and a condition cannot notice that.
 
 **Every `if` you write this week is a promise that has to stay true after
 you forget you wrote it.**
+
+## 2. Topics Covered
+
+- Boolean type / boolean expressions
+- `if`-`else` conditionals
+- Multiple return paths
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*

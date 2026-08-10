@@ -1,6 +1,6 @@
 # Week 9: For Loops III
 
-## Opener: Are All of Them Positive?
+## 1. Opener: Are All of Them Positive?
 
 This is the quantifier pattern you just learned — "for all".
 
@@ -39,3 +39,13 @@ everyone passed.
 
 **The empty case is not an edge case you forgot. It is the first case you
 should test.**
+
+## 2. Topics Covered
+
+- `for` loop patterns recap: max/min, counter, quantifier ("for some"/"for all")
+- Toy Robot: handling beepers (`drop_beeper()`, `pick_beeper()`,
+  `on_beeper()`, `carries_beepers()`)
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*

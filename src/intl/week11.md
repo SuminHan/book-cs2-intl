@@ -1,6 +1,6 @@
 # Week 11: List II
 
-## Opener: Remove Every Negative Number
+## 1. Opener: Remove Every Negative Number
 
 You have just learned `.remove()`. This reads perfectly:
 
@@ -41,3 +41,14 @@ def remove_negatives(L):
 Make a new one, or walk it backwards.
 
 *And notice again: no crash, no warning. Just a quietly wrong answer.*
+
+## 2. Topics Covered
+
+- `.append()`, slicing `[:]`
+- List operations: `==`, `+`, `in`
+- Built-in functions: `sum()`, `max()`, `min()`, `sort()`
+- List comprehension
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*

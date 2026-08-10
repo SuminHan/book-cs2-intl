@@ -4,8 +4,7 @@
 
 # International
 
-- [Week 0: Why Programming Matters](intl/week00-motivation.md)
-- [Week 1: Syllabus](intl/week01-syllabus.md)
+- [Week 1: Why Programming Matters](intl/week01.md)
 - [Week 2: Basic Elements](intl/week02.md)
 - [Week 3: Functions](intl/week03.md)
 - [Week 4: Conditionals](intl/week04.md)

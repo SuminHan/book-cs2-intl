@@ -1,6 +1,6 @@
 # Week 2: Basic Elements
 
-## Opener: A Very Easy Question
+## 1. Opener: A Very Easy Question
 
 You have just learned variables, expressions, and `print`. So this should be easy:
 
@@ -56,3 +56,14 @@ Ask whether the gap is small enough instead: `abs(a - b) < 0.000001`.
 The computer did the arithmetic perfectly. It still gave you an answer you
 did not expect. Knowing what the machine will actually do is a different
 skill from telling it what to do.
+
+## 2. Topics Covered
+
+- Computation in math vs. Python
+- Variables & values
+- Operators & expressions (`+ - * / // % **`)
+- Input from keyboard, output to screen
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*

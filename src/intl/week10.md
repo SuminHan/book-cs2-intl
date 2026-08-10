@@ -1,6 +1,6 @@
 # Week 10: While Loops
 
-## Opener: The Alarm That Never Rang
+## 1. Opener: The Alarm That Never Rang
 
 **14 August 2003, 2:14 p.m.** A control room in Ohio. A program whose only
 job is to raise an alarm when the power grid is in trouble.
@@ -40,3 +40,12 @@ while n > 0:
 **Ask this every single time you write `while`:** "What changes inside the
 loop that will eventually make the condition false?" If you cannot point at
 that line, you have written an infinite loop.
+
+## 2. Topics Covered
+
+- `while` loop syntax
+- Toy Robot (continued)
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*

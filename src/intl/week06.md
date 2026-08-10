@@ -1,6 +1,6 @@
 # Week 6: For Loops I
 
-## Opener: An Annoying Question
+## 1. Opener: An Annoying Question
 
 ```python
 for i in range(10):
@@ -31,3 +31,13 @@ write `+1`.
 
 **Whenever you catch yourself typing `range(1, n+1)`, stop and ask whether
 you are fighting the language — and whether the `+1` is about to cost you.**
+
+## 2. Topics Covered
+
+- Increment/decrement operators
+- `for` loops with `range(·)` (various forms: start/stop/step)
+- Shortcut assignment operators: `+= -= *= /=`
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*

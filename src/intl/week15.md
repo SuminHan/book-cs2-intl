@@ -1,6 +1,6 @@
 # Week 15: Classes & Objects
 
-## Opener: Every Student Has Their Own Scores
+## 1. Opener: Every Student Has Their Own Scores
 
 ```python
 class Student:
@@ -46,3 +46,15 @@ class, or *one per object*?" One per object → it belongs inside
 `__init__`, with `self.`
 
 *Once again: no error message. Just two students quietly sharing a report card.*
+
+## 2. Topics Covered
+
+- Object-oriented basics: every value is an object belonging to a class
+- `__init__()`, `__str__()`, `self`
+- Attributes, getters/setters
+- Using objects as parameters and return values
+- Pure functions vs. modifier functions
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*

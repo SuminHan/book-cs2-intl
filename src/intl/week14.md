@@ -1,6 +1,6 @@
 # Week 14: Multi-Dimensional Lists
 
-## Opener: Three Rules on a Grid
+## 1. Opener: Three Rules on a Grid
 
 A 2-D list of cells. Each is alive (`#`) or dead (`.`). Every step, every
 cell looks at its 8 neighbours and follows three rules:
@@ -40,3 +40,13 @@ Everything you need is what you are learning right now:
 
 That last point is this week's real trap, and it is the same trap as
 Week 11: do not modify the thing you are walking through.
+
+## 2. Topics Covered
+
+- Creating a 2D list by assigning values directly
+- Accessing elements in a 2D list using indices
+- Lists store references, not the data itself
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*

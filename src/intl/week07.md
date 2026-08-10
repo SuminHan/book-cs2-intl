@@ -1,6 +1,6 @@
 # Week 7: Lists
 
-## Opener: Building a Grid the Short Way
+## 1. Opener: Building a Grid the Short Way
 
 You want a 3×3 grid of zeros. You already know that `[0]*3` gives
 `[0, 0, 0]`, so:
@@ -40,3 +40,13 @@ print(grid)   # [[1,0,0], [0,0,0], [0,0,0]]
 **Why this bug is worth remembering:** the code runs. There is no error.
 The grid *looks* right until you change one cell — and then it is wrong
 everywhere at once.
+
+## 2. Topics Covered
+
+- Why lists reduce repetitive code (motivating example: summing many
+  hand-named variables vs. one list)
+- List indexing
+
+*Reference: 2025 offering topic outline. This year's full lecture slides
+are still in development — only the topic list is reflected here, not the
+slide content.*
