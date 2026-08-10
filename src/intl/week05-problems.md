@@ -13,7 +13,7 @@ print(inSecondQuadrant(-1,2))       # True
 — first checks `lower <= n <= upper`; second uses it to check whether
 exactly three of five numbers fall within `[lower,upper]`.
 
-**3. `triangle(a, b)`** — do the x-axis, y-axis, and the line $y=ax+b$ form
+**3. `triangle(a, b)`** — do the x-axis, y-axis, and the line \\(y=ax+b\\) form
 a triangle?
 ```python
 print(triangle(-3, -2))  # True
@@ -22,7 +22,7 @@ print(triangle(3, 0))    # False (passes through origin)
 
 **4. `triangle(a, b, c)`** (different signature) — can side lengths `a, b, c`
 form a triangle?
-> If a triangle exists, $a+b>c$, $b+c>a$, $c+a>b$ all hold. Does the converse
+> If a triangle exists, \\(a+b>c\\), \\(b+c>a\\), \\(c+a>b\\) all hold. Does the converse
 > hold too?
 
 **5. `rightAngled(x1,y1, x2,y2, x3,y3)`** — do three points form a
@@ -40,7 +40,7 @@ acute triangle?
 
 **7. `intersect(x1,y1,r1, x2,y2,r2)`** — do two circles intersect at exactly
 two points?
-> Use `abs(x)` for $|x|$.
+> Use `abs(x)` for \\(|x|\\).
 
 **8. `leapYear(year)` / `numDays(year, month)`** — the leap-year rule from
 Week 1 (divisible by 4, except centuries, unless divisible by 400), then use

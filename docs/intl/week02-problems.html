@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -194,17 +196,17 @@ print("After swapping: ", a, b)
 <blockquote>
 <p>Hint: multiple assignment generalizes: <code>a,b,c,d,e = e,a,b,c,d</code>.</p>
 </blockquote>
-<p><strong>3. Evaluate a quadratic</strong> — read <code>a, b, c, x</code> and print $ax^2+bx+c$.</p>
+<p><strong>3. Evaluate a quadratic</strong> — read <code>a, b, c, x</code> and print \(ax^2+bx+c\).</p>
 <blockquote>
 <p><code>input()</code> always returns a string — convert with <code>int(a)</code> before doing
-arithmetic. <code>x**2</code> computes $x^2$.</p>
+arithmetic. <code>x**2</code> computes \(x^2\).</p>
 </blockquote>
 <p><strong>4. Rectangle area</strong> — read two corner points <code>(x1,y1)</code>, <code>(x2,y2)</code> (bottom-left
 and top-right) and print the rectangle’s area.</p>
 <p><strong>5. Triangle area (Heron’s formula)</strong> — read side lengths <code>a, b, c</code> and print
-the area: $\sqrt{s(s-a)(s-b)(s-c)}$ where $s = \frac{a+b+c}{2}$.</p>
+the area: \(\sqrt{s(s-a)(s-b)(s-c)}\) where \(s = \frac{a+b+c}{2}\).</p>
 <blockquote>
-<p><code>x**0.5</code> computes $\sqrt{x}$.</p>
+<p><code>x**0.5</code> computes \(\sqrt{x}\).</p>
 </blockquote>
 <p><strong>6. Remainder without <code>%</code></strong> — read positive integers <code>a, b</code> and compute
 <code>a % b</code> using only <code>-</code>, <code>*</code>, and <code>//</code>.</p>
@@ -217,7 +219,7 @@ nearest integer, without using <code>round()</code>.</p>
 <p>What is <code>int(2.4 + 0.5)</code>? <code>int(2.5 + 0.5)</code>? <code>int(2.6 + 0.5)</code>?</p>
 </blockquote>
 <p><strong>8. Fahrenheit to Celsius</strong> — read an integer Fahrenheit temperature <code>F</code> and
-print the Celsius equivalent: $C = (F - 32) \cdot \frac{5}{9}$.</p>
+print the Celsius equivalent: \(C = (F - 32) \cdot \frac{5}{9}\).</p>
 <hr>
 <p><em>Source: 2025 offering, <code>week02_var_expr_problem.pdf</code>. Wording condensed;
 code stubs kept close to the original.</em></p>

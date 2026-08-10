@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -212,7 +214,7 @@ print(makeSet([3,4,5,6,7,3,4]))   # [3,4,5,6,7]
 <p>Don’t use the <code>set</code> type here — use <code>in</code>/<code>not in</code> instead.</p>
 </blockquote>
 <p><strong>5. <code>multiple(L1, L2)</code></strong> — is every number in <code>L1</code> a multiple of <em>some</em>
-number in <code>L2</code>? ($\forall x \in L_1,, \exists y \in L_2$ s.t. <code>x</code> is a
+number in <code>L2</code>? (\(\forall x \in L_1,, \exists y \in L_2\) s.t. <code>x</code> is a
 multiple of <code>y</code>)</p>
 <pre><code class="language-python">print(multiple([14,24,18,35,39], [6,13,7]))  # True
 print(multiple([14,24,18,35,39], [5,13,7]))  # False

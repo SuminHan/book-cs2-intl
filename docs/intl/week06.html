@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -187,7 +189,7 @@ Nobody counts like this.</p>
 <p><code>range(a, b)</code> means start at <code>a</code>, stop before <code>b</code>. That one choice makes
 three annoying things disappear:</p>
 <ul>
-<li><strong>How many items?</strong> $b - a$. Nothing to add, nothing to subtract.
+<li><strong>How many items?</strong> \(b - a\). Nothing to add, nothing to subtract.
 <code>range(0,10)</code> has 10 items.</li>
 <li><strong>Splitting a list.</strong> <code>range(0,5)</code> and <code>range(5,10)</code> fit together
 perfectly — no gap, no overlap, no 5 appearing twice.</li>

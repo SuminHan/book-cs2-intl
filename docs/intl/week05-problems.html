@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -188,7 +190,7 @@ print(inSecondQuadrant(-1,2))       # True
 <p><strong>2. <code>withinInterval(lower, upper, n)</code> / <code>exactlyThreeWithinInterval(...)</code></strong>
 — first checks <code>lower &lt;= n &lt;= upper</code>; second uses it to check whether
 exactly three of five numbers fall within <code>[lower,upper]</code>.</p>
-<p><strong>3. <code>triangle(a, b)</code></strong> — do the x-axis, y-axis, and the line $y=ax+b$ form
+<p><strong>3. <code>triangle(a, b)</code></strong> — do the x-axis, y-axis, and the line \(y=ax+b\) form
 a triangle?</p>
 <pre><code class="language-python">print(triangle(-3, -2))  # True
 print(triangle(3, 0))    # False (passes through origin)
@@ -196,7 +198,7 @@ print(triangle(3, 0))    # False (passes through origin)
 <p><strong>4. <code>triangle(a, b, c)</code></strong> (different signature) — can side lengths <code>a, b, c</code>
 form a triangle?</p>
 <blockquote>
-<p>If a triangle exists, $a+b&gt;c$, $b+c&gt;a$, $c+a&gt;b$ all hold. Does the converse
+<p>If a triangle exists, \(a+b&gt;c\), \(b+c&gt;a\), \(c+a&gt;b\) all hold. Does the converse
 hold too?</p>
 </blockquote>
 <p><strong>5. <code>rightAngled(x1,y1, x2,y2, x3,y3)</code></strong> — do three points form a
@@ -212,7 +214,7 @@ acute triangle?</p>
 <p><strong>7. <code>intersect(x1,y1,r1, x2,y2,r2)</code></strong> — do two circles intersect at exactly
 two points?</p>
 <blockquote>
-<p>Use <code>abs(x)</code> for $|x|$.</p>
+<p>Use <code>abs(x)</code> for \(|x|\).</p>
 </blockquote>
 <p><strong>8. <code>leapYear(year)</code> / <code>numDays(year, month)</code></strong> — the leap-year rule from
 Week 1 (divisible by 4, except centuries, unless divisible by 400), then use

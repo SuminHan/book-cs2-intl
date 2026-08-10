@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -209,8 +211,8 @@ integer to <code>x</code> (e.g. 2.4→2, 2.5→3, 2.6→3).</p>
     fraction = x - int(x)
     # ADD ADDITIONAL CODE HERE!
 </code></pre>
-<p><strong>6. <code>ceiling(x)</code></strong> — smallest integer $\geq x$ (2.0→2, 2.1→3, 2.6→3).</p>
-<p><strong>7. <code>quadratic(a, b, c)</code></strong> — number of real roots of $ax^2+bx+c=0$
+<p><strong>6. <code>ceiling(x)</code></strong> — smallest integer \(\geq x\) (2.0→2, 2.1→3, 2.6→3).</p>
+<p><strong>7. <code>quadratic(a, b, c)</code></strong> — number of real roots of \(ax^2+bx+c=0\)
 (<code>a</code> may be 0; <code>a=b=c=0</code> never given).</p>
 <pre><code class="language-python">def quadratic(a, b, c):
     if a == 0:
@@ -223,7 +225,7 @@ print(quadratic(1, -2, 1))   # 1
 print(quadratic(1, -4, 1))   # 2
 </code></pre>
 <p><strong>8. <code>minX(a, b, c)</code></strong> (<code>a&gt;0</code>, <code>b&lt;0</code>) — the integer <code>x</code> minimizing
-$ax^2+bx+c$ (smallest such integer if there’s a tie).</p>
+\(ax^2+bx+c\) (smallest such integer if there’s a tie).</p>
 <pre><code class="language-python">x0 = int(-b / (2*a))
 print(minX(1, -9, 2))  # 4 (not 4.5 or 5)
 </code></pre>
@@ -243,9 +245,9 @@ print(better(10,20,5, 10,20,4))   # First  (tied gold+silver, more bronze)
 <p><strong>11. <code>area(x1,y1,l1, x2,y2,l2)</code></strong> — area of the intersection of two
 axis-aligned squares (centers <code>(x1,y1)</code>/<code>(x2,y2)</code>, side lengths <code>l1≥l2</code>).</p>
 <p><strong>12. <code>triangular(n)</code></strong> — a positive integer <code>n</code> is <em>triangular</em> if
-$n = m(m+1)/2$ for some positive integer <code>m</code>. Return that <code>m</code>, or <code>None</code>.</p>
+\(n = m(m+1)/2\) for some positive integer <code>m</code>. Return that <code>m</code>, or <code>None</code>.</p>
 <blockquote>
-<p>Hint: $m(m+1)/2 = n \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt; \sqrt{2n} &lt; m+1$.</p>
+<p>Hint: \(m(m+1)/2 = n \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt; \sqrt{2n} &lt; m+1\).</p>
 </blockquote>
 <hr>
 <p><em>Source: 2025 offering, <code>week04_if_else_problem.pdf</code>. Wording condensed;

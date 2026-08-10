@@ -11,7 +11,7 @@
 second quadrant.
 > `p[i][0] < 0 and p[i][1] > 0`.
 
-**4. `countWithinCircle(p, r)`** — count of points with $x^2+y^2 \le r^2$.
+**4. `countWithinCircle(p, r)`** — count of points with \\(x^2+y^2 \le r^2\\).
 
 **5. `withinRect(top,bottom,left,right, x,y)` / `countWithinRect(...)`** —
 first checks if `(x,y)` is inside an axis-aligned rectangle (boundary
@@ -52,22 +52,22 @@ def zigzagEntireWorld():
 *Not for submission/grading, but good practice (mostly past exam problems).*
 
 **11. `countOutOfCircle(L, r)`** — count of points *outside* the circle
-$x^2+y^2=r^2$.
+\\(x^2+y^2=r^2\\).
 
 **12. `countLower(L)`** — count of integers in `L` smaller than the average
 of all of `L`.
 
 **13. `countWithinRange(L)`** — `L` gives cube side lengths; count cubes
-whose *volume* falls within $[A-B, A+B]$ where $A$ is the average volume and
-$B$ is the standard deviation of the volumes:
-$\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}$.
+whose *volume* falls within \\([A-B, A+B]\\) where \\(A\\) is the average volume and
+\\(B\\) is the standard deviation of the volumes:
+\\(\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}\\).
 
-**14. `countDoublePrime(L)`** — a "double prime" is $q=2p$ for some prime
+**14. `countDoublePrime(L)`** — a "double prime" is \\(q=2p\\) for some prime
 `p`; count how many elements of `L` are double primes.
 
 **15. `countTriangular(L)`** — count of triangular numbers in `L`
-($n = m(m+1)/2$).
-> Hint: $m(m+1)/2 = n \Rightarrow m < \sqrt{2n} < m+1$.
+(\\(n = m(m+1)/2\\)).
+> Hint: \\(m(m+1)/2 = n \Rightarrow m < \sqrt{2n} < m+1\\).
 
 **16. `findMax(L)`** — maximum value in `L` among elements whose *index* is
 not prime. E.g. `L = [110,49,441,91,341,20]` — indices 0,1,4 are non-prime,

@@ -16,7 +16,7 @@ print(f(16, 4))  # 2.0
 print(f(64, 6))  # 2.0
 ```
 
-**3. `f(x)` and `g(x, y)`** — $f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})$, using
+**3. `f(x)` and `g(x, y)`** — \\(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\\), using
 `math.exp`, `math.sin`, `math.sqrt` (or `**0.5`), `math.pi`.
 
 ```python
@@ -34,7 +34,7 @@ print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
 > `(1+z)**z`".
 
 **4. `force(m1, m2, r)`** — gravitational force between two masses:
-$F = G \cdot \frac{m_1 m_2}{r^2}$ where $G = 6.67 \times 10^{-11}$.
+\\(F = G \cdot \frac{m_1 m_2}{r^2}\\) where \\(G = 6.67 \times 10^{-11}\\).
 ```python
 def force(m1, m2, r):
     G = 6.67 * 10**(-11)
@@ -42,8 +42,8 @@ def force(m1, m2, r):
 print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
 ```
 
-**5. `minValue(a, b, c)`** — minimum value of $f(x) = ax^2+bx+c$ (for $a>0$),
-found via the vertex $x_0 = \frac{-b}{2a}$.
+**5. `minValue(a, b, c)`** — minimum value of \\(f(x) = ax^2+bx+c\\) (for \\(a>0\\)),
+found via the vertex \\(x_0 = \frac{-b}{2a}\\).
 ```python
 def f(a, b, c, x):
     return a*x**2 + b*x + c

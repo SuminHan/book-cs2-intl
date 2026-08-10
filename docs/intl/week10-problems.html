@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -190,7 +192,7 @@ the current last digit.</p>
 <p><strong>2. <code>countEvenDigits(n)</code></strong> — how many digits of <code>n</code> are even. Same
 structure as problem 1, checking <code>n % 2 == 0</code>.</p>
 <p><strong>3. <code>gcd(a, b)</code></strong> — greatest common divisor via the Euclidean algorithm:
-$\gcd(a,b) = \gcd(b, a \bmod b)$, until the second number hits 0.</p>
+\(\gcd(a,b) = \gcd(b, a \bmod b)\), until the second number hits 0.</p>
 <pre><code class="language-python">def gcd(a, b):
     if a &lt; b:
         a, b = b, a
@@ -218,18 +220,18 @@ of <code>num</code>.</p>
 <p><strong>7–9. <code>estimatePI(...)</code></strong> (three variants) — approximate π using a <code>while</code>
 loop until within a given error bound:</p>
 <ul>
-<li>Ramanujan’s series: $\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}$
-(target error $\le 10^{-15}$, no <code>n</code> parameter)</li>
-<li>Basel problem: $\pi = \sqrt{6\sum_{i=1}^{\infty}\frac{1}{i^2}}$ (parameter
-<code>n</code> from -4 to 0, stop once within $10^n$ of <code>math.pi</code>)</li>
-<li>Leibniz series: $\pi = 4\left(1-\frac13+\frac15-\frac17+\cdots\right)$
+<li>Ramanujan’s series: \(\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}\)
+(target error \(\le 10^{-15}\), no <code>n</code> parameter)</li>
+<li>Basel problem: \(\pi = \sqrt{6\sum_{i=1}^{\infty}\frac{1}{i^2}}\) (parameter
+<code>n</code> from -4 to 0, stop once within \(10^n\) of <code>math.pi</code>)</li>
+<li>Leibniz series: \(\pi = 4\left(1-\frac13+\frac15-\frac17+\cdots\right)\)
 (same <code>n</code>-based stopping rule)</li>
 </ul>
 <p><strong>10. <code>countWeek(rateA, rateB, x)</code></strong> (<code>rateA &lt; rateB</code>) — two lab mice start
 at equal weight; <code>rateA</code>/<code>rateB</code> are their weekly growth rates. Return the
 minimum number of weeks until mouse B outweighs mouse A by at least <code>x</code>%.</p>
 <p><strong>11. <code>reverseSum(L)</code></strong> — sum of each number in <code>L</code> with its digits
-reversed. E.g. <code>[12,40,2]</code> → $21+4+2=27$.</p>
+reversed. E.g. <code>[12,40,2]</code> → \(21+4+2=27\).</p>
 <p><strong>12. <code>evenDigits(num)</code></strong> — integer formed from just the even digits of
 <code>num</code>, in their original order (<code>0</code> if there are none). E.g. from <code>37153</code>
 → <code>0</code> (no even digits).</p>
@@ -240,7 +242,7 @@ reversed. E.g. <code>[12,40,2]</code> → $21+4+2=27$.</p>
 </blockquote>
 <p><strong>14. <code>countAllZeros(L)</code></strong> — total count of <code>0</code> bits across the binary
 representations of the decimal numbers in <code>L</code>. E.g. <code>[10,20,30]</code> →
-binary <code>1010,10100,11110</code> → $2+3+1=6$.</p>
+binary <code>1010,10100,11110</code> → \(2+3+1=6\).</p>
 <hr>
 <p><em>Source: 2025 offering, <code>week10_while_problem.pdf</code>. Wording condensed; code
 stubs kept close to the original.</em></p>

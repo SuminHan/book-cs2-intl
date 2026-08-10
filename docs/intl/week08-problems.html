@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -187,7 +189,7 @@ second quadrant.</p>
 <blockquote>
 <p><code>p[i][0] &lt; 0 and p[i][1] &gt; 0</code>.</p>
 </blockquote>
-<p><strong>4. <code>countWithinCircle(p, r)</code></strong> — count of points with $x^2+y^2 \le r^2$.</p>
+<p><strong>4. <code>countWithinCircle(p, r)</code></strong> — count of points with \(x^2+y^2 \le r^2\).</p>
 <p><strong>5. <code>withinRect(top,bottom,left,right, x,y)</code> / <code>countWithinRect(...)</code></strong> —
 first checks if <code>(x,y)</code> is inside an axis-aligned rectangle (boundary
 included); second counts how many points from a list fall inside it.</p>
@@ -217,19 +219,19 @@ def zigzagEntireWorld():
 <h3 id="optional-problems"><a class="header" href="#optional-problems">Optional Problems</a></h3>
 <p><em>Not for submission/grading, but good practice (mostly past exam problems).</em></p>
 <p><strong>11. <code>countOutOfCircle(L, r)</code></strong> — count of points <em>outside</em> the circle
-$x^2+y^2=r^2$.</p>
+\(x^2+y^2=r^2\).</p>
 <p><strong>12. <code>countLower(L)</code></strong> — count of integers in <code>L</code> smaller than the average
 of all of <code>L</code>.</p>
 <p><strong>13. <code>countWithinRange(L)</code></strong> — <code>L</code> gives cube side lengths; count cubes
-whose <em>volume</em> falls within $[A-B, A+B]$ where $A$ is the average volume and
-$B$ is the standard deviation of the volumes:
-$\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}$.</p>
-<p><strong>14. <code>countDoublePrime(L)</code></strong> — a “double prime” is $q=2p$ for some prime
+whose <em>volume</em> falls within \([A-B, A+B]\) where \(A\) is the average volume and
+\(B\) is the standard deviation of the volumes:
+\(\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}\).</p>
+<p><strong>14. <code>countDoublePrime(L)</code></strong> — a “double prime” is \(q=2p\) for some prime
 <code>p</code>; count how many elements of <code>L</code> are double primes.</p>
 <p><strong>15. <code>countTriangular(L)</code></strong> — count of triangular numbers in <code>L</code>
-($n = m(m+1)/2$).</p>
+(\(n = m(m+1)/2\)).</p>
 <blockquote>
-<p>Hint: $m(m+1)/2 = n \Rightarrow m &lt; \sqrt{2n} &lt; m+1$.</p>
+<p>Hint: \(m(m+1)/2 = n \Rightarrow m &lt; \sqrt{2n} &lt; m+1\).</p>
 </blockquote>
 <p><strong>16. <code>findMax(L)</code></strong> — maximum value in <code>L</code> among elements whose <em>index</em> is
 not prime. E.g. <code>L = [110,49,441,91,341,20]</code> — indices 0,1,4 are non-prime,

@@ -30,13 +30,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-58861ff6.js"></script>
@@ -300,9 +302,9 @@ and <a href="http://newsletter.pragmaticengineer.com/p/the-job-market-in-2026-pa
 </code></pre>
 <p>This is not a bug. Every computer on Earth agrees with Python here.</p>
 <h3 id="why-some-numbers-have-no-exact-form"><a class="header" href="#why-some-numbers-have-no-exact-form">Why: some numbers have no exact form</a></h3>
-<p>Write $1/3$ in decimal: $0.3333\ldots$ — it never ends. You have to stop
+<p>Write \(1/3\) in decimal: \(0.3333\ldots\) — it never ends. You have to stop
 somewhere, so you store something slightly wrong. A computer stores numbers
-in <strong>binary</strong>, and in binary $0.1$ is a number that never ends either. Here
+in <strong>binary</strong>, and in binary \(0.1\) is a number that never ends either. Here
 is what is really in memory:</p>
 <pre><code>0.1  -&gt;  0.10000000000000000555
 0.2  -&gt;  0.20000000000000001110
@@ -352,17 +354,17 @@ print("After swapping: ", a, b)
 <blockquote>
 <p>Hint: multiple assignment generalizes: <code>a,b,c,d,e = e,a,b,c,d</code>.</p>
 </blockquote>
-<p><strong>3. Evaluate a quadratic</strong> — read <code>a, b, c, x</code> and print $ax^2+bx+c$.</p>
+<p><strong>3. Evaluate a quadratic</strong> — read <code>a, b, c, x</code> and print \(ax^2+bx+c\).</p>
 <blockquote>
 <p><code>input()</code> always returns a string — convert with <code>int(a)</code> before doing
-arithmetic. <code>x**2</code> computes $x^2$.</p>
+arithmetic. <code>x**2</code> computes \(x^2\).</p>
 </blockquote>
 <p><strong>4. Rectangle area</strong> — read two corner points <code>(x1,y1)</code>, <code>(x2,y2)</code> (bottom-left
 and top-right) and print the rectangle’s area.</p>
 <p><strong>5. Triangle area (Heron’s formula)</strong> — read side lengths <code>a, b, c</code> and print
-the area: $\sqrt{s(s-a)(s-b)(s-c)}$ where $s = \frac{a+b+c}{2}$.</p>
+the area: \(\sqrt{s(s-a)(s-b)(s-c)}\) where \(s = \frac{a+b+c}{2}\).</p>
 <blockquote>
-<p><code>x**0.5</code> computes $\sqrt{x}$.</p>
+<p><code>x**0.5</code> computes \(\sqrt{x}\).</p>
 </blockquote>
 <p><strong>6. Remainder without <code>%</code></strong> — read positive integers <code>a, b</code> and compute
 <code>a % b</code> using only <code>-</code>, <code>*</code>, and <code>//</code>.</p>
@@ -375,7 +377,7 @@ nearest integer, without using <code>round()</code>.</p>
 <p>What is <code>int(2.4 + 0.5)</code>? <code>int(2.5 + 0.5)</code>? <code>int(2.6 + 0.5)</code>?</p>
 </blockquote>
 <p><strong>8. Fahrenheit to Celsius</strong> — read an integer Fahrenheit temperature <code>F</code> and
-print the Celsius equivalent: $C = (F - 32) \cdot \frac{5}{9}$.</p>
+print the Celsius equivalent: \(C = (F - 32) \cdot \frac{5}{9}\).</p>
 <hr>
 <p><em>Source: 2025 offering, <code>week02_var_expr_problem.pdf</code>. Wording condensed;
 code stubs kept close to the original.</em></p>
@@ -430,7 +432,7 @@ print(f(3, 6))  # 0.25
 <pre><code class="language-python">print(f(16, 4))  # 2.0
 print(f(64, 6))  # 2.0
 </code></pre>
-<p><strong>3. <code>f(x)</code> and <code>g(x, y)</code></strong> — $f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})$, using
+<p><strong>3. <code>f(x)</code> and <code>g(x, y)</code></strong> — \(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\), using
 <code>math.exp</code>, <code>math.sin</code>, <code>math.sqrt</code> (or <code>**0.5</code>), <code>math.pi</code>.</p>
 <pre><code class="language-python">import math
 def f(x):
@@ -447,14 +449,14 @@ the hint structure is “compute <code>z = f(1/x)</code> (or similar), then retu
 <code>(1+z)**z</code>”.</p>
 </blockquote>
 <p><strong>4. <code>force(m1, m2, r)</code></strong> — gravitational force between two masses:
-$F = G \cdot \frac{m_1 m_2}{r^2}$ where $G = 6.67 \times 10^{-11}$.</p>
+\(F = G \cdot \frac{m_1 m_2}{r^2}\) where \(G = 6.67 \times 10^{-11}\).</p>
 <pre><code class="language-python">def force(m1, m2, r):
     G = 6.67 * 10**(-11)
     # ADD ADDITIONAL CODE HERE!
 print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
 </code></pre>
-<p><strong>5. <code>minValue(a, b, c)</code></strong> — minimum value of $f(x) = ax^2+bx+c$ (for $a&gt;0$),
-found via the vertex $x_0 = \frac{-b}{2a}$.</p>
+<p><strong>5. <code>minValue(a, b, c)</code></strong> — minimum value of \(f(x) = ax^2+bx+c\) (for \(a&gt;0\)),
+found via the vertex \(x_0 = \frac{-b}{2a}\).</p>
 <pre><code class="language-python">def f(a, b, c, x):
     return a*x**2 + b*x + c
 def minValue(a, b, c):
@@ -553,8 +555,8 @@ integer to <code>x</code> (e.g. 2.4→2, 2.5→3, 2.6→3).</p>
     fraction = x - int(x)
     # ADD ADDITIONAL CODE HERE!
 </code></pre>
-<p><strong>6. <code>ceiling(x)</code></strong> — smallest integer $\geq x$ (2.0→2, 2.1→3, 2.6→3).</p>
-<p><strong>7. <code>quadratic(a, b, c)</code></strong> — number of real roots of $ax^2+bx+c=0$
+<p><strong>6. <code>ceiling(x)</code></strong> — smallest integer \(\geq x\) (2.0→2, 2.1→3, 2.6→3).</p>
+<p><strong>7. <code>quadratic(a, b, c)</code></strong> — number of real roots of \(ax^2+bx+c=0\)
 (<code>a</code> may be 0; <code>a=b=c=0</code> never given).</p>
 <pre><code class="language-python">def quadratic(a, b, c):
     if a == 0:
@@ -567,7 +569,7 @@ print(quadratic(1, -2, 1))   # 1
 print(quadratic(1, -4, 1))   # 2
 </code></pre>
 <p><strong>8. <code>minX(a, b, c)</code></strong> (<code>a&gt;0</code>, <code>b&lt;0</code>) — the integer <code>x</code> minimizing
-$ax^2+bx+c$ (smallest such integer if there’s a tie).</p>
+\(ax^2+bx+c\) (smallest such integer if there’s a tie).</p>
 <pre><code class="language-python">x0 = int(-b / (2*a))
 print(minX(1, -9, 2))  # 4 (not 4.5 or 5)
 </code></pre>
@@ -587,9 +589,9 @@ print(better(10,20,5, 10,20,4))   # First  (tied gold+silver, more bronze)
 <p><strong>11. <code>area(x1,y1,l1, x2,y2,l2)</code></strong> — area of the intersection of two
 axis-aligned squares (centers <code>(x1,y1)</code>/<code>(x2,y2)</code>, side lengths <code>l1≥l2</code>).</p>
 <p><strong>12. <code>triangular(n)</code></strong> — a positive integer <code>n</code> is <em>triangular</em> if
-$n = m(m+1)/2$ for some positive integer <code>m</code>. Return that <code>m</code>, or <code>None</code>.</p>
+\(n = m(m+1)/2\) for some positive integer <code>m</code>. Return that <code>m</code>, or <code>None</code>.</p>
 <blockquote>
-<p>Hint: $m(m+1)/2 = n \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt; \sqrt{2n} &lt; m+1$.</p>
+<p>Hint: \(m(m+1)/2 = n \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt; \sqrt{2n} &lt; m+1\).</p>
 </blockquote>
 <hr>
 <p><em>Source: 2025 offering, <code>week04_if_else_problem.pdf</code>. Wording condensed;
@@ -641,7 +643,7 @@ print(inSecondQuadrant(-1,2))       # True
 <p><strong>2. <code>withinInterval(lower, upper, n)</code> / <code>exactlyThreeWithinInterval(...)</code></strong>
 — first checks <code>lower &lt;= n &lt;= upper</code>; second uses it to check whether
 exactly three of five numbers fall within <code>[lower,upper]</code>.</p>
-<p><strong>3. <code>triangle(a, b)</code></strong> — do the x-axis, y-axis, and the line $y=ax+b$ form
+<p><strong>3. <code>triangle(a, b)</code></strong> — do the x-axis, y-axis, and the line \(y=ax+b\) form
 a triangle?</p>
 <pre><code class="language-python">print(triangle(-3, -2))  # True
 print(triangle(3, 0))    # False (passes through origin)
@@ -649,7 +651,7 @@ print(triangle(3, 0))    # False (passes through origin)
 <p><strong>4. <code>triangle(a, b, c)</code></strong> (different signature) — can side lengths <code>a, b, c</code>
 form a triangle?</p>
 <blockquote>
-<p>If a triangle exists, $a+b&gt;c$, $b+c&gt;a$, $c+a&gt;b$ all hold. Does the converse
+<p>If a triangle exists, \(a+b&gt;c\), \(b+c&gt;a\), \(c+a&gt;b\) all hold. Does the converse
 hold too?</p>
 </blockquote>
 <p><strong>5. <code>rightAngled(x1,y1, x2,y2, x3,y3)</code></strong> — do three points form a
@@ -665,7 +667,7 @@ acute triangle?</p>
 <p><strong>7. <code>intersect(x1,y1,r1, x2,y2,r2)</code></strong> — do two circles intersect at exactly
 two points?</p>
 <blockquote>
-<p>Use <code>abs(x)</code> for $|x|$.</p>
+<p>Use <code>abs(x)</code> for \(|x|\).</p>
 </blockquote>
 <p><strong>8. <code>leapYear(year)</code> / <code>numDays(year, month)</code></strong> — the leap-year rule from
 Week 1 (divisible by 4, except centuries, unless divisible by 400), then use
@@ -713,7 +715,7 @@ Nobody counts like this.</p>
 <p><code>range(a, b)</code> means start at <code>a</code>, stop before <code>b</code>. That one choice makes
 three annoying things disappear:</p>
 <ul>
-<li><strong>How many items?</strong> $b - a$. Nothing to add, nothing to subtract.
+<li><strong>How many items?</strong> \(b - a\). Nothing to add, nothing to subtract.
 <code>range(0,10)</code> has 10 items.</li>
 <li><strong>Splitting a list.</strong> <code>range(0,5)</code> and <code>range(5,10)</code> fit together
 perfectly — no gap, no overlap, no 5 appearing twice.</li>
@@ -759,17 +761,17 @@ multiplication table (odd rows only; then a growing triangular shape):</p>
 <pre><code class="language-python">print(sumNumbers(5,10))    # 45
 print(sumNumbers(15,100))  # 4945
 </code></pre>
-<p><strong>3. <code>factorial(n)</code></strong> — $n!$.</p>
+<p><strong>3. <code>factorial(n)</code></strong> — \(n!\).</p>
 <pre><code class="language-python">print(factorial(8))   # 40320
 print(factorial(12))  # 479001600
 </code></pre>
-<p><strong>4. <code>exp(x)</code></strong> — approximate $e^x$ via the series
-$e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^{100}}{100!}$.
+<p><strong>4. <code>exp(x)</code></strong> — approximate \(e^x\) via the series
+\(e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^{100}}{100!}\).
 Reuse <code>factorial</code> from problem 3.</p>
 <pre><code class="language-python">print(exp(1.0))  # 2.7182818284590455
 </code></pre>
 <p><strong>5. <code>withinCircle(r)</code></strong> — number of integer-coordinate points <code>(x,y)</code> with
-$x^2+y^2 \le r^2$.</p>
+\(x^2+y^2 \le r^2\).</p>
 <pre><code class="language-python">print(withinCircle(1000) / 1000**2)  # 3.141549 -- approximates π
 </code></pre>
 <p><strong>6. <code>dayOfWeek(year, month, day)</code></strong> (<code>year ≥ 2000</code>) — day of week as
@@ -782,22 +784,22 @@ days elapsed from there and take <code>% 7</code>.</p>
 print(dayOfWeek(2013,3,23))  # Sat
 </code></pre>
 <p><strong>7. <code>findMax()</code></strong> — maximum value of
-$f(i,j) = (i^5 + 2i^3j^2 + 5i^2 + j + 5000) \bmod 10000$ for
-$i,j \in {0,\ldots,99}$.</p>
+\(f(i,j) = (i^5 + 2i^3j^2 + 5i^2 + j + 5000) \bmod 10000\) for
+\(i,j \in {0,\ldots,99}\).</p>
 <pre><code class="language-python">def f(i, j):
     return (i**5 + 2*(i**3)*(j**2) + 5*i**2 + j + 5000) % 10000
 print(findMax())  # 9997
 </code></pre>
-<p><strong>8. <code>combination(n, k)</code></strong> ($1 \le k \le n \le 250$) — $\binom{n}{k}$, as an
+<p><strong>8. <code>combination(n, k)</code></strong> (\(1 \le k \le n \le 250\)) — \(\binom{n}{k}\), as an
 <code>int</code> (not <code>float</code>).</p>
 <blockquote>
-<p>Use $\prod_{i=1}^{k} \frac{n+1-i}{i} = \frac{n}{1}\cdot\frac{n-1}{2}\cdots\frac{n+1-k}{k}$
+<p>Use \(\prod_{i=1}^{k} \frac{n+1-i}{i} = \frac{n}{1}\cdot\frac{n-1}{2}\cdots\frac{n+1-k}{k}\)
 and divide as you go to keep values manageable.</p>
 </blockquote>
 <p><strong>9. <code>maxPrimeFactor(n)</code></strong> (<code>n ≥ 2</code>) — largest prime factor of <code>n</code>. E.g.
-<code>maxPrimeFactor(12)</code> → <code>3</code> (since $12 = 2 \times 2 \times 3$).</p>
+<code>maxPrimeFactor(12)</code> → <code>3</code> (since \(12 = 2 \times 2 \times 3\)).</p>
 <p><strong>10. <code>withinRegion(a, c)</code></strong> — number of integer points <code>(x,y)</code> satisfying
-both $y \le -ax^2+c$ and $y \ge ax^2-c$ (the region between two parabolas).</p>
+both \(y \le -ax^2+c\) and \(y \ge ax^2-c\) (the region between two parabolas).</p>
 <hr>
 <p><em>Source: 2025 offering, <code>week06_for_1_problem.pdf</code>. Wording condensed; code
 stubs kept close to the original.</em></p>
@@ -846,8 +848,8 @@ slide content.</em></p>
 a_{n-1}x^{n-1}$.</p>
 <pre><code class="language-python">print(computePolynomial([3,5,4], 5))  # 128
 </code></pre>
-<p><strong>3. <code>harmonicMean(a)</code></strong> — $\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}$.</p>
-<p><strong>4. <code>geometricMean(a)</code></strong> — $\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}$.</p>
+<p><strong>3. <code>harmonicMean(a)</code></strong> — \(\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}\).</p>
+<p><strong>4. <code>geometricMean(a)</code></strong> — \(\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}\).</p>
 <blockquote>
 <p>Compute the product first, then raise to the <code>1/n</code> power.</p>
 </blockquote>
@@ -871,12 +873,12 @@ print(L)          # [7,6,3,1,5,8,2,4] -- L itself unchanged
 </code></pre>
 <p><strong>9. <code>area(p)</code></strong> — area of a polygon (list of <code>[x,y]</code> points, given
 counter-clockwise) via the Shoelace formula:
-$\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|$</p>
+\(\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|\)</p>
 <pre><code class="language-python">points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
 print(area(points))  # 22.0
 </code></pre>
 <blockquote>
-<p>Use <code>abs(x)</code> for $|x|$.</p>
+<p>Use <code>abs(x)</code> for \(|x|\).</p>
 </blockquote>
 <p><strong>10. <code>perimeter(p)</code></strong> — perimeter of the same kind of polygon (sum of
 consecutive-point distances, wrapping around).</p>
@@ -950,7 +952,7 @@ second quadrant.</p>
 <blockquote>
 <p><code>p[i][0] &lt; 0 and p[i][1] &gt; 0</code>.</p>
 </blockquote>
-<p><strong>4. <code>countWithinCircle(p, r)</code></strong> — count of points with $x^2+y^2 \le r^2$.</p>
+<p><strong>4. <code>countWithinCircle(p, r)</code></strong> — count of points with \(x^2+y^2 \le r^2\).</p>
 <p><strong>5. <code>withinRect(top,bottom,left,right, x,y)</code> / <code>countWithinRect(...)</code></strong> —
 first checks if <code>(x,y)</code> is inside an axis-aligned rectangle (boundary
 included); second counts how many points from a list fall inside it.</p>
@@ -980,19 +982,19 @@ def zigzagEntireWorld():
 <h3 id="optional-problems-1"><a class="header" href="#optional-problems-1">Optional Problems</a></h3>
 <p><em>Not for submission/grading, but good practice (mostly past exam problems).</em></p>
 <p><strong>11. <code>countOutOfCircle(L, r)</code></strong> — count of points <em>outside</em> the circle
-$x^2+y^2=r^2$.</p>
+\(x^2+y^2=r^2\).</p>
 <p><strong>12. <code>countLower(L)</code></strong> — count of integers in <code>L</code> smaller than the average
 of all of <code>L</code>.</p>
 <p><strong>13. <code>countWithinRange(L)</code></strong> — <code>L</code> gives cube side lengths; count cubes
-whose <em>volume</em> falls within $[A-B, A+B]$ where $A$ is the average volume and
-$B$ is the standard deviation of the volumes:
-$\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}$.</p>
-<p><strong>14. <code>countDoublePrime(L)</code></strong> — a “double prime” is $q=2p$ for some prime
+whose <em>volume</em> falls within \([A-B, A+B]\) where \(A\) is the average volume and
+\(B\) is the standard deviation of the volumes:
+\(\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}\).</p>
+<p><strong>14. <code>countDoublePrime(L)</code></strong> — a “double prime” is \(q=2p\) for some prime
 <code>p</code>; count how many elements of <code>L</code> are double primes.</p>
 <p><strong>15. <code>countTriangular(L)</code></strong> — count of triangular numbers in <code>L</code>
-($n = m(m+1)/2$).</p>
+(\(n = m(m+1)/2\)).</p>
 <blockquote>
-<p>Hint: $m(m+1)/2 = n \Rightarrow m &lt; \sqrt{2n} &lt; m+1$.</p>
+<p>Hint: \(m(m+1)/2 = n \Rightarrow m &lt; \sqrt{2n} &lt; m+1\).</p>
 </blockquote>
 <p><strong>16. <code>findMax(L)</code></strong> — maximum value in <code>L</code> among elements whose <em>index</em> is
 not prime. E.g. <code>L = [110,49,441,91,341,20]</code> — indices 0,1,4 are non-prime,
@@ -1041,7 +1043,7 @@ slide content.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-7"><a class="header" href="#problem-set-7">Problem Set</a></h1>
 <p><strong>1. <code>sumOfThreeSquares(n)</code></strong> (“for some” pattern) — can <code>n</code> be written as
-the sum of squares of three positive integers? (e.g. $38=2^2+3^2+5^2$)</p>
+the sum of squares of three positive integers? (e.g. \(38=2^2+3^2+5^2\))</p>
 <pre><code class="language-python">for n in range(20, 31):
     print(n, sumOfThreeSquares(n))
 # 20 False  21 True  22 True  23 False  24 True ...
@@ -1052,9 +1054,9 @@ distinct.</p>
 <p>Loop template: <code>for i in range(1,b+1): for j in range(i+1,b+1): for k in  range(j+1,b+1): ...</code></p>
 </blockquote>
 <p><strong>3. <code>sumOfTwoPrimes(n)</code></strong> — can <code>n</code> be written as a sum of two primes?
-(e.g. $21=2+19$)</p>
+(e.g. \(21=2+19\))</p>
 <p><strong>4. <code>sumOfTwoPrimeSquares(n)</code></strong> — can <code>n</code> be written as a sum of squares of
-two primes? (e.g. $50=5^2+5^2$)</p>
+two primes? (e.g. \(50=5^2+5^2\))</p>
 <p><strong>5. <code>somePrime(numbers)</code> / <code>allPrime(numbers)</code></strong> — “for some”/“for all”
 quantifiers over primality.</p>
 <pre><code class="language-python">print(somePrime(num1), allPrime(num1))  # True False
@@ -1143,7 +1145,7 @@ the current last digit.</p>
 <p><strong>2. <code>countEvenDigits(n)</code></strong> — how many digits of <code>n</code> are even. Same
 structure as problem 1, checking <code>n % 2 == 0</code>.</p>
 <p><strong>3. <code>gcd(a, b)</code></strong> — greatest common divisor via the Euclidean algorithm:
-$\gcd(a,b) = \gcd(b, a \bmod b)$, until the second number hits 0.</p>
+\(\gcd(a,b) = \gcd(b, a \bmod b)\), until the second number hits 0.</p>
 <pre><code class="language-python">def gcd(a, b):
     if a &lt; b:
         a, b = b, a
@@ -1171,18 +1173,18 @@ of <code>num</code>.</p>
 <p><strong>7–9. <code>estimatePI(...)</code></strong> (three variants) — approximate π using a <code>while</code>
 loop until within a given error bound:</p>
 <ul>
-<li>Ramanujan’s series: $\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}$
-(target error $\le 10^{-15}$, no <code>n</code> parameter)</li>
-<li>Basel problem: $\pi = \sqrt{6\sum_{i=1}^{\infty}\frac{1}{i^2}}$ (parameter
-<code>n</code> from -4 to 0, stop once within $10^n$ of <code>math.pi</code>)</li>
-<li>Leibniz series: $\pi = 4\left(1-\frac13+\frac15-\frac17+\cdots\right)$
+<li>Ramanujan’s series: \(\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}\)
+(target error \(\le 10^{-15}\), no <code>n</code> parameter)</li>
+<li>Basel problem: \(\pi = \sqrt{6\sum_{i=1}^{\infty}\frac{1}{i^2}}\) (parameter
+<code>n</code> from -4 to 0, stop once within \(10^n\) of <code>math.pi</code>)</li>
+<li>Leibniz series: \(\pi = 4\left(1-\frac13+\frac15-\frac17+\cdots\right)\)
 (same <code>n</code>-based stopping rule)</li>
 </ul>
 <p><strong>10. <code>countWeek(rateA, rateB, x)</code></strong> (<code>rateA &lt; rateB</code>) — two lab mice start
 at equal weight; <code>rateA</code>/<code>rateB</code> are their weekly growth rates. Return the
 minimum number of weeks until mouse B outweighs mouse A by at least <code>x</code>%.</p>
 <p><strong>11. <code>reverseSum(L)</code></strong> — sum of each number in <code>L</code> with its digits
-reversed. E.g. <code>[12,40,2]</code> → $21+4+2=27$.</p>
+reversed. E.g. <code>[12,40,2]</code> → \(21+4+2=27\).</p>
 <p><strong>12. <code>evenDigits(num)</code></strong> — integer formed from just the even digits of
 <code>num</code>, in their original order (<code>0</code> if there are none). E.g. from <code>37153</code>
 → <code>0</code> (no even digits).</p>
@@ -1193,7 +1195,7 @@ reversed. E.g. <code>[12,40,2]</code> → $21+4+2=27$.</p>
 </blockquote>
 <p><strong>14. <code>countAllZeros(L)</code></strong> — total count of <code>0</code> bits across the binary
 representations of the decimal numbers in <code>L</code>. E.g. <code>[10,20,30]</code> →
-binary <code>1010,10100,11110</code> → $2+3+1=6$.</p>
+binary <code>1010,10100,11110</code> → \(2+3+1=6\).</p>
 <hr>
 <p><em>Source: 2025 offering, <code>week10_while_problem.pdf</code>. Wording condensed; code
 stubs kept close to the original.</em></p>
@@ -1273,7 +1275,7 @@ print(makeSet([3,4,5,6,7,3,4]))   # [3,4,5,6,7]
 <p>Don’t use the <code>set</code> type here — use <code>in</code>/<code>not in</code> instead.</p>
 </blockquote>
 <p><strong>5. <code>multiple(L1, L2)</code></strong> — is every number in <code>L1</code> a multiple of <em>some</em>
-number in <code>L2</code>? ($\forall x \in L_1,, \exists y \in L_2$ s.t. <code>x</code> is a
+number in <code>L2</code>? (\(\forall x \in L_1,, \exists y \in L_2\) s.t. <code>x</code> is a
 multiple of <code>y</code>)</p>
 <pre><code class="language-python">print(multiple([14,24,18,35,39], [6,13,7]))  # True
 print(multiple([14,24,18,35,39], [5,13,7]))  # False
@@ -1618,7 +1620,9 @@ stubs kept close to the original.</em></p>
 
         <script>
         window.addEventListener('load', function() {
-            window.setTimeout(window.print, 100);
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
         });
         </script>
 

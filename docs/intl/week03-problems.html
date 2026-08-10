@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -189,7 +191,7 @@ print(f(3, 6))  # 0.25
 <pre><code class="language-python">print(f(16, 4))  # 2.0
 print(f(64, 6))  # 2.0
 </code></pre>
-<p><strong>3. <code>f(x)</code> and <code>g(x, y)</code></strong> — $f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})$, using
+<p><strong>3. <code>f(x)</code> and <code>g(x, y)</code></strong> — \(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\), using
 <code>math.exp</code>, <code>math.sin</code>, <code>math.sqrt</code> (or <code>**0.5</code>), <code>math.pi</code>.</p>
 <pre><code class="language-python">import math
 def f(x):
@@ -206,14 +208,14 @@ the hint structure is “compute <code>z = f(1/x)</code> (or similar), then retu
 <code>(1+z)**z</code>”.</p>
 </blockquote>
 <p><strong>4. <code>force(m1, m2, r)</code></strong> — gravitational force between two masses:
-$F = G \cdot \frac{m_1 m_2}{r^2}$ where $G = 6.67 \times 10^{-11}$.</p>
+\(F = G \cdot \frac{m_1 m_2}{r^2}\) where \(G = 6.67 \times 10^{-11}\).</p>
 <pre><code class="language-python">def force(m1, m2, r):
     G = 6.67 * 10**(-11)
     # ADD ADDITIONAL CODE HERE!
 print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
 </code></pre>
-<p><strong>5. <code>minValue(a, b, c)</code></strong> — minimum value of $f(x) = ax^2+bx+c$ (for $a&gt;0$),
-found via the vertex $x_0 = \frac{-b}{2a}$.</p>
+<p><strong>5. <code>minValue(a, b, c)</code></strong> — minimum value of \(f(x) = ax^2+bx+c\) (for \(a&gt;0\)),
+found via the vertex \(x_0 = \frac{-b}{2a}\).</p>
 <pre><code class="language-python">def f(a, b, c, x):
     return a*x**2 + b*x + c
 def minValue(a, b, c):

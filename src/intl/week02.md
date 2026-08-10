@@ -22,9 +22,9 @@ This is not a bug. Every computer on Earth agrees with Python here.
 
 ### Why: some numbers have no exact form
 
-Write $1/3$ in decimal: $0.3333\ldots$ — it never ends. You have to stop
+Write \\(1/3\\) in decimal: \\(0.3333\ldots\\) — it never ends. You have to stop
 somewhere, so you store something slightly wrong. A computer stores numbers
-in **binary**, and in binary $0.1$ is a number that never ends either. Here
+in **binary**, and in binary \\(0.1\\) is a number that never ends either. Here
 is what is really in memory:
 
 ```

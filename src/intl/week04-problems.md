@@ -42,9 +42,9 @@ def round(x):
     # ADD ADDITIONAL CODE HERE!
 ```
 
-**6. `ceiling(x)`** — smallest integer $\geq x$ (2.0→2, 2.1→3, 2.6→3).
+**6. `ceiling(x)`** — smallest integer \\(\geq x\\) (2.0→2, 2.1→3, 2.6→3).
 
-**7. `quadratic(a, b, c)`** — number of real roots of $ax^2+bx+c=0$
+**7. `quadratic(a, b, c)`** — number of real roots of \\(ax^2+bx+c=0\\)
 (`a` may be 0; `a=b=c=0` never given).
 ```python
 def quadratic(a, b, c):
@@ -59,7 +59,7 @@ print(quadratic(1, -4, 1))   # 2
 ```
 
 **8. `minX(a, b, c)`** (`a>0`, `b<0`) — the integer `x` minimizing
-$ax^2+bx+c$ (smallest such integer if there's a tie).
+\\(ax^2+bx+c\\) (smallest such integer if there's a tie).
 ```python
 x0 = int(-b / (2*a))
 print(minX(1, -9, 2))  # 4 (not 4.5 or 5)
@@ -87,8 +87,8 @@ print(better(10,20,5, 10,20,4))   # First  (tied gold+silver, more bronze)
 axis-aligned squares (centers `(x1,y1)`/`(x2,y2)`, side lengths `l1≥l2`).
 
 **12. `triangular(n)`** — a positive integer `n` is *triangular* if
-$n = m(m+1)/2$ for some positive integer `m`. Return that `m`, or `None`.
-> Hint: $m(m+1)/2 = n \Rightarrow m^2 < 2n < (m+1)^2 \Rightarrow m < \sqrt{2n} < m+1$.
+\\(n = m(m+1)/2\\) for some positive integer `m`. Return that `m`, or `None`.
+> Hint: \\(m(m+1)/2 = n \Rightarrow m^2 < 2n < (m+1)^2 \Rightarrow m < \sqrt{2n} < m+1\\).
 
 ---
 *Source: 2025 offering, `week04_if_else_problem.pdf`. Wording condensed;

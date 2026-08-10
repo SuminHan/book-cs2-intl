@@ -14,7 +14,7 @@ print(countSevens(1357924770))  # 3
 structure as problem 1, checking `n % 2 == 0`.
 
 **3. `gcd(a, b)`** — greatest common divisor via the Euclidean algorithm:
-$\gcd(a,b) = \gcd(b, a \bmod b)$, until the second number hits 0.
+\\(\gcd(a,b) = \gcd(b, a \bmod b)\\), until the second number hits 0.
 ```python
 def gcd(a, b):
     if a < b:
@@ -49,11 +49,11 @@ while num > 0:
 
 **7–9. `estimatePI(...)`** (three variants) — approximate π using a `while`
 loop until within a given error bound:
-- Ramanujan's series: $\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}$
-  (target error $\le 10^{-15}$, no `n` parameter)
-- Basel problem: $\pi = \sqrt{6\sum_{i=1}^{\infty}\frac{1}{i^2}}$ (parameter
-  `n` from -4 to 0, stop once within $10^n$ of `math.pi`)
-- Leibniz series: $\pi = 4\left(1-\frac13+\frac15-\frac17+\cdots\right)$
+- Ramanujan's series: \\(\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}\\)
+  (target error \\(\le 10^{-15}\\), no `n` parameter)
+- Basel problem: \\(\pi = \sqrt{6\sum_{i=1}^{\infty}\frac{1}{i^2}}\\) (parameter
+  `n` from -4 to 0, stop once within \\(10^n\\) of `math.pi`)
+- Leibniz series: \\(\pi = 4\left(1-\frac13+\frac15-\frac17+\cdots\right)\\)
   (same `n`-based stopping rule)
 
 **10. `countWeek(rateA, rateB, x)`** (`rateA < rateB`) — two lab mice start
@@ -61,7 +61,7 @@ at equal weight; `rateA`/`rateB` are their weekly growth rates. Return the
 minimum number of weeks until mouse B outweighs mouse A by at least `x`%.
 
 **11. `reverseSum(L)`** — sum of each number in `L` with its digits
-reversed. E.g. `[12,40,2]` → $21+4+2=27$.
+reversed. E.g. `[12,40,2]` → \\(21+4+2=27\\).
 
 **12. `evenDigits(num)`** — integer formed from just the even digits of
 `num`, in their original order (`0` if there are none). E.g. from `37153`
@@ -73,7 +73,7 @@ reversed. E.g. `[12,40,2]` → $21+4+2=27$.
 
 **14. `countAllZeros(L)`** — total count of `0` bits across the binary
 representations of the decimal numbers in `L`. E.g. `[10,20,30]` →
-binary `1010,10100,11110` → $2+3+1=6$.
+binary `1010,10100,11110` → \\(2+3+1=6\\).
 
 ---
 *Source: 2025 offering, `week10_while_problem.pdf`. Wording condensed; code

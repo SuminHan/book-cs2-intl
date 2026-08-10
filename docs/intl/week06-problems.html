@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -199,17 +201,17 @@ multiplication table (odd rows only; then a growing triangular shape):</p>
 <pre><code class="language-python">print(sumNumbers(5,10))    # 45
 print(sumNumbers(15,100))  # 4945
 </code></pre>
-<p><strong>3. <code>factorial(n)</code></strong> — $n!$.</p>
+<p><strong>3. <code>factorial(n)</code></strong> — \(n!\).</p>
 <pre><code class="language-python">print(factorial(8))   # 40320
 print(factorial(12))  # 479001600
 </code></pre>
-<p><strong>4. <code>exp(x)</code></strong> — approximate $e^x$ via the series
-$e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^{100}}{100!}$.
+<p><strong>4. <code>exp(x)</code></strong> — approximate \(e^x\) via the series
+\(e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^{100}}{100!}\).
 Reuse <code>factorial</code> from problem 3.</p>
 <pre><code class="language-python">print(exp(1.0))  # 2.7182818284590455
 </code></pre>
 <p><strong>5. <code>withinCircle(r)</code></strong> — number of integer-coordinate points <code>(x,y)</code> with
-$x^2+y^2 \le r^2$.</p>
+\(x^2+y^2 \le r^2\).</p>
 <pre><code class="language-python">print(withinCircle(1000) / 1000**2)  # 3.141549 -- approximates π
 </code></pre>
 <p><strong>6. <code>dayOfWeek(year, month, day)</code></strong> (<code>year ≥ 2000</code>) — day of week as
@@ -222,22 +224,22 @@ days elapsed from there and take <code>% 7</code>.</p>
 print(dayOfWeek(2013,3,23))  # Sat
 </code></pre>
 <p><strong>7. <code>findMax()</code></strong> — maximum value of
-$f(i,j) = (i^5 + 2i^3j^2 + 5i^2 + j + 5000) \bmod 10000$ for
-$i,j \in {0,\ldots,99}$.</p>
+\(f(i,j) = (i^5 + 2i^3j^2 + 5i^2 + j + 5000) \bmod 10000\) for
+\(i,j \in {0,\ldots,99}\).</p>
 <pre><code class="language-python">def f(i, j):
     return (i**5 + 2*(i**3)*(j**2) + 5*i**2 + j + 5000) % 10000
 print(findMax())  # 9997
 </code></pre>
-<p><strong>8. <code>combination(n, k)</code></strong> ($1 \le k \le n \le 250$) — $\binom{n}{k}$, as an
+<p><strong>8. <code>combination(n, k)</code></strong> (\(1 \le k \le n \le 250\)) — \(\binom{n}{k}\), as an
 <code>int</code> (not <code>float</code>).</p>
 <blockquote>
-<p>Use $\prod_{i=1}^{k} \frac{n+1-i}{i} = \frac{n}{1}\cdot\frac{n-1}{2}\cdots\frac{n+1-k}{k}$
+<p>Use \(\prod_{i=1}^{k} \frac{n+1-i}{i} = \frac{n}{1}\cdot\frac{n-1}{2}\cdots\frac{n+1-k}{k}\)
 and divide as you go to keep values manageable.</p>
 </blockquote>
 <p><strong>9. <code>maxPrimeFactor(n)</code></strong> (<code>n ≥ 2</code>) — largest prime factor of <code>n</code>. E.g.
-<code>maxPrimeFactor(12)</code> → <code>3</code> (since $12 = 2 \times 2 \times 3$).</p>
+<code>maxPrimeFactor(12)</code> → <code>3</code> (since \(12 = 2 \times 2 \times 3\)).</p>
 <p><strong>10. <code>withinRegion(a, c)</code></strong> — number of integer points <code>(x,y)</code> satisfying
-both $y \le -ax^2+c$ and $y \ge ax^2-c$ (the region between two parabolas).</p>
+both \(y \le -ax^2+c\) and \(y \ge ax^2-c\) (the region between two parabolas).</p>
 <hr>
 <p><em>Source: 2025 offering, <code>week06_for_1_problem.pdf</code>. Wording condensed; code
 stubs kept close to the original.</em></p>

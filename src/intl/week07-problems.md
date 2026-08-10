@@ -11,9 +11,9 @@ a_{n-1}x^{n-1}$.
 print(computePolynomial([3,5,4], 5))  # 128
 ```
 
-**3. `harmonicMean(a)`** — $\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}$.
+**3. `harmonicMean(a)`** — \\(\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}\\).
 
-**4. `geometricMean(a)`** — $\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}$.
+**4. `geometricMean(a)`** — \\(\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}\\).
 > Compute the product first, then raise to the `1/n` power.
 
 **5. `reverse(a)`** — new list with elements in reverse order.
@@ -42,12 +42,12 @@ print(fibonacci(10))  # [1,1,2,3,5,8,13,21,34,55]
 
 **9. `area(p)`** — area of a polygon (list of `[x,y]` points, given
 counter-clockwise) via the Shoelace formula:
-$\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|$
+\\(\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|\\)
 ```python
 points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
 print(area(points))  # 22.0
 ```
-> Use `abs(x)` for $|x|$.
+> Use `abs(x)` for \\(|x|\\).
 
 **10. `perimeter(p)`** — perimeter of the same kind of polygon (sum of
 consecutive-point distances, wrapping around).

@@ -34,7 +34,7 @@ print(makeSet([3,4,5,6,7,3,4]))   # [3,4,5,6,7]
 > Don't use the `set` type here — use `in`/`not in` instead.
 
 **5. `multiple(L1, L2)`** — is every number in `L1` a multiple of *some*
-number in `L2`? ($\forall x \in L_1,\, \exists y \in L_2$ s.t. `x` is a
+number in `L2`? (\\(\forall x \in L_1,\, \exists y \in L_2\\) s.t. `x` is a
 multiple of `y`)
 ```python
 print(multiple([14,24,18,35,39], [6,13,7]))  # True

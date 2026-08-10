@@ -13,7 +13,7 @@ Nobody counts like this.
 `range(a, b)` means start at `a`, stop before `b`. That one choice makes
 three annoying things disappear:
 
-- **How many items?** $b - a$. Nothing to add, nothing to subtract.
+- **How many items?** \\(b - a\\). Nothing to add, nothing to subtract.
   `range(0,10)` has 10 items.
 - **Splitting a list.** `range(0,5)` and `range(5,10)` fit together
   perfectly — no gap, no overlap, no 5 appearing twice.

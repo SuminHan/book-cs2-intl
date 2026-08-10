@@ -29,13 +29,15 @@
 
         <!-- Custom theme stylesheets -->
 
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
         <!-- Provide site root and default themes to javascript -->
         <script>
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
+            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -185,8 +187,8 @@
 a_{n-1}x^{n-1}$.</p>
 <pre><code class="language-python">print(computePolynomial([3,5,4], 5))  # 128
 </code></pre>
-<p><strong>3. <code>harmonicMean(a)</code></strong> — $\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}$.</p>
-<p><strong>4. <code>geometricMean(a)</code></strong> — $\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}$.</p>
+<p><strong>3. <code>harmonicMean(a)</code></strong> — \(\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}\).</p>
+<p><strong>4. <code>geometricMean(a)</code></strong> — \(\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}\).</p>
 <blockquote>
 <p>Compute the product first, then raise to the <code>1/n</code> power.</p>
 </blockquote>
@@ -210,12 +212,12 @@ print(L)          # [7,6,3,1,5,8,2,4] -- L itself unchanged
 </code></pre>
 <p><strong>9. <code>area(p)</code></strong> — area of a polygon (list of <code>[x,y]</code> points, given
 counter-clockwise) via the Shoelace formula:
-$\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|$</p>
+\(\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|\)</p>
 <pre><code class="language-python">points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
 print(area(points))  # 22.0
 </code></pre>
 <blockquote>
-<p>Use <code>abs(x)</code> for $|x|$.</p>
+<p>Use <code>abs(x)</code> for \(|x|\).</p>
 </blockquote>
 <p><strong>10. <code>perimeter(p)</code></strong> — perimeter of the same kind of polygon (sum of
 consecutive-point distances, wrapping around).</p>

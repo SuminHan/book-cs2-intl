@@ -1,7 +1,7 @@
 # Problem Set
 
 **1. `sumOfThreeSquares(n)`** ("for some" pattern) — can `n` be written as
-the sum of squares of three positive integers? (e.g. $38=2^2+3^2+5^2$)
+the sum of squares of three positive integers? (e.g. \\(38=2^2+3^2+5^2\\))
 ```python
 for n in range(20, 31):
     print(n, sumOfThreeSquares(n))
@@ -14,10 +14,10 @@ distinct.
 > range(j+1,b+1): ...`
 
 **3. `sumOfTwoPrimes(n)`** — can `n` be written as a sum of two primes?
-(e.g. $21=2+19$)
+(e.g. \\(21=2+19\\))
 
 **4. `sumOfTwoPrimeSquares(n)`** — can `n` be written as a sum of squares of
-two primes? (e.g. $50=5^2+5^2$)
+two primes? (e.g. \\(50=5^2+5^2\\))
 
 **5. `somePrime(numbers)` / `allPrime(numbers)`** — "for some"/"for all"
 quantifiers over primality.
