@@ -1,6 +1,6 @@
 # List II
 
-## 1. Opener: Remove Every Negative Number
+## 11.1. Opener: Remove Every Negative Number
 
 You have just learned `.remove()`. This reads perfectly:
 
@@ -42,7 +42,7 @@ Make a new one, or walk it backwards.
 
 *And notice again: no crash, no warning. Just a quietly wrong answer.*
 
-## 2. Topics Covered
+## 11.2. Topics Covered
 
 - `.append()`, slicing `[:]`
 - List operations: `==`, `+`, `in`

@@ -1,6 +1,6 @@
 # Classes & Objects
 
-## 1. Opener: Every Student Has Their Own Scores
+## 15.1. Opener: Every Student Has Their Own Scores
 
 ```python
 class Student:
@@ -47,7 +47,7 @@ class, or *one per object*?" One per object → it belongs inside
 
 *Once again: no error message. Just two students quietly sharing a report card.*
 
-## 2. Topics Covered
+## 15.2. Topics Covered
 
 - Object-oriented basics: every value is an object belonging to a class
 - `__init__()`, `__str__()`, `self`

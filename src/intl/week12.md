@@ -1,6 +1,6 @@
 # Strings
 
-## 1. Opener: Fix the Sentence
+## 12.1. Opener: Fix the Sentence
 
 You have just met `.replace()`. The name says exactly what you want, so:
 
@@ -46,7 +46,7 @@ one option: build a new string and return it.
 *This is why lists and strings behave differently. `L.append(x)` changes
 `L`; `s.upper()` cannot change `s`.*
 
-## 2. Topics Covered
+## 12.2. Topics Covered
 
 - Indexing, slicing `[:]`
 - String operations: `==`, `>`, `+`, `in`
