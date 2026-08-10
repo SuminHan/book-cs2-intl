@@ -35,10 +35,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-8e2ff970.js";
+            window.path_to_searchindex_js = "../searchindex-303ed3cf.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-38b3c496.js"></script>
+        <script src="../toc-7ed291c0.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -178,7 +178,6 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="list-ii"><a class="header" href="#list-ii">List II</a></h1>
-<h2 id="101-opener-remove-every-negative-number"><a class="header" href="#101-opener-remove-every-negative-number">10.1. Opener: Remove Every Negative Number</a></h2>
 <p>You have just learned <code>.remove()</code>. This reads perfectly:</p>
 <pre><code class="language-python">def remove_negatives(L):
     for x in L:
@@ -206,69 +205,16 @@ def remove_negatives(L):
 </blockquote>
 <p>Make a new one, or walk it backwards.</p>
 <p><em>And notice again: no crash, no warning. Just a quietly wrong answer.</em></p>
-<h2 id="102-topics-covered"><a class="header" href="#102-topics-covered">10.2. Topics Covered</a></h2>
-<ul>
-<li><code>.append()</code>, slicing <code>[:]</code></li>
-<li>List operations: <code>==</code>, <code>+</code>, <code>in</code></li>
-<li>Built-in functions: <code>sum()</code>, <code>max()</code>, <code>min()</code>, <code>sort()</code></li>
-<li>List comprehension</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
-<h2 id="103-problem-set"><a class="header" href="#103-problem-set">10.3. Problem Set</a></h2>
-<p><strong>1. <code>deleteThree(L)</code></strong> — new list with every <code>3</code> removed from <code>L</code>.</p>
-<pre><code class="language-python">def deleteThree(L):
-    # ADD ADDITIONAL CODE HERE!
-print(deleteThree([2,5,7,3,2,8,3,3]))  # [2,5,7,2,8]
-</code></pre>
-<blockquote>
-<p><code>L.pop()</code> shifts indices as you go — build a fresh empty list and append
-only the values that aren’t 3, instead of removing in place.</p>
-</blockquote>
-<p><strong>2. <code>kthSmallest(L, k)</code></strong> — the <code>k</code>-th smallest value in <code>L</code>
-(<code>1 ≤ k ≤ len(L)</code>).</p>
-<pre><code class="language-python">print(kthSmallest([3,4,2,8,8], 1))  # 2
-print(kthSmallest([3,4,2,8,8], 3))  # 4
-</code></pre>
-<blockquote>
-<p><code>L.sort()</code> sorts in place, then index into the result.</p>
-</blockquote>
-<p><strong>3. <code>same(L1, L2)</code></strong> — do the two lists contain exactly the same elements
-with the same multiplicities, regardless of order?</p>
-<pre><code class="language-python">print(same([2,3,2,7],[2,7,2,3]))  # True
-print(same([2,5,7,8],[2,3,4,5]))  # False
-</code></pre>
-<blockquote>
-<p><code>L1 == L2</code> only returns <code>True</code> if elements <em>and order</em> match exactly.</p>
-</blockquote>
-<p><strong>4. <code>makeSet(L)</code></strong> — sorted list containing each distinct element of <code>L</code>
-exactly once.</p>
-<pre><code class="language-python">print(makeSet([1,1,3,5]))         # [1,3,5]
-print(makeSet([3,4,5,6,7,3,4]))   # [3,4,5,6,7]
-</code></pre>
-<blockquote>
-<p>Don’t use the <code>set</code> type here — use <code>in</code>/<code>not in</code> instead.</p>
-</blockquote>
-<p><strong>5. <code>multiple(L1, L2)</code></strong> — is every number in <code>L1</code> a multiple of <em>some</em>
-number in <code>L2</code>? ($\forall x \in L_1,, \exists y \in L_2$ s.t. <code>x</code> is a
-multiple of <code>y</code>)</p>
-<pre><code class="language-python">print(multiple([14,24,18,35,39], [6,13,7]))  # True
-print(multiple([14,24,18,35,39], [5,13,7]))  # False
-</code></pre>
-<hr>
-<p><em>Source: 2025 offering, <code>week11_List2_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../intl/week10.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../intl/week10-problems.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../intl/week12.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../intl/week11-topics.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -278,11 +224,11 @@ stubs kept close to the original.</em></p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../intl/week10.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../intl/week10-problems.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../intl/week12.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../intl/week11-topics.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
