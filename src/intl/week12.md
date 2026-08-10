@@ -1,6 +1,6 @@
 # Strings
 
-## Opener: Fix the Sentence
+## 11.1. Opener: Fix the Sentence
 
 You have just met `.replace()`. The name says exactly what you want, so:
 
@@ -46,7 +46,7 @@ one option: build a new string and return it.
 *This is why lists and strings behave differently. `L.append(x)` changes
 `L`; `s.upper()` cannot change `s`.*
 
-## Topics Covered
+## 11.2. Topics Covered
 
 - Indexing, slicing `[:]`
 - String operations: `==`, `>`, `+`, `in`
@@ -57,7 +57,7 @@ one option: build a new string and return it.
 are still in development — only the topic list is reflected here, not the
 slide content.*
 
-## Problem Set
+## 11.3. Problem Set
 
 **1. `countChar(s, c)`** — count of a single character `c` in string `s`.
 ```python

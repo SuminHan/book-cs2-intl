@@ -1,6 +1,6 @@
 # Basic Elements
 
-## Opener: A Very Easy Question
+## 1.1. Opener: A Very Easy Question
 
 You have just learned variables, expressions, and `print`. So this should be easy:
 
@@ -57,7 +57,7 @@ The computer did the arithmetic perfectly. It still gave you an answer you
 did not expect. Knowing what the machine will actually do is a different
 skill from telling it what to do.
 
-## Topics Covered
+## 1.2. Topics Covered
 
 - Computation in math vs. Python
 - Variables & values
@@ -68,7 +68,7 @@ skill from telling it what to do.
 are still in development — only the topic list is reflected here, not the
 slide content.*
 
-## Problem Set
+## 1.3. Problem Set
 
 **1. Swap two variables** — given `a` and `b` read from input, print them
 swapped.

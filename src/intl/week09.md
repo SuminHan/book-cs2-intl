@@ -1,6 +1,6 @@
 # For Loops III
 
-## Opener: Are All of Them Positive?
+## 8.1. Opener: Are All of Them Positive?
 
 This is the quantifier pattern you just learned — "for all".
 
@@ -40,7 +40,7 @@ everyone passed.
 **The empty case is not an edge case you forgot. It is the first case you
 should test.**
 
-## Topics Covered
+## 8.2. Topics Covered
 
 - `for` loop patterns recap: max/min, counter, quantifier ("for some"/"for all")
 - Toy Robot: handling beepers (`drop_beeper()`, `pick_beeper()`,
@@ -50,7 +50,7 @@ should test.**
 are still in development — only the topic list is reflected here, not the
 slide content.*
 
-## Problem Set
+## 8.3. Problem Set
 
 **1. `sumOfThreeSquares(n)`** ("for some" pattern) — can `n` be written as
 the sum of squares of three positive integers? (e.g. $38=2^2+3^2+5^2$)

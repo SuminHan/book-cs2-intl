@@ -1,6 +1,6 @@
 # Functions
 
-## Opener: A Function You Did Not Write
+## 2.1. Opener: A Function You Did Not Write
 
 A function takes something in and gives something back. Usually that is
 exactly what you want.
@@ -37,7 +37,7 @@ different job than the biologists thought it was doing.
 **When you write a function this week, ask: could someone read the name and
 expect something else?**
 
-## Topics Covered
+## 2.2. Topics Covered
 
 - Indentation
 - Built-in functions
@@ -48,7 +48,7 @@ expect something else?**
 are still in development — only the topic list is reflected here, not the
 slide content.*
 
-## Problem Set
+## 2.3. Problem Set
 
 *Use interactive mode (the Python shell) whenever a formula isn't clear.*
 

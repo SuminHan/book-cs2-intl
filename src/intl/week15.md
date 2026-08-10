@@ -1,6 +1,6 @@
 # Classes & Objects
 
-## Opener: Every Student Has Their Own Scores
+## 14.1. Opener: Every Student Has Their Own Scores
 
 ```python
 class Student:
@@ -47,7 +47,7 @@ class, or *one per object*?" One per object → it belongs inside
 
 *Once again: no error message. Just two students quietly sharing a report card.*
 
-## Topics Covered
+## 14.2. Topics Covered
 
 - Object-oriented basics: every value is an object belonging to a class
 - `__init__()`, `__str__()`, `self`
@@ -59,7 +59,7 @@ class, or *one per object*?" One per object → it belongs inside
 are still in development — only the topic list is reflected here, not the
 slide content.*
 
-## Problem Set
+## 14.3. Problem Set
 
 **1. `Circle` class** — a circle with a `Point` center (assume a `Point`
 class already exists) and integer radius.

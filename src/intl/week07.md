@@ -1,6 +1,6 @@
 # Lists
 
-## Opener: Building a Grid the Short Way
+## 6.1. Opener: Building a Grid the Short Way
 
 You want a 3×3 grid of zeros. You already know that `[0]*3` gives
 `[0, 0, 0]`, so:
@@ -41,7 +41,7 @@ print(grid)   # [[1,0,0], [0,0,0], [0,0,0]]
 The grid *looks* right until you change one cell — and then it is wrong
 everywhere at once.
 
-## Topics Covered
+## 6.2. Topics Covered
 
 - Why lists reduce repetitive code (motivating example: summing many
   hand-named variables vs. one list)
@@ -51,7 +51,7 @@ everywhere at once.
 are still in development — only the topic list is reflected here, not the
 slide content.*
 
-## Problem Set
+## 6.3. Problem Set
 
 **1. `sumSquares(a)`** — sum of squares of a list's elements.
 ```python

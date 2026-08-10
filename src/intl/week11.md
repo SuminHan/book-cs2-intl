@@ -1,6 +1,6 @@
 # List II
 
-## Opener: Remove Every Negative Number
+## 10.1. Opener: Remove Every Negative Number
 
 You have just learned `.remove()`. This reads perfectly:
 
@@ -42,7 +42,7 @@ Make a new one, or walk it backwards.
 
 *And notice again: no crash, no warning. Just a quietly wrong answer.*
 
-## Topics Covered
+## 10.2. Topics Covered
 
 - `.append()`, slicing `[:]`
 - List operations: `==`, `+`, `in`
@@ -53,7 +53,7 @@ Make a new one, or walk it backwards.
 are still in development — only the topic list is reflected here, not the
 slide content.*
 
-## Problem Set
+## 10.3. Problem Set
 
 **1. `deleteThree(L)`** — new list with every `3` removed from `L`.
 ```python

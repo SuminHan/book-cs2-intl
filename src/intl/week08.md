@@ -1,6 +1,6 @@
 # For Loops II
 
-## Opener: Count the Positive Numbers
+## 7.1. Opener: Count the Positive Numbers
 
 ```python
 L = [3, -1, 4, -5, 2]
@@ -40,7 +40,7 @@ print(count)      # 3
 *once*, or *every time around*?" Setting up belongs outside. Only the
 counting belongs inside.
 
-## Topics Covered
+## 7.2. Topics Covered
 
 - `for` loop pattern: counter (count elements satisfying a condition)
 - Toy Robot: basic moves (`move()`, `turn_left()`, `turn_right()`)
@@ -49,7 +49,7 @@ counting belongs inside.
 are still in development — only the topic list is reflected here, not the
 slide content.*
 
-## Problem Set
+## 7.3. Problem Set
 
 ### Required
 
