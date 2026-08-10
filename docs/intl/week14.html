@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-b95d3bba.js";
+            window.path_to_searchindex_js = "../searchindex-ba472281.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -220,6 +220,60 @@ Week 11: do not modify the thing you are walking through.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<p><strong>1. <code>countZero(a)</code></strong> — count of zeros in a 3D array.</p>
+<pre><code class="language-python">def countZero(a):
+    depth = len(a)
+    height = len(a[0])
+    width = len(a[0][0])
+    # ADD ADDITIONAL CODE HERE!
+print(countZero([[[1,2],[0,0]],[[0,0],[0,0]]]))  # 6
+</code></pre>
+<p><strong>2. <code>isSorted(a)</code></strong> — are all rows <em>and</em> all columns of a 2D array sorted
+in non-decreasing order?</p>
+<p><strong>3. <code>withinRect(top,bottom,left,right, x,y)</code> / <code>countWithinRect(...)</code></strong> —
+first checks if <code>(x,y)</code> is inside/on an axis-aligned rectangle; second
+counts how many points from a list fall inside it.</p>
+<pre><code class="language-python">print(withinRect(2,-4,-5,6, -5,2))  # True
+print(countWithinRect(2,-4,-5,6, points))  # 7
+</code></pre>
+<p><strong>4. <code>closestPair(p)</code></strong> — smallest distance between any two points in a
+list of <code>[x,y]</code> points.</p>
+<pre><code class="language-python">def distSquared(p1, p2):
+    return ((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2) ** 0.5
+def closestPair(p):
+    n = len(p)
+    min_d = distSquared(p[0], p[1])  # start with the first pair, then improve
+    # ADD ADDITIONAL CODE HERE!
+points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
+print(closestPair(points))  # 4.47213595499958
+</code></pre>
+<p><strong>5. <code>check(M)</code></strong> — does <em>every</em> row of 2D list <code>M</code> contain <em>at least one</em>
+negative number? (Both a “for all” over rows and a “for some” within each
+row.)</p>
+<pre><code class="language-python">M1 = [[1,9,-1,0,2], [-3,7,1,1,4], [3,9,1,-9,-2]]
+print(check(M1))  # True
+</code></pre>
+<p><strong>6. <code>countMines(mineField)</code> (1D)</strong> — for a 1D boolean minefield, produce a
+list where each position holds the count of mines among itself and its two
+adjacent neighbors.</p>
+<pre><code class="language-python">def withinBoundary(size, i):
+    return 0 &lt;= i &lt; size
+def countMines(mineField):
+    # ADD ADDITIONAL CODE HERE!
+T, F = True, False
+print(countMines([T, F, F, T, T, T, T, F, T, F]))  # [1,1,1,2,3,3,2,2,1,1]
+</code></pre>
+<p><strong>7. <code>countMines(mineField)</code> (2D)</strong> — same idea, extended to 2D with all 8
+neighbors + self (9 cells).</p>
+<pre><code class="language-python">def withinBoundary(height, width, i, j):
+    return 0 &lt;= i &lt; height and 0 &lt;= j &lt; width
+def countMines(mineField):
+    # ADD ADDITIONAL CODE HERE!
+</code></pre>
+<hr>
+<p><em>Source: 2025 offering, <code>week14_MDL_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 
                     </main>
 

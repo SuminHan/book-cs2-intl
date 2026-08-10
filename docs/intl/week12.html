@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-b95d3bba.js";
+            window.path_to_searchindex_js = "../searchindex-ba472281.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -216,6 +216,44 @@ one option: build a new string and return it.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<p><strong>1. <code>countChar(s, c)</code></strong> — count of a single character <code>c</code> in string <code>s</code>.</p>
+<pre><code class="language-python">print(countChar("AbAA","A"))  # 3
+print(countChar("abc","A"))   # 0
+</code></pre>
+<p><strong>2. <code>reverse(s)</code></strong> — reversed string.</p>
+<pre><code class="language-python">print(reverse("abcDF"))  # FDcba
+</code></pre>
+<blockquote>
+<p>Build the result by starting from <code>""</code> and concatenating characters with
+<code>+</code>.</p>
+</blockquote>
+<p><strong>3. <code>lenPrefix(s1, s2)</code></strong> — length of the longest common prefix of two
+strings.</p>
+<pre><code class="language-python">print(lenPrefix("ababade", "ababeee"))    # 4
+print(lenPrefix("predicate", "prediction")) # 6
+</code></pre>
+<p><strong>4. <code>duration(t1, t2)</code></strong> — time difference between two <code>"hhmm"</code>-format
+times, formatted like <code>"4 h 40 m"</code>.</p>
+<pre><code class="language-python">print(duration("1800","0920"))  # 8 h 40 m
+print(duration("0910","0910"))  # 0 m
+print(duration("0910","1310"))  # 4 h
+</code></pre>
+<blockquote>
+<p>Both times are valid 24-hour times.</p>
+</blockquote>
+<p><strong>5. <code>sortId(L)</code></strong> — a list where student IDs and names alternate; sort the
+whole list by ID.</p>
+<pre><code class="language-python">print(sortId(["20-012","Kim","20-009","Kang","22-005","Na","21-003","Kim"]))
+# ['20-009','Kang','20-012','Kim','21-003','Kim','22-005','Na']
+</code></pre>
+<blockquote>
+<p><code>L[::2]</code> pulls out just the IDs. <code>L.index(x)</code> gives the index of the first
+occurrence of <code>x</code>.</p>
+</blockquote>
+<hr>
+<p><em>Source: 2025 offering, <code>week12_string_problem.pdf</code>. Wording condensed;
+code stubs kept close to the original.</em></p>
 
                     </main>
 

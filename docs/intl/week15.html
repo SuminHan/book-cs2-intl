@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-b95d3bba.js";
+            window.path_to_searchindex_js = "../searchindex-ba472281.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -223,6 +223,36 @@ class, or <em>one per object</em>?” One per object → it belongs inside
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<p><strong>1. <code>Circle</code> class</strong> — a circle with a <code>Point</code> center (assume a <code>Point</code>
+class already exists) and integer radius.</p>
+<ul>
+<li><code>__init__(self, c, r)</code> — store <code>center</code>, <code>radius</code></li>
+<li><code>__str__(self)</code> — <code>"(center,radius)"</code>, e.g. <code>"((0,1), 5)"</code></li>
+<li><code>area(self)</code> — using <code>math.pi</code></li>
+<li><code>getRadius(self)</code> / <code>getCenter(self)</code></li>
+<li><code>setRadius(self, r)</code></li>
+<li><code>moveTo(self, x, y)</code> — move center to <code>(x,y)</code></li>
+<li><code>move(self, dx, dy)</code> — move center by <code>(dx,dy)</code></li>
+</ul>
+<p><strong>2. <code>Rational</code> class</strong> — a rational number (numerator/denominator).</p>
+<ul>
+<li><code>__init__(self, n, d)</code></li>
+<li><code>__str__(self)</code> — <code>"numerator/denominator"</code>, e.g. <code>"7/24"</code></li>
+<li><code>toFloat(self)</code></li>
+<li><code>negate(self)</code> — flip sign (of the numerator)</li>
+<li><code>invert(self)</code> — swap numerator/denominator</li>
+<li><code>reduce(self)</code> — simplify via GCD (e.g. <code>4/8</code> → <code>1/2</code>)</li>
+<li><code>add(self, r)</code> — <strong>pure function</strong>: return a new <code>Rational</code> sum, reduced;
+<code>self</code> and <code>r</code> unchanged</li>
+<li><code>mul(self, r)</code> — <strong>pure function</strong>: return a new <code>Rational</code> product,
+reduced; <code>self</code> and <code>r</code> unchanged</li>
+</ul>
+<p>(This is the same pair of classes as the Korean track’s L08 problem set —
+see there for full worked test cases if useful.)</p>
+<hr>
+<p><em>Source: 2025 offering, <code>week15_Class_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 
                     </main>
 

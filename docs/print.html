@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-b95d3bba.js";
+            window.path_to_searchindex_js = "searchindex-ba472281.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-38b3c496.js"></script>
@@ -1229,6 +1229,49 @@ def remove_negatives(L):
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-9"><a class="header" href="#problem-set-9">Problem Set</a></h2>
+<p><strong>1. <code>deleteThree(L)</code></strong> — new list with every <code>3</code> removed from <code>L</code>.</p>
+<pre><code class="language-python">def deleteThree(L):
+    # ADD ADDITIONAL CODE HERE!
+print(deleteThree([2,5,7,3,2,8,3,3]))  # [2,5,7,2,8]
+</code></pre>
+<blockquote>
+<p><code>L.pop()</code> shifts indices as you go — build a fresh empty list and append
+only the values that aren’t 3, instead of removing in place.</p>
+</blockquote>
+<p><strong>2. <code>kthSmallest(L, k)</code></strong> — the <code>k</code>-th smallest value in <code>L</code>
+(<code>1 ≤ k ≤ len(L)</code>).</p>
+<pre><code class="language-python">print(kthSmallest([3,4,2,8,8], 1))  # 2
+print(kthSmallest([3,4,2,8,8], 3))  # 4
+</code></pre>
+<blockquote>
+<p><code>L.sort()</code> sorts in place, then index into the result.</p>
+</blockquote>
+<p><strong>3. <code>same(L1, L2)</code></strong> — do the two lists contain exactly the same elements
+with the same multiplicities, regardless of order?</p>
+<pre><code class="language-python">print(same([2,3,2,7],[2,7,2,3]))  # True
+print(same([2,5,7,8],[2,3,4,5]))  # False
+</code></pre>
+<blockquote>
+<p><code>L1 == L2</code> only returns <code>True</code> if elements <em>and order</em> match exactly.</p>
+</blockquote>
+<p><strong>4. <code>makeSet(L)</code></strong> — sorted list containing each distinct element of <code>L</code>
+exactly once.</p>
+<pre><code class="language-python">print(makeSet([1,1,3,5]))         # [1,3,5]
+print(makeSet([3,4,5,6,7,3,4]))   # [3,4,5,6,7]
+</code></pre>
+<blockquote>
+<p>Don’t use the <code>set</code> type here — use <code>in</code>/<code>not in</code> instead.</p>
+</blockquote>
+<p><strong>5. <code>multiple(L1, L2)</code></strong> — is every number in <code>L1</code> a multiple of <em>some</em>
+number in <code>L2</code>? ($\forall x \in L_1,, \exists y \in L_2$ s.t. <code>x</code> is a
+multiple of <code>y</code>)</p>
+<pre><code class="language-python">print(multiple([14,24,18,35,39], [6,13,7]))  # True
+print(multiple([14,24,18,35,39], [5,13,7]))  # False
+</code></pre>
+<hr>
+<p><em>Source: 2025 offering, <code>week11_List2_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
 <h2 id="opener-fix-the-sentence"><a class="header" href="#opener-fix-the-sentence">Opener: Fix the Sentence</a></h2>
@@ -1268,6 +1311,44 @@ one option: build a new string and return it.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-10"><a class="header" href="#problem-set-10">Problem Set</a></h2>
+<p><strong>1. <code>countChar(s, c)</code></strong> — count of a single character <code>c</code> in string <code>s</code>.</p>
+<pre><code class="language-python">print(countChar("AbAA","A"))  # 3
+print(countChar("abc","A"))   # 0
+</code></pre>
+<p><strong>2. <code>reverse(s)</code></strong> — reversed string.</p>
+<pre><code class="language-python">print(reverse("abcDF"))  # FDcba
+</code></pre>
+<blockquote>
+<p>Build the result by starting from <code>""</code> and concatenating characters with
+<code>+</code>.</p>
+</blockquote>
+<p><strong>3. <code>lenPrefix(s1, s2)</code></strong> — length of the longest common prefix of two
+strings.</p>
+<pre><code class="language-python">print(lenPrefix("ababade", "ababeee"))    # 4
+print(lenPrefix("predicate", "prediction")) # 6
+</code></pre>
+<p><strong>4. <code>duration(t1, t2)</code></strong> — time difference between two <code>"hhmm"</code>-format
+times, formatted like <code>"4 h 40 m"</code>.</p>
+<pre><code class="language-python">print(duration("1800","0920"))  # 8 h 40 m
+print(duration("0910","0910"))  # 0 m
+print(duration("0910","1310"))  # 4 h
+</code></pre>
+<blockquote>
+<p>Both times are valid 24-hour times.</p>
+</blockquote>
+<p><strong>5. <code>sortId(L)</code></strong> — a list where student IDs and names alternate; sort the
+whole list by ID.</p>
+<pre><code class="language-python">print(sortId(["20-012","Kim","20-009","Kang","22-005","Na","21-003","Kim"]))
+# ['20-009','Kang','20-012','Kim','21-003','Kim','22-005','Na']
+</code></pre>
+<blockquote>
+<p><code>L[::2]</code> pulls out just the IDs. <code>L.index(x)</code> gives the index of the first
+occurrence of <code>x</code>.</p>
+</blockquote>
+<hr>
+<p><em>Source: 2025 offering, <code>week12_string_problem.pdf</code>. Wording condensed;
+code stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="break--continue"><a class="header" href="#break--continue">Break / Continue</a></h1>
 <h2 id="opener-find-where-the-target-is"><a class="header" href="#opener-find-where-the-target-is">Opener: Find Where the Target Is</a></h2>
@@ -1352,6 +1433,60 @@ Week 11: do not modify the thing you are walking through.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-11"><a class="header" href="#problem-set-11">Problem Set</a></h2>
+<p><strong>1. <code>countZero(a)</code></strong> — count of zeros in a 3D array.</p>
+<pre><code class="language-python">def countZero(a):
+    depth = len(a)
+    height = len(a[0])
+    width = len(a[0][0])
+    # ADD ADDITIONAL CODE HERE!
+print(countZero([[[1,2],[0,0]],[[0,0],[0,0]]]))  # 6
+</code></pre>
+<p><strong>2. <code>isSorted(a)</code></strong> — are all rows <em>and</em> all columns of a 2D array sorted
+in non-decreasing order?</p>
+<p><strong>3. <code>withinRect(top,bottom,left,right, x,y)</code> / <code>countWithinRect(...)</code></strong> —
+first checks if <code>(x,y)</code> is inside/on an axis-aligned rectangle; second
+counts how many points from a list fall inside it.</p>
+<pre><code class="language-python">print(withinRect(2,-4,-5,6, -5,2))  # True
+print(countWithinRect(2,-4,-5,6, points))  # 7
+</code></pre>
+<p><strong>4. <code>closestPair(p)</code></strong> — smallest distance between any two points in a
+list of <code>[x,y]</code> points.</p>
+<pre><code class="language-python">def distSquared(p1, p2):
+    return ((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2) ** 0.5
+def closestPair(p):
+    n = len(p)
+    min_d = distSquared(p[0], p[1])  # start with the first pair, then improve
+    # ADD ADDITIONAL CODE HERE!
+points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
+print(closestPair(points))  # 4.47213595499958
+</code></pre>
+<p><strong>5. <code>check(M)</code></strong> — does <em>every</em> row of 2D list <code>M</code> contain <em>at least one</em>
+negative number? (Both a “for all” over rows and a “for some” within each
+row.)</p>
+<pre><code class="language-python">M1 = [[1,9,-1,0,2], [-3,7,1,1,4], [3,9,1,-9,-2]]
+print(check(M1))  # True
+</code></pre>
+<p><strong>6. <code>countMines(mineField)</code> (1D)</strong> — for a 1D boolean minefield, produce a
+list where each position holds the count of mines among itself and its two
+adjacent neighbors.</p>
+<pre><code class="language-python">def withinBoundary(size, i):
+    return 0 &lt;= i &lt; size
+def countMines(mineField):
+    # ADD ADDITIONAL CODE HERE!
+T, F = True, False
+print(countMines([T, F, F, T, T, T, T, F, T, F]))  # [1,1,1,2,3,3,2,2,1,1]
+</code></pre>
+<p><strong>7. <code>countMines(mineField)</code> (2D)</strong> — same idea, extended to 2D with all 8
+neighbors + self (9 cells).</p>
+<pre><code class="language-python">def withinBoundary(height, width, i, j):
+    return 0 &lt;= i &lt; height and 0 &lt;= j &lt; width
+def countMines(mineField):
+    # ADD ADDITIONAL CODE HERE!
+</code></pre>
+<hr>
+<p><em>Source: 2025 offering, <code>week14_MDL_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="classes--objects"><a class="header" href="#classes--objects">Classes &amp; Objects</a></h1>
 <h2 id="opener-every-student-has-their-own-scores"><a class="header" href="#opener-every-student-has-their-own-scores">Opener: Every Student Has Their Own Scores</a></h2>
@@ -1398,6 +1533,36 @@ class, or <em>one per object</em>?” One per object → it belongs inside
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-12"><a class="header" href="#problem-set-12">Problem Set</a></h2>
+<p><strong>1. <code>Circle</code> class</strong> — a circle with a <code>Point</code> center (assume a <code>Point</code>
+class already exists) and integer radius.</p>
+<ul>
+<li><code>__init__(self, c, r)</code> — store <code>center</code>, <code>radius</code></li>
+<li><code>__str__(self)</code> — <code>"(center,radius)"</code>, e.g. <code>"((0,1), 5)"</code></li>
+<li><code>area(self)</code> — using <code>math.pi</code></li>
+<li><code>getRadius(self)</code> / <code>getCenter(self)</code></li>
+<li><code>setRadius(self, r)</code></li>
+<li><code>moveTo(self, x, y)</code> — move center to <code>(x,y)</code></li>
+<li><code>move(self, dx, dy)</code> — move center by <code>(dx,dy)</code></li>
+</ul>
+<p><strong>2. <code>Rational</code> class</strong> — a rational number (numerator/denominator).</p>
+<ul>
+<li><code>__init__(self, n, d)</code></li>
+<li><code>__str__(self)</code> — <code>"numerator/denominator"</code>, e.g. <code>"7/24"</code></li>
+<li><code>toFloat(self)</code></li>
+<li><code>negate(self)</code> — flip sign (of the numerator)</li>
+<li><code>invert(self)</code> — swap numerator/denominator</li>
+<li><code>reduce(self)</code> — simplify via GCD (e.g. <code>4/8</code> → <code>1/2</code>)</li>
+<li><code>add(self, r)</code> — <strong>pure function</strong>: return a new <code>Rational</code> sum, reduced;
+<code>self</code> and <code>r</code> unchanged</li>
+<li><code>mul(self, r)</code> — <strong>pure function</strong>: return a new <code>Rational</code> product,
+reduced; <code>self</code> and <code>r</code> unchanged</li>
+</ul>
+<p>(This is the same pair of classes as the Korean track’s L08 problem set —
+see there for full worked test cases if useful.)</p>
+<hr>
+<p><em>Source: 2025 offering, <code>week15_Class_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 
                     </main>
 
