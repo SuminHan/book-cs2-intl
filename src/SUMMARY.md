@@ -45,3 +45,7 @@
 - [Classes & Objects](intl/week15.md)
     - [Topics Covered](intl/week15-topics.md)
     - [Problem Set](intl/week15-problems.md)
+
+# Reference
+
+- [How Numbers Live in Memory](general/number-representation.md)

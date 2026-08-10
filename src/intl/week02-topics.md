@@ -116,6 +116,10 @@ print(int(y))          # 7   (truncates, doesn't round)
 print(1 + int("7"))    # 8
 ```
 
+*Curious what `int`/`float` actually look like in memory, and why that's
+the reason `0.1 + 0.2 != 0.3`? See [How Numbers Live in
+Memory](../general/number-representation.md).*
+
 ## Input / Output
 
 `print` writes to the screen; by default each argument is separated by a

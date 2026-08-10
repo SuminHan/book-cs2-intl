@@ -39,10 +39,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-e29b5d92.js";
+            window.path_to_searchindex_js = "searchindex-2670bada.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-58861ff6.js"></script>
+        <script src="toc-1a5e1db1.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -422,6 +422,9 @@ y = 7.51
 print(int(y))          # 7   (truncates, doesn't round)
 print(1 + int("7"))    # 8
 </code></pre>
+<p><em>Curious what <code>int</code>/<code>float</code> actually look like in memory, and why that’s
+the reason <code>0.1 + 0.2 != 0.3</code>? See <a href="#how-numbers-live-in-memory">How Numbers Live in
+Memory</a>.</em></p>
 <h2 id="input--output"><a class="header" href="#input--output">Input / Output</a></h2>
 <p><code>print</code> writes to the screen; by default each argument is separated by a
 space and it ends with a newline. Both are overridable with <code>sep=</code> and
@@ -3917,6 +3920,140 @@ pure</strong> — <code>self</code> and <code>r</code> remain unchanged.</p>
 </code></pre>
 <p><em>(This is the same pair of classes as the Korean track’s Week 8 problem
 set — see there for full worked test cases if useful.)</em></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="how-numbers-live-in-memory"><a class="header" href="#how-numbers-live-in-memory">How Numbers Live in Memory</a></h1>
+<p>This page is a reference, not required reading for any single week — come
+back to it whenever a type/dtype question comes up. It answers, at the bit
+level, the question Week 2 raised but didn’t fully resolve: <strong>why does
+<code>0.1 + 0.2 == 0.3</code> return <code>False</code>?</strong></p>
+<h2 id="integers"><a class="header" href="#integers">Integers</a></h2>
+<p>A computer stores everything as bits (0s and 1s). An <code>n</code>-bit <strong>unsigned</strong>
+integer is just binary place value — bit <code>i</code> contributes <code>2^i</code> if it’s 1:</p>
+<pre><code>unsigned 8-bit:  00000101  =  0·128 + 0·64 + 0·32 + 0·16 + 0·8 + 1·4 + 0·2 + 1·1  =  5
+</code></pre>
+<p>With <code>n</code> bits you can represent <code>2^n</code> distinct values, so an unsigned
+<code>n</code>-bit integer ranges over <code>[0, 2^n - 1]</code>. For <code>n=8</code>: <code>[0, 255]</code>
+(<code>uint8</code>, the dtype behind each RGB channel in an image, for instance).</p>
+<p><strong>Signed</strong> integers need to represent negative numbers too, and virtually
+every language does this with <strong>two’s complement</strong>: to negate a number,
+flip every bit and add 1.</p>
+<pre><code> 5  =  00000101
+-5  =  11111011      (flip 00000101 -&gt; 11111010, then +1)
+</code></pre>
+<p>The top bit now effectively means “this contributes <code>-2^(n-1)</code> instead of
+<code>+2^(n-1)</code>,” which shifts the range to <code>[-2^(n-1), 2^(n-1) - 1]</code> — for
+<code>int8</code>: <code>[-128, 127]</code>. Notice the range isn’t symmetric (one more negative
+number than positive) — that asymmetry is a direct consequence of how
+two’s complement works, and it’s why <code>abs(-128)</code> overflows in a real
+8-bit <code>int8</code> type.</p>
+<p>Two’s complement isn’t an arbitrary choice — its whole point is that
+addition works identically for positive and negative numbers with the
+exact same circuit, no special-casing subtraction. That’s why it’s
+universal in real hardware, not just a textbook convention.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Type</th><th>Bits</th><th>Range</th></tr>
+</thead>
+<tbody>
+<tr><td><code>int8</code> / <code>uint8</code></td><td>8</td><td><code>[-128, 127]</code> / <code>[0, 255]</code></td></tr>
+<tr><td><code>int16</code> / <code>uint16</code></td><td>16</td><td><code>[-32768, 32767]</code> / <code>[0, 65535]</code></td></tr>
+<tr><td><code>int32</code> / <code>uint32</code></td><td>32</td><td><code>[-2.1×10⁹, 2.1×10⁹]</code> / <code>[0, 4.3×10⁹]</code></td></tr>
+<tr><td><code>int64</code> / <code>uint64</code></td><td>64</td><td><code>[-9.2×10¹⁸, 9.2×10¹⁸]</code> / <code>[0, 1.8×10¹⁹]</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>Python’s plain <code>int</code> sidesteps all of this — it grows arbitrarily large
+automatically, at the cost of being slower and using more memory than a
+fixed-width integer for the same value. <code>numpy</code>/<code>pandas</code> arrays, by
+contrast, use fixed-width types (see below) specifically to avoid that
+overhead.</p>
+<h2 id="ieee-754-floating-point-numbers"><a class="header" href="#ieee-754-floating-point-numbers">IEEE 754: Floating-Point Numbers</a></h2>
+<p>A float isn’t stored as “the digits after the decimal point” — it’s
+stored the way scientific notation works, in binary: <strong>sign, exponent,
+mantissa</strong> (also called the significand).</p>
+<p>\[\text{value} = (-1)^{\text{sign}} \times 1.\text{mantissa}_2 \times
+2^{\text{exponent} - \text{bias}}\]</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Type</th><th>Sign</th><th>Exponent</th><th>Mantissa</th><th>Total</th><th>Bias</th></tr>
+</thead>
+<tbody>
+<tr><td><code>float16</code> (half)</td><td>1</td><td>5</td><td>10</td><td>16</td><td>15</td></tr>
+<tr><td><code>float32</code> (single)</td><td>1</td><td>8</td><td>23</td><td>32</td><td>127</td></tr>
+<tr><td><code>float64</code> (double)</td><td>1</td><td>11</td><td>52</td><td>64</td><td>1023</td></tr>
+</tbody>
+</table>
+</div>
+<p>The exponent field is stored with a <strong>bias</strong> added, so it can represent
+both very large and very small numbers using only unsigned bits (e.g. a
+stored exponent of <code>130</code> in <code>float32</code> means an actual exponent of
+<code>130 - 127 = 3</code>). The mantissa always assumes a leading <code>1.</code> that isn’t
+stored (for normal numbers) — that’s a free extra bit of precision.</p>
+<p><strong>Special values</strong> are encoded with reserved exponent patterns: all-zero
+exponent means <code>0</code> or a <em>denormal</em> (a number too small to have a leading
+<code>1.</code>); all-one exponent means <code>±infinity</code> (mantissa <code>0</code>) or <code>NaN</code>
+(mantissa nonzero — this is what you get from <code>0/0</code> or <code>math.sqrt(-1)</code>).</p>
+<h2 id="why-01--02--03"><a class="header" href="#why-01--02--03">Why <code>0.1 + 0.2 != 0.3</code></a></h2>
+<p><code>0.1</code> in decimal is <code>1/10</code> — and <code>10 = 2 × 5</code>, so in <em>binary</em> it’s a
+repeating fraction, the same way <code>1/3</code> repeats forever in decimal. It gets
+cut off at the mantissa’s bit limit, so what’s actually stored is not
+<code>0.1</code> but the nearest representable neighbor:</p>
+<pre><code class="language-python">from decimal import Decimal
+print(Decimal(0.1))
+# 0.1000000000000000055511151231257827021181583404541015625
+</code></pre>
+<p>In raw bits (<code>float64</code>, 52-bit mantissa):</p>
+<pre><code>sign: 0
+exponent: 01111111011   (1019, actual exponent = 1019 - 1023 = -4)
+mantissa: 1001100110011001100110011001100110011001100110011010
+</code></pre>
+<p><code>0.1</code> and <code>0.2</code> each round to a value a <em>hair</em> off from the true value —
+and those hairs don’t cancel out when added, so the sum is a hair off
+from <code>0.3</code> too. Every language with IEEE 754 floats has this exact
+behavior (it’s not a Python bug) — the fix is never <code>==</code> on floats,
+always a tolerance: <code>abs(a - b) &lt; 1e-9</code>.</p>
+<h2 id="32-bit-vs-64-bit"><a class="header" href="#32-bit-vs-64-bit">32-bit vs. 64-bit</a></h2>
+<p>“32-bit” and “64-bit” describe the width of a CPU’s registers and
+addresses — which, among other things, bounds how much memory a program
+can address at all: exactly 4 GB for 32-bit (<code>2^32</code> bytes), and about
+16 EB (<code>2^64</code> bytes, far more than any computer actually has) for 64-bit.
+This is a separate axis from int8/int32/int64 <em>value</em> widths above — a
+64-bit <em>machine</em> can still compute with 8-bit <em>values</em>.</p>
+<video controls="" width="100%">
+  <source src="assets/bit-width-en.mp4" type="video/mp4">
+</video>
+<h2 id="why-this-matters-numpy-pandas-and-model-quantization"><a class="header" href="#why-this-matters-numpy-pandas-and-model-quantization">Why This Matters: <code>numpy</code>, <code>pandas</code>, and Model Quantization</a></h2>
+<p>Plain Python <code>int</code>/<code>float</code> hide all of this — but the moment you touch
+<code>numpy</code>, <code>pandas</code>, or a deep learning framework, the dtype you choose
+directly controls memory and speed, because now you’re choosing a real
+fixed-width representation:</p>
+<pre><code class="language-python">import numpy as np
+np.array([1, 2, 3], dtype=np.int8)     # 1 byte per element
+np.array([1, 2, 3], dtype=np.int64)    # 8 bytes per element — 8x the memory
+np.array([1.0], dtype=np.float32)      # what GPUs compute fastest in
+</code></pre>
+<p>A <code>pandas</code> <code>DataFrame</code> column silently defaulting to <code>int64</code>/<code>float64</code>
+when <code>int8</code>/<code>float32</code> would hold the same data is one of the most common
+avoidable memory blowups in real data pipelines — for a column of ages
+(0-120), <code>int8</code> uses 1/8th the memory of the <code>int64</code> default, with zero
+loss of information.</p>
+<p>This same tradeoff, at a much larger scale, is exactly what <strong>model
+quantization</strong> in machine learning is about. A large language model’s
+weights are originally trained in <code>float16</code> or <code>float32</code> — a 3.6-billion-
+parameter model in <code>float16</code> needs about <code>3.6B × 2 bytes ≈ 7.2 GB</code> just
+to hold the weights, before you’ve run anything. Quantizing that model to
+<code>int8</code> (or even <code>int4</code>, packing two values per byte) roughly halves — or
+quarters — that footprint, which is exactly what lets a model that size
+run on a laptop or phone instead of a server GPU. The tradeoff is real:
+fewer bits means less precision per weight, so quantized models are
+slightly less accurate than their <code>float16</code> originals — the same “hair of
+error” from the <code>0.1 + 0.2</code> story above, just deliberately accepted in
+exchange for the model fitting in memory at all.</p>
+<p>Every dtype table above — <code>int8</code> vs <code>int64</code>, <code>float16</code> vs <code>float32</code> — is
+the same underlying idea you just learned, just chosen for a different
+tradeoff each time.</p>
 
                     </main>
 
