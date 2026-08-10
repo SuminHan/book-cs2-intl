@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-27ccf292.js";
+            window.path_to_searchindex_js = "../searchindex-b95d3bba.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -213,6 +213,57 @@ should test.</strong></p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<p><strong>1. <code>sumOfThreeSquares(n)</code></strong> (“for some” pattern) — can <code>n</code> be written as
+the sum of squares of three positive integers? (e.g. $38=2^2+3^2+5^2$)</p>
+<pre><code class="language-python">for n in range(20, 31):
+    print(n, sumOfThreeSquares(n))
+# 20 False  21 True  22 True  23 False  24 True ...
+</code></pre>
+<p><strong>2. <code>sumOfThreeDistinctSquares(n)</code></strong> — same, but the three integers must be
+distinct.</p>
+<blockquote>
+<p>Loop template: <code>for i in range(1,b+1): for j in range(i+1,b+1): for k in  range(j+1,b+1): ...</code></p>
+</blockquote>
+<p><strong>3. <code>sumOfTwoPrimes(n)</code></strong> — can <code>n</code> be written as a sum of two primes?
+(e.g. $21=2+19$)</p>
+<p><strong>4. <code>sumOfTwoPrimeSquares(n)</code></strong> — can <code>n</code> be written as a sum of squares of
+two primes? (e.g. $50=5^2+5^2$)</p>
+<p><strong>5. <code>somePrime(numbers)</code> / <code>allPrime(numbers)</code></strong> — “for some”/“for all”
+quantifiers over primality.</p>
+<pre><code class="language-python">print(somePrime(num1), allPrime(num1))  # True False
+print(somePrime(num3), allPrime(num3))  # True True
+</code></pre>
+<p><strong>6. <code>allDistinct(numbers)</code> / <code>allWithinRange(numbers, lower, upper)</code> /
+<code>isPermutation(numbers)</code></strong> — first two are “for all” patterns; the third
+(a one-liner!) uses both: a list of length <code>n</code> is a permutation if all
+elements are distinct and each is in <code>0..n-1</code>.</p>
+<pre><code class="language-python">print(allDistinct([1,3,2,5,2,1]))  # False
+print(isPermutation([1,0,2,5,3,4]))  # True
+</code></pre>
+<p><strong>7. <code>walk_square_picking_all_beepers()</code></strong> — Toy Robot walks the boundary
+picking up every beeper it’s standing on.</p>
+<pre><code class="language-python">def move_and_pick():
+    hubo.move()
+    if hubo.on_beeper():
+        hubo.pick_beeper()
+
+def walk_square_picking_all_beepers():
+    # ADD ADDITIONAL CODE HERE! (reuse the Week 8 boundary-walk, but call
+    # move_and_pick() instead of hubo.move())
+</code></pre>
+<p><strong>8. <code>whirl_picking_all_beepers()</code></strong> — same idea, along the Week 8 “whirl”
+spiral path instead of the boundary.</p>
+<p><strong>9. <code>whirl_dropping_beepers()</code></strong> — Toy Robot drops a beeper (if carrying
+one) at each step of the sequence “1 L 2 L 3 L … 9 L 9”.</p>
+<pre><code class="language-python">def move_and_drop():
+    hubo.move()
+    if hubo.carries_beepers():
+        hubo.drop_beeper()
+</code></pre>
+<hr>
+<p><em>Source: 2025 offering, <code>week09_for_3_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 
                     </main>
 

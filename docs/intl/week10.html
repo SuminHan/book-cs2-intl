@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-27ccf292.js";
+            window.path_to_searchindex_js = "../searchindex-b95d3bba.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -216,6 +216,73 @@ that line, you have written an infinite loop.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<h3 id="required"><a class="header" href="#required">Required</a></h3>
+<p><strong>1. <code>countSevens(n)</code></strong> — how many digits of <code>n</code> are <code>7</code>.</p>
+<pre><code class="language-python">print(countSevens(1723))        # 1
+print(countSevens(1357924770))  # 3
+</code></pre>
+<blockquote>
+<p><code>while n &gt; 0: ... n //= 10</code> walks the digits from the right; <code>n % 10</code> is
+the current last digit.</p>
+</blockquote>
+<p><strong>2. <code>countEvenDigits(n)</code></strong> — how many digits of <code>n</code> are even. Same
+structure as problem 1, checking <code>n % 2 == 0</code>.</p>
+<p><strong>3. <code>gcd(a, b)</code></strong> — greatest common divisor via the Euclidean algorithm:
+$\gcd(a,b) = \gcd(b, a \bmod b)$, until the second number hits 0.</p>
+<pre><code class="language-python">def gcd(a, b):
+    if a &lt; b:
+        a, b = b, a
+    while b != 0:
+        r = a % b
+        a = b
+        b = r
+    return a
+print(gcd(36, 20))  # 4
+</code></pre>
+<p><strong>4. <code>walk_square_picking_all_beepers()</code></strong> — like Week 9’s version, but
+multiple beepers can be at one spot: replace the <code>if</code> with a <code>while</code>.</p>
+<p><strong>5. <code>collect_garbages()</code></strong> — Toy Robot collects every beeper (garbage) into
+a can north of the starting point: sweep right collecting, turn back, sweep
+left, move up, drop everything, return to start.</p>
+<p><strong>6. <code>putNumber(num)</code></strong> — Toy Robot drops beepers to spell out the digits
+of <code>num</code>.</p>
+<pre><code class="language-python">while num &gt; 0:
+    digit = num % 10
+    num = num // 10
+    # drop `digit` beepers and move forward, instead of printing
+</code></pre>
+<h3 id="optional-problems"><a class="header" href="#optional-problems">Optional Problems</a></h3>
+<p><em>Not for submission/grading, but good practice (mostly past exam problems).</em></p>
+<p><strong>7–9. <code>estimatePI(...)</code></strong> (three variants) — approximate π using a <code>while</code>
+loop until within a given error bound:</p>
+<ul>
+<li>Ramanujan’s series: $\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}$
+(target error $\le 10^{-15}$, no <code>n</code> parameter)</li>
+<li>Basel problem: $\pi = \sqrt{6\sum_{i=1}^{\infty}\frac{1}{i^2}}$ (parameter
+<code>n</code> from -4 to 0, stop once within $10^n$ of <code>math.pi</code>)</li>
+<li>Leibniz series: $\pi = 4\left(1-\frac13+\frac15-\frac17+\cdots\right)$
+(same <code>n</code>-based stopping rule)</li>
+</ul>
+<p><strong>10. <code>countWeek(rateA, rateB, x)</code></strong> (<code>rateA &lt; rateB</code>) — two lab mice start
+at equal weight; <code>rateA</code>/<code>rateB</code> are their weekly growth rates. Return the
+minimum number of weeks until mouse B outweighs mouse A by at least <code>x</code>%.</p>
+<p><strong>11. <code>reverseSum(L)</code></strong> — sum of each number in <code>L</code> with its digits
+reversed. E.g. <code>[12,40,2]</code> → $21+4+2=27$.</p>
+<p><strong>12. <code>evenDigits(num)</code></strong> — integer formed from just the even digits of
+<code>num</code>, in their original order (<code>0</code> if there are none). E.g. from <code>37153</code>
+→ <code>0</code> (no even digits).</p>
+<p><strong>13. <code>findMax(L)</code></strong> — <code>L</code> is a list of <code>[number, base]</code> pairs (e.g.
+<code>[151,8]</code> = octal 151); return the maximum value, converted to decimal.</p>
+<blockquote>
+<p>Write a helper <code>toDecimal([number, base])</code> first.</p>
+</blockquote>
+<p><strong>14. <code>countAllZeros(L)</code></strong> — total count of <code>0</code> bits across the binary
+representations of the decimal numbers in <code>L</code>. E.g. <code>[10,20,30]</code> →
+binary <code>1010,10100,11110</code> → $2+3+1=6$.</p>
+<hr>
+<p><em>Source: 2025 offering, <code>week10_while_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 
                     </main>
 

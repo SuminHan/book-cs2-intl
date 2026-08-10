@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-27ccf292.js";
+            window.path_to_searchindex_js = "../searchindex-b95d3bba.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -215,6 +215,68 @@ counting belongs inside.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<h3 id="required"><a class="header" href="#required">Required</a></h3>
+<p><strong>1. <code>countZero(numbers)</code></strong> — number of <code>0</code>s in a list. Counter pattern.</p>
+<p><strong>2. <code>countRange(numbers, lower, upper)</code></strong> — count of elements <code>x</code> with
+<code>lower &lt;= x &lt;= upper</code>.</p>
+<p><strong>3. <code>countSecondQuadrant(p)</code></strong> — count of points (each <code>[x,y]</code>) in the
+second quadrant.</p>
+<blockquote>
+<p><code>p[i][0] &lt; 0 and p[i][1] &gt; 0</code>.</p>
+</blockquote>
+<p><strong>4. <code>countWithinCircle(p, r)</code></strong> — count of points with $x^2+y^2 \le r^2$.</p>
+<p><strong>5. <code>withinRect(top,bottom,left,right, x,y)</code> / <code>countWithinRect(...)</code></strong> —
+first checks if <code>(x,y)</code> is inside an axis-aligned rectangle (boundary
+included); second counts how many points from a list fall inside it.</p>
+<pre><code class="language-python">print(withinRect(2,-4,-5,6, -5,2))  # True
+print(countWithinRect(2,-4,-5,6, points))  # 7
+</code></pre>
+<p><strong>6. <code>countLeapYear(numbers)</code></strong> — count of leap years in a list of years
+(reuse <code>leapYear</code> from Week 5).</p>
+<p><strong>7. <code>countComposite(numbers)</code></strong> — count of composite numbers (<code>not isPrime(p)</code>).</p>
+<p><strong>8. <code>zigzagEntireWorld()</code></strong> — Toy Robot: use <code>move9steps()</code> and <code>zigzag()</code>
+to make the robot zigzag across the whole grid and return.</p>
+<pre><code class="language-python">def move9steps():
+    for i in range(9):
+        hubo.move()
+def zigzag():
+    move9steps()
+    hubo.turn_left(); hubo.move(); hubo.turn_left()
+    move9steps()
+    hubo.turn_right(); hubo.move(); hubo.turn_right()
+def zigzagEntireWorld():
+    # ADD ADDITIONAL CODE HERE!
+</code></pre>
+<p><strong>9. <code>whirlEntireWorld()</code></strong> — Toy Robot: spiral pattern, “1 L 1 L 2 L 2 L 3 L
+3 L … 9 L 9 L 9” (<code>L</code> = turn left, numbers = steps forward).</p>
+<p><strong>10. <code>zigzagEntireWorld()</code></strong> (a different pattern) — Toy Robot: sequence
+“L 1 L 1 L 1 R 1 R 2 R 2 L 1 L 3 L 3 R 1 R 4 R 4 …”.</p>
+<h3 id="optional-problems"><a class="header" href="#optional-problems">Optional Problems</a></h3>
+<p><em>Not for submission/grading, but good practice (mostly past exam problems).</em></p>
+<p><strong>11. <code>countOutOfCircle(L, r)</code></strong> — count of points <em>outside</em> the circle
+$x^2+y^2=r^2$.</p>
+<p><strong>12. <code>countLower(L)</code></strong> — count of integers in <code>L</code> smaller than the average
+of all of <code>L</code>.</p>
+<p><strong>13. <code>countWithinRange(L)</code></strong> — <code>L</code> gives cube side lengths; count cubes
+whose <em>volume</em> falls within $[A-B, A+B]$ where $A$ is the average volume and
+$B$ is the standard deviation of the volumes:
+$\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}$.</p>
+<p><strong>14. <code>countDoublePrime(L)</code></strong> — a “double prime” is $q=2p$ for some prime
+<code>p</code>; count how many elements of <code>L</code> are double primes.</p>
+<p><strong>15. <code>countTriangular(L)</code></strong> — count of triangular numbers in <code>L</code>
+($n = m(m+1)/2$).</p>
+<blockquote>
+<p>Hint: $m(m+1)/2 = n \Rightarrow m &lt; \sqrt{2n} &lt; m+1$.</p>
+</blockquote>
+<p><strong>16. <code>findMax(L)</code></strong> — maximum value in <code>L</code> among elements whose <em>index</em> is
+not prime. E.g. <code>L = [110,49,441,91,341,20]</code> — indices 0,1,4 are non-prime,
+giving values <code>110, 49, 341</code>, so the answer is <code>341</code>.</p>
+<p><strong>17. <code>colinear(L)</code></strong> — count of collinear triples <code>L[i], L[j], L[k]</code>
+(<code>i&lt;j&lt;k</code>) among a list of points.</p>
+<hr>
+<p><em>Source: 2025 offering, <code>week08_for_2_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 
                     </main>
 

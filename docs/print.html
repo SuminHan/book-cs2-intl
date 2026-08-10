@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-27ccf292.js";
+            window.path_to_searchindex_js = "searchindex-b95d3bba.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-38b3c496.js"></script>
@@ -934,6 +934,68 @@ counting belongs inside.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-6"><a class="header" href="#problem-set-6">Problem Set</a></h2>
+<h3 id="required-1"><a class="header" href="#required-1">Required</a></h3>
+<p><strong>1. <code>countZero(numbers)</code></strong> — number of <code>0</code>s in a list. Counter pattern.</p>
+<p><strong>2. <code>countRange(numbers, lower, upper)</code></strong> — count of elements <code>x</code> with
+<code>lower &lt;= x &lt;= upper</code>.</p>
+<p><strong>3. <code>countSecondQuadrant(p)</code></strong> — count of points (each <code>[x,y]</code>) in the
+second quadrant.</p>
+<blockquote>
+<p><code>p[i][0] &lt; 0 and p[i][1] &gt; 0</code>.</p>
+</blockquote>
+<p><strong>4. <code>countWithinCircle(p, r)</code></strong> — count of points with $x^2+y^2 \le r^2$.</p>
+<p><strong>5. <code>withinRect(top,bottom,left,right, x,y)</code> / <code>countWithinRect(...)</code></strong> —
+first checks if <code>(x,y)</code> is inside an axis-aligned rectangle (boundary
+included); second counts how many points from a list fall inside it.</p>
+<pre><code class="language-python">print(withinRect(2,-4,-5,6, -5,2))  # True
+print(countWithinRect(2,-4,-5,6, points))  # 7
+</code></pre>
+<p><strong>6. <code>countLeapYear(numbers)</code></strong> — count of leap years in a list of years
+(reuse <code>leapYear</code> from Week 5).</p>
+<p><strong>7. <code>countComposite(numbers)</code></strong> — count of composite numbers (<code>not isPrime(p)</code>).</p>
+<p><strong>8. <code>zigzagEntireWorld()</code></strong> — Toy Robot: use <code>move9steps()</code> and <code>zigzag()</code>
+to make the robot zigzag across the whole grid and return.</p>
+<pre><code class="language-python">def move9steps():
+    for i in range(9):
+        hubo.move()
+def zigzag():
+    move9steps()
+    hubo.turn_left(); hubo.move(); hubo.turn_left()
+    move9steps()
+    hubo.turn_right(); hubo.move(); hubo.turn_right()
+def zigzagEntireWorld():
+    # ADD ADDITIONAL CODE HERE!
+</code></pre>
+<p><strong>9. <code>whirlEntireWorld()</code></strong> — Toy Robot: spiral pattern, “1 L 1 L 2 L 2 L 3 L
+3 L … 9 L 9 L 9” (<code>L</code> = turn left, numbers = steps forward).</p>
+<p><strong>10. <code>zigzagEntireWorld()</code></strong> (a different pattern) — Toy Robot: sequence
+“L 1 L 1 L 1 R 1 R 2 R 2 L 1 L 3 L 3 R 1 R 4 R 4 …”.</p>
+<h3 id="optional-problems-1"><a class="header" href="#optional-problems-1">Optional Problems</a></h3>
+<p><em>Not for submission/grading, but good practice (mostly past exam problems).</em></p>
+<p><strong>11. <code>countOutOfCircle(L, r)</code></strong> — count of points <em>outside</em> the circle
+$x^2+y^2=r^2$.</p>
+<p><strong>12. <code>countLower(L)</code></strong> — count of integers in <code>L</code> smaller than the average
+of all of <code>L</code>.</p>
+<p><strong>13. <code>countWithinRange(L)</code></strong> — <code>L</code> gives cube side lengths; count cubes
+whose <em>volume</em> falls within $[A-B, A+B]$ where $A$ is the average volume and
+$B$ is the standard deviation of the volumes:
+$\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}$.</p>
+<p><strong>14. <code>countDoublePrime(L)</code></strong> — a “double prime” is $q=2p$ for some prime
+<code>p</code>; count how many elements of <code>L</code> are double primes.</p>
+<p><strong>15. <code>countTriangular(L)</code></strong> — count of triangular numbers in <code>L</code>
+($n = m(m+1)/2$).</p>
+<blockquote>
+<p>Hint: $m(m+1)/2 = n \Rightarrow m &lt; \sqrt{2n} &lt; m+1$.</p>
+</blockquote>
+<p><strong>16. <code>findMax(L)</code></strong> — maximum value in <code>L</code> among elements whose <em>index</em> is
+not prime. E.g. <code>L = [110,49,441,91,341,20]</code> — indices 0,1,4 are non-prime,
+giving values <code>110, 49, 341</code>, so the answer is <code>341</code>.</p>
+<p><strong>17. <code>colinear(L)</code></strong> — count of collinear triples <code>L[i], L[j], L[k]</code>
+(<code>i&lt;j&lt;k</code>) among a list of points.</p>
+<hr>
+<p><em>Source: 2025 offering, <code>week08_for_2_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-iii"><a class="header" href="#for-loops-iii">For Loops III</a></h1>
 <h2 id="opener-are-all-of-them-positive"><a class="header" href="#opener-are-all-of-them-positive">Opener: Are All of Them Positive?</a></h2>
@@ -970,6 +1032,57 @@ should test.</strong></p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-7"><a class="header" href="#problem-set-7">Problem Set</a></h2>
+<p><strong>1. <code>sumOfThreeSquares(n)</code></strong> (“for some” pattern) — can <code>n</code> be written as
+the sum of squares of three positive integers? (e.g. $38=2^2+3^2+5^2$)</p>
+<pre><code class="language-python">for n in range(20, 31):
+    print(n, sumOfThreeSquares(n))
+# 20 False  21 True  22 True  23 False  24 True ...
+</code></pre>
+<p><strong>2. <code>sumOfThreeDistinctSquares(n)</code></strong> — same, but the three integers must be
+distinct.</p>
+<blockquote>
+<p>Loop template: <code>for i in range(1,b+1): for j in range(i+1,b+1): for k in  range(j+1,b+1): ...</code></p>
+</blockquote>
+<p><strong>3. <code>sumOfTwoPrimes(n)</code></strong> — can <code>n</code> be written as a sum of two primes?
+(e.g. $21=2+19$)</p>
+<p><strong>4. <code>sumOfTwoPrimeSquares(n)</code></strong> — can <code>n</code> be written as a sum of squares of
+two primes? (e.g. $50=5^2+5^2$)</p>
+<p><strong>5. <code>somePrime(numbers)</code> / <code>allPrime(numbers)</code></strong> — “for some”/“for all”
+quantifiers over primality.</p>
+<pre><code class="language-python">print(somePrime(num1), allPrime(num1))  # True False
+print(somePrime(num3), allPrime(num3))  # True True
+</code></pre>
+<p><strong>6. <code>allDistinct(numbers)</code> / <code>allWithinRange(numbers, lower, upper)</code> /
+<code>isPermutation(numbers)</code></strong> — first two are “for all” patterns; the third
+(a one-liner!) uses both: a list of length <code>n</code> is a permutation if all
+elements are distinct and each is in <code>0..n-1</code>.</p>
+<pre><code class="language-python">print(allDistinct([1,3,2,5,2,1]))  # False
+print(isPermutation([1,0,2,5,3,4]))  # True
+</code></pre>
+<p><strong>7. <code>walk_square_picking_all_beepers()</code></strong> — Toy Robot walks the boundary
+picking up every beeper it’s standing on.</p>
+<pre><code class="language-python">def move_and_pick():
+    hubo.move()
+    if hubo.on_beeper():
+        hubo.pick_beeper()
+
+def walk_square_picking_all_beepers():
+    # ADD ADDITIONAL CODE HERE! (reuse the Week 8 boundary-walk, but call
+    # move_and_pick() instead of hubo.move())
+</code></pre>
+<p><strong>8. <code>whirl_picking_all_beepers()</code></strong> — same idea, along the Week 8 “whirl”
+spiral path instead of the boundary.</p>
+<p><strong>9. <code>whirl_dropping_beepers()</code></strong> — Toy Robot drops a beeper (if carrying
+one) at each step of the sequence “1 L 2 L 3 L … 9 L 9”.</p>
+<pre><code class="language-python">def move_and_drop():
+    hubo.move()
+    if hubo.carries_beepers():
+        hubo.drop_beeper()
+</code></pre>
+<hr>
+<p><em>Source: 2025 offering, <code>week09_for_3_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="while-loops"><a class="header" href="#while-loops">While Loops</a></h1>
 <h2 id="opener-the-alarm-that-never-rang"><a class="header" href="#opener-the-alarm-that-never-rang">Opener: The Alarm That Never Rang</a></h2>
@@ -1009,6 +1122,73 @@ that line, you have written an infinite loop.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-8"><a class="header" href="#problem-set-8">Problem Set</a></h2>
+<h3 id="required-2"><a class="header" href="#required-2">Required</a></h3>
+<p><strong>1. <code>countSevens(n)</code></strong> — how many digits of <code>n</code> are <code>7</code>.</p>
+<pre><code class="language-python">print(countSevens(1723))        # 1
+print(countSevens(1357924770))  # 3
+</code></pre>
+<blockquote>
+<p><code>while n &gt; 0: ... n //= 10</code> walks the digits from the right; <code>n % 10</code> is
+the current last digit.</p>
+</blockquote>
+<p><strong>2. <code>countEvenDigits(n)</code></strong> — how many digits of <code>n</code> are even. Same
+structure as problem 1, checking <code>n % 2 == 0</code>.</p>
+<p><strong>3. <code>gcd(a, b)</code></strong> — greatest common divisor via the Euclidean algorithm:
+$\gcd(a,b) = \gcd(b, a \bmod b)$, until the second number hits 0.</p>
+<pre><code class="language-python">def gcd(a, b):
+    if a &lt; b:
+        a, b = b, a
+    while b != 0:
+        r = a % b
+        a = b
+        b = r
+    return a
+print(gcd(36, 20))  # 4
+</code></pre>
+<p><strong>4. <code>walk_square_picking_all_beepers()</code></strong> — like Week 9’s version, but
+multiple beepers can be at one spot: replace the <code>if</code> with a <code>while</code>.</p>
+<p><strong>5. <code>collect_garbages()</code></strong> — Toy Robot collects every beeper (garbage) into
+a can north of the starting point: sweep right collecting, turn back, sweep
+left, move up, drop everything, return to start.</p>
+<p><strong>6. <code>putNumber(num)</code></strong> — Toy Robot drops beepers to spell out the digits
+of <code>num</code>.</p>
+<pre><code class="language-python">while num &gt; 0:
+    digit = num % 10
+    num = num // 10
+    # drop `digit` beepers and move forward, instead of printing
+</code></pre>
+<h3 id="optional-problems-2"><a class="header" href="#optional-problems-2">Optional Problems</a></h3>
+<p><em>Not for submission/grading, but good practice (mostly past exam problems).</em></p>
+<p><strong>7–9. <code>estimatePI(...)</code></strong> (three variants) — approximate π using a <code>while</code>
+loop until within a given error bound:</p>
+<ul>
+<li>Ramanujan’s series: $\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}$
+(target error $\le 10^{-15}$, no <code>n</code> parameter)</li>
+<li>Basel problem: $\pi = \sqrt{6\sum_{i=1}^{\infty}\frac{1}{i^2}}$ (parameter
+<code>n</code> from -4 to 0, stop once within $10^n$ of <code>math.pi</code>)</li>
+<li>Leibniz series: $\pi = 4\left(1-\frac13+\frac15-\frac17+\cdots\right)$
+(same <code>n</code>-based stopping rule)</li>
+</ul>
+<p><strong>10. <code>countWeek(rateA, rateB, x)</code></strong> (<code>rateA &lt; rateB</code>) — two lab mice start
+at equal weight; <code>rateA</code>/<code>rateB</code> are their weekly growth rates. Return the
+minimum number of weeks until mouse B outweighs mouse A by at least <code>x</code>%.</p>
+<p><strong>11. <code>reverseSum(L)</code></strong> — sum of each number in <code>L</code> with its digits
+reversed. E.g. <code>[12,40,2]</code> → $21+4+2=27$.</p>
+<p><strong>12. <code>evenDigits(num)</code></strong> — integer formed from just the even digits of
+<code>num</code>, in their original order (<code>0</code> if there are none). E.g. from <code>37153</code>
+→ <code>0</code> (no even digits).</p>
+<p><strong>13. <code>findMax(L)</code></strong> — <code>L</code> is a list of <code>[number, base]</code> pairs (e.g.
+<code>[151,8]</code> = octal 151); return the maximum value, converted to decimal.</p>
+<blockquote>
+<p>Write a helper <code>toDecimal([number, base])</code> first.</p>
+</blockquote>
+<p><strong>14. <code>countAllZeros(L)</code></strong> — total count of <code>0</code> bits across the binary
+representations of the decimal numbers in <code>L</code>. E.g. <code>[10,20,30]</code> →
+binary <code>1010,10100,11110</code> → $2+3+1=6$.</p>
+<hr>
+<p><em>Source: 2025 offering, <code>week10_while_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="list-ii"><a class="header" href="#list-ii">List II</a></h1>
 <h2 id="opener-remove-every-negative-number"><a class="header" href="#opener-remove-every-negative-number">Opener: Remove Every Negative Number</a></h2>
