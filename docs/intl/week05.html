@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-1f48d53f.js";
+            window.path_to_searchindex_js = "../searchindex-27ccf292.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -212,6 +212,78 @@ boolean values <code>True</code>/<code>False</code></li>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<p><strong>1. <code>inSecondQuadrant(x, y)</code> / <code>exactlyTwoSecondQuadrant(...)</code></strong> — the
+first checks if <code>(x,y)</code> is in the second quadrant (returns an actual <code>bool</code>,
+not the string <code>"True"</code>/<code>"False"</code>); the second uses it to check whether
+exactly two of three given points are in the second quadrant.</p>
+<pre><code class="language-python">print(type(inSecondQuadrant(0,0)))  # &lt;class 'bool'&gt;
+print(inSecondQuadrant(-1,2))       # True
+</code></pre>
+<p><strong>2. <code>withinInterval(lower, upper, n)</code> / <code>exactlyThreeWithinInterval(...)</code></strong>
+— first checks <code>lower &lt;= n &lt;= upper</code>; second uses it to check whether
+exactly three of five numbers fall within <code>[lower,upper]</code>.</p>
+<p><strong>3. <code>triangle(a, b)</code></strong> — do the x-axis, y-axis, and the line $y=ax+b$ form
+a triangle?</p>
+<pre><code class="language-python">print(triangle(-3, -2))  # True
+print(triangle(3, 0))    # False (passes through origin)
+</code></pre>
+<p><strong>4. <code>triangle(a, b, c)</code></strong> (different signature) — can side lengths <code>a, b, c</code>
+form a triangle?</p>
+<blockquote>
+<p>If a triangle exists, $a+b&gt;c$, $b+c&gt;a$, $c+a&gt;b$ all hold. Does the converse
+hold too?</p>
+</blockquote>
+<p><strong>5. <code>rightAngled(x1,y1, x2,y2, x3,y3)</code></strong> — do three points form a
+right triangle?</p>
+<pre><code class="language-python">def rightAngled(x1, y1, x2, y2, x3, y3):
+    a = (x2-x1)**2 + (y2-y1)**2
+    b = (x3-x2)**2 + (y3-y2)**2
+    c = (x1-x3)**2 + (y1-y3)**2
+    # ADD ADDITIONAL CODE HERE!
+</code></pre>
+<p><strong>6. <code>acuteAngled(x1,y1, x2,y2, x3,y3)</code></strong> — do three points form an
+acute triangle?</p>
+<p><strong>7. <code>intersect(x1,y1,r1, x2,y2,r2)</code></strong> — do two circles intersect at exactly
+two points?</p>
+<blockquote>
+<p>Use <code>abs(x)</code> for $|x|$.</p>
+</blockquote>
+<p><strong>8. <code>leapYear(year)</code> / <code>numDays(year, month)</code></strong> — the leap-year rule from
+Week 1 (divisible by 4, except centuries, unless divisible by 400), then use
+it to compute the number of days in a given month.</p>
+<pre><code class="language-python">def leapYear(year):
+    if year % 4 != 0:
+        return False
+    # year is divisible by 4
+    # ADD ADDITIONAL CODE HERE!
+print(leapYear(2000), leapYear(2100), leapYear(2200))  # True False False
+
+def numDays(year, month):
+    assert 1 &lt;= month &lt;= 12
+    if month in (1,3,5,7,8,10,12):
+        return 31
+    # ADD ADDITIONAL CODE HERE!
+print(numDays(2008,2), numDays(2011,2), numDays(2012,2))  # 29 28 29
+</code></pre>
+<p><strong>9. <code>blood(supplyO,supplyA,supplyB,supplyAB, demandO,demandA,demandB,demandAB)</code></strong>
+— given blood-type supply/demand (O can only receive O; A can receive A/O; B
+can receive B/O; AB can receive any), does supply cover demand?</p>
+<pre><code class="language-python">def blood(supplyO, supplyA, supplyB, supplyAB,
+          demandO, demandA, demandB, demandAB):
+    if supplyO &lt; demandO:
+        return False
+    # ADD ADDITIONAL CODE HERE!
+print(blood(50, 36, 11, 8, 45, 42, 10, 3))  # False
+print(blood(50, 36, 11, 3, 45, 38, 10, 7))  # True
+</code></pre>
+<blockquote>
+<p>Hint: check the four cumulative inequalities (<code>O</code>, <code>O+A</code>, <code>O+B</code>,
+<code>O+A+B</code>, <code>O+A+B+AB</code> supply vs. matching demand). Is the converse also true?</p>
+</blockquote>
+<hr>
+<p><em>Source: 2025 offering, <code>week05_bool_func_problem.pdf</code>. Wording condensed;
+code stubs kept close to the original.</em></p>
 
                     </main>
 

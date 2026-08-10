@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-1f48d53f.js";
+            window.path_to_searchindex_js = "../searchindex-27ccf292.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -213,6 +213,69 @@ hand-named variables vs. one list)</li>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<p><strong>1. <code>sumSquares(a)</code></strong> — sum of squares of a list’s elements.</p>
+<pre><code class="language-python">print(sumSquares([3,5,4]))  # 50
+</code></pre>
+<p><strong>2. <code>computePolynomial(a, x)</code></strong> — evaluate $a_0 + a_1x + a_2x^2 + \cdots +
+a_{n-1}x^{n-1}$.</p>
+<pre><code class="language-python">print(computePolynomial([3,5,4], 5))  # 128
+</code></pre>
+<p><strong>3. <code>harmonicMean(a)</code></strong> — $\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}$.</p>
+<p><strong>4. <code>geometricMean(a)</code></strong> — $\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}$.</p>
+<blockquote>
+<p>Compute the product first, then raise to the <code>1/n</code> power.</p>
+</blockquote>
+<p><strong>5. <code>reverse(a)</code></strong> — new list with elements in reverse order.</p>
+<pre><code class="language-python">print(reverse([3,1,5,2,4]))  # [4,2,5,1,3]
+</code></pre>
+<p><strong>6. <code>square(a)</code></strong> — new list where each element is squared (original list
+unchanged).</p>
+<pre><code class="language-python">L = [7,6,3,1,5,8,2,4]
+print(square(L))  # [49,36,9,1,25,64,4,16]
+print(L)          # [7,6,3,1,5,8,2,4] -- L itself unchanged
+</code></pre>
+<p><strong>7. <code>accumulate(a)</code></strong> — running-sum list: <code>b[i] = a[0]+a[1]+...+a[i]</code>.</p>
+<pre><code class="language-python">print(accumulate([1,2,1,3,1]))  # [1,3,4,7,8]
+</code></pre>
+<blockquote>
+<p><code>b[i] = b[i-1] + a[i]</code>.</p>
+</blockquote>
+<p><strong>8. <code>fibonacci(n)</code></strong> — first <code>n</code> Fibonacci numbers <code>1, 1, 2, 3, 5, 8, ...</code>.</p>
+<pre><code class="language-python">print(fibonacci(10))  # [1,1,2,3,5,8,13,21,34,55]
+</code></pre>
+<p><strong>9. <code>area(p)</code></strong> — area of a polygon (list of <code>[x,y]</code> points, given
+counter-clockwise) via the Shoelace formula:
+$\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|$</p>
+<pre><code class="language-python">points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
+print(area(points))  # 22.0
+</code></pre>
+<blockquote>
+<p>Use <code>abs(x)</code> for $|x|$.</p>
+</blockquote>
+<p><strong>10. <code>perimeter(p)</code></strong> — perimeter of the same kind of polygon (sum of
+consecutive-point distances, wrapping around).</p>
+<pre><code class="language-python">print(perimeter(points))  # 23.85332583138582
+</code></pre>
+<p><strong>11. <code>findMin(a)</code></strong> — minimum value in a list (max/min pattern, from Week 6).</p>
+<pre><code class="language-python">print(findMin([7,8,3,4,3,6]))  # 3
+</code></pre>
+<p><strong>12. <code>closestPair(p)</code></strong> — smallest distance between any two points in a
+list of <code>[x,y]</code> points.</p>
+<pre><code class="language-python">def distSquared(p1, p2):
+    return (p2[0]-p1[0])**2 + (p2[1]-p1[1])**2
+
+def closestPair(p):
+    n = len(p)
+    min_d = distSquared(p[0], p[1])
+    # ADD ADDITIONAL CODE HERE!
+
+points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
+print(closestPair(points))  # 4.47213595499958 (between [2,1] and [-2,-1])
+</code></pre>
+<hr>
+<p><em>Source: 2025 offering, <code>week07_list_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 
                     </main>
 

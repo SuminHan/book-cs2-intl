@@ -37,7 +37,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-1f48d53f.js";
+            window.path_to_searchindex_js = "searchindex-27ccf292.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-38b3c496.js"></script>
@@ -335,6 +335,50 @@ skill from telling it what to do.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<p><strong>1. Swap two variables</strong> — given <code>a</code> and <code>b</code> read from input, print them
+swapped.</p>
+<pre><code class="language-python">a = input("Enter a: ")
+b = input("Enter b: ")
+print("Before swapping:", a, b)
+# ADD ADDITIONAL CODE HERE!
+print("After swapping: ", a, b)
+</code></pre>
+<blockquote>
+<p>Hint: multiple assignment — <code>a, b = b, a</code>.</p>
+</blockquote>
+<p><strong>2. Rotate five variables</strong> — given <code>a, b, c, d, e</code>, rotate their values so
+<code>a</code>’s value goes to <code>b</code>, <code>b</code>’s to <code>c</code>, …, and <code>e</code>’s wraps around to <code>a</code>.</p>
+<blockquote>
+<p>Hint: multiple assignment generalizes: <code>a,b,c,d,e = e,a,b,c,d</code>.</p>
+</blockquote>
+<p><strong>3. Evaluate a quadratic</strong> — read <code>a, b, c, x</code> and print $ax^2+bx+c$.</p>
+<blockquote>
+<p><code>input()</code> always returns a string — convert with <code>int(a)</code> before doing
+arithmetic. <code>x**2</code> computes $x^2$.</p>
+</blockquote>
+<p><strong>4. Rectangle area</strong> — read two corner points <code>(x1,y1)</code>, <code>(x2,y2)</code> (bottom-left
+and top-right) and print the rectangle’s area.</p>
+<p><strong>5. Triangle area (Heron’s formula)</strong> — read side lengths <code>a, b, c</code> and print
+the area: $\sqrt{s(s-a)(s-b)(s-c)}$ where $s = \frac{a+b+c}{2}$.</p>
+<blockquote>
+<p><code>x**0.5</code> computes $\sqrt{x}$.</p>
+</blockquote>
+<p><strong>6. Remainder without <code>%</code></strong> — read positive integers <code>a, b</code> and compute
+<code>a % b</code> using only <code>-</code>, <code>*</code>, and <code>//</code>.</p>
+<blockquote>
+<p>What is <code>101 // 16</code>? What is <code>(101 // 16) * 16</code>?</p>
+</blockquote>
+<p><strong>7. Round to nearest integer</strong> — read a positive float <code>x</code> and print the
+nearest integer, without using <code>round()</code>.</p>
+<blockquote>
+<p>What is <code>int(2.4 + 0.5)</code>? <code>int(2.5 + 0.5)</code>? <code>int(2.6 + 0.5)</code>?</p>
+</blockquote>
+<p><strong>8. Fahrenheit to Celsius</strong> — read an integer Fahrenheit temperature <code>F</code> and
+print the Celsius equivalent: $C = (F - 32) \cdot \frac{5}{9}$.</p>
+<hr>
+<p><em>Source: 2025 offering, <code>week02_var_expr_problem.pdf</code>. Wording condensed;
+code stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
 <h2 id="opener-a-function-you-did-not-write"><a class="header" href="#opener-a-function-you-did-not-write">Opener: A Function You Did Not Write</a></h2>
@@ -373,6 +417,69 @@ expect something else?</strong></p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-1"><a class="header" href="#problem-set-1">Problem Set</a></h2>
+<p><em>Use interactive mode (the Python shell) whenever a formula isn’t clear.</em></p>
+<p><strong>1. <code>f(x, y) = x / (2y)</code></strong></p>
+<pre><code class="language-python">def f(x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(f(1, 2))  # 0.25
+print(f(3, 6))  # 0.25
+</code></pre>
+<p><strong>2. <code>f(x, y) = x^(1/y)</code></strong></p>
+<pre><code class="language-python">print(f(16, 4))  # 2.0
+print(f(64, 6))  # 2.0
+</code></pre>
+<p><strong>3. <code>f(x)</code> and <code>g(x, y)</code></strong> — $f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})$, using
+<code>math.exp</code>, <code>math.sin</code>, <code>math.sqrt</code> (or <code>**0.5</code>), <code>math.pi</code>.</p>
+<pre><code class="language-python">import math
+def f(x):
+    # ADD ADDITIONAL CODE HERE!
+def g(x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(f(2), f(3))    # 0.8108255774981366 -0.43822461448665007
+print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
+</code></pre>
+<blockquote>
+<p>The definition of <code>g</code> involves a nested fraction that didn’t survive PDF
+text extraction cleanly — check the original PDF for the exact formula;
+the hint structure is “compute <code>z = f(1/x)</code> (or similar), then return
+<code>(1+z)**z</code>”.</p>
+</blockquote>
+<p><strong>4. <code>force(m1, m2, r)</code></strong> — gravitational force between two masses:
+$F = G \cdot \frac{m_1 m_2}{r^2}$ where $G = 6.67 \times 10^{-11}$.</p>
+<pre><code class="language-python">def force(m1, m2, r):
+    G = 6.67 * 10**(-11)
+    # ADD ADDITIONAL CODE HERE!
+print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
+</code></pre>
+<p><strong>5. <code>minValue(a, b, c)</code></strong> — minimum value of $f(x) = ax^2+bx+c$ (for $a&gt;0$),
+found via the vertex $x_0 = \frac{-b}{2a}$.</p>
+<pre><code class="language-python">def f(a, b, c, x):
+    return a*x**2 + b*x + c
+def minValue(a, b, c):
+    # ADD ADDITIONAL CODE HERE!
+print(minValue(1, 5, 10))   # 3.75
+print(minValue(1, -5, 10))  # 3.75
+print(minValue(3, 7, 5))    # 0.9166666666666661
+</code></pre>
+<p><strong>6. <code>reverse(n)</code></strong> — reverse the digits of a 4-digit integer <code>n</code>.</p>
+<pre><code class="language-python">print(reverse(3702))  # 2073
+print(reverse(3710))  # 173
+print(reverse(3700))  # 73
+</code></pre>
+<blockquote>
+<p><code>n % 10</code>, <code>(n // 10) % 10</code>, <code>(n // 100) % 10</code>, <code>n // 1000</code> give you each
+digit.</p>
+</blockquote>
+<p><strong>7. <code>countCoins(n)</code></strong> — fewest Korean coins (10, 50, 100, 500 won) that add
+up to <code>n</code> won (<code>10 ≤ n ≤ 990</code>, multiple of 10). E.g. <code>countCoins(730)</code> → <code>6</code>.</p>
+<pre><code class="language-python">print(countCoins(790))  # 8
+print(countCoins(260))  # 4
+print(countCoins(70))   # 3
+</code></pre>
+<hr>
+<p><em>Source: 2025 offering, <code>week03_func_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h1>
 <h2 id="opener-45-minutes"><a class="header" href="#opener-45-minutes">Opener: 45 Minutes</a></h2>
@@ -412,6 +519,79 @@ you forget you wrote it.</strong></p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-2"><a class="header" href="#problem-set-2">Problem Set</a></h2>
+<h3 id="required"><a class="header" href="#required">Required</a></h3>
+<p><strong>1. <code>maximum(n1, n2)</code></strong> — larger of two integers.</p>
+<pre><code class="language-python">print(maximum(5,7))  # 7
+print(maximum(7,5))  # 7
+print(maximum(5,5))  # 5
+</code></pre>
+<p><strong>2. <code>countZeros(n1,n2,n3,n4,n5)</code></strong> — how many of the five arguments are 0.</p>
+<pre><code class="language-python">def countZeros(n1,n2,n3,n4,n5):
+    counter = 0
+    if n1 == 0: counter += 1
+    if n2 == 0: counter += 1
+    # ADD ADDITIONAL CODE HERE!
+print(countZeros(1,0,3,0,0))  # 3
+print(countZeros(0,2,2,0,4))  # 2
+</code></pre>
+<p><strong>3. <code>smaller(n1, n2)</code></strong> — <code>"left"</code> if <code>n1 &lt; n2</code>, <code>"right"</code> if <code>n2 &lt; n1</code>,
+<code>"equal"</code> otherwise.</p>
+<p><strong>4. <code>quadrant(x, y)</code></strong> — which quadrant the point <code>(x,y)</code> is in: <code>"First  Quadrant"</code>, <code>"Second Quadrant"</code>, <code>"Third Quadrant"</code>, <code>"Fourth Quadrant"</code>, or
+<code>"On the Boundary"</code>.</p>
+<pre><code class="language-python">print(quadrant(10, 5))   # First Quadrant
+print(quadrant(-5, 3))   # Second Quadrant
+print(quadrant(-5, -7))  # Third Quadrant
+print(quadrant(3, -5))   # Fourth Quadrant
+print(quadrant(0, -3))   # On the Boundary
+</code></pre>
+<p><strong>5. <code>round(x)</code></strong> (rounding, without using the built-in <code>round()</code>) — nearest
+integer to <code>x</code> (e.g. 2.4→2, 2.5→3, 2.6→3).</p>
+<pre><code class="language-python">def round(x):
+    fraction = x - int(x)
+    # ADD ADDITIONAL CODE HERE!
+</code></pre>
+<p><strong>6. <code>ceiling(x)</code></strong> — smallest integer $\geq x$ (2.0→2, 2.1→3, 2.6→3).</p>
+<p><strong>7. <code>quadratic(a, b, c)</code></strong> — number of real roots of $ax^2+bx+c=0$
+(<code>a</code> may be 0; <code>a=b=c=0</code> never given).</p>
+<pre><code class="language-python">def quadratic(a, b, c):
+    if a == 0:
+        # ADD ADDITIONAL CODE HERE!
+    else:
+        D = b**2 - 4*a*c
+        # ADD ADDITIONAL CODE HERE!
+print(quadratic(0, 0, 1))    # 0
+print(quadratic(1, -2, 1))   # 1
+print(quadratic(1, -4, 1))   # 2
+</code></pre>
+<p><strong>8. <code>minX(a, b, c)</code></strong> (<code>a&gt;0</code>, <code>b&lt;0</code>) — the integer <code>x</code> minimizing
+$ax^2+bx+c$ (smallest such integer if there’s a tie).</p>
+<pre><code class="language-python">x0 = int(-b / (2*a))
+print(minX(1, -9, 2))  # 4 (not 4.5 or 5)
+</code></pre>
+<p><strong>9. <code>rock_paper_scissors(first, second)</code></strong> — <code>"First"</code>/<code>"Second"</code>/<code>"Tie"</code>.</p>
+<pre><code class="language-python">print(rock_paper_scissors("R","S"))  # First
+print(rock_paper_scissors("S","P"))  # First
+print(rock_paper_scissors("P","R"))  # First
+</code></pre>
+<p><strong>10. <code>better(gold1,silver1,bronze1, gold2,silver2,bronze2)</code></strong> — which
+country wins by Olympic medal-table order (gold first, then silver, then
+bronze — not by total count).</p>
+<pre><code class="language-python">print(better(10,4,24, 1,35,25))   # First  (more gold)
+print(better(10,18,0, 10,4,24))   # First  (tied gold, more silver)
+print(better(10,20,5, 10,20,4))   # First  (tied gold+silver, more bronze)
+</code></pre>
+<h3 id="optional-problems"><a class="header" href="#optional-problems">Optional Problems</a></h3>
+<p><strong>11. <code>area(x1,y1,l1, x2,y2,l2)</code></strong> — area of the intersection of two
+axis-aligned squares (centers <code>(x1,y1)</code>/<code>(x2,y2)</code>, side lengths <code>l1≥l2</code>).</p>
+<p><strong>12. <code>triangular(n)</code></strong> — a positive integer <code>n</code> is <em>triangular</em> if
+$n = m(m+1)/2$ for some positive integer <code>m</code>. Return that <code>m</code>, or <code>None</code>.</p>
+<blockquote>
+<p>Hint: $m(m+1)/2 = n \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt; \sqrt{2n} &lt; m+1$.</p>
+</blockquote>
+<hr>
+<p><em>Source: 2025 offering, <code>week04_if_else_problem.pdf</code>. Wording condensed;
+code stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="boolean-functions"><a class="header" href="#boolean-functions">Boolean Functions</a></h1>
 <h2 id="opener-this-looks-completely-reasonable"><a class="header" href="#opener-this-looks-completely-reasonable">Opener: This Looks Completely Reasonable</a></h2>
@@ -447,6 +627,78 @@ boolean values <code>True</code>/<code>False</code></li>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-3"><a class="header" href="#problem-set-3">Problem Set</a></h2>
+<p><strong>1. <code>inSecondQuadrant(x, y)</code> / <code>exactlyTwoSecondQuadrant(...)</code></strong> — the
+first checks if <code>(x,y)</code> is in the second quadrant (returns an actual <code>bool</code>,
+not the string <code>"True"</code>/<code>"False"</code>); the second uses it to check whether
+exactly two of three given points are in the second quadrant.</p>
+<pre><code class="language-python">print(type(inSecondQuadrant(0,0)))  # &lt;class 'bool'&gt;
+print(inSecondQuadrant(-1,2))       # True
+</code></pre>
+<p><strong>2. <code>withinInterval(lower, upper, n)</code> / <code>exactlyThreeWithinInterval(...)</code></strong>
+— first checks <code>lower &lt;= n &lt;= upper</code>; second uses it to check whether
+exactly three of five numbers fall within <code>[lower,upper]</code>.</p>
+<p><strong>3. <code>triangle(a, b)</code></strong> — do the x-axis, y-axis, and the line $y=ax+b$ form
+a triangle?</p>
+<pre><code class="language-python">print(triangle(-3, -2))  # True
+print(triangle(3, 0))    # False (passes through origin)
+</code></pre>
+<p><strong>4. <code>triangle(a, b, c)</code></strong> (different signature) — can side lengths <code>a, b, c</code>
+form a triangle?</p>
+<blockquote>
+<p>If a triangle exists, $a+b&gt;c$, $b+c&gt;a$, $c+a&gt;b$ all hold. Does the converse
+hold too?</p>
+</blockquote>
+<p><strong>5. <code>rightAngled(x1,y1, x2,y2, x3,y3)</code></strong> — do three points form a
+right triangle?</p>
+<pre><code class="language-python">def rightAngled(x1, y1, x2, y2, x3, y3):
+    a = (x2-x1)**2 + (y2-y1)**2
+    b = (x3-x2)**2 + (y3-y2)**2
+    c = (x1-x3)**2 + (y1-y3)**2
+    # ADD ADDITIONAL CODE HERE!
+</code></pre>
+<p><strong>6. <code>acuteAngled(x1,y1, x2,y2, x3,y3)</code></strong> — do three points form an
+acute triangle?</p>
+<p><strong>7. <code>intersect(x1,y1,r1, x2,y2,r2)</code></strong> — do two circles intersect at exactly
+two points?</p>
+<blockquote>
+<p>Use <code>abs(x)</code> for $|x|$.</p>
+</blockquote>
+<p><strong>8. <code>leapYear(year)</code> / <code>numDays(year, month)</code></strong> — the leap-year rule from
+Week 1 (divisible by 4, except centuries, unless divisible by 400), then use
+it to compute the number of days in a given month.</p>
+<pre><code class="language-python">def leapYear(year):
+    if year % 4 != 0:
+        return False
+    # year is divisible by 4
+    # ADD ADDITIONAL CODE HERE!
+print(leapYear(2000), leapYear(2100), leapYear(2200))  # True False False
+
+def numDays(year, month):
+    assert 1 &lt;= month &lt;= 12
+    if month in (1,3,5,7,8,10,12):
+        return 31
+    # ADD ADDITIONAL CODE HERE!
+print(numDays(2008,2), numDays(2011,2), numDays(2012,2))  # 29 28 29
+</code></pre>
+<p><strong>9. <code>blood(supplyO,supplyA,supplyB,supplyAB, demandO,demandA,demandB,demandAB)</code></strong>
+— given blood-type supply/demand (O can only receive O; A can receive A/O; B
+can receive B/O; AB can receive any), does supply cover demand?</p>
+<pre><code class="language-python">def blood(supplyO, supplyA, supplyB, supplyAB,
+          demandO, demandA, demandB, demandAB):
+    if supplyO &lt; demandO:
+        return False
+    # ADD ADDITIONAL CODE HERE!
+print(blood(50, 36, 11, 8, 45, 42, 10, 3))  # False
+print(blood(50, 36, 11, 3, 45, 38, 10, 7))  # True
+</code></pre>
+<blockquote>
+<p>Hint: check the four cumulative inequalities (<code>O</code>, <code>O+A</code>, <code>O+B</code>,
+<code>O+A+B</code>, <code>O+A+B+AB</code> supply vs. matching demand). Is the converse also true?</p>
+</blockquote>
+<hr>
+<p><em>Source: 2025 offering, <code>week05_bool_func_problem.pdf</code>. Wording condensed;
+code stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-i"><a class="header" href="#for-loops-i">For Loops I</a></h1>
 <h2 id="opener-an-annoying-question"><a class="header" href="#opener-an-annoying-question">Opener: An Annoying Question</a></h2>
@@ -481,6 +733,70 @@ you are fighting the language — and whether the <code>+1</code> is about to co
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-4"><a class="header" href="#problem-set-4">Problem Set</a></h2>
+<p><strong>1. <code>printMultTable1()</code> / <code>printMultTable2()</code></strong> — print parts of a
+multiplication table (odd rows only; then a growing triangular shape):</p>
+<pre><code>1 2 3 4 5 6 7 8 9
+3 6 9 12 15 18 21 24 27
+5 10 15 20 25 30 35 40 45
+...
+</code></pre>
+<p>and</p>
+<pre><code>1
+3 6 9
+5 10 15 20 25
+...
+</code></pre>
+<blockquote>
+<p>What does <code>for i in range(1, 10, 2):</code> do? What about the nested
+<code>for j in range(1, i+1):</code>?</p>
+</blockquote>
+<p><strong>2. <code>sumNumbers(a, b)</code></strong> — sum of integers from <code>a</code> to <code>b</code> inclusive.</p>
+<pre><code class="language-python">print(sumNumbers(5,10))    # 45
+print(sumNumbers(15,100))  # 4945
+</code></pre>
+<p><strong>3. <code>factorial(n)</code></strong> — $n!$.</p>
+<pre><code class="language-python">print(factorial(8))   # 40320
+print(factorial(12))  # 479001600
+</code></pre>
+<p><strong>4. <code>exp(x)</code></strong> — approximate $e^x$ via the series
+$e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^{100}}{100!}$.
+Reuse <code>factorial</code> from problem 3.</p>
+<pre><code class="language-python">print(exp(1.0))  # 2.7182818284590455
+</code></pre>
+<p><strong>5. <code>withinCircle(r)</code></strong> — number of integer-coordinate points <code>(x,y)</code> with
+$x^2+y^2 \le r^2$.</p>
+<pre><code class="language-python">print(withinCircle(1000) / 1000**2)  # 3.141549 -- approximates π
+</code></pre>
+<p><strong>6. <code>dayOfWeek(year, month, day)</code></strong> (<code>year ≥ 2000</code>) — day of week as
+<code>"Mon"</code>..<code>"Sun"</code>.</p>
+<blockquote>
+<p>Reuse <code>leapYear</code>/<code>numDays</code> from Week 5. <code>2000-01-01</code> was a Saturday — count
+days elapsed from there and take <code>% 7</code>.</p>
+</blockquote>
+<pre><code class="language-python">print(dayOfWeek(2001,1,28))  # Sun
+print(dayOfWeek(2013,3,23))  # Sat
+</code></pre>
+<p><strong>7. <code>findMax()</code></strong> — maximum value of
+$f(i,j) = (i^5 + 2i^3j^2 + 5i^2 + j + 5000) \bmod 10000$ for
+$i,j \in {0,\ldots,99}$.</p>
+<pre><code class="language-python">def f(i, j):
+    return (i**5 + 2*(i**3)*(j**2) + 5*i**2 + j + 5000) % 10000
+print(findMax())  # 9997
+</code></pre>
+<p><strong>8. <code>combination(n, k)</code></strong> ($1 \le k \le n \le 250$) — $\binom{n}{k}$, as an
+<code>int</code> (not <code>float</code>).</p>
+<blockquote>
+<p>Use $\prod_{i=1}^{k} \frac{n+1-i}{i} = \frac{n}{1}\cdot\frac{n-1}{2}\cdots\frac{n+1-k}{k}$
+and divide as you go to keep values manageable.</p>
+</blockquote>
+<p><strong>9. <code>maxPrimeFactor(n)</code></strong> (<code>n ≥ 2</code>) — largest prime factor of <code>n</code>. E.g.
+<code>maxPrimeFactor(12)</code> → <code>3</code> (since $12 = 2 \times 2 \times 3$).</p>
+<p><strong>10. <code>withinRegion(a, c)</code></strong> — number of integer points <code>(x,y)</code> satisfying
+both $y \le -ax^2+c$ and $y \ge ax^2-c$ (the region between two parabolas).</p>
+<hr>
+<p><em>Source: 2025 offering, <code>week06_for_1_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="lists"><a class="header" href="#lists">Lists</a></h1>
 <h2 id="opener-building-a-grid-the-short-way"><a class="header" href="#opener-building-a-grid-the-short-way">Opener: Building a Grid the Short Way</a></h2>
@@ -517,6 +833,69 @@ hand-named variables vs. one list)</li>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set-5"><a class="header" href="#problem-set-5">Problem Set</a></h2>
+<p><strong>1. <code>sumSquares(a)</code></strong> — sum of squares of a list’s elements.</p>
+<pre><code class="language-python">print(sumSquares([3,5,4]))  # 50
+</code></pre>
+<p><strong>2. <code>computePolynomial(a, x)</code></strong> — evaluate $a_0 + a_1x + a_2x^2 + \cdots +
+a_{n-1}x^{n-1}$.</p>
+<pre><code class="language-python">print(computePolynomial([3,5,4], 5))  # 128
+</code></pre>
+<p><strong>3. <code>harmonicMean(a)</code></strong> — $\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}$.</p>
+<p><strong>4. <code>geometricMean(a)</code></strong> — $\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}$.</p>
+<blockquote>
+<p>Compute the product first, then raise to the <code>1/n</code> power.</p>
+</blockquote>
+<p><strong>5. <code>reverse(a)</code></strong> — new list with elements in reverse order.</p>
+<pre><code class="language-python">print(reverse([3,1,5,2,4]))  # [4,2,5,1,3]
+</code></pre>
+<p><strong>6. <code>square(a)</code></strong> — new list where each element is squared (original list
+unchanged).</p>
+<pre><code class="language-python">L = [7,6,3,1,5,8,2,4]
+print(square(L))  # [49,36,9,1,25,64,4,16]
+print(L)          # [7,6,3,1,5,8,2,4] -- L itself unchanged
+</code></pre>
+<p><strong>7. <code>accumulate(a)</code></strong> — running-sum list: <code>b[i] = a[0]+a[1]+...+a[i]</code>.</p>
+<pre><code class="language-python">print(accumulate([1,2,1,3,1]))  # [1,3,4,7,8]
+</code></pre>
+<blockquote>
+<p><code>b[i] = b[i-1] + a[i]</code>.</p>
+</blockquote>
+<p><strong>8. <code>fibonacci(n)</code></strong> — first <code>n</code> Fibonacci numbers <code>1, 1, 2, 3, 5, 8, ...</code>.</p>
+<pre><code class="language-python">print(fibonacci(10))  # [1,1,2,3,5,8,13,21,34,55]
+</code></pre>
+<p><strong>9. <code>area(p)</code></strong> — area of a polygon (list of <code>[x,y]</code> points, given
+counter-clockwise) via the Shoelace formula:
+$\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|$</p>
+<pre><code class="language-python">points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
+print(area(points))  # 22.0
+</code></pre>
+<blockquote>
+<p>Use <code>abs(x)</code> for $|x|$.</p>
+</blockquote>
+<p><strong>10. <code>perimeter(p)</code></strong> — perimeter of the same kind of polygon (sum of
+consecutive-point distances, wrapping around).</p>
+<pre><code class="language-python">print(perimeter(points))  # 23.85332583138582
+</code></pre>
+<p><strong>11. <code>findMin(a)</code></strong> — minimum value in a list (max/min pattern, from Week 6).</p>
+<pre><code class="language-python">print(findMin([7,8,3,4,3,6]))  # 3
+</code></pre>
+<p><strong>12. <code>closestPair(p)</code></strong> — smallest distance between any two points in a
+list of <code>[x,y]</code> points.</p>
+<pre><code class="language-python">def distSquared(p1, p2):
+    return (p2[0]-p1[0])**2 + (p2[1]-p1[1])**2
+
+def closestPair(p):
+    n = len(p)
+    min_d = distSquared(p[0], p[1])
+    # ADD ADDITIONAL CODE HERE!
+
+points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
+print(closestPair(points))  # 4.47213595499958 (between [2,1] and [-2,-1])
+</code></pre>
+<hr>
+<p><em>Source: 2025 offering, <code>week07_list_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-ii"><a class="header" href="#for-loops-ii">For Loops II</a></h1>
 <h2 id="opener-count-the-positive-numbers"><a class="header" href="#opener-count-the-positive-numbers">Opener: Count the Positive Numbers</a></h2>

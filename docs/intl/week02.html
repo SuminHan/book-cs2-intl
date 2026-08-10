@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-1f48d53f.js";
+            window.path_to_searchindex_js = "../searchindex-27ccf292.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -224,6 +224,50 @@ skill from telling it what to do.</p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<p><strong>1. Swap two variables</strong> — given <code>a</code> and <code>b</code> read from input, print them
+swapped.</p>
+<pre><code class="language-python">a = input("Enter a: ")
+b = input("Enter b: ")
+print("Before swapping:", a, b)
+# ADD ADDITIONAL CODE HERE!
+print("After swapping: ", a, b)
+</code></pre>
+<blockquote>
+<p>Hint: multiple assignment — <code>a, b = b, a</code>.</p>
+</blockquote>
+<p><strong>2. Rotate five variables</strong> — given <code>a, b, c, d, e</code>, rotate their values so
+<code>a</code>’s value goes to <code>b</code>, <code>b</code>’s to <code>c</code>, …, and <code>e</code>’s wraps around to <code>a</code>.</p>
+<blockquote>
+<p>Hint: multiple assignment generalizes: <code>a,b,c,d,e = e,a,b,c,d</code>.</p>
+</blockquote>
+<p><strong>3. Evaluate a quadratic</strong> — read <code>a, b, c, x</code> and print $ax^2+bx+c$.</p>
+<blockquote>
+<p><code>input()</code> always returns a string — convert with <code>int(a)</code> before doing
+arithmetic. <code>x**2</code> computes $x^2$.</p>
+</blockquote>
+<p><strong>4. Rectangle area</strong> — read two corner points <code>(x1,y1)</code>, <code>(x2,y2)</code> (bottom-left
+and top-right) and print the rectangle’s area.</p>
+<p><strong>5. Triangle area (Heron’s formula)</strong> — read side lengths <code>a, b, c</code> and print
+the area: $\sqrt{s(s-a)(s-b)(s-c)}$ where $s = \frac{a+b+c}{2}$.</p>
+<blockquote>
+<p><code>x**0.5</code> computes $\sqrt{x}$.</p>
+</blockquote>
+<p><strong>6. Remainder without <code>%</code></strong> — read positive integers <code>a, b</code> and compute
+<code>a % b</code> using only <code>-</code>, <code>*</code>, and <code>//</code>.</p>
+<blockquote>
+<p>What is <code>101 // 16</code>? What is <code>(101 // 16) * 16</code>?</p>
+</blockquote>
+<p><strong>7. Round to nearest integer</strong> — read a positive float <code>x</code> and print the
+nearest integer, without using <code>round()</code>.</p>
+<blockquote>
+<p>What is <code>int(2.4 + 0.5)</code>? <code>int(2.5 + 0.5)</code>? <code>int(2.6 + 0.5)</code>?</p>
+</blockquote>
+<p><strong>8. Fahrenheit to Celsius</strong> — read an integer Fahrenheit temperature <code>F</code> and
+print the Celsius equivalent: $C = (F - 32) \cdot \frac{5}{9}$.</p>
+<hr>
+<p><em>Source: 2025 offering, <code>week02_var_expr_problem.pdf</code>. Wording condensed;
+code stubs kept close to the original.</em></p>
 
                     </main>
 

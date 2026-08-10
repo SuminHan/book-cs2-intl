@@ -36,7 +36,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-1f48d53f.js";
+            window.path_to_searchindex_js = "../searchindex-27ccf292.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-38b3c496.js"></script>
@@ -215,6 +215,69 @@ expect something else?</strong></p>
 <p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
 are still in development — only the topic list is reflected here, not the
 slide content.</em></p>
+<h2 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h2>
+<p><em>Use interactive mode (the Python shell) whenever a formula isn’t clear.</em></p>
+<p><strong>1. <code>f(x, y) = x / (2y)</code></strong></p>
+<pre><code class="language-python">def f(x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(f(1, 2))  # 0.25
+print(f(3, 6))  # 0.25
+</code></pre>
+<p><strong>2. <code>f(x, y) = x^(1/y)</code></strong></p>
+<pre><code class="language-python">print(f(16, 4))  # 2.0
+print(f(64, 6))  # 2.0
+</code></pre>
+<p><strong>3. <code>f(x)</code> and <code>g(x, y)</code></strong> — $f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})$, using
+<code>math.exp</code>, <code>math.sin</code>, <code>math.sqrt</code> (or <code>**0.5</code>), <code>math.pi</code>.</p>
+<pre><code class="language-python">import math
+def f(x):
+    # ADD ADDITIONAL CODE HERE!
+def g(x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(f(2), f(3))    # 0.8108255774981366 -0.43822461448665007
+print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
+</code></pre>
+<blockquote>
+<p>The definition of <code>g</code> involves a nested fraction that didn’t survive PDF
+text extraction cleanly — check the original PDF for the exact formula;
+the hint structure is “compute <code>z = f(1/x)</code> (or similar), then return
+<code>(1+z)**z</code>”.</p>
+</blockquote>
+<p><strong>4. <code>force(m1, m2, r)</code></strong> — gravitational force between two masses:
+$F = G \cdot \frac{m_1 m_2}{r^2}$ where $G = 6.67 \times 10^{-11}$.</p>
+<pre><code class="language-python">def force(m1, m2, r):
+    G = 6.67 * 10**(-11)
+    # ADD ADDITIONAL CODE HERE!
+print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
+</code></pre>
+<p><strong>5. <code>minValue(a, b, c)</code></strong> — minimum value of $f(x) = ax^2+bx+c$ (for $a&gt;0$),
+found via the vertex $x_0 = \frac{-b}{2a}$.</p>
+<pre><code class="language-python">def f(a, b, c, x):
+    return a*x**2 + b*x + c
+def minValue(a, b, c):
+    # ADD ADDITIONAL CODE HERE!
+print(minValue(1, 5, 10))   # 3.75
+print(minValue(1, -5, 10))  # 3.75
+print(minValue(3, 7, 5))    # 0.9166666666666661
+</code></pre>
+<p><strong>6. <code>reverse(n)</code></strong> — reverse the digits of a 4-digit integer <code>n</code>.</p>
+<pre><code class="language-python">print(reverse(3702))  # 2073
+print(reverse(3710))  # 173
+print(reverse(3700))  # 73
+</code></pre>
+<blockquote>
+<p><code>n % 10</code>, <code>(n // 10) % 10</code>, <code>(n // 100) % 10</code>, <code>n // 1000</code> give you each
+digit.</p>
+</blockquote>
+<p><strong>7. <code>countCoins(n)</code></strong> — fewest Korean coins (10, 50, 100, 500 won) that add
+up to <code>n</code> won (<code>10 ≤ n ≤ 990</code>, multiple of 10). E.g. <code>countCoins(730)</code> → <code>6</code>.</p>
+<pre><code class="language-python">print(countCoins(790))  # 8
+print(countCoins(260))  # 4
+print(countCoins(70))   # 3
+</code></pre>
+<hr>
+<p><em>Source: 2025 offering, <code>week03_func_problem.pdf</code>. Wording condensed; code
+stubs kept close to the original.</em></p>
 
                     </main>
 
