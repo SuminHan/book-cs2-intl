@@ -39,7 +39,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-24d50d43.js";
+            window.path_to_searchindex_js = "searchindex-e29b5d92.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-58861ff6.js"></script>
@@ -439,16 +439,29 @@ print(n**2)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h1>
-<p><strong>1. Swap two variables</strong> — given <code>a</code> and <code>b</code> read from input, print them
-swapped.</p>
+<p><strong>1.</strong> Add additional code to the following program so that:</p>
+<ul>
+<li>the values of the two variables <code>a</code>, <code>b</code> are changed (swapped).
+<ul>
+<li><em>Hint: use multiple assignment, i.e. <code>a,b = b,a</code>.</em></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">a = input("Enter a: ")
 b = input("Enter b: ")
 print("Before swapping:", a, b)
 # ADD ADDITIONAL CODE HERE!
 print("After swapping: ", a, b)
 </code></pre>
-<p><strong>2. Rotate five variables</strong> — given <code>a, b, c, d, e</code>, rotate their values so
-<code>a</code>’s value goes to <code>b</code>, <code>b</code>’s to <code>c</code>, …, and <code>e</code>’s wraps around to <code>a</code>.</p>
+<p><strong>2.</strong> Add additional code to the following program so that:</p>
+<ul>
+<li>the values of the five variables <code>a,b,c,d,e</code> are rotated: <code>a</code>’s value goes
+to <code>b</code>, <code>b</code>’s to <code>c</code>, and so on, wrapping <code>e</code>’s value back around to <code>a</code>.
+<ul>
+<li><em>Hint: use multiple assignment, i.e. <code>a,b,c,d,e = ...</code>.</em></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">a = input("Enter a: ")
 b = input("Enter b: ")
 c = input("Enter c: ")
@@ -458,7 +471,14 @@ print("Before swapping:", a, b, c, d, e)
 # ADD ADDITIONAL CODE HERE!
 print("After swapping: ", a, b, c, d, e)
 </code></pre>
-<p><strong>3. Evaluate a quadratic</strong> — read <code>a, b, c, x</code> and print \(ax^2+bx+c\).</p>
+<p><strong>3.</strong> Add additional code to the following program so that:</p>
+<ul>
+<li>the value of the expression \(ax^2+bx+c\) is printed.
+<ul>
+<li>\(x^2\) can be computed by <code>x**2</code> or <code>x*x</code>.</li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">a = input("Enter a: ")
 b = input("Enter b: ")
 c = input("Enter c: ")
@@ -471,8 +491,13 @@ x = int(x)
 # y = ...
 print("Value of the quadratic formula:", y)
 </code></pre>
-<p><strong>4. Rectangle area</strong> — read two corner points <code>(x1,y1)</code>, <code>(x2,y2)</code> (bottom-left
-and top-right) and print the rectangle’s area.</p>
+<p><strong>4.</strong> Add additional code to the following program so that it:</p>
+<ul>
+<li>reads four integers <code>x1,y1,x2,y2</code> from the keyboard, where <code>x1&lt;x2</code> and
+<code>y1&lt;y2</code>;</li>
+<li>prints the area of the rectangle represented by the two corner points
+(<code>(x1,y1)</code> is the bottom-left corner, <code>(x2,y2)</code> is the top-right corner).</li>
+</ul>
 <pre><code class="language-python">x1 = int(input("Enter x1: "))
 y1 = int(input("Enter y1: "))
 x2 = int(input("Enter x2: "))
@@ -481,8 +506,17 @@ y2 = int(input("Enter y2: "))
 # area = ...
 print("Area of rectangle:", area)
 </code></pre>
-<p><strong>5. Triangle area (Heron’s formula)</strong> — read side lengths <code>a, b, c</code> and print
-the area: \(\sqrt{s(s-a)(s-b)(s-c)}\) where \(s = \frac{a+b+c}{2}\).</p>
+<p><strong>5.</strong> Add additional code to the following program so that it:</p>
+<ul>
+<li>reads three float values <code>a,b,c</code> from the keyboard, where they satisfy
+the triangle inequalities <code>a+b&gt;c</code>, <code>b+c&gt;a</code>, <code>c+a&gt;b</code>;</li>
+<li>prints the area of the triangle whose side lengths are <code>a,b,c</code>:
+\(\sqrt{s(s-a)(s-b)(s-c)}\) where \(s = \frac{a+b+c}{2}\).
+<ul>
+<li>\(\sqrt{x}\) (i.e. \(x^{0.5}\)) can be computed by <code>x**0.5</code>.</li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">a = float(input("Enter a: "))
 b = float(input("Enter b: "))
 c = float(input("Enter c: "))
@@ -491,23 +525,44 @@ c = float(input("Enter c: "))
 # area = ...
 print("Area of triangle:", area)
 </code></pre>
-<p><strong>6. Remainder without <code>%</code></strong> — read positive integers <code>a, b</code> and compute
-<code>a % b</code> using only <code>-</code>, <code>*</code>, and <code>//</code>.</p>
+<p><strong>6.</strong> Add additional code to the following program so that it:</p>
+<ul>
+<li>reads two positive integers <code>a</code> and <code>b</code> from the keyboard;</li>
+<li>computes the remainder when <code>a</code> is divided by <code>b</code>, <strong>without using the <code>%</code>
+operator</strong> (only <code>-</code>, <code>*</code>, and <code>//</code>);
+<ul>
+<li><em>What is the value of <code>101//16</code>? What is the value of <code>(101//16)*16</code>?</em></li>
+</ul>
+</li>
+<li>prints out the remainder.</li>
+</ul>
 <pre><code class="language-python">a = int(input("Enter a: "))
 b = int(input("Enter b: "))
 # ADD ADDITIONAL CODE HERE!
 # r = ...
 print("Remainder:", r)
 </code></pre>
-<p><strong>7. Round to nearest integer</strong> — read a positive float <code>x</code> and print the
-nearest integer, without using <code>round()</code>.</p>
+<p><strong>7.</strong> Add additional code to the following program so that it:</p>
+<ul>
+<li>reads a positive float value <code>x</code> from the keyboard;</li>
+<li>prints the integer nearest to <code>x</code> (rounding), <strong>without using <code>round()</code></strong>.
+<ul>
+<li><em>What is the value of <code>int(2.4+0.5)</code>? Of <code>int(2.5+0.5)</code>? Of <code>int(2.6+0.5)</code>?</em></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">x = float(input("Enter x: "))
 # ADD ADDITIONAL CODE HERE!
 # y = ...
 print(x, "is rounded off to", y)
 </code></pre>
-<p><strong>8. Fahrenheit to Celsius</strong> — read an integer Fahrenheit temperature <code>F</code> and
-print the Celsius equivalent: \(C = (F - 32) \cdot \frac{5}{9}\).</p>
+<p><strong>8.</strong> Add additional code to the following program so that it:</p>
+<ul>
+<li>reads an integer <code>F</code> from the keyboard, representing a temperature in
+Fahrenheit;</li>
+<li>prints the equivalent temperature in Celsius: \(C = (F-32) \cdot
+\frac{5}{9}\).</li>
+</ul>
 <pre><code class="language-python">F = int(input("Enter F: "))
 # ADD ADDITIONAL CODE HERE!
 # C = ...
@@ -641,20 +696,41 @@ named <code>y</code> inside another, or at the top level.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-1"><a class="header" href="#problem-set-1">Problem Set</a></h1>
 <p><em>Use interactive mode (the Python shell) whenever a formula isn’t clear.</em></p>
-<p><strong>1. <code>f(x, y) = x / (2y)</code></strong></p>
+<p><strong>1.</strong> Write a function <code>f</code> defined by:</p>
+<ul>
+<li>input parameter: two positive integers <code>x, y</code></li>
+<li>return value: the float value \(\frac{x}{2y}\)</li>
+</ul>
 <pre><code class="language-python">def f(x, y):
     # ADD ADDITIONAL CODE HERE!
 print(f(1, 2))  # 0.25
 print(f(3, 6))  # 0.25
 </code></pre>
-<p><strong>2. <code>f(x, y) = x^(1/y)</code></strong></p>
+<p><strong>2.</strong> Write a function <code>f</code> defined by:</p>
+<ul>
+<li>input parameter: two positive integers <code>x, y</code></li>
+<li>return value: the float value \(x^{1/y}\)</li>
+</ul>
 <pre><code class="language-python">print(f(16, 4))  # 2.0
 print(f(64, 6))  # 2.0
 </code></pre>
-<p><strong>3. <code>f(x)</code> and <code>g(x, y)</code></strong> — \(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\) and
-\(g(x,y) = \left(1+f\left(y^{1/x}\right)\right)^{f\left(y^{1/x}\right)}\), using
-<code>math.exp</code>, <code>math.sin</code>, <code>math.sqrt</code> (or <code>**0.5</code>), <code>math.pi</code>. First compute
-<code>z = f(y**(1/x))</code>, then return <code>(1+z)**z</code>.</p>
+<p><strong>3.</strong> Write functions <code>f</code> and <code>g</code> defined by:</p>
+<ul>
+<li>\(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\)
+<ul>
+<li>use <code>math.exp(t)</code> to compute \(e^t\)</li>
+<li>use <code>math.sin(t)</code> to compute \(\sin(t)\)</li>
+<li>use <code>math.sqrt(t)</code> or <code>t**0.5</code> to compute \(\sqrt{t}\)</li>
+<li>use <code>math.pi</code> to represent \(\pi\)</li>
+</ul>
+</li>
+<li>\(g(x,y) = \left(1+f\left(y^{1/x}\right)\right)^{f\left(y^{1/x}\right)}\)
+<ul>
+<li>first, write code for <code>z = f(y**(1/x))</code></li>
+<li>then, write code to <code>return (1+z)**z</code></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">import math
 def f(x):
     # ADD ADDITIONAL CODE HERE!
@@ -663,15 +739,28 @@ def g(x, y):
 print(f(2), f(3))    # 0.8108255774981366 -0.43822461448665007
 print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
 </code></pre>
-<p><strong>4. <code>force(m1, m2, r)</code></strong> — gravitational force between two masses:
-\(F = G \cdot \frac{m_1 m_2}{r^2}\) where \(G = 6.67 \times 10^{-11}\).</p>
+<p><strong>4.</strong> Write a function <code>force</code> defined by:</p>
+<ul>
+<li>input parameter: three positive float values <code>m1, m2, r</code> — where <code>m1</code> and
+<code>m2</code> represent the mass of two objects, and <code>r</code> the distance between them</li>
+<li>return value: the gravitational force between the two objects,
+\(F = G \cdot \frac{m_1 m_2}{r^2}\) where \(G = 6.67 \times 10^{-11}\)</li>
+</ul>
 <pre><code class="language-python">def force(m1, m2, r):
     G = 6.67 * 10**(-11)
     # ADD ADDITIONAL CODE HERE!
 print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
 </code></pre>
-<p><strong>5. <code>minValue(a, b, c)</code></strong> — minimum value of \(f(x) = ax^2+bx+c\) (for \(a&gt;0\)),
-found via the vertex \(x_0 = \frac{-b}{2a}\).</p>
+<p><strong>5.</strong> Write a function <code>minValue</code> defined by:</p>
+<ul>
+<li>input parameter: three integers <code>a, b, c</code> where <code>a &gt; 0</code></li>
+<li>return value: the minimum value of \(f(x) = ax^2+bx+c\)
+<ul>
+<li>first, write code for \(x_0 = \frac{-b}{2a}\)</li>
+<li>then, write code to <code>return f(x0)</code></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">def f(a, b, c, x):
     return a*x**2 + b*x + c
 def minValue(a, b, c):
@@ -680,18 +769,39 @@ print(minValue(1, 5, 10))   # 3.75
 print(minValue(1, -5, 10))  # 3.75
 print(minValue(3, 7, 5))    # 0.9166666666666661
 </code></pre>
-<p><strong>6. <code>reverse(n)</code></strong> — reverse the digits of a 4-digit integer <code>n</code>.</p>
-<pre><code class="language-python">print(reverse(3702))  # 2073
+<p><strong>6.</strong> Write a function <code>reverse</code> defined by:</p>
+<ul>
+<li>input parameter: an integer <code>n</code> where <code>1000 &lt;= n &lt;= 9999</code> (a 4-digit
+integer)</li>
+<li>return value: the integer formed by reversing the digits of <code>n</code>
+<ul>
+<li>e.g. <code>reverse(3712)</code> returns <code>2173</code>, and <code>reverse(3710)</code> returns <code>173</code>.</li>
+<li><em>What is the value of <code>n % 10</code>? Of <code>(n // 10) % 10</code>? Of <code>(n // 100) % 10</code>?
+Of <code>n // 1000</code>?</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(reverse(3702))  # 2073
 print(reverse(3710))  # 173
 print(reverse(3700))  # 73
 </code></pre>
-<blockquote>
-<p><code>n % 10</code>, <code>(n // 10) % 10</code>, <code>(n // 100) % 10</code>, <code>n // 1000</code> give you each
-digit.</p>
-</blockquote>
-<p><strong>7. <code>countCoins(n)</code></strong> — fewest Korean coins (10, 50, 100, 500 won) that add
-up to <code>n</code> won (<code>10 ≤ n ≤ 990</code>, multiple of 10). E.g. <code>countCoins(730)</code> → <code>6</code>.</p>
-<pre><code class="language-python">print(countCoins(790))  # 8
+<p><strong>7.</strong> What is the fewest number of Korean coins needed to make 730 Korean
+won? The answer is 6.</p>
+<p>Write a function <code>countCoins</code> defined by:</p>
+<ul>
+<li>input parameter: an integer <code>n</code> where <code>10 &lt;= n &lt;= 990</code> and <code>n</code> is a
+multiple of 10</li>
+<li>return value: the fewest number of Korean coins (10, 50, 100, 500 won)
+needed to make <code>n</code> Korean won
+<ul>
+<li>e.g. <code>countCoins(730)</code> returns <code>6</code>.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(countCoins(730))  # 6
+print(countCoins(790))  # 8
 print(countCoins(260))  # 4
 print(countCoins(70))   # 3
 </code></pre>
@@ -810,74 +920,195 @@ one more case later.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-2"><a class="header" href="#problem-set-2">Problem Set</a></h1>
 <h3 id="required"><a class="header" href="#required">Required</a></h3>
-<p><strong>1. <code>maximum(n1, n2)</code></strong> — larger of two integers.</p>
-<pre><code class="language-python">print(maximum(5,7))  # 7
-print(maximum(7,5))  # 7
-print(maximum(5,5))  # 5
-</code></pre>
-<p><strong>2. <code>countZeros(n1,n2,n3,n4,n5)</code></strong> — how many of the five arguments are 0.</p>
-<pre><code class="language-python">def countZeros(n1,n2,n3,n4,n5):
-    counter = 0
-    if n1 == 0: counter += 1
-    if n2 == 0: counter += 1
+<p><strong>1.</strong> Write a function <code>maximum</code> defined by:</p>
+<ul>
+<li>input parameter: two integers <code>n1, n2</code></li>
+<li>return value: the maximum value among <code>n1</code> and <code>n2</code></li>
+</ul>
+<pre><code class="language-python">def maximum(n1, n2):
     # ADD ADDITIONAL CODE HERE!
-print(countZeros(1,0,3,0,0))  # 3
-print(countZeros(0,2,2,0,4))  # 2
+print(maximum(5, 7))  # 7
+print(maximum(7, 5))  # 7
+print(maximum(5, 5))  # 5
 </code></pre>
-<p><strong>3. <code>smaller(n1, n2)</code></strong> — <code>"left"</code> if <code>n1 &lt; n2</code>, <code>"right"</code> if <code>n2 &lt; n1</code>,
-<code>"equal"</code> otherwise.</p>
-<p><strong>4. <code>quadrant(x, y)</code></strong> — which quadrant the point <code>(x,y)</code> is in: <code>"First  Quadrant"</code>, <code>"Second Quadrant"</code>, <code>"Third Quadrant"</code>, <code>"Fourth Quadrant"</code>, or
-<code>"On the Boundary"</code>.</p>
-<pre><code class="language-python">print(quadrant(10, 5))   # First Quadrant
+<p><strong>2.</strong> Write a function <code>countZeros</code> defined by:</p>
+<ul>
+<li>input parameter: five integers <code>n1, n2, n3, n4, n5</code></li>
+<li>return value: the number of <code>0</code>s among <code>n1, n2, n3, n4, n5</code></li>
+</ul>
+<pre><code class="language-python">def countZeros(n1, n2, n3, n4, n5):
+    counter = 0
+    if n1 == 0:
+        counter = counter + 1
+    if n2 == 0:
+        counter = counter + 1
+    # ADD ADDITIONAL CODE HERE!
+print(countZeros(1, 0, 3, 0, 0))  # 3
+print(countZeros(0, 2, 2, 0, 4))  # 2
+print(countZeros(1, 2, 3, 0, 4))  # 1
+print(countZeros(1, 2, 3, 5, 4))  # 0
+</code></pre>
+<p><strong>3.</strong> Write a function <code>smaller</code> defined by:</p>
+<ul>
+<li>input parameter: two integers <code>n1, n2</code></li>
+<li>return value: a string — <code>"left"</code> if <code>n1</code> is less than <code>n2</code>, <code>"right"</code> if
+<code>n2</code> is less than <code>n1</code>, <code>"equal"</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def smaller(n1, n2):
+    # ADD ADDITIONAL CODE HERE!
+print(smaller(5, 7))  # left
+print(smaller(7, 5))  # right
+print(smaller(5, 5))  # equal
+</code></pre>
+<p><strong>4.</strong> Write a function <code>quadrant</code> defined by:</p>
+<ul>
+<li>input parameter: two integers <code>x, y</code> (the x/y coordinates of a point)</li>
+<li>return value: a string — <code>"First Quadrant"</code> if <code>x,y &gt; 0</code>, <code>"Second Quadrant"</code> if <code>x &lt; 0, y &gt; 0</code>, <code>"Third Quadrant"</code> if <code>x,y &lt; 0</code>, <code>"Fourth Quadrant"</code> if <code>x &gt; 0, y &lt; 0</code>, <code>"On the Boundary"</code> otherwise</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(quadrant(10, 5))   # First Quadrant
 print(quadrant(-5, 3))   # Second Quadrant
 print(quadrant(-5, -7))  # Third Quadrant
 print(quadrant(3, -5))   # Fourth Quadrant
 print(quadrant(0, -3))   # On the Boundary
 </code></pre>
-<p><strong>5. <code>round(x)</code></strong> (rounding, without using the built-in <code>round()</code>) — nearest
-integer to <code>x</code> (e.g. 2.4→2, 2.5→3, 2.6→3).</p>
+<p><strong>5.</strong> Write a function <code>round</code> defined by:</p>
+<ul>
+<li>input parameter: a float <code>x &gt;= 0</code></li>
+<li>return value: the integer nearest to <code>x</code> (rounding) — e.g. <code>2.4</code> → <code>2</code>,
+<code>2.5</code> → <code>3</code>, <code>2.6</code> → <code>3</code>
+<ul>
+<li><em>Make use of the value <code>x - int(x)</code>.</em></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">def round(x):
     fraction = x - int(x)
     # ADD ADDITIONAL CODE HERE!
+print(round(2.4))  # 2
+print(round(2.5))  # 3
+print(round(2.6))  # 3
 </code></pre>
-<p><strong>6. <code>ceiling(x)</code></strong> — smallest integer \(\geq x\) (2.0→2, 2.1→3, 2.6→3).</p>
-<p><strong>7. <code>quadratic(a, b, c)</code></strong> — number of real roots of \(ax^2+bx+c=0\)
-(<code>a</code> may be 0; <code>a=b=c=0</code> never given).</p>
+<p><strong>6.</strong> Write a function <code>ceiling</code> defined by:</p>
+<ul>
+<li>input parameter: a float <code>x &gt;= 0</code></li>
+<li>return value: the integer \(\lceil x \rceil\) (ceiling) — e.g. <code>2.0</code> →
+<code>2</code>, <code>2.1</code> → <code>3</code>, <code>2.6</code> → <code>3</code></li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(ceiling(2.0))              # 2
+print(ceiling(2.0000000000001))  # 3
+print(ceiling(2.99))             # 3
+</code></pre>
+<p><strong>7.</strong> Write a function <code>quadratic</code> defined by:</p>
+<ul>
+<li>input parameter: three integers <code>a, b, c</code></li>
+<li>return value: the number of real roots of \(ax^2+bx+c=0\)
+<ul>
+<li><em>Note: <code>a</code> and <code>b</code> may be 0; assume <code>a=b=c=0</code> is never given as input.</em></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">def quadratic(a, b, c):
     if a == 0:
         # ADD ADDITIONAL CODE HERE!
     else:
         D = b**2 - 4*a*c
         # ADD ADDITIONAL CODE HERE!
-print(quadratic(0, 0, 1))    # 0
-print(quadratic(1, -2, 1))   # 1
-print(quadratic(1, -4, 1))   # 2
+print(quadratic(0, 0, 1))   # 0
+print(quadratic(0, 1, 1))   # 1
+print(quadratic(1, -2, 1))  # 1
+print(quadratic(1, 1, 1))   # 0
+print(quadratic(1, -4, 1))  # 2
 </code></pre>
-<p><strong>8. <code>minX(a, b, c)</code></strong> (<code>a&gt;0</code>, <code>b&lt;0</code>) — the integer <code>x</code> minimizing
-\(ax^2+bx+c\) (smallest such integer if there’s a tie).</p>
-<pre><code class="language-python">x0 = int(-b / (2*a))
-print(minX(1, -9, 2))  # 4 (not 4.5 or 5)
+<p><strong>8.</strong> Write a function <code>minX</code> defined by:</p>
+<ul>
+<li>input parameter: three integers <code>a, b, c</code> where <code>a &gt; 0</code> and <code>b &lt; 0</code></li>
+<li>return value: the integer <code>x</code> that minimizes \(ax^2+bx+c\) (the smallest
+such integer, if there’s a tie)
+<ul>
+<li>e.g. if <code>a=1, b=-9, c=2</code>, then <code>x=4</code> is returned (not <code>4.5</code> or <code>5</code>).</li>
+<li><em>Focus on <code>x0 = int(-b/(2*a))</code> and <code>x0 + 1</code>.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def f(a, b, c, x):
+    return a*x**2 + b*x + c
+def minX(a, b, c):
+    x0 = int(-b / (2*a))
+    # ADD ADDITIONAL CODE HERE!
+print(minX(1, -9, 2))   # 4
+print(minX(9, -5, 0))   # 0
+print(minX(9, -15, 0))  # 1
+print(minX(7, -13, 3))  # 1
 </code></pre>
-<p><strong>9. <code>rock_paper_scissors(first, second)</code></strong> — <code>"First"</code>/<code>"Second"</code>/<code>"Tie"</code>.</p>
-<pre><code class="language-python">print(rock_paper_scissors("R","S"))  # First
+<p><strong>9.</strong> Write a function <code>rock_paper_scissors</code> defined by:</p>
+<ul>
+<li>input parameter: two strings <code>first, second</code>, each one of <code>"R"</code>, <code>"P"</code>,
+<code>"S"</code> (Rock/Paper/Scissors)</li>
+<li>return value: a string — <code>"First"</code> if <code>first</code> wins, <code>"Second"</code> if <code>second</code>
+wins, <code>"Tie"</code> if the game is tied</li>
+</ul>
+<pre><code class="language-python">def rock_paper_scissors(first, second):
+    if first == second:
+        return "Tie"
+    # ADD ADDITIONAL CODE HERE!
+    # if first == "R" ...
+print(rock_paper_scissors("R","R"))  # Tie
+print(rock_paper_scissors("R","S"))  # First
+print(rock_paper_scissors("R","P"))  # Second
+print(rock_paper_scissors("S","S"))  # Tie
 print(rock_paper_scissors("S","P"))  # First
+print(rock_paper_scissors("S","R"))  # Second
+print(rock_paper_scissors("P","P"))  # Tie
 print(rock_paper_scissors("P","R"))  # First
+print(rock_paper_scissors("P","S"))  # Second
 </code></pre>
-<p><strong>10. <code>better(gold1,silver1,bronze1, gold2,silver2,bronze2)</code></strong> — which
-country wins by Olympic medal-table order (gold first, then silver, then
-bronze — not by total count).</p>
-<pre><code class="language-python">print(better(10,4,24, 1,35,25))   # First  (more gold)
-print(better(10,18,0, 10,4,24))   # First  (tied gold, more silver)
-print(better(10,20,5, 10,20,4))   # First  (tied gold+silver, more bronze)
+<p><strong>10.</strong> Write a function <code>better</code> defined by:</p>
+<ul>
+<li>input parameter: six integers representing the medal standings of two
+countries — <code>gold1,silver1,bronze1</code> for the first, <code>gold2,silver2,bronze2</code>
+for the second</li>
+<li>return value: a string — <code>"First"</code> if the first country’s result is
+better, <code>"Second"</code> if the second’s is better, <code>"Tie"</code> if tied — ranked in
+gold-silver-bronze order (<strong>not</strong> by total medal count)</li>
+</ul>
+<pre><code class="language-python">def better(gold1, silver1, bronze1, gold2, silver2, bronze2):
+    if gold1 &gt; gold2:
+        return "First"
+    if gold1 &lt; gold2:
+        return "Second"
+    # ADD ADDITIONAL CODE HERE!
+print(better(10,4,24, 1,35,25))    # First
+print(better(1,35,25, 10,4,24))    # Second
+print(better(10,18,0, 10,4,24))    # First
+print(better(10,4,24, 10,18,0))    # Second
+print(better(10,20,5, 10,20,4))    # First
+print(better(10,20,4, 10,20,5))    # Second
+print(better(10,20,5, 10,20,5))    # Tie
 </code></pre>
 <h3 id="optional-problems"><a class="header" href="#optional-problems">Optional Problems</a></h3>
-<p><strong>11. <code>area(x1,y1,l1, x2,y2,l2)</code></strong> — area of the intersection of two
-axis-aligned squares (centers <code>(x1,y1)</code>/<code>(x2,y2)</code>, side lengths <code>l1≥l2</code>).</p>
-<p><strong>12. <code>triangular(n)</code></strong> — a positive integer <code>n</code> is <em>triangular</em> if
-\(n = m(m+1)/2\) for some positive integer <code>m</code>. Return that <code>m</code>, or <code>None</code>.</p>
-<blockquote>
-<p>Hint: \(m(m+1)/2 = n \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt; \sqrt{2n} &lt; m+1\).</p>
-</blockquote>
+<p><strong>11.</strong> Write a function <code>area</code> defined by:</p>
+<ul>
+<li>input parameter: six positive integers <code>x1,y1,l1,x2,y2,l2</code>, where
+<code>x1,y1,l1</code> represent a square centered at <code>(x1,y1)</code> with side length <code>l1</code>,
+and <code>x2,y2,l2</code> represent another square centered at <code>(x2,y2)</code> with side
+length <code>l2</code> (assume <code>l1 &gt;= l2</code>)</li>
+<li>return value: the area of the intersection of the two squares</li>
+</ul>
+<p><strong>12.</strong> A positive integer <code>n</code> is a <em>triangular number</em> if there exists a
+positive integer <code>m</code> such that \(n = m(m+1)/2\).</p>
+<p>Write a function <code>triangular</code> defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>n</code></li>
+<li>return value: the positive integer <code>m</code> such that \(n=m(m+1)/2\), or
+<code>None</code> if <code>n</code> is not a triangular number
+<ul>
+<li><em>Hint: \(n = m(m+1)/2 \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt;
+\sqrt{2n} &lt; m+1\).</em></li>
+</ul>
+</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="boolean-functions"><a class="header" href="#boolean-functions">Boolean Functions</a></h1>
 <p>You want to check whether <code>x</code> is 1 or 2. In English that is one short
@@ -996,62 +1227,216 @@ if d == dist**2:
 instead of <code>==</code> — see Week 2’s Introduction essay for why.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-3"><a class="header" href="#problem-set-3">Problem Set</a></h1>
-<p><strong>1. <code>inSecondQuadrant(x, y)</code> / <code>exactlyTwoSecondQuadrant(...)</code></strong> — the
-first checks if <code>(x,y)</code> is in the second quadrant (returns an actual <code>bool</code>,
-not the string <code>"True"</code>/<code>"False"</code>); the second uses it to check whether
-exactly two of three given points are in the second quadrant.</p>
-<pre><code class="language-python">print(type(inSecondQuadrant(0,0)))  # &lt;class 'bool'&gt;
-print(inSecondQuadrant(-1,2))       # True
+<p><strong>1.</strong> Write a function <code>inSecondQuadrant</code> defined by:</p>
+<ul>
+<li>input parameter: two integers <code>x, y</code></li>
+<li>return value: a boolean — <code>True</code> if the point <code>(x,y)</code> is in the second
+quadrant, <code>False</code> otherwise
+<ul>
+<li><em>Do not return <code>"True"</code>/<code>"False"</code> — those are strings, not booleans.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def inSecondQuadrant(x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(type(inSecondQuadrant(0, 0)))  # &lt;class 'bool'&gt;
+print(inSecondQuadrant(-1, 2))   # True
+print(inSecondQuadrant(-1, -2))  # False
+print(inSecondQuadrant(1, -2))   # False
+print(inSecondQuadrant(-1, 0))   # False
 </code></pre>
-<p><strong>2. <code>withinInterval(lower, upper, n)</code> / <code>exactlyThreeWithinInterval(...)</code></strong>
-— first checks <code>lower &lt;= n &lt;= upper</code>; second uses it to check whether
-exactly three of five numbers fall within <code>[lower,upper]</code>.</p>
-<p><strong>3. <code>triangle(a, b)</code></strong> — do the x-axis, y-axis, and the line \(y=ax+b\) form
-a triangle?</p>
-<pre><code class="language-python">print(triangle(-3, -2))  # True
-print(triangle(3, 0))    # False (passes through origin)
+<p>Using <code>inSecondQuadrant</code> above, write a function <code>exactlyTwoSecondQuadrant</code>
+defined by:</p>
+<ul>
+<li>input parameter: six integers <code>x1,y1,x2,y2,x3,y3</code> — <code>(x1,y1)</code>, <code>(x2,y2)</code>,
+<code>(x3,y3)</code> represent three points in the plane</li>
+<li>return value: a boolean — <code>True</code> if exactly two of the three points are in
+the second quadrant, <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def exactlyTwoSecondQuadrant(x1, y1, x2, y2, x3, y3):
+    counter = 0
+    if inSecondQuadrant(x1, y1):
+        counter = counter + 1
+    # ADD ADDITIONAL CODE HERE!
+    return (counter == 2)
+print(exactlyTwoSecondQuadrant(-1,2, 2,1, -2,1))  # True
+print(exactlyTwoSecondQuadrant(1,2, -2,1, -3,3))  # True
+print(exactlyTwoSecondQuadrant(1,2, -2,-1, -2,1)) # False
+print(exactlyTwoSecondQuadrant(-1,2, -2,1, -2,2)) # False
 </code></pre>
-<p><strong>4. <code>triangle(a, b, c)</code></strong> (different signature) — can side lengths <code>a, b, c</code>
-form a triangle?</p>
-<blockquote>
-<p>If a triangle exists, \(a+b&gt;c\), \(b+c&gt;a\), \(c+a&gt;b\) all hold. Does the converse
-hold too?</p>
-</blockquote>
-<p><strong>5. <code>rightAngled(x1,y1, x2,y2, x3,y3)</code></strong> — do three points form a
-right triangle?</p>
+<p><strong>2.</strong> Write a function <code>withinInterval</code> defined by:</p>
+<ul>
+<li>input parameter: three integers <code>lower, upper, n</code> (where <code>lower &lt;= upper</code>)</li>
+<li>return value: a boolean — <code>True</code> if <code>lower &lt;= n &lt;= upper</code>, <code>False</code>
+otherwise</li>
+</ul>
+<pre><code class="language-python">def withinInterval(lower, upper, n):
+    # ADD ADDITIONAL CODE HERE!
+print(type(withinInterval(1, 5, 0)))  # &lt;class 'bool'&gt;
+print(withinInterval(1, 5, 0))  # False
+print(withinInterval(1, 5, 1))  # True
+print(withinInterval(1, 5, 3))  # True
+print(withinInterval(1, 5, 5))  # True
+print(withinInterval(1, 5, 6))  # False
+</code></pre>
+<p>Using <code>withinInterval</code> above, write a function <code>exactlyThreeWithinInterval</code>
+defined by:</p>
+<ul>
+<li>input parameter: seven integers <code>lower, upper, n1,n2,n3,n4,n5</code> —
+<code>[lower,upper]</code> represents an interval</li>
+<li>return value: a boolean — <code>True</code> if exactly three of <code>n1,n2,n3,n4,n5</code> fall
+within the interval, <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def exactlyThreeWithinInterval(lower, upper, n1, n2, n3, n4, n5):
+    counter = 0
+    if withinInterval(lower, upper, n1):
+        counter = counter + 1
+    # ADD ADDITIONAL CODE HERE!
+print(exactlyThreeWithinInterval(1,5, 1,0,6,5,3))  # True
+print(exactlyThreeWithinInterval(1,5, 6,1,0,3,5))  # True
+print(exactlyThreeWithinInterval(1,5, 6,1,0,7,2))  # False
+print(exactlyThreeWithinInterval(1,5, 6,7,0,1,2))  # False
+</code></pre>
+<p><strong>3.</strong> Write a function <code>triangle</code> defined by:</p>
+<ul>
+<li>input parameter: two integers <code>a, b</code></li>
+<li>return value: a boolean — <code>True</code> if the x-axis, the y-axis, and the line
+<code>y = ax+b</code> together form a triangle in the plane, <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(triangle(-3, -2))  # True
+print(triangle(3, 0))    # False
+print(triangle(0, 2))    # False
+print(triangle(0, 0))    # False
+</code></pre>
+<p><strong>4.</strong> Write a function <code>triangle</code> defined by:</p>
+<ul>
+<li>input parameter: three positive integers <code>a, b, c</code></li>
+<li>return value: a boolean — <code>True</code> if a triangle with side lengths <code>a,b,c</code>
+can be formed, <code>False</code> otherwise
+<ul>
+<li><em>If a triangle exists, <code>a+b&gt;c</code> and <code>b+c&gt;a</code> and <code>c+a&gt;b</code> all hold. What
+about the converse?</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(triangle(3, 4, 5))  # True
+print(triangle(1, 5, 2))  # False
+print(triangle(3, 1, 1))  # False
+</code></pre>
+<p><strong>5.</strong> Write a function <code>rightAngled</code> defined by:</p>
+<ul>
+<li>input parameter: six integers <code>x1,y1,x2,y2,x3,y3</code> — <code>(x1,y1)</code>, <code>(x2,y2)</code>,
+<code>(x3,y3)</code> represent three points in the plane</li>
+<li>return value: a boolean — <code>True</code> if the three points form a right-angled
+triangle, <code>False</code> otherwise</li>
+</ul>
 <pre><code class="language-python">def rightAngled(x1, y1, x2, y2, x3, y3):
     a = (x2-x1)**2 + (y2-y1)**2
     b = (x3-x2)**2 + (y3-y2)**2
     c = (x1-x3)**2 + (y1-y3)**2
     # ADD ADDITIONAL CODE HERE!
+print(rightAngled(1, 1, 5, 2, -1, 9))  # True
+print(rightAngled(1, 2, 4, 2, 5, 4))   # False
+print(rightAngled(1, 2, 4, 2, 4, 3))   # True
 </code></pre>
-<p><strong>6. <code>acuteAngled(x1,y1, x2,y2, x3,y3)</code></strong> — do three points form an
-acute triangle?</p>
-<p><strong>7. <code>intersect(x1,y1,r1, x2,y2,r2)</code></strong> — do two circles intersect at exactly
-two points?</p>
-<blockquote>
-<p>Use <code>abs(x)</code> for \(|x|\).</p>
-</blockquote>
-<p><strong>8. <code>leapYear(year)</code> / <code>numDays(year, month)</code></strong> — the leap-year rule from
-Week 1 (divisible by 4, except centuries, unless divisible by 400), then use
-it to compute the number of days in a given month.</p>
+<p><strong>6.</strong> Write a function <code>acuteAngled</code> defined by:</p>
+<ul>
+<li>input parameter: six integers <code>x1,y1,x2,y2,x3,y3</code> — <code>(x1,y1)</code>, <code>(x2,y2)</code>,
+<code>(x3,y3)</code> represent three points in the plane</li>
+<li>return value: a boolean — <code>True</code> if the three points form an acute-angled
+triangle, <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(acuteAngled(1, 2, 4, 3, 2, 7))  # True
+print(acuteAngled(1, 2, 4, 2, 5, 4))  # False
+print(acuteAngled(1, 2, 4, 2, 4, 3))  # False
+</code></pre>
+<p><strong>7.</strong> Write a function <code>intersect</code> defined by:</p>
+<ul>
+<li>input parameter: six integers <code>x1,y1,r1,x2,y2,r2</code>, where <code>x1,y1,r1</code>
+represent a circle centered at <code>(x1,y1)</code> with radius <code>r1</code>, and <code>x2,y2,r2</code>
+represent another circle centered at <code>(x2,y2)</code> with radius <code>r2</code></li>
+<li>return value: a boolean — <code>True</code> if the two circles intersect at two
+points, <code>False</code> otherwise
+<ul>
+<li><em>Use <code>abs(x)</code> to compute the absolute value \(|x|\).</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(intersect(1, 1, 3, 5, 4, 2))  # False
+print(intersect(1, 1, 3, 4, 3, 2))  # True
+print(intersect(1, 1, 3, 2, 1, 2))  # False
+</code></pre>
+<p><strong>8.</strong> Write a function <code>leapYear</code> defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>year</code></li>
+<li>return value: a boolean — <code>True</code> if <code>year</code> is a leap year, <code>False</code>
+otherwise
+<ul>
+<li>Basically, leap years occur in years divisible by 4 (2009-2011 are not
+leap years, while 2008 and 2012 are).</li>
+<li>Years ending in <code>00</code> are leap years only if divisible by 400 (1700,
+1800, 1900, 2100, 2200 are not leap years; 1600, 2000, 2400 are).</li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">def leapYear(year):
     if year % 4 != 0:
         return False
-    # year is divisible by 4
+    # now, year is divisible by 4
     # ADD ADDITIONAL CODE HERE!
+print(leapYear(2008), leapYear(2011), leapYear(2012))  # True False True
 print(leapYear(2000), leapYear(2100), leapYear(2200))  # True False False
-
-def numDays(year, month):
-    assert 1 &lt;= month &lt;= 12
-    if month in (1,3,5,7,8,10,12):
+print(leapYear(2300), leapYear(2400), leapYear(3200))  # False True True
+</code></pre>
+<p>Using <code>leapYear</code> above, write a function <code>numDays</code> defined by:</p>
+<ul>
+<li>input parameter: two positive integers <code>year, month</code></li>
+<li>return value: the number of days in that year and month</li>
+</ul>
+<pre><code class="language-python">def numDays(year, month):
+    assert (1 &lt;= month &lt;= 12)
+    if month == 1 or month == 3 or month == 5 or month == 7 or \
+       month == 8 or month == 10 or month == 12:
         return 31
     # ADD ADDITIONAL CODE HERE!
+print(numDays(2000,1), numDays(2001,4), numDays(2004,8))  # 31 30 31
+print(numDays(2004,9), numDays(2005,3), numDays(2005,7))  # 30 31 31
 print(numDays(2008,2), numDays(2011,2), numDays(2012,2))  # 29 28 29
+print(numDays(2000,2), numDays(2100,2), numDays(2200,2))  # 29 28 28
+print(numDays(2300,2), numDays(2400,2), numDays(3200,2))  # 28 29 29
 </code></pre>
-<p><strong>9. <code>blood(supplyO,supplyA,supplyB,supplyAB, demandO,demandA,demandB,demandAB)</code></strong>
-— given blood-type supply/demand (O can only receive O; A can receive A/O; B
-can receive B/O; AB can receive any), does supply cover demand?</p>
+<p><strong>9.</strong> Big hospitals are always ready for emergency medical treatment, which
+often requires blood transfusions. Consider the problem faced by a hospital
+trying to determine whether its blood supply is sufficient.</p>
+<p>The basic rule for blood donation (ABO type only, ignoring Rh type for
+simplicity):</p>
+<ul>
+<li>Patients with type O can receive only blood type O.</li>
+<li>Patients with type A can receive only blood types A or O.</li>
+<li>Patients with type B can receive only blood types B or O.</li>
+<li>Patients with type AB can receive any of the four types.</li>
+</ul>
+<p>Write a function <code>blood</code> defined by:</p>
+<ul>
+<li>input parameter: eight integers — <code>supplyO,supplyA,supplyB,supplyAB</code> (the
+current supply of each blood type) and <code>demandO,demandA,demandB,demandAB</code>
+(the current demand)</li>
+<li>return value: a boolean — <code>True</code> if the current supply suffices for the
+current demand, <code>False</code> otherwise
+<ul>
+<li><em>Hint: the supply does <strong>not</strong> suffice if any of these hold:</em>
+<code>supplyO &lt; demandO</code>; <code>supplyO+supplyA &lt; demandO+demandA</code>;
+<code>supplyO+supplyB &lt; demandO+demandB</code>;
+<code>supplyO+supplyA+supplyB &lt; demandO+demandA+demandB</code>;
+<code>supplyO+supplyA+supplyB+supplyAB &lt; demandO+demandA+demandB+demandAB</code>.
+<em>What about the converse?</em></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">def blood(supplyO, supplyA, supplyB, supplyAB,
           demandO, demandA, demandB, demandAB):
     if supplyO &lt; demandO:
@@ -1060,10 +1445,6 @@ can receive B/O; AB can receive any), does supply cover demand?</p>
 print(blood(50, 36, 11, 8, 45, 42, 10, 3))  # False
 print(blood(50, 36, 11, 3, 45, 38, 10, 7))  # True
 </code></pre>
-<blockquote>
-<p>Hint: check the four cumulative inequalities (<code>O</code>, <code>O+A</code>, <code>O+B</code>,
-<code>O+A+B</code>, <code>O+A+B+AB</code> supply vs. matching demand). Is the converse also true?</p>
-</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-i"><a class="header" href="#for-loops-i">For Loops I</a></h1>
 <pre><code class="language-python">for i in range(10):
@@ -1169,66 +1550,179 @@ best” pattern will come back constantly for the rest of the course — get
 comfortable with it now.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-4"><a class="header" href="#problem-set-4">Problem Set</a></h1>
-<p><strong>1. <code>printMultTable1()</code> / <code>printMultTable2()</code></strong> — print parts of a
-multiplication table (odd rows only; then a growing triangular shape):</p>
+<p><strong>1.</strong> Write functions <code>printMultTable1</code> and <code>printMultTable2</code> defined by:</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: none</li>
+<li>action: print out parts of the multiplication table, as shown below
+<ul>
+<li><em>Copy and slightly modify <code>printMultTable0</code> from this week’s lecture.</em></li>
+<li><em>What does <code>for i in range(1,10,2):</code> do? What about the nested
+<code>for i in range(1,10,2): for j in range(1,i+1):</code>?</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def printMultTable1():
+    # ADD ADDITIONAL CODE HERE!
+printMultTable1()
+</code></pre>
+<p>Output:</p>
 <pre><code>1 2 3 4 5 6 7 8 9
 3 6 9 12 15 18 21 24 27
 5 10 15 20 25 30 35 40 45
-...
+7 14 21 28 35 42 49 56 63
+9 18 27 36 45 54 63 72 81
 </code></pre>
-<p>and</p>
+<pre><code class="language-python">def printMultTable2():
+    # ADD ADDITIONAL CODE HERE!
+printMultTable2()
+</code></pre>
+<p>Output:</p>
 <pre><code>1
 3 6 9
 5 10 15 20 25
-...
+7 14 21 28 35 42 49
+9 18 27 36 45 54 63 72 81
 </code></pre>
-<blockquote>
-<p>What does <code>for i in range(1, 10, 2):</code> do? What about the nested
-<code>for j in range(1, i+1):</code>?</p>
-</blockquote>
-<p><strong>2. <code>sumNumbers(a, b)</code></strong> — sum of integers from <code>a</code> to <code>b</code> inclusive.</p>
-<pre><code class="language-python">print(sumNumbers(5,10))    # 45
-print(sumNumbers(15,100))  # 4945
+<p><strong>2.</strong> Write a function <code>sumNumbers</code> defined by:</p>
+<ul>
+<li>input parameter: two integers <code>a</code> and <code>b</code> where <code>a &lt;= b</code></li>
+<li>return value: the sum of integers from <code>a</code> to <code>b</code>
+<ul>
+<li><em>What does <code>for i in range(a,b):</code> do? What about <code>for i in range(a,b+1):</code>?</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def sumNumbers(a, b):
+    total = 0
+    # ADD ADDITIONAL CODE HERE!
+print(sumNumbers(5, 10))   # 45
+print(sumNumbers(15, 100)) # 4945
 </code></pre>
-<p><strong>3. <code>factorial(n)</code></strong> — \(n!\).</p>
-<pre><code class="language-python">print(factorial(8))   # 40320
+<p><strong>3.</strong> Write a function <code>factorial</code> defined by:</p>
+<ul>
+<li>input parameter: an integer <code>n</code></li>
+<li>return value: \(n! = 1 \times 2 \times 3 \times \cdots \times (n-1)
+\times n\)</li>
+</ul>
+<pre><code class="language-python">def factorial(n):
+    prod = 1
+    # ADD ADDITIONAL CODE HERE!
+print(factorial(8))   # 40320
 print(factorial(12))  # 479001600
 </code></pre>
-<p><strong>4. <code>exp(x)</code></strong> — approximate \(e^x\) via the series
-\(e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \cdots + \frac{x^{100}}{100!}\).
-Reuse <code>factorial</code> from problem 3.</p>
-<pre><code class="language-python">print(exp(1.0))  # 2.7182818284590455
+<p><strong>4.</strong> One way to compute \(e^x\) is the infinite series
+\(e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} +
+\cdots + \frac{x^{100}}{100!}\) (100 can be replaced by any larger integer
+for greater precision).</p>
+<p>Write a function <code>exp</code> defined by:</p>
+<ul>
+<li>input parameter: a float <code>x</code></li>
+<li>return value: the approximation of \(e^x\) computed by the above formula
+<ul>
+<li><em>Copy the <code>factorial</code> function from problem 3 here, and make use of it.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># copy factorial() from problem 3 here, and make use of it
+def exp(x):
+    total = 1
+    # ADD ADDITIONAL CODE HERE!
+print(exp(1.0))  # 2.7182818284590455
+print(exp(2.0))  # 7.389056098930649
+print(exp(4.0))  # 54.598150033144265
 </code></pre>
-<p><strong>5. <code>withinCircle(r)</code></strong> — number of integer-coordinate points <code>(x,y)</code> with
-\(x^2+y^2 \le r^2\).</p>
-<pre><code class="language-python">print(withinCircle(1000) / 1000**2)  # 3.141549 -- approximates π
+<p><strong>5.</strong> Write a function <code>withinCircle</code> defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>r</code></li>
+<li>return value: the number of integer-coordinate points <code>(x,y)</code> with
+\(x^2+y^2 \le r^2\) (i.e. points within the circle of radius <code>r</code>)</li>
+</ul>
+<pre><code class="language-python">def withinCircle(r):
+    counter = 0
+    for x in range(-r, r+1):
+        for y in range(-r, r+1):
+            # ADD ADDITIONAL CODE HERE!
+    return counter
+print(withinCircle(100) / 100**2)    # 3.1417
+print(withinCircle(1000) / 1000**2)  # 3.141549
 </code></pre>
-<p><strong>6. <code>dayOfWeek(year, month, day)</code></strong> (<code>year ≥ 2000</code>) — day of week as
-<code>"Mon"</code>..<code>"Sun"</code>.</p>
-<blockquote>
-<p>Reuse <code>leapYear</code>/<code>numDays</code> from Week 5. <code>2000-01-01</code> was a Saturday — count
-days elapsed from there and take <code>% 7</code>.</p>
-</blockquote>
-<pre><code class="language-python">print(dayOfWeek(2001,1,28))  # Sun
-print(dayOfWeek(2013,3,23))  # Sat
+<p><strong>6.</strong> Write a function <code>dayOfWeek</code> defined by:</p>
+<ul>
+<li>input parameter: three integers <code>year, month, day</code> where <code>year &gt;= 2000</code></li>
+<li>return value: the day of the week for that date, as one of the strings
+<code>"Mon"</code>, <code>"Tue"</code>, <code>"Wed"</code>, <code>"Thu"</code>, <code>"Fri"</code>, <code>"Sat"</code>, <code>"Sun"</code>
+<ul>
+<li><em>Make use of <code>leapYear</code>/<code>numDays</code> from last week. <code>2000/1/1</code> was a
+Saturday. Count the number of days elapsed from <code>2000/1/1</code> to
+<code>year/month/day</code> in three steps — e.g. for <code>2015/4/13</code>: (1) days from
+2000 through 2014, (2) days from <code>2015/Jan</code> through <code>2015/Mar</code>, (3) days
+from <code>2015/Apr/1</code> to <code>2015/Apr/12</code>.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def dayOfWeek(year, month, day):
+    counter = 0
+    # step 1: count the number of days from 2000 to year-1
+    # step 2: count the number of days from year/Jan to year/(month-1)
+    # step 3: count the days from year/month/1 to year/month/(day-1)
+    n = counter % 7
+    if n == 0:
+        return "Sat"
+    # step 4: complete the code for the other cases
+print(dayOfWeek(2001, 1, 28))  # Sun
+print(dayOfWeek(2002, 11, 21)) # Thu
+print(dayOfWeek(2004, 3, 4))   # Thu
+print(dayOfWeek(2008, 7, 1))   # Tue
+print(dayOfWeek(2011, 5, 8))   # Sun
+print(dayOfWeek(2013, 3, 23))  # Sat
 </code></pre>
-<p><strong>7. <code>findMax()</code></strong> — maximum value of
-\(f(i,j) = (i^5 + 2i^3j^2 + 5i^2 + j + 5000) \bmod 10000\) for
-\(i,j \in {0,\ldots,99}\).</p>
+<p><strong>7.</strong> Let \(f: {0,1,\ldots,99}^2 \to \mathbb{Z}\) be defined by
+\(f(i,j) = (i^5 + 2i^3j^2 + 5i^2 + j + 5000) \bmod 10000\).</p>
+<p>Write a function <code>findMax</code> defined by:</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: the maximum value of <code>f</code> defined above</li>
+</ul>
 <pre><code class="language-python">def f(i, j):
     return (i**5 + 2*(i**3)*(j**2) + 5*i**2 + j + 5000) % 10000
-print(findMax())  # 9997
+def findMax():
+    best = f(0, 0)
+    for i in range(100):
+        for j in range(100):
+            # ADD ADDITIONAL CODE HERE!
+    return best
+print("max value:", findMax())  # 9997
 </code></pre>
-<p><strong>8. <code>combination(n, k)</code></strong> (\(1 \le k \le n \le 250\)) — \(\binom{n}{k}\), as an
-<code>int</code> (not <code>float</code>).</p>
-<blockquote>
-<p>Use \(\prod_{i=1}^{k} \frac{n+1-i}{i} = \frac{n}{1}\cdot\frac{n-1}{2}\cdots\frac{n+1-k}{k}\)
-and divide as you go to keep values manageable.</p>
-</blockquote>
-<p><strong>9. <code>maxPrimeFactor(n)</code></strong> (<code>n ≥ 2</code>) — largest prime factor of <code>n</code>. E.g.
-<code>maxPrimeFactor(12)</code> → <code>3</code> (since \(12 = 2 \times 2 \times 3\)).</p>
-<p><strong>10. <code>withinRegion(a, c)</code></strong> — number of integer points <code>(x,y)</code> satisfying
-both \(y \le -ax^2+c\) and \(y \ge ax^2-c\) (the region between two parabolas).</p>
+<p><strong>8.</strong> Write a function <code>combination</code> defined by:</p>
+<ul>
+<li>input parameter: two integers <code>n</code> and <code>k</code> with <code>1 &lt;= k &lt;= n &lt;= 250</code></li>
+<li>return value: the number of ways to choose <code>k</code> from a set of <code>n</code>
+(\(\binom{n}{k}\)), as an <code>int</code> (not <code>float</code>)
+<ul>
+<li><em>Use the formula \(\prod_{i=1}^{k} \frac{n+1-i}{i} = \frac{n}{1} \cdot
+\frac{n-1}{2} \cdot \frac{n-2}{3} \cdots \frac{n+2-k}{k-1} \cdot
+\frac{n+1-k}{k}\).</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>9.</strong> Write a function <code>maxPrimeFactor</code> defined by:</p>
+<ul>
+<li>input parameter: an integer <code>n &gt;= 2</code></li>
+<li>return value: the largest prime factor of <code>n</code> — e.g. <code>maxPrimeFactor(12)</code>
+returns <code>3</code>, since <code>12 = 2×2×3</code>
+<ul>
+<li><em>Use an <code>isPrime</code> function to check primality.</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>10.</strong> Write a function <code>withinRegion</code> defined by:</p>
+<ul>
+<li>input parameter: two positive integers <code>a, c</code></li>
+<li>return value: the number of integer-coordinate points <code>(x,y)</code> that satisfy
+both \(y \le -ax^2+c\) and \(y \ge ax^2-c\) (points within the region
+bounded by the two parabolas)</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="lists"><a class="header" href="#lists">Lists</a></h1>
 <p>You want a 3×3 grid of zeros. You already know that <code>[0]*3</code> gives
@@ -1333,64 +1827,230 @@ print(incrementAll([2, 4, 3, 1, 7, 2, 5, 6]))   # [3, 5, 4, 2, 8, 3, 6, 7]
 the pattern behind most of this week’s Problem Set.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-5"><a class="header" href="#problem-set-5">Problem Set</a></h1>
-<p><strong>1. <code>sumSquares(a)</code></strong> — sum of squares of a list’s elements.</p>
-<pre><code class="language-python">print(sumSquares([3,5,4]))  # 50
+<p><strong>1.</strong> Write a function <code>sumSquares</code> defined by:</p>
+<ul>
+<li>input parameter: an integer list <code>a</code> (of length <code>n</code>)</li>
+<li>return value: \(a_0^2 + a_1^2 + a_2^2 + \cdots + a_{n-1}^2\) — the sum of
+squares of the elements of <code>a</code>
+<ul>
+<li>e.g. <code>sumSquares([4,3,12])</code> returns <code>169</code> (\(=4^2+3^2+12^2\)).</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def sumSquares(a):
+    n = len(a)
+    total = 0
+    # ADD ADDITIONAL CODE HERE!
+print(sumSquares([3,5,4]))               # 50
+print(sumSquares([2,5,4,0,1,-1,5,1]))    # 73
 </code></pre>
-<p><strong>2. <code>computePolynomial(a, x)</code></strong> — evaluate \(a_0 + a_1x + a_2x^2 + \cdots +
-a_{n-1}x^{n-1}\).</p>
-<pre><code class="language-python">print(computePolynomial([3,5,4], 5))  # 128
+<p><strong>2.</strong> Write a function <code>computePolynomial</code> defined by:</p>
+<ul>
+<li>input parameter: an integer list <code>a</code> (of length <code>n</code>) and an integer <code>x</code></li>
+<li>return value: \(a_0 + a_1 x + a_2 x^2 + \cdots + a_{n-1}x^{n-1}\)</li>
+</ul>
+<pre><code class="language-python">def computePolynomial(a, x):
+    n = len(a)
+    total = 0
+    # ADD ADDITIONAL CODE HERE!
+print(computePolynomial([3,5,4], 5))            # 128
+print(computePolynomial([2,0,4,0,1,-1,5,1], 3)) # 5708
 </code></pre>
-<p><strong>3. <code>harmonicMean(a)</code></strong> — \(\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}\).</p>
-<p><strong>4. <code>geometricMean(a)</code></strong> — \(\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}\).</p>
-<blockquote>
-<p>Compute the product first, then raise to the <code>1/n</code> power.</p>
-</blockquote>
-<p><strong>5. <code>reverse(a)</code></strong> — new list with elements in reverse order.</p>
-<pre><code class="language-python">print(reverse([3,1,5,2,4]))  # [4,2,5,1,3]
+<p><strong>3.</strong> Write a function <code>harmonicMean</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>a</code> of <code>n</code> positive integers</li>
+<li>return value: the harmonic mean of the values in <code>a</code>,
+\(\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}\)
+<ul>
+<li><em>First write code to compute the sum of reciprocals, then return <code>n / sum</code>.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def harmonicMean(a):
+    n = len(a)
+    # ADD ADDITIONAL CODE HERE!
+numbers = [2, 4, 3, 10, 7, 2, 5, 6]
+print(harmonicMean(numbers))  # 3.648208469055375
 </code></pre>
-<p><strong>6. <code>square(a)</code></strong> — new list where each element is squared (original list
-unchanged).</p>
-<pre><code class="language-python">L = [7,6,3,1,5,8,2,4]
+<p><strong>4.</strong> Write a function <code>geometricMean</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>a</code> of <code>n</code> positive integers</li>
+<li>return value: the geometric mean of the values in <code>a</code>,
+\(\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}\)
+<ul>
+<li><em>First compute <code>prod = a[0]*a[1]*...*a[n-1]</code>, then return <code>prod**(1/n)</code>.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def geometricMean(a):
+    n = len(a)
+    prod = 1
+    # ADD ADDITIONAL CODE HERE!
+print(geometricMean([3,2,6,4,7]))           # 3.987421134470927
+print(geometricMean([2,4,3,10,7,2,5,6]))    # 4.221167313317658
+</code></pre>
+<p><strong>5.</strong> Write a function <code>reverse</code> defined by:</p>
+<ul>
+<li>input parameter: a list of integers</li>
+<li>return value: a new list, same length, with the order reversed
+<ul>
+<li>e.g. <code>reverse([1,5,3,7,6])</code> returns <code>[6,7,3,5,1]</code>.</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def reverse(a):
+    n = len(a)
+    b = [None] * n
+    for i in range(n):
+        b[i] = a[??]  # ADD ADDITIONAL CODE HERE!
+    return b
+print(reverse([3,1,5,2,4]))          # [4,2,5,1,3]
+print(reverse([7,6,3,1,5,8,2,4]))    # [4,2,8,5,1,3,6,7]
+</code></pre>
+<p><strong>6.</strong> Write a function <code>square</code> defined by:</p>
+<ul>
+<li>input parameter: a list of integers</li>
+<li>return value: a new list, same length, with each element squared
+<ul>
+<li>e.g. <code>square([1,3,5,6,7])</code> returns <code>[1,9,25,36,49]</code>.</li>
+<li><em>The overall structure is very similar to <code>reverse</code> above.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def square(a):
+    # ADD ADDITIONAL CODE HERE!
+L = [7,6,3,1,5,8,2,4]
 print(square(L))  # [49,36,9,1,25,64,4,16]
-print(L)          # [7,6,3,1,5,8,2,4] -- L itself unchanged
+print(L)          # [7,6,3,1,5,8,2,4]  -- L itself unchanged
 </code></pre>
-<p><strong>7. <code>accumulate(a)</code></strong> — running-sum list: <code>b[i] = a[0]+a[1]+...+a[i]</code>.</p>
-<pre><code class="language-python">print(accumulate([1,2,1,3,1]))  # [1,3,4,7,8]
+<p><strong>7.</strong> Write a function <code>accumulate</code> defined by:</p>
+<ul>
+<li>input parameter: an integer list <code>a</code></li>
+<li>return value: a list <code>b</code>, same length, of running sums —
+<code>b[i] = a[0]+a[1]+...+a[i]</code> for each <code>i</code>
+<ul>
+<li>e.g. <code>accumulate([1,2,1,3,1])</code> returns <code>[1,3,4,7,8]</code>.</li>
+<li><em>Use the fact that <code>b[i] == b[i-1]+a[i]</code> for <code>i = 1,2,...</code>.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def accumulate(a):
+    n = len(a)
+    b = [None] * n
+    b[0] = a[0]
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(1, n):  # note that i starts from 1, not 0
+        ...
+print(accumulate([1,2,3,4,5]))        # [1,3,6,10,15]
+print(accumulate([7,6,3,1,5,8,2,4]))  # [7,13,16,17,22,30,32,36]
 </code></pre>
-<blockquote>
-<p><code>b[i] = b[i-1] + a[i]</code>.</p>
-</blockquote>
-<p><strong>8. <code>fibonacci(n)</code></strong> — first <code>n</code> Fibonacci numbers <code>1, 1, 2, 3, 5, 8, ...</code>.</p>
-<pre><code class="language-python">print(fibonacci(10))  # [1,1,2,3,5,8,13,21,34,55]
+<p><strong>8.</strong> Fibonacci numbers form the sequence <code>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...</code>.</p>
+<p>Write a function <code>fibonacci</code> defined by:</p>
+<ul>
+<li>input parameter: an integer <code>n</code></li>
+<li>return value: a list <code>b</code> of the first <code>n</code> Fibonacci numbers
+<ul>
+<li>e.g. <code>fibonacci(5)</code> returns <code>[1,1,2,3,5]</code>.</li>
+<li><em>Use the fact that <code>b[i] == b[i-1]+b[i-2]</code> for <code>i = 2,3,...</code>.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def fibonacci(n):
+    b = [None] * n
+    b[0] = 1
+    b[1] = 1
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(??):  # note that i starts from 2
+        ...
+print(fibonacci(5))   # [1,1,2,3,5]
+print(fibonacci(10))  # [1,1,2,3,5,8,13,21,34,55]
 </code></pre>
-<p><strong>9. <code>area(p)</code></strong> — area of a polygon (list of <code>[x,y]</code> points, given
-counter-clockwise) via the Shoelace formula:
-\(\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|\)</p>
-<pre><code class="language-python">points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
+<p><strong>9.</strong> Write a function <code>area</code> defined by:</p>
+<ul>
+<li>input parameter: a list of points representing a polygon, given in
+counter-clockwise order — each point is a list <code>[x,y]</code> of two integers
+<ul>
+<li>e.g. <code>[[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]</code> represents an
+8-sided polygon.</li>
+</ul>
+</li>
+<li>return value: the area of the polygon
+<ul>
+<li><em>Use the Shoelace formula:</em>
+\(\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot
+(y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|\)</li>
+<li><em>What does <code>p[i][0] * (p[(i+1)%n][1] - p[(i-1)%n][1])</code> mean, where <code>p</code>
+is the input polygon?</em></li>
+<li><em>Use <code>abs(x)</code> for \(|x|\).</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def area(p):
+    n = len(p)
+    total = 0
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(n):
+        ...
+points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
 print(area(points))  # 22.0
 </code></pre>
-<blockquote>
-<p>Use <code>abs(x)</code> for \(|x|\).</p>
-</blockquote>
-<p><strong>10. <code>perimeter(p)</code></strong> — perimeter of the same kind of polygon (sum of
-consecutive-point distances, wrapping around).</p>
-<pre><code class="language-python">print(perimeter(points))  # 23.85332583138582
+<p><strong>10.</strong> Write a function <code>perimeter</code> defined by:</p>
+<ul>
+<li>input parameter: a list of points representing a polygon, as in the
+previous problem</li>
+<li>return value: the perimeter of the polygon
+<ul>
+<li><em>As in the previous problem, use the expression <code>p[(i+1)%n]</code>.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
+print(perimeter(points))  # 23.85332583138582
 </code></pre>
-<p><strong>11. <code>findMin(a)</code></strong> — minimum value in a list (max/min pattern, from Week 6).</p>
-<pre><code class="language-python">print(findMin([7,8,3,4,3,6]))  # 3
+<p><strong>11.</strong> Write a function <code>findMin</code> defined by:</p>
+<ul>
+<li>input parameter: a list of integers</li>
+<li>return value: the minimum value among the elements
+<ul>
+<li><em>This is the max/min pattern from Week 6.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def findMin(a):
+    best = a[0]
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(1, len(a)):
+        if a[i] &lt; best:
+            ...
+print(findMin([7,8,3,4,3,6]))        # 3
+print(findMin([3,5,7,2,7,2,3,8,6]))  # 2
 </code></pre>
-<p><strong>12. <code>closestPair(p)</code></strong> — smallest distance between any two points in a
-list of <code>[x,y]</code> points.</p>
+<p><strong>12.</strong> Write a function <code>closestPair</code> defined by:</p>
+<ul>
+<li>input parameter: a list of points in the plane, each represented as
+<code>[x,y]</code> as in problem 9
+<ul>
+<li>e.g. <code>[[4,-4],[7,5],[2,1]]</code> represents the points <code>(4,-4)</code>, <code>(7,5)</code>,
+<code>(2,1)</code>.</li>
+</ul>
+</li>
+<li>return value: the distance of the closest pair of points (the minimum
+pairwise distance)</li>
+</ul>
 <pre><code class="language-python">def distSquared(p1, p2):
     return (p2[0]-p1[0])**2 + (p2[1]-p1[1])**2
-
 def closestPair(p):
     n = len(p)
-    min_d = distSquared(p[0], p[1])
+    best = distSquared(p[0], p[1])
     # ADD ADDITIONAL CODE HERE!
-
+    for i in range(n):
+        for j in range(i+1, n):
+            d = distSquared(p[i], p[j])
+            if d &lt; best:
+                ...
 points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
-print(closestPair(points))  # 4.47213595499958 (between [2,1] and [-2,-1])
+print(closestPair(points))  # 4.47213595499958  (between [2,1] and [-2,-1])
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-ii"><a class="header" href="#for-loops-ii">For Loops II</a></h1>
@@ -1499,26 +2159,135 @@ your code to get the corners right.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-6"><a class="header" href="#problem-set-6">Problem Set</a></h1>
 <h3 id="required-1"><a class="header" href="#required-1">Required</a></h3>
-<p><strong>1. <code>countZero(numbers)</code></strong> — number of <code>0</code>s in a list. Counter pattern.</p>
-<p><strong>2. <code>countRange(numbers, lower, upper)</code></strong> — count of elements <code>x</code> with
-<code>lower &lt;= x &lt;= upper</code>.</p>
-<p><strong>3. <code>countSecondQuadrant(p)</code></strong> — count of points (each <code>[x,y]</code>) in the
-second quadrant.</p>
-<blockquote>
-<p><code>p[i][0] &lt; 0 and p[i][1] &gt; 0</code>.</p>
-</blockquote>
-<p><strong>4. <code>countWithinCircle(p, r)</code></strong> — count of points with \(x^2+y^2 \le r^2\).</p>
-<p><strong>5. <code>withinRect(top,bottom,left,right, x,y)</code> / <code>countWithinRect(...)</code></strong> —
-first checks if <code>(x,y)</code> is inside an axis-aligned rectangle (boundary
-included); second counts how many points from a list fall inside it.</p>
-<pre><code class="language-python">print(withinRect(2,-4,-5,6, -5,2))  # True
+<p><strong>1.</strong> Write a function <code>countZero</code> defined by:</p>
+<ul>
+<li>input parameter: an integer list <code>numbers</code></li>
+<li>return value: the number of occurrences of <code>0</code> in <code>numbers</code></li>
+</ul>
+<pre><code class="language-python">def countZero(numbers):
+    # ADD ADDITIONAL CODE HERE!
+print(countZero([0,4,0,-2,4,0]))          # 3
+print(countZero([1,0,-2,4,0,0,-7,0,5]))   # 4
+</code></pre>
+<p><strong>2.</strong> Write a function <code>countRange</code> defined by:</p>
+<ul>
+<li>input parameter: an integer list <code>numbers</code> and two integers <code>lower, upper</code></li>
+<li>return value: the number of integers in <code>numbers</code> within <code>[lower, upper]</code>
+(i.e. <code>lower &lt;= x &lt;= upper</code>)</li>
+</ul>
+<pre><code class="language-python">def countRange(numbers, lower, upper):
+    # ADD ADDITIONAL CODE HERE!
+print(countRange([0,6,2,1,3,4,7], 2, 5))                      # 3
+print(countRange([8,9,10,2,4,5,9,7,2,3,7], 3, 7))             # 5
+</code></pre>
+<p><strong>3.</strong> Write a function <code>countSecondQuadrant</code> defined by:</p>
+<ul>
+<li>input parameter: a list of points in the plane, each represented as
+<code>[x,y]</code></li>
+<li>return value: the number of points in the second quadrant
+<ul>
+<li><em>What does <code>p[i][0] &lt; 0 and p[i][1] &gt; 0</code> mean?</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def countSecondQuadrant(p):
+    # ADD ADDITIONAL CODE HERE!
+points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
+          [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+print(countSecondQuadrant(points))  # 3
+</code></pre>
+<p><strong>4.</strong> Write a function <code>countWithinCircle</code> defined by:</p>
+<ul>
+<li>input parameter: a list of points in the plane (as in problem 3) and a
+positive integer <code>r</code></li>
+<li>return value: the number of points <code>(x,y)</code> with \(x^2+y^2 \le r^2\)</li>
+</ul>
+<pre><code class="language-python">def countWithinCircle(p, r):
+    # ADD ADDITIONAL CODE HERE!
+points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
+          [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+print(countWithinCircle(points, 3))  # 2
+print(countWithinCircle(points, 5))  # 4
+print(countWithinCircle(points, 8))  # 9
+</code></pre>
+<p><strong>5.</strong> Write a boolean function <code>withinRect</code> defined by:</p>
+<ul>
+<li>input parameter: six integers <code>top, bottom, left, right, x, y</code> —
+<code>top,bottom,left,right</code> represent an axis-aligned rectangle (e.g.
+<code>(top,bottom,left,right) = (2,-4,-5,6)</code>)</li>
+<li>return value: a boolean — <code>True</code> if <code>(x,y)</code> is inside the rectangle
+(boundary included), <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def withinRect(top, bottom, left, right, x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(withinRect(2,-4,-5,6, -5,2))  # True
+print(withinRect(2,-4,-5,6, 6,-1))  # True
+print(withinRect(2,-4,-5,6, 0,1))   # True
+print(withinRect(2,-4,-5,6, -6,0))  # False
+print(withinRect(2,-4,-5,6, 0,3))   # False
+</code></pre>
+<p>Using <code>withinRect</code> above, write a function <code>countWithinRect</code> defined by:</p>
+<ul>
+<li>input parameter: <code>top,bottom,left,right</code> (an axis-aligned rectangle) and a
+list of points in the plane (as in problem 3)</li>
+<li>return value: the number of points within the rectangle (boundary
+included)</li>
+</ul>
+<pre><code class="language-python">def countWithinRect(top, bottom, left, right, p):
+    counter = 0
+    for i in range(len(p)):
+        if withinRect(top, bottom, left, right, p[i][0], p[i][1]):
+            # ADD ADDITIONAL CODE HERE!
+            ...
+points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
+          [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
 print(countWithinRect(2,-4,-5,6, points))  # 7
 </code></pre>
-<p><strong>6. <code>countLeapYear(numbers)</code></strong> — count of leap years in a list of years
-(reuse <code>leapYear</code> from Week 5).</p>
-<p><strong>7. <code>countComposite(numbers)</code></strong> — count of composite numbers (<code>not isPrime(p)</code>).</p>
-<p><strong>8. <code>zigzagEntireWorld()</code></strong> — Toy Robot: use <code>move9steps()</code> and <code>zigzag()</code>
-to make the robot zigzag across the whole grid and return.</p>
+<p><strong>6.</strong> Write a function <code>countLeapYear</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>numbers</code> of positive integers, each representing
+a year</li>
+<li>return value: the number of leap years in <code>numbers</code>
+<ul>
+<li><em>Use the <code>leapYear</code> boolean function from Week 5.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def countLeapYear(numbers):
+    # ADD ADDITIONAL CODE HERE!
+print(countLeapYear([2008,2011,2012,2000]))  # 3
+print(countLeapYear([2100,2300,2400,2200]))  # 1
+</code></pre>
+<p><strong>7.</strong> Write a function <code>countComposite</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>numbers</code> of positive integers</li>
+<li>return value: the number of composite numbers in <code>numbers</code>
+<ul>
+<li><em><code>not isPrime(p)</code> is true iff <code>p</code> is composite.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def isPrime(p):
+    for i in range(2, p//2 + 1):
+        if p % i == 0:
+            return False
+    return True
+def countComposite(numbers):
+    # ADD ADDITIONAL CODE HERE!
+num = [217, 287, 181, 143, 163, 319, 233, 399, 203]
+print(countComposite(num))  # 6
+</code></pre>
+<p><strong>8.</strong> Write a function <code>zigzagEntireWorld</code> defined by:</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: none</li>
+<li>action: make Hubo visit the entire world in a zig-zag pattern and return
+<ul>
+<li><em>Use <code>move9steps()</code> and <code>zigzag()</code> below (<code>move9steps()</code> moves Hubo 9
+steps forward; <code>zigzag()</code> makes Hubo zig-zag one round).</em></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">def move9steps():
     for i in range(9):
         hubo.move()
@@ -1529,33 +2298,112 @@ def zigzag():
     hubo.turn_right(); hubo.move(); hubo.turn_right()
 def zigzagEntireWorld():
     # ADD ADDITIONAL CODE HERE!
+    zigzag()
+zigzagEntireWorld()
 </code></pre>
-<p><strong>9. <code>whirlEntireWorld()</code></strong> — Toy Robot: spiral pattern, “1 L 1 L 2 L 2 L 3 L
-3 L … 9 L 9 L 9” (<code>L</code> = turn left, numbers = steps forward).</p>
-<p><strong>10. <code>zigzagEntireWorld()</code></strong> (a different pattern) — Toy Robot: sequence
-“L 1 L 1 L 1 R 1 R 2 R 2 L 1 L 3 L 3 R 1 R 4 R 4 …”.</p>
+<p><strong>9.</strong> Write a function <code>whirlEntireWorld</code> defined by:</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: none</li>
+<li>action: make Hubo visit the entire world in a spiral pattern
+<ul>
+<li><em>Using <code>L</code> for “turn left” and a number for “move that many steps
+forward,” Hubo’s full action sequence is:</em>
+<code>1 L 1 L 2 L 2 L 3 L 3 L ... 9 L 9 L 9</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def whirlEntireWorld():
+    # ADD ADDITIONAL CODE HERE!
+    for n in range(1, 10):
+        ...
+whirlEntireWorld()
+</code></pre>
+<p><strong>10.</strong> Write a function <code>zigzagEntireWorld</code> defined by (a different
+pattern from problem 8):</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: none</li>
+<li>action: make Hubo visit the entire world in the pattern below
+<ul>
+<li><em>Using <code>L</code>/<code>R</code> for “turn left”/“turn right” and a number for “move that
+many steps forward,” Hubo’s full action sequence is:</em>
+<code>L 1 L 1 L 1 R 1 R 2 R 2 L 1 L 3 L 3 R 1 R 4 R 4</code>
+<code>L 1 L 5 L 5 R 1 R 6 R 6 L 1 L 7 L 7 R 1 R 8 R 8</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def zigzagEntireWorld():
+    hubo.turn_right()
+    # ADD ADDITIONAL CODE HERE!
+    for n in range(1, 9):
+        if n % 2 == 1:
+            ...
+zigzagEntireWorld()
+</code></pre>
 <h3 id="optional-problems-1"><a class="header" href="#optional-problems-1">Optional Problems</a></h3>
 <p><em>Not for submission/grading, but good practice (mostly past exam problems).</em></p>
-<p><strong>11. <code>countOutOfCircle(L, r)</code></strong> — count of points <em>outside</em> the circle
-\(x^2+y^2=r^2\).</p>
-<p><strong>12. <code>countLower(L)</code></strong> — count of integers in <code>L</code> smaller than the average
-of all of <code>L</code>.</p>
-<p><strong>13. <code>countWithinRange(L)</code></strong> — <code>L</code> gives cube side lengths; count cubes
-whose <em>volume</em> falls within \([A-B, A+B]\) where \(A\) is the average volume and
-\(B\) is the standard deviation of the volumes:
-\(\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}\).</p>
-<p><strong>14. <code>countDoublePrime(L)</code></strong> — a “double prime” is \(q=2p\) for some prime
-<code>p</code>; count how many elements of <code>L</code> are double primes.</p>
-<p><strong>15. <code>countTriangular(L)</code></strong> — count of triangular numbers in <code>L</code>
-(\(n = m(m+1)/2\)).</p>
-<blockquote>
-<p>Hint: \(m(m+1)/2 = n \Rightarrow m &lt; \sqrt{2n} &lt; m+1\).</p>
-</blockquote>
-<p><strong>16. <code>findMax(L)</code></strong> — maximum value in <code>L</code> among elements whose <em>index</em> is
-not prime. E.g. <code>L = [110,49,441,91,341,20]</code> — indices 0,1,4 are non-prime,
-giving values <code>110, 49, 341</code>, so the answer is <code>341</code>.</p>
-<p><strong>17. <code>colinear(L)</code></strong> — count of collinear triples <code>L[i], L[j], L[k]</code>
-(<code>i&lt;j&lt;k</code>) among a list of points.</p>
+<p><strong>11.</strong> Write a function <code>countOutOfCircle</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>L</code> of points in the plane (as in Week 7 problem
+9) and a positive integer <code>r</code></li>
+<li>return value: the number of points in <code>L</code> outside the circle
+\(x^2+y^2=r^2\)</li>
+</ul>
+<p><strong>12.</strong> Write a function <code>countLower</code> defined by:</p>
+<ul>
+<li>input parameter: an integer list <code>L</code></li>
+<li>return value: the number of integers in <code>L</code> smaller than the average of
+all integers in <code>L</code></li>
+</ul>
+<p><strong>13.</strong> Write a function <code>countWithinRange</code> defined by:</p>
+<ul>
+<li>input parameter: an integer list <code>L</code>, each element a cube’s side length</li>
+<li>return value: the number of cubes whose volume falls within <code>[A-B, A+B]</code>,
+where <code>A</code> is the average volume of the cubes and <code>B</code> is the standard
+deviation of their volumes
+<ul>
+<li><em>The standard deviation \(\sigma\) of numbers \(x_1,\ldots,x_n\) is
+\(\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}\) where
+\(\bar{x} = \frac{\sum_{i=1}^n x_i}{n}\).</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>14.</strong> A positive integer <code>q</code> is called a <em>double prime</em> if <code>q = 2p</code> for
+some prime <code>p</code>.</p>
+<p>Write a function <code>countDoublePrime</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>L</code> of positive integers</li>
+<li>return value: the number of double primes in <code>L</code></li>
+</ul>
+<p><strong>15.</strong> Write a function <code>countTriangular</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>L</code> of positive integers</li>
+<li>return value: the number of triangular numbers in <code>L</code> (<code>n</code> is triangular
+if \(n = m(m+1)/2\) for some positive integer <code>m</code>)
+<ul>
+<li><em>Hint: \(n = m(m+1)/2 \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt;
+\sqrt{2n} &lt; m+1\).</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>16.</strong> Write a function <code>findMax</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>L</code> of positive integers</li>
+<li>return value: the maximum value in <code>L</code> among elements whose <em>index</em> is
+not prime
+<ul>
+<li>e.g. <code>L = [110,49,441,91,341,20]</code>: indices 0,1,4 are non-prime, giving
+values <code>110, 49, 341</code> — the maximum is <code>341</code>.</li>
+</ul>
+</li>
+</ul>
+<p><strong>17.</strong> Write a function <code>colinear</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>L</code> of points in the plane, each represented as
+<code>[x,y]</code> (as in Week 7 problem 12)</li>
+<li>return value: the number of collinear triples <code>L[i], L[j], L[k]</code> (<code>i&lt;j&lt;k</code>)</li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-iii"><a class="header" href="#for-loops-iii">For Loops III</a></h1>
 <p>This is the quantifier pattern you just learned — “for all”.</p>
@@ -1668,52 +2516,205 @@ go:</p>
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-7"><a class="header" href="#problem-set-7">Problem Set</a></h1>
-<p><strong>1. <code>sumOfThreeSquares(n)</code></strong> (“for some” pattern) — can <code>n</code> be written as
-the sum of squares of three positive integers? (e.g. \(38=2^2+3^2+5^2\))</p>
-<pre><code class="language-python">for n in range(20, 31):
+<p><strong>1.</strong> Write a function <code>sumOfThreeSquares</code> (“for some” pattern) defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>n</code></li>
+<li>return value: a boolean — <code>True</code> if <code>n</code> can be written as a sum of squares
+of three positive integers (e.g. \(38=2^2+3^2+5^2\), \(43=3^2+3^2+5^2\)),
+<code>False</code> otherwise
+<ul>
+<li><em>Refer to <code>sumOfTwoSquares</code> from this week’s lecture.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def sumOfThreeSquares(n):
+    # ADD ADDITIONAL CODE HERE!
+    b = int(n**0.5)
+    for i in range(1, b+1):
+        for j in range(1, b+1):
+            for k in range(1, b+1):
+                ...
+for n in range(20, 31):
     print(n, sumOfThreeSquares(n))
-# 20 False  21 True  22 True  23 False  24 True ...
 </code></pre>
-<p><strong>2. <code>sumOfThreeDistinctSquares(n)</code></strong> — same, but the three integers must be
-distinct.</p>
-<blockquote>
-<p>Loop template: <code>for i in range(1,b+1): for j in range(i+1,b+1): for k in  range(j+1,b+1): ...</code></p>
-</blockquote>
-<p><strong>3. <code>sumOfTwoPrimes(n)</code></strong> — can <code>n</code> be written as a sum of two primes?
-(e.g. \(21=2+19\))</p>
-<p><strong>4. <code>sumOfTwoPrimeSquares(n)</code></strong> — can <code>n</code> be written as a sum of squares of
-two primes? (e.g. \(50=5^2+5^2\))</p>
-<p><strong>5. <code>somePrime(numbers)</code> / <code>allPrime(numbers)</code></strong> — “for some”/“for all”
-quantifiers over primality.</p>
-<pre><code class="language-python">print(somePrime(num1), allPrime(num1))  # True False
+<p>Output: <code>20 False, 21 True, 22 True, 23 False, 24 True, 25 False, 26 True, 27 True, 28 False, 29 True, 30 True</code></p>
+<p><strong>2.</strong> Write a function <code>sumOfThreeDistinctSquares</code> (“for some” pattern)
+defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>n</code></li>
+<li>return value: a boolean — <code>True</code> if <code>n</code> can be written as a sum of squares
+of three <em>distinct</em> positive integers, <code>False</code> otherwise
+<ul>
+<li><em>Use the loop template from <code>closestPair</code> (Week 7):</em>
+<code>for i in range(1,b+1): for j in range(i+1,b+1): for k in range(j+1,b+1): ...</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def sumOfThreeDistinctSquares(n):
+    # ADD ADDITIONAL CODE HERE!
+for n in range(20, 31):
+    print(n, sumOfThreeDistinctSquares(n))
+</code></pre>
+<p>Output: <code>20 False, 21 True, 22 False, 23 False, 24 False, 25 False, 26 True, 27 False, 28 False, 29 True, 30 True</code></p>
+<p><strong>3.</strong> Write a function <code>sumOfTwoPrimes</code> (“for some” pattern) defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>n</code></li>
+<li>return value: a boolean — <code>True</code> if <code>n</code> can be written as a sum of two
+primes (e.g. <code>21=2+19</code>, <code>22=11+11</code>), <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def isPrime(p):
+    for i in range(2, p//2 + 1):
+        if p % i == 0:
+            return False
+    return True
+def sumOfTwoPrimes(n):
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(2, n-1):
+        for j in range(2, n-1):
+            if isPrime(i) and isPrime(j) and n == i+j:
+                ...
+for n in range(20, 31):
+    print(n, sumOfTwoPrimes(n))
+</code></pre>
+<p>Output: <code>20 True, 21 True, 22 True, 23 False, 24 True, 25 True, 26 True, 27 False, 28 True, 29 False, 30 True</code></p>
+<p><strong>4.</strong> Write a function <code>sumOfTwoPrimeSquares</code> (“for some” pattern) defined
+by:</p>
+<ul>
+<li>input parameter: a positive integer <code>n</code></li>
+<li>return value: a boolean — <code>True</code> if <code>n</code> can be written as a sum of squares
+of two primes (e.g. <code>50=5²+5²</code>, <code>53=2²+7²</code>), <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def isPrime(p):
+    for i in range(2, p//2 + 1):
+        if p % i == 0:
+            return False
+    return True
+def sumOfTwoPrimeSquares(n):
+    # ADD ADDITIONAL CODE HERE!
+for n in range(50, 61):
+    print(n, sumOfTwoPrimeSquares(n))
+</code></pre>
+<p>Output: <code>50 True, 51 False, 52 False, 53 True, 54 False, 55 False, 56 False, 57 False, 58 True, 59 False, 60 False</code></p>
+<p><strong>5.</strong> Write functions <code>somePrime</code> and <code>allPrime</code> (“for some” and “for all”
+patterns) defined by:</p>
+<ul>
+<li>input parameter: a list of positive integers</li>
+<li>return value: a boolean — for <code>somePrime</code>, <code>True</code> if there is a prime in
+the list; for <code>allPrime</code>, <code>True</code> if every number in the list is prime;
+<code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def isPrime(p):
+    for i in range(2, p//2 + 1):
+        if p % i == 0:
+            return False
+    return True
+# "for some" pattern
+def somePrime(numbers):
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(len(numbers)):
+        if isPrime(numbers[i]):
+            ...
+# "for all" pattern
+def allPrime(numbers):
+    # ADD ADDITIONAL CODE HERE!
+num1 = [217, 287, 143, 163, 319]
+num2 = [217, 287, 143, 169, 319]
+num3 = [223, 281, 227, 151, 149]
+print(somePrime(num1), allPrime(num1))  # True False
+print(somePrime(num2), allPrime(num2))  # False False
 print(somePrime(num3), allPrime(num3))  # True True
 </code></pre>
-<p><strong>6. <code>allDistinct(numbers)</code> / <code>allWithinRange(numbers, lower, upper)</code> /
-<code>isPermutation(numbers)</code></strong> — first two are “for all” patterns; the third
-(a one-liner!) uses both: a list of length <code>n</code> is a permutation if all
-elements are distinct and each is in <code>0..n-1</code>.</p>
-<pre><code class="language-python">print(allDistinct([1,3,2,5,2,1]))  # False
-print(isPermutation([1,0,2,5,3,4]))  # True
+<p><strong>6.</strong> Write a function <code>allDistinct</code> (“for all” pattern) defined by:</p>
+<ul>
+<li>input parameter: an integer list <code>numbers</code></li>
+<li>return value: a boolean — <code>True</code> if <code>numbers[0], numbers[1], ...</code> are all
+distinct, <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def allDistinct(numbers):
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(len(numbers)):
+        for j in range(i+1, len(numbers)):
+            ...
+print(allDistinct([1,3,2,5,2,1]))  # False
+print(allDistinct([1,0,2,5,3,4]))  # True
 </code></pre>
-<p><strong>7. <code>walk_square_picking_all_beepers()</code></strong> — Toy Robot walks the boundary
-picking up every beeper it’s standing on.</p>
+<p>Write a function <code>allWithinRange</code> (“for all” pattern) defined by:</p>
+<ul>
+<li>input parameter: an integer list <code>numbers</code> and two integers <code>lower,upper</code></li>
+<li>return value: a boolean — <code>True</code> if <code>lower &lt;= numbers[i] &lt;= upper</code> for
+every <code>i</code>, <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def allWithinRange(numbers, lower, upper):
+    # ADD ADDITIONAL CODE HERE!
+print(allWithinRange([1,0,2,6,3,4], 0, 5))  # False
+print(allWithinRange([1,0,2,5,3,4], 0, 5))  # True
+</code></pre>
+<p>Using <code>allDistinct</code> and <code>allWithinRange</code> above, write a function
+<code>isPermutation</code> defined by (<em>this is simple — one line is enough!</em>):</p>
+<ul>
+<li>input parameter: an integer list <code>numbers</code></li>
+<li>return value: a boolean — <code>True</code> if <code>numbers</code> (length <code>n</code>) is a
+permutation (all elements distinct <strong>and</strong> <code>0 &lt;= numbers[i] &lt;= n-1</code> for
+every <code>i</code>), <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">print(isPermutation([1,3,2,5,2,1]))  # False
+print(isPermutation([1,0,2,5,3,4]))  # True
+print(isPermutation([1,0,2,6,3,4]))  # False
+</code></pre>
+<p><strong>7.</strong> Write a function <code>walk_square_picking_all_beepers</code> defined by:</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: none</li>
+<li>action: make Hubo walk along the world boundary, picking up every beeper
+it stands on
+<ul>
+<li><em>Use the Week 8 boundary-walk code — <code>for j in range(4): for i in range(9): hubo.move(); hubo.turn_left()</code> — but replace <code>hubo.move()</code>
+with <code>move_and_pick()</code> below.</em></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">def move_and_pick():
     hubo.move()
     if hubo.on_beeper():
         hubo.pick_beeper()
-
 def walk_square_picking_all_beepers():
-    # ADD ADDITIONAL CODE HERE! (reuse the Week 8 boundary-walk, but call
-    # move_and_pick() instead of hubo.move())
+    # ADD ADDITIONAL CODE HERE!
+walk_square_picking_all_beepers()
 </code></pre>
-<p><strong>8. <code>whirl_picking_all_beepers()</code></strong> — same idea, along the Week 8 “whirl”
-spiral path instead of the boundary.</p>
-<p><strong>9. <code>whirl_dropping_beepers()</code></strong> — Toy Robot drops a beeper (if carrying
-one) at each step of the sequence “1 L 2 L 3 L … 9 L 9”.</p>
+<p><strong>8.</strong> Write a function <code>whirl_picking_all_beepers</code> defined by:</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: none</li>
+<li>action: make Hubo visit the entire world (as in Week 8’s <code>whirl</code> spiral
+pattern), picking up every beeper it stands on
+<ul>
+<li><em>Replace <code>hubo.move()</code> with <code>move_and_pick()</code> from problem 7.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def whirl_picking_all_beepers():
+    # ADD ADDITIONAL CODE HERE!
+whirl_picking_all_beepers()
+</code></pre>
+<p><strong>9.</strong> Write a function <code>whirl_dropping_beepers</code> defined by:</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: none</li>
+<li>action: make Hubo visit the world dropping beepers
+<ul>
+<li><em>Using <code>L</code> for “turn left” and a number for “move that many steps
+forward,” Hubo’s action sequence is: <code>1 L 2 L 3 L ... 9 L 9</code>. Replace
+<code>hubo.move()</code> with <code>move_and_drop()</code> below.</em></li>
+</ul>
+</li>
+</ul>
 <pre><code class="language-python">def move_and_drop():
     hubo.move()
     if hubo.carries_beepers():
         hubo.drop_beeper()
+def whirl_dropping_beepers():
+    # ADD ADDITIONAL CODE HERE!
+whirl_dropping_beepers()
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="while-loops"><a class="header" href="#while-loops">While Loops</a></h1>
@@ -1818,68 +2819,187 @@ while hubo.on_beeper():
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-8"><a class="header" href="#problem-set-8">Problem Set</a></h1>
 <h3 id="required-2"><a class="header" href="#required-2">Required</a></h3>
-<p><strong>1. <code>countSevens(n)</code></strong> — how many digits of <code>n</code> are <code>7</code>.</p>
-<pre><code class="language-python">print(countSevens(1723))        # 1
+<p><strong>1.</strong> Write a function <code>countSevens</code> defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>n</code></li>
+<li>return value: the number of occurrences of digit <code>7</code> in <code>n</code>
+<ul>
+<li><em>Refer to <code>countDigits</code> from this week’s lecture:</em>
+<code>while n &gt; 0: counter += 1; n //= 10</code>. <em>What does <code>n % 10</code> give you on
+each iteration? Increment the counter only when <code>n % 10 == 7</code>.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def countSevens(n):
+    # ADD ADDITIONAL CODE HERE!
+print(countSevens(1723))        # 1
 print(countSevens(1357924770))  # 3
 </code></pre>
-<blockquote>
-<p><code>while n &gt; 0: ... n //= 10</code> walks the digits from the right; <code>n % 10</code> is
-the current last digit.</p>
-</blockquote>
-<p><strong>2. <code>countEvenDigits(n)</code></strong> — how many digits of <code>n</code> are even. Same
-structure as problem 1, checking <code>n % 2 == 0</code>.</p>
-<p><strong>3. <code>gcd(a, b)</code></strong> — greatest common divisor via the Euclidean algorithm:
-\(\gcd(a,b) = \gcd(b, a \bmod b)\), until the second number hits 0.</p>
+<p><strong>2.</strong> Write a function <code>countEvenDigits</code> defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>n</code></li>
+<li>return value: the number of even digits in <code>n</code>
+<ul>
+<li><em>The solution is very similar to <code>countSevens</code> above. What does <code>n % 2</code>
+give you on each iteration?</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(countEvenDigits(2723))        # 2
+print(countEvenDigits(1326924870))  # 6
+</code></pre>
+<p><strong>3.</strong> Write a function <code>gcd</code> defined by:</p>
+<ul>
+<li>input parameter: two positive integers <code>a</code> and <code>b</code></li>
+<li>return value: the greatest common divisor of <code>a</code> and <code>b</code></li>
+</ul>
+<p>The GCD can be computed by the <strong>Euclidean algorithm</strong>: given positive
+integers <code>a &gt;= b</code>, let <code>r = a % b</code>. Then <code>gcd(a,b) == gcd(b,r)</code>. For
+example, <code>gcd(36,20) = gcd(20,16) = gcd(16,4) = gcd(4,0) = 4</code>. Repeating
+this reduction always eventually reaches a pair whose second number is 0 —
+the GCD is then the other number.</p>
 <pre><code class="language-python">def gcd(a, b):
-    if a &lt; b:
+    if a &lt; b:  # swap so that a &gt;= b
         a, b = b, a
+    # ADD ADDITIONAL CODE HERE!
     while b != 0:
         r = a % b
-        a = b
-        b = r
-    return a
-print(gcd(36, 20))  # 4
+        a = ??
+        b = ??
+    return ??
+print(gcd(36, 20))          # 4
+print(gcd(2408208, 2790876)) # 132
 </code></pre>
-<p><strong>4. <code>walk_square_picking_all_beepers()</code></strong> — like Week 9’s version, but
-multiple beepers can be at one spot: replace the <code>if</code> with a <code>while</code>.</p>
-<p><strong>5. <code>collect_garbages()</code></strong> — Toy Robot collects every beeper (garbage) into
-a can north of the starting point: sweep right collecting, turn back, sweep
-left, move up, drop everything, return to start.</p>
-<p><strong>6. <code>putNumber(num)</code></strong> — Toy Robot drops beepers to spell out the digits
-of <code>num</code>.</p>
+<p><em>Hint: during the loop, <code>a,b</code> should take the values <code>36,20 → 20,16 → 16,4 → 4,0</code>.</em></p>
+<p><strong>4.</strong> Write a function <code>walk_square_picking_all_beepers</code> defined by:</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: none</li>
+<li>action: make Hubo walk along the world boundary picking up all the
+beepers
+<ul>
+<li><em>This is a small extension of Week 9 problem 7, allowing multiple
+beepers at one position — copy that code and replace the <code>if</code> with a
+<code>while</code>.</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>5.</strong> Write a function <code>collect_garbages</code> defined by:</p>
+<ul>
+<li>input parameter: none</li>
+<li>return value: none</li>
+<li>action: make Hubo collect all the garbage (represented by beepers) and
+put it in the garbage can, located north of the starting point</li>
+</ul>
+<pre><code class="language-python">def collect_garbages():
+    # move to the right wall while collecting beepers
+    # turn back
+    # move to the left wall
+    # move upwards
+    # put all the beepers down
+    # move to the starting position
+collect_garbages()
+</code></pre>
+<p><strong>6.</strong> Write a function <code>putNumber</code> defined by:</p>
+<ul>
+<li>input parameter: an integer <code>num</code></li>
+<li>return value: none</li>
+<li>action: make Hubo drop beepers that spell out the digits of <code>num</code>
+<ul>
+<li>e.g. <code>putNumber(2291)</code> makes Hubo drop the corresponding beepers.</li>
+<li><em>What does the following code do?</em>
 <pre><code class="language-python">while num &gt; 0:
     digit = num % 10
     num = num // 10
-    # drop `digit` beepers and move forward, instead of printing
+    print(digit)
+</code></pre>
+<em>What does <code>digit</code> represent on each iteration? Replace the <code>print</code>
+with code that drops beepers and moves forward.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def putNumber(num):
+    # ADD ADDITIONAL CODE HERE!
+putNumber(2291)
 </code></pre>
 <h3 id="optional-problems-2"><a class="header" href="#optional-problems-2">Optional Problems</a></h3>
 <p><em>Not for submission/grading, but good practice (mostly past exam problems).</em></p>
-<p><strong>7–9. <code>estimatePI(...)</code></strong> (three variants) — approximate π using a <code>while</code>
-loop until within a given error bound:</p>
+<p><strong>7.</strong> Srinivasa Ramanujan proposed a formula to approximate \(\pi\):
+\[\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}
+\frac{(4k)!(1103+26390k)}{(k!)^4, 396^{4k}}\]</p>
+<p>Write a function <code>estimatePI</code> defined by:</p>
 <ul>
-<li>Ramanujan’s series: \(\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}\frac{(4k)!(1103+26390k)}{(k!)^4 396^{4k}}\)
-(target error \(\le 10^{-15}\), no <code>n</code> parameter)</li>
-<li>Basel problem: \(\pi = \sqrt{6\sum_{i=1}^{\infty}\frac{1}{i^2}}\) (parameter
-<code>n</code> from -4 to 0, stop once within \(10^n\) of <code>math.pi</code>)</li>
-<li>Leibniz series: \(\pi = 4\left(1-\frac13+\frac15-\frac17+\cdots\right)\)
-(same <code>n</code>-based stopping rule)</li>
+<li>input parameter: none</li>
+<li>return value: an approximation of \(\pi\) computed by the formula above
+<ul>
+<li><em>The difference from <code>math.pi</code> should be \(\le 10^{-15}\).</em></li>
 </ul>
-<p><strong>10. <code>countWeek(rateA, rateB, x)</code></strong> (<code>rateA &lt; rateB</code>) — two lab mice start
-at equal weight; <code>rateA</code>/<code>rateB</code> are their weekly growth rates. Return the
-minimum number of weeks until mouse B outweighs mouse A by at least <code>x</code>%.</p>
-<p><strong>11. <code>reverseSum(L)</code></strong> — sum of each number in <code>L</code> with its digits
-reversed. E.g. <code>[12,40,2]</code> → \(21+4+2=27\).</p>
-<p><strong>12. <code>evenDigits(num)</code></strong> — integer formed from just the even digits of
-<code>num</code>, in their original order (<code>0</code> if there are none). E.g. from <code>37153</code>
-→ <code>0</code> (no even digits).</p>
-<p><strong>13. <code>findMax(L)</code></strong> — <code>L</code> is a list of <code>[number, base]</code> pairs (e.g.
-<code>[151,8]</code> = octal 151); return the maximum value, converted to decimal.</p>
-<blockquote>
-<p>Write a helper <code>toDecimal([number, base])</code> first.</p>
-</blockquote>
-<p><strong>14. <code>countAllZeros(L)</code></strong> — total count of <code>0</code> bits across the binary
-representations of the decimal numbers in <code>L</code>. E.g. <code>[10,20,30]</code> →
-binary <code>1010,10100,11110</code> → \(2+3+1=6\).</p>
+</li>
+</ul>
+<p><strong>8.</strong> Write a function <code>estimatePI</code> defined by:</p>
+<ul>
+<li>input parameter: an integer <code>n</code> (from -4 to 0), an error bound</li>
+<li>return value: an approximation of \(\pi\) accurate to within \(10^n\)
+<ul>
+<li><em>Stop the <code>while</code> loop once the approximation is within \(10^n\) of
+<code>math.pi</code>. Use the formula</em> \[\pi = \sqrt{6\sum_{i=1}^{\infty}
+\frac{1}{i^2}}\]</li>
+</ul>
+</li>
+</ul>
+<p><strong>9.</strong> Write a function <code>estimatePI</code> defined by:</p>
+<ul>
+<li>input parameter: an integer <code>n</code> (from -4 to 0), an error bound</li>
+<li>return value: an approximation of \(\pi\) accurate to within \(10^n\)
+<ul>
+<li><em>Stop the <code>while</code> loop once the approximation is within \(10^n\) of
+<code>math.pi</code>. Use the Leibniz formula</em> \[\pi = 4\left(1-\frac13+\frac15-
+\frac17+\frac19-\cdots\right)\]</li>
+</ul>
+</li>
+</ul>
+<p><strong>10.</strong> Two lab mice A and B start at the same weight, but grow at
+different weekly rates.</p>
+<p>Write a function <code>countWeek</code> defined by:</p>
+<ul>
+<li>input parameter: three integers <code>rateA, rateB, x</code> (with <code>rateA &lt; rateB</code>)
+— the weekly growth rates of A and B</li>
+<li>return value: the minimum number of weeks until B weighs at least <code>x</code>%
+more than A</li>
+</ul>
+<p><strong>11.</strong> Write a function <code>reverseSum</code> defined by:</p>
+<ul>
+<li>input parameter: a list of positive integers</li>
+<li>return value: the sum of the numbers in the list, each with its digits
+reversed — e.g. <code>[12,40,2]</code> → <code>21+4+2 = 27</code></li>
+</ul>
+<p><strong>12.</strong> Write a function <code>evenDigits</code> defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>num</code></li>
+<li>return value: the integer formed from the even digits of <code>num</code>, in the
+same order they appear in <code>num</code> — <code>0</code> if <code>num</code> has no even digits (e.g.
+<code>37153</code> → <code>0</code>)</li>
+</ul>
+<p><strong>13.</strong> Write a function <code>findMax</code> defined by:</p>
+<ul>
+<li>input parameter: a list of <code>[number, base]</code> pairs — e.g.
+<code>[[151,8],[1111001,2],[-10101,2],[2731,8],[1001,10]]</code> represents an octal
+number 151, a binary number 1111001, a binary number -10101, an octal
+number 2731, and a decimal number 1001</li>
+<li>return value: the decimal representation of the maximum value in the list
+<ul>
+<li><em>Implement a helper <code>toDecimal([number, base])</code> first, and use it.</em></li>
+</ul>
+</li>
+</ul>
+<p><strong>14.</strong> Write a function <code>countAllZeros</code> defined by:</p>
+<ul>
+<li>input parameter: a list <code>L</code> of decimal numbers</li>
+<li>return value: the total number of <code>0</code>s in the binary representations of
+the numbers in <code>L</code> — e.g. <code>[10,20,30]</code> → <code>[1010,10100,11110]</code> →
+<code>2+3+1 = 6</code></li>
+</ul>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="list-ii"><a class="header" href="#list-ii">List II</a></h1>
 <p>You have just learned <code>.remove()</code>. This reads perfectly:</p>
@@ -1976,43 +3096,65 @@ which row, the inner loop filling that row:</p>
 hand; a <code>for</code>-loop version is never wrong.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-9"><a class="header" href="#problem-set-9">Problem Set</a></h1>
-<p><strong>1. <code>deleteThree(L)</code></strong> — new list with every <code>3</code> removed from <code>L</code>.</p>
+<p><strong>1. Removing all 3’s from a list.</strong> Write a function <code>deleteThree</code> that
+takes as input a list <code>L</code> consisting of integer values, and returns a new
+list containing all elements of <code>L</code> except those equal to the integer <code>3</code>.</p>
+<p><em>Hint: when using <code>L.pop()</code>, the indices change as you go — instead of
+removing <code>3</code> directly from the original list, create a new empty list and
+add only the values that are not <code>3</code>.</em></p>
 <pre><code class="language-python">def deleteThree(L):
     # ADD ADDITIONAL CODE HERE!
 print(deleteThree([2,5,7,3,2,8,3,3]))  # [2,5,7,2,8]
+print(deleteThree([3,3,7,3,2,8,3,3]))  # [7,2,8]
 </code></pre>
-<blockquote>
-<p><code>L.pop()</code> shifts indices as you go — build a fresh empty list and append
-only the values that aren’t 3, instead of removing in place.</p>
-</blockquote>
-<p><strong>2. <code>kthSmallest(L, k)</code></strong> — the <code>k</code>-th smallest value in <code>L</code>
-(<code>1 ≤ k ≤ len(L)</code>).</p>
-<pre><code class="language-python">print(kthSmallest([3,4,2,8,8], 1))  # 2
+<p><strong>2. Finding the k-th smallest integer in a list.</strong> Write a function
+<code>kthSmallest</code> that takes as input a list <code>L</code> consisting of integer values
+and an integer <code>k</code>, and returns the <code>k</code>-th smallest integer in <code>L</code>. Assume
+<code>k</code> is always between <code>1</code> and <code>len(L)</code>, inclusive.</p>
+<p><em>Hint: use <code>L.sort()</code> to sort the list, then index into it to find the
+desired element.</em></p>
+<pre><code class="language-python">def kthSmallest(L, k):
+    # ADD ADDITIONAL CODE HERE!
+print(kthSmallest([3,4,2,8,8], 1))  # 2
 print(kthSmallest([3,4,2,8,8], 3))  # 4
+print(kthSmallest([3,4,2,8,8], 4))  # 8
 </code></pre>
-<blockquote>
-<p><code>L.sort()</code> sorts in place, then index into the result.</p>
-</blockquote>
-<p><strong>3. <code>same(L1, L2)</code></strong> — do the two lists contain exactly the same elements
-with the same multiplicities, regardless of order?</p>
-<pre><code class="language-python">print(same([2,3,2,7],[2,7,2,3]))  # True
-print(same([2,5,7,8],[2,3,4,5]))  # False
+<p><strong>3. Checking if two lists contain the same elements regardless of order.</strong>
+Write a function <code>same</code> that takes as input two lists <code>L1</code> and <code>L2</code>, each
+consisting of integer values, and checks whether the two lists contain
+exactly the same elements with the same multiplicities, regardless of
+order.</p>
+<p><em>Hint: remember that <code>L1 == L2</code> returns <code>True</code> only if the elements <em>and</em>
+their order are identical.</em></p>
+<pre><code class="language-python">def same(L1, L2):
+    # ADD ADDITIONAL CODE HERE!
+print(same([2,3,2,7], [2,7,2,3]))  # True
+print(same([2,5,7,8], [2,3,4,5]))  # False
 </code></pre>
-<blockquote>
-<p><code>L1 == L2</code> only returns <code>True</code> if elements <em>and order</em> match exactly.</p>
-</blockquote>
-<p><strong>4. <code>makeSet(L)</code></strong> — sorted list containing each distinct element of <code>L</code>
-exactly once.</p>
-<pre><code class="language-python">print(makeSet([1,1,3,5]))         # [1,3,5]
-print(makeSet([3,4,5,6,7,3,4]))   # [3,4,5,6,7]
+<p><strong>4. Creating a sorted list of distinct integers.</strong> Write a function
+<code>makeSet</code> that takes as input a list <code>L</code> consisting of integer values and
+returns a sorted list containing each distinct element of <code>L</code> exactly once.</p>
+<p><em>Hint: although this can be solved easily using the <code>set</code> type, do not use
+type conversion functions here — use operators such as <code>in</code>/<code>not in</code>
+instead.</em></p>
+<pre><code class="language-python">def makeSet(L):
+    # ADD ADDITIONAL CODE HERE!
+print(makeSet([1,1,3,5]))          # [1,3,5]
+print(makeSet([2,1,2,8,8]))        # [1,2,8]
+print(makeSet([3,4,5,6,7,3,4]))    # [3,4,5,6,7]
 </code></pre>
-<blockquote>
-<p>Don’t use the <code>set</code> type here — use <code>in</code>/<code>not in</code> instead.</p>
-</blockquote>
-<p><strong>5. <code>multiple(L1, L2)</code></strong> — is every number in <code>L1</code> a multiple of <em>some</em>
-number in <code>L2</code>? (\(\forall x \in L_1,, \exists y \in L_2\) s.t. <code>x</code> is a
-multiple of <code>y</code>)</p>
-<pre><code class="language-python">print(multiple([14,24,18,35,39], [6,13,7]))  # True
+<p><strong>5. Checking if every element of one list is a multiple of some element in
+another list.</strong> Write a function <code>multiple</code> that takes as input two lists
+<code>L1</code> and <code>L2</code>, each consisting of integer values, and checks whether every
+number in <code>L1</code> is a multiple of at least one number in <code>L2</code>. Formally:
+\(\forall x \in L_1,, \exists y \in L_2\) such that <code>x</code> is a multiple of
+<code>y</code>.</p>
+<p>For example, <code>multiple([14,24,18,35,39], [6,13,7])</code> should return <code>True</code>,
+because <code>14</code> and <code>35</code> are multiples of <code>7</code>, <code>24</code> and <code>18</code> are multiples of
+<code>6</code>, and <code>39</code> is a multiple of <code>13</code>.</p>
+<pre><code class="language-python">def multiple(L1, L2):
+    # ADD ADDITIONAL CODE HERE!
+print(multiple([14,24,18,35,39], [6,13,7]))  # True
 print(multiple([14,24,18,35,39], [5,13,7]))  # False
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
@@ -2110,40 +3252,62 @@ print(is_palindrome("radar"))   # True
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-10"><a class="header" href="#problem-set-10">Problem Set</a></h1>
-<p><strong>1. <code>countChar(s, c)</code></strong> — count of a single character <code>c</code> in string <code>s</code>.</p>
-<pre><code class="language-python">print(countChar("AbAA","A"))  # 3
-print(countChar("abc","A"))   # 0
+<p><strong>1. Counting occurrences of a character in a string.</strong> Write a function
+<code>countChar</code> that takes as input a string <code>s</code> consisting of alphabetic
+characters and a single-character string <code>c</code>, and returns the number of
+times <code>c</code> appears in <code>s</code>.</p>
+<p><em>(Note: a “single character” means a string of length 1, such as <code>"a"</code>.)</em></p>
+<pre><code class="language-python">def countChar(s, c):
+    # ADD ADDITIONAL CODE HERE!
+print(countChar("AbAA","b"))         # 1
+print(countChar("AbAA","A"))         # 3
+print(countChar("DbDD","D"))         # 3
+print(countChar("bcdAAAdfAA","A"))   # 5
+print(countChar("abc","A"))          # 0
 </code></pre>
-<p><strong>2. <code>reverse(s)</code></strong> — reversed string.</p>
-<pre><code class="language-python">print(reverse("abcDF"))  # FDcba
+<p><strong>2. Reversing a string.</strong> Write a function <code>reverse</code> that takes as input a
+string <code>s</code> and returns a new string that is the reverse of <code>s</code>.</p>
+<p><em>Hint: initialize an empty string <code>""</code> and build the reversed string by
+concatenating characters one by one with <code>+</code>.</em></p>
+<pre><code class="language-python">def reverse(s):
+    # ADD ADDITIONAL CODE HERE!
+print(reverse("abc"))    # cba
+print(reverse("abcDF"))  # FDcba
+print(reverse("abcd"))   # dcba
 </code></pre>
-<blockquote>
-<p>Build the result by starting from <code>""</code> and concatenating characters with
-<code>+</code>.</p>
-</blockquote>
-<p><strong>3. <code>lenPrefix(s1, s2)</code></strong> — length of the longest common prefix of two
-strings.</p>
-<pre><code class="language-python">print(lenPrefix("ababade", "ababeee"))    # 4
-print(lenPrefix("predicate", "prediction")) # 6
+<p><strong>3. Finding the length of the longest common prefix.</strong> Write a function
+<code>lenPrefix</code> that takes as input two strings and returns the length of their
+longest common prefix.</p>
+<pre><code class="language-python">def lenPrefix(s1, s2):
+    # ADD ADDITIONAL CODE HERE!
+print(lenPrefix("ababade", "ababeee"))       # 4
+print(lenPrefix("predicate", "prediction"))  # 6
+print(lenPrefix("ababade", "xabds"))         # 0
 </code></pre>
-<p><strong>4. <code>duration(t1, t2)</code></strong> — time difference between two <code>"hhmm"</code>-format
-times, formatted like <code>"4 h 40 m"</code>.</p>
-<pre><code class="language-python">print(duration("1800","0920"))  # 8 h 40 m
+<p><strong>4. Calculating the duration between two times.</strong> Write a function
+<code>duration</code> that takes as input two times in <code>"hhmm"</code> format (hours and
+minutes) and calculates the time difference between them in hours and
+minutes. For example, given <code>"0910"</code> and <code>"1350"</code>, the function should
+output <code>"4 h 40 m"</code>.</p>
+<p><em>(Assumption: times are given in 24-hour format, and only valid times are
+provided — hours 0-23, minutes 0-59.)</em></p>
+<pre><code class="language-python">def duration(t1, t2):
+    # ADD ADDITIONAL CODE HERE!
+print(duration("1800","0920"))  # 8 h 40 m
 print(duration("0910","0910"))  # 0 m
 print(duration("0910","1310"))  # 4 h
 </code></pre>
-<blockquote>
-<p>Both times are valid 24-hour times.</p>
-</blockquote>
-<p><strong>5. <code>sortId(L)</code></strong> — a list where student IDs and names alternate; sort the
-whole list by ID.</p>
-<pre><code class="language-python">print(sortId(["20-012","Kim","20-009","Kang","22-005","Na","21-003","Kim"]))
+<p><strong>5. Sorting students by ID.</strong> Write a function <code>sortId</code> that takes as
+input a list of strings where student IDs and names appear alternately, and
+returns the result of sorting the list based on the student IDs.</p>
+<p><em>Hint: to sort by ID, you can use <code>L[::2]</code> to create a list containing only
+the IDs. Also, if <code>y = L.index(x)</code>, then <code>y</code> is the index of the first
+occurrence of <code>x</code> in <code>L</code>.</em></p>
+<pre><code class="language-python">def sortId(L):
+    # ADD ADDITIONAL CODE HERE!
+print(sortId(["20-012","Kim","20-009","Kang","22-005","Na","21-003","Kim"]))
 # ['20-009','Kang','20-012','Kim','21-003','Kim','22-005','Na']
 </code></pre>
-<blockquote>
-<p><code>L[::2]</code> pulls out just the IDs. <code>L.index(x)</code> gives the index of the first
-occurrence of <code>x</code>.</p>
-</blockquote>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="break--continue"><a class="header" href="#break--continue">Break / Continue</a></h1>
 <p>Return the position of the first <code>target</code> in a grid, or <code>(-1,-1)</code> if it is
@@ -2332,55 +3496,142 @@ independent copy of a nested list, <code>deepcopy</code> is the only one of the 
 that actually gives you one.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-11"><a class="header" href="#problem-set-11">Problem Set</a></h1>
-<p><strong>1. <code>countZero(a)</code></strong> — count of zeros in a 3D array.</p>
+<p><strong>1. Counting zeros in a 3D array.</strong> Write a function <code>countZero</code> that
+takes as input a list of integers representing a three-dimensional array
+and counts the number of zeros contained in the array.</p>
 <pre><code class="language-python">def countZero(a):
     depth = len(a)
     height = len(a[0])
     width = len(a[0][0])
     # ADD ADDITIONAL CODE HERE!
-print(countZero([[[1,2],[0,0]],[[0,0],[0,0]]]))  # 6
+print(countZero([[[1,2],[0,0]],[[0,0],[0,0]]]))                # 6
+print(countZero([[[1,2],[0,0]],[[0,0],[0,0]],[[0,0],[0,0]]]))  # 10
 </code></pre>
-<p><strong>2. <code>isSorted(a)</code></strong> — are all rows <em>and</em> all columns of a 2D array sorted
-in non-decreasing order?</p>
-<p><strong>3. <code>withinRect(top,bottom,left,right, x,y)</code> / <code>countWithinRect(...)</code></strong> —
-first checks if <code>(x,y)</code> is inside/on an axis-aligned rectangle; second
-counts how many points from a list fall inside it.</p>
-<pre><code class="language-python">print(withinRect(2,-4,-5,6, -5,2))  # True
+<p><strong>2. Checking sorted order in a 2D array.</strong> Write a function <code>isSorted</code>
+that takes as input a list of integers representing a two-dimensional array
+and checks whether all elements in the array are sorted in ascending order
+both row-wise and column-wise.</p>
+<pre><code class="language-python">def isSorted(a):
+    # ADD ADDITIONAL CODE HERE!
+test1 = [[2,3,7,9,11,12],
+         [5,6,8,10,12,15],
+         [7,7,8,10,12,15],
+         [8,9,10,10,13,17]]
+test2 = [[2,3,7,9,11,12],
+         [5,6,8,10,12,15],
+         [7,7,8,10,12,18],
+         [8,9,10,10,13,17]]
+print(isSorted(test1))  # True
+print(isSorted(test2))  # False
+</code></pre>
+<p><strong>3-1. Point in Rectangle: checking if a point is inside a rectangle.</strong>
+Write a function <code>withinRect</code> that takes as parameters the values <code>top</code>,
+<code>bottom</code>, <code>left</code>, <code>right</code> representing a rectangle in the 2D plane whose
+sides are parallel to the x-axis and y-axis, along with the coordinates
+<code>x</code>, <code>y</code> of a point. The function should return <code>True</code> if the point lies
+inside or on the boundary of the rectangle, and <code>False</code> otherwise. For
+example, <code>(top,bottom,left,right) = (2,-4,-5,6)</code> represents one such
+rectangle.</p>
+<pre><code class="language-python">def withinRect(top, bottom, left, right, x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(withinRect(2,-4,-5,6, -5,2))  # True
+print(withinRect(2,-4,-5,6, 6,-1))  # True
+print(withinRect(2,-4,-5,6, 0,1))   # True
+print(withinRect(2,-4,-5,6, -6,0))  # False
+print(withinRect(2,-4,-5,6, 0,3))   # False
+</code></pre>
+<p><strong>3-2. Counting points inside a rectangle.</strong> Using <code>withinRect</code> above,
+write a function <code>countWithinRect</code> that takes as input integer values
+<code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code> representing a rectangle parallel to the
+coordinate axes, along with a list <code>p</code> containing the coordinates of points
+in the plane. The function should count and return the number of points
+from the list that lie inside or on the boundary of the rectangle.</p>
+<pre><code class="language-python">def countWithinRect(top, bottom, left, right, p):
+    # ADD ADDITIONAL CODE HERE!
+points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],[-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
 print(countWithinRect(2,-4,-5,6, points))  # 7
 </code></pre>
-<p><strong>4. <code>closestPair(p)</code></strong> — smallest distance between any two points in a
-list of <code>[x,y]</code> points.</p>
+<p><strong>4. Closest pair of points.</strong> Write a function <code>closestPair</code> that takes as
+input a list of points in the 2D plane, where each point is represented as
+a list <code>[x,y]</code>. The function should compute and return the distance
+between the two closest points among them.</p>
 <pre><code class="language-python">def distSquared(p1, p2):
     return ((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2) ** 0.5
 def closestPair(p):
     n = len(p)
-    min_d = distSquared(p[0], p[1])  # start with the first pair, then improve
+    best = distSquared(p[0], p[1])  # start with the first pair, then improve
     # ADD ADDITIONAL CODE HERE!
 points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
 print(closestPair(points))  # 4.47213595499958
 </code></pre>
-<p><strong>5. <code>check(M)</code></strong> — does <em>every</em> row of 2D list <code>M</code> contain <em>at least one</em>
-negative number? (Both a “for all” over rows and a “for some” within each
-row.)</p>
-<pre><code class="language-python">M1 = [[1,9,-1,0,2], [-3,7,1,1,4], [3,9,1,-9,-2]]
+<p><strong>5. Checking for negative numbers in each row.</strong> Write a function <code>check</code>
+that takes as input a two-dimensional list of integers <code>M</code> and checks
+whether <em>every</em> row contains <em>at least one</em> negative number (both a “for
+all” and a “for some” condition need to be satisfied).</p>
+<pre><code class="language-python">def check(M):
+    # ADD ADDITIONAL CODE HERE!
+M1 = [[1,9,-1,0,2],
+      [-3,7,1,1,4],
+      [3,9,1,-9,-2]]
+M2 = [[1,9,1,0,2],
+      [-3,7,1,1,4],
+      [3,9,-1,-9,2]]
 print(check(M1))  # True
+print(check(M2))  # False
 </code></pre>
-<p><strong>6. <code>countMines(mineField)</code> (1D)</strong> — for a 1D boolean minefield, produce a
-list where each position holds the count of mines among itself and its two
-adjacent neighbors.</p>
+<p><strong>6. 1D mine-field array.</strong> Write a function <code>countMines</code> that takes as
+input a list of boolean values, where <code>T</code> represents a location with a mine
+and <code>F</code> a location without one. The function should produce a mine-field
+array where each position holds the total number of mines among its
+neighboring positions — here, neighbors are the position itself plus the
+two immediately adjacent positions (left and right).</p>
+<p><em>Use a helper function <code>withinBoundary</code> to check whether an index is
+within the valid range of the list, to avoid accessing out-of-bounds
+elements.</em></p>
 <pre><code class="language-python">def withinBoundary(size, i):
-    return 0 &lt;= i &lt; size
+    return i &gt;= 0 and i &lt; size
 def countMines(mineField):
     # ADD ADDITIONAL CODE HERE!
-T, F = True, False
-print(countMines([T, F, F, T, T, T, T, F, T, F]))  # [1,1,1,2,3,3,2,2,1,1]
+T = True
+F = False
+mineField1 = [T, F, F, T, T, T, T, F, T, F]
+mineField2 = [T, F, T, T, T, F, F]
+print(countMines(mineField1))  # [1,1,1,2,3,3,2,2,1,1]
+print(countMines(mineField2))  # [1,2,2,3,2,1,0]
 </code></pre>
-<p><strong>7. <code>countMines(mineField)</code> (2D)</strong> — same idea, extended to 2D with all 8
-neighbors + self (9 cells).</p>
+<p><strong>7. 2D mine-field array.</strong> Extend problem 6 to two dimensions. Write a
+function <code>countMines</code> that takes as input a two-dimensional list of boolean
+values, where <code>T</code> indicates a cell with a mine and <code>F</code> a cell without one,
+and produces a mine-field array showing, for each cell, the number of
+neighboring mines — here, neighbors are the cell itself plus the eight
+immediately adjacent cells (up, down, left, right, and the four diagonals),
+9 cells in total.</p>
 <pre><code class="language-python">def withinBoundary(height, width, i, j):
-    return 0 &lt;= i &lt; height and 0 &lt;= j &lt; width
+    return i &gt;= 0 and i &lt; height and j &gt;= 0 and j &lt; width
 def countMines(mineField):
     # ADD ADDITIONAL CODE HERE!
+def main():  # for test
+    T = True
+    F = False
+    mineField = [
+        [T, F, F, F, F, T],
+        [F, F, F, F, F, T],
+        [T, T, F, T, F, T],
+        [T, F, F, F, F, F],
+        [F, F, T, F, F, F],
+        [F, F, F, F, F, F]]
+    mines = countMines(mineField)
+    for i in range(len(mines)):
+        print(mines[i])
+main()
+</code></pre>
+<p>Output:</p>
+<pre><code>[1, 1, 0, 0, 2, 2]
+[3, 3, 2, 1, 4, 3]
+[3, 3, 2, 1, 3, 2]
+[3, 4, 3, 2, 2, 1]
+[1, 2, 1, 1, 0, 0]
+[0, 1, 1, 1, 0, 0]
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="classes--objects"><a class="header" href="#classes--objects">Classes &amp; Objects</a></h1>
@@ -2522,32 +3773,150 @@ if __name__ == '__main__':
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-12"><a class="header" href="#problem-set-12">Problem Set</a></h1>
-<p><strong>1. <code>Circle</code> class</strong> — a circle with a <code>Point</code> center (assume a <code>Point</code>
-class already exists) and integer radius.</p>
+<p><strong>1. Class <code>Circle</code>.</strong> Create a class <code>Circle</code> that represents a circle in
+a two-dimensional coordinate system, and implement the methods below.
+Assume a <code>Point</code> class already exists (<code>from point import Point</code> or
+similar) — a circle’s center is represented as a <code>Point</code> object.</p>
+<p><strong>(1-1) <code>__init__</code></strong> — define the constructor so a <code>Circle</code> object can be
+created. The basic information needed is a center point and a radius.</p>
 <ul>
-<li><code>__init__(self, c, r)</code> — store <code>center</code>, <code>radius</code></li>
-<li><code>__str__(self)</code> — <code>"(center,radius)"</code>, e.g. <code>"((0,1), 5)"</code></li>
-<li><code>area(self)</code> — using <code>math.pi</code></li>
-<li><code>getRadius(self)</code> / <code>getCenter(self)</code></li>
-<li><code>setRadius(self, r)</code></li>
-<li><code>moveTo(self, x, y)</code> — move center to <code>(x,y)</code></li>
-<li><code>move(self, dx, dy)</code> — move center by <code>(dx,dy)</code></li>
+<li>Parameters: <code>self</code>, <code>c</code> (a <code>Point</code> object, the center), <code>r</code> (an integer,
+the radius)</li>
+<li>Return value: <code>None</code></li>
 </ul>
-<p><strong>2. <code>Rational</code> class</strong> — a rational number (numerator/denominator).</p>
+<p><strong>(1-2) <code>__str__</code></strong> — return a string representation of the circle, in the
+format <code>"(center_coordinates, radius)"</code>, e.g. <code>"((0,1), 5)"</code>.</p>
 <ul>
-<li><code>__init__(self, n, d)</code></li>
-<li><code>__str__(self)</code> — <code>"numerator/denominator"</code>, e.g. <code>"7/24"</code></li>
-<li><code>toFloat(self)</code></li>
-<li><code>negate(self)</code> — flip sign (of the numerator)</li>
-<li><code>invert(self)</code> — swap numerator/denominator</li>
-<li><code>reduce(self)</code> — simplify via GCD (e.g. <code>4/8</code> → <code>1/2</code>)</li>
-<li><code>add(self, r)</code> — <strong>pure function</strong>: return a new <code>Rational</code> sum, reduced;
-<code>self</code> and <code>r</code> unchanged</li>
-<li><code>mul(self, r)</code> — <strong>pure function</strong>: return a new <code>Rational</code> product,
-reduced; <code>self</code> and <code>r</code> unchanged</li>
+<li>Parameters: <code>self</code></li>
+<li>Return value: a string in the above format</li>
 </ul>
-<p>(This is the same pair of classes as the Korean track’s L08 problem set —
-see there for full worked test cases if useful.)</p>
+<p><strong>(1-3) <code>area</code></strong> — return the area of the circle. Use <code>math.pi</code> for
+\(\pi\).</p>
+<ul>
+<li>Parameters: <code>self</code></li>
+<li>Return value: the area of the circle</li>
+</ul>
+<p><strong>(1-4) <code>getRadius</code></strong> — return the radius of the circle.</p>
+<ul>
+<li>Parameters: <code>self</code></li>
+<li>Return value: the radius of the circle</li>
+</ul>
+<p><strong>(1-5) <code>getCenter</code></strong> — return the center point of the circle as a <code>Point</code>
+object.</p>
+<ul>
+<li>Parameters: <code>self</code></li>
+<li>Return value: a <code>Point</code> object representing the center</li>
+</ul>
+<p><strong>(1-6) <code>setRadius</code></strong> — set the radius of the circle to a new value.</p>
+<ul>
+<li>Parameters: <code>self</code>, <code>r</code> (the new radius)</li>
+<li>Return value: <code>None</code></li>
+</ul>
+<p><strong>(1-7) <code>moveTo</code></strong> — move the circle so its center is at the given <code>(x,y)</code>
+coordinates.</p>
+<ul>
+<li>Parameters: <code>self</code>, <code>x</code>, <code>y</code> (integers, the new center coordinates)</li>
+<li>Return value: <code>None</code></li>
+</ul>
+<p><strong>(1-8) <code>move</code></strong> — move the circle by <code>(dx,dy)</code> relative to its current
+position.</p>
+<ul>
+<li>Parameters: <code>self</code>, <code>dx</code>, <code>dy</code> (the distances to move along the x-axis
+and y-axis)</li>
+<li>Return value: <code>None</code></li>
+</ul>
+<pre><code class="language-python">class Circle:
+    def __init__(self, c, r):
+        # ADD ADDITIONAL CODE HERE!
+    def __str__(self):
+        # ADD ADDITIONAL CODE HERE!
+    def area(self):
+        # ADD ADDITIONAL CODE HERE!
+    def getRadius(self):
+        # ADD ADDITIONAL CODE HERE!
+    def getCenter(self):
+        # ADD ADDITIONAL CODE HERE!
+    def setRadius(self, r):
+        # ADD ADDITIONAL CODE HERE!
+    def moveTo(self, x, y):
+        # ADD ADDITIONAL CODE HERE!
+    def move(self, dx, dy):
+        # ADD ADDITIONAL CODE HERE!
+</code></pre>
+<p><strong>2. Class <code>Rational</code>.</strong> A rational number represents the ratio between two
+integers: in <code>2/3</code>, <code>2</code> is the numerator and <code>3</code> the denominator (an
+integer such as <code>7</code> is also rational, with denominator <code>1</code>). Define a class
+<code>Rational</code> and implement the methods below.</p>
+<p><strong>(2-1) <code>__init__</code></strong> — define the constructor so a <code>Rational</code> object can be
+created, from a numerator and a denominator (both integers).</p>
+<ul>
+<li>Parameters: <code>self</code>, <code>n</code> (numerator), <code>d</code> (denominator)</li>
+<li>Return value: <code>None</code></li>
+</ul>
+<p><strong>(2-2) <code>__str__</code></strong> — return a string representation, in the form
+<code>"numerator/denominator"</code>, e.g. <code>"7/24"</code>.</p>
+<ul>
+<li>Parameters: <code>self</code></li>
+<li>Return value: a string</li>
+</ul>
+<p><strong>(2-3) <code>toFloat</code></strong> — convert the rational number to a float value.</p>
+<ul>
+<li>Parameters: <code>self</code></li>
+<li>Return value: a float (e.g. <code>0.2916666...</code>)</li>
+</ul>
+<p><strong>(2-4) <code>negate</code></strong> — reverse the sign of the rational number, by changing
+the sign of the numerator.</p>
+<ul>
+<li>Parameters: <code>self</code></li>
+<li>Return value: <code>None</code></li>
+</ul>
+<p><strong>(2-5) <code>invert</code></strong> — swap the numerator and denominator.</p>
+<ul>
+<li>Parameters: <code>self</code></li>
+<li>Return value: <code>None</code></li>
+</ul>
+<p><strong>(2-6) <code>reduce</code></strong> — reduce the rational number to its simplest form using
+the greatest common divisor (e.g. <code>4/8</code>, <code>2/4</code>, and <code>1/2</code> are all
+equivalent and should be reduced to <code>1/2</code>). You may use a <code>gcd()</code>
+function.</p>
+<ul>
+<li>Parameters: <code>self</code></li>
+<li>Return value: <code>None</code></li>
+</ul>
+<p><strong>(2-7) <code>add</code></strong> — add two rational numbers and return the result as a new
+<code>Rational</code> object, reduced to simplest form. <strong>This method should be
+pure</strong> — <code>self</code> and <code>r</code> remain unchanged.</p>
+<ul>
+<li>Parameters: <code>self</code>, <code>r</code> (another <code>Rational</code> object)</li>
+<li>Return value: a new <code>Rational</code> object representing the sum</li>
+</ul>
+<p><strong>(2-8) <code>mul</code></strong> — multiply two rational numbers and return the result as a
+new <code>Rational</code> object, reduced to simplest form. <strong>This method should be
+pure</strong> — <code>self</code> and <code>r</code> remain unchanged.</p>
+<ul>
+<li>Parameters: <code>self</code>, <code>r</code> (another <code>Rational</code> object)</li>
+<li>Return value: a new <code>Rational</code> object representing the product</li>
+</ul>
+<pre><code class="language-python">class Rational:
+    def __init__(self, n, d):
+        # ADD ADDITIONAL CODE HERE!
+    def __str__(self):
+        # ADD ADDITIONAL CODE HERE!
+    def toFloat(self):
+        # ADD ADDITIONAL CODE HERE!
+    def negate(self):
+        # ADD ADDITIONAL CODE HERE!
+    def invert(self):
+        # ADD ADDITIONAL CODE HERE!
+    def reduce(self):
+        # ADD ADDITIONAL CODE HERE!
+    def add(self, r):
+        # ADD ADDITIONAL CODE HERE!
+    def mul(self, r):
+        # ADD ADDITIONAL CODE HERE!
+</code></pre>
+<p><em>(This is the same pair of classes as the Korean track’s Week 8 problem
+set — see there for full worked test cases if useful.)</em></p>
 
                     </main>
 

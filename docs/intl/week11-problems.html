@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-24d50d43.js";
+            window.path_to_searchindex_js = "../searchindex-e29b5d92.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -181,43 +181,65 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h1>
-<p><strong>1. <code>deleteThree(L)</code></strong> — new list with every <code>3</code> removed from <code>L</code>.</p>
+<p><strong>1. Removing all 3’s from a list.</strong> Write a function <code>deleteThree</code> that
+takes as input a list <code>L</code> consisting of integer values, and returns a new
+list containing all elements of <code>L</code> except those equal to the integer <code>3</code>.</p>
+<p><em>Hint: when using <code>L.pop()</code>, the indices change as you go — instead of
+removing <code>3</code> directly from the original list, create a new empty list and
+add only the values that are not <code>3</code>.</em></p>
 <pre><code class="language-python">def deleteThree(L):
     # ADD ADDITIONAL CODE HERE!
 print(deleteThree([2,5,7,3,2,8,3,3]))  # [2,5,7,2,8]
+print(deleteThree([3,3,7,3,2,8,3,3]))  # [7,2,8]
 </code></pre>
-<blockquote>
-<p><code>L.pop()</code> shifts indices as you go — build a fresh empty list and append
-only the values that aren’t 3, instead of removing in place.</p>
-</blockquote>
-<p><strong>2. <code>kthSmallest(L, k)</code></strong> — the <code>k</code>-th smallest value in <code>L</code>
-(<code>1 ≤ k ≤ len(L)</code>).</p>
-<pre><code class="language-python">print(kthSmallest([3,4,2,8,8], 1))  # 2
+<p><strong>2. Finding the k-th smallest integer in a list.</strong> Write a function
+<code>kthSmallest</code> that takes as input a list <code>L</code> consisting of integer values
+and an integer <code>k</code>, and returns the <code>k</code>-th smallest integer in <code>L</code>. Assume
+<code>k</code> is always between <code>1</code> and <code>len(L)</code>, inclusive.</p>
+<p><em>Hint: use <code>L.sort()</code> to sort the list, then index into it to find the
+desired element.</em></p>
+<pre><code class="language-python">def kthSmallest(L, k):
+    # ADD ADDITIONAL CODE HERE!
+print(kthSmallest([3,4,2,8,8], 1))  # 2
 print(kthSmallest([3,4,2,8,8], 3))  # 4
+print(kthSmallest([3,4,2,8,8], 4))  # 8
 </code></pre>
-<blockquote>
-<p><code>L.sort()</code> sorts in place, then index into the result.</p>
-</blockquote>
-<p><strong>3. <code>same(L1, L2)</code></strong> — do the two lists contain exactly the same elements
-with the same multiplicities, regardless of order?</p>
-<pre><code class="language-python">print(same([2,3,2,7],[2,7,2,3]))  # True
-print(same([2,5,7,8],[2,3,4,5]))  # False
+<p><strong>3. Checking if two lists contain the same elements regardless of order.</strong>
+Write a function <code>same</code> that takes as input two lists <code>L1</code> and <code>L2</code>, each
+consisting of integer values, and checks whether the two lists contain
+exactly the same elements with the same multiplicities, regardless of
+order.</p>
+<p><em>Hint: remember that <code>L1 == L2</code> returns <code>True</code> only if the elements <em>and</em>
+their order are identical.</em></p>
+<pre><code class="language-python">def same(L1, L2):
+    # ADD ADDITIONAL CODE HERE!
+print(same([2,3,2,7], [2,7,2,3]))  # True
+print(same([2,5,7,8], [2,3,4,5]))  # False
 </code></pre>
-<blockquote>
-<p><code>L1 == L2</code> only returns <code>True</code> if elements <em>and order</em> match exactly.</p>
-</blockquote>
-<p><strong>4. <code>makeSet(L)</code></strong> — sorted list containing each distinct element of <code>L</code>
-exactly once.</p>
-<pre><code class="language-python">print(makeSet([1,1,3,5]))         # [1,3,5]
-print(makeSet([3,4,5,6,7,3,4]))   # [3,4,5,6,7]
+<p><strong>4. Creating a sorted list of distinct integers.</strong> Write a function
+<code>makeSet</code> that takes as input a list <code>L</code> consisting of integer values and
+returns a sorted list containing each distinct element of <code>L</code> exactly once.</p>
+<p><em>Hint: although this can be solved easily using the <code>set</code> type, do not use
+type conversion functions here — use operators such as <code>in</code>/<code>not in</code>
+instead.</em></p>
+<pre><code class="language-python">def makeSet(L):
+    # ADD ADDITIONAL CODE HERE!
+print(makeSet([1,1,3,5]))          # [1,3,5]
+print(makeSet([2,1,2,8,8]))        # [1,2,8]
+print(makeSet([3,4,5,6,7,3,4]))    # [3,4,5,6,7]
 </code></pre>
-<blockquote>
-<p>Don’t use the <code>set</code> type here — use <code>in</code>/<code>not in</code> instead.</p>
-</blockquote>
-<p><strong>5. <code>multiple(L1, L2)</code></strong> — is every number in <code>L1</code> a multiple of <em>some</em>
-number in <code>L2</code>? (\(\forall x \in L_1,, \exists y \in L_2\) s.t. <code>x</code> is a
-multiple of <code>y</code>)</p>
-<pre><code class="language-python">print(multiple([14,24,18,35,39], [6,13,7]))  # True
+<p><strong>5. Checking if every element of one list is a multiple of some element in
+another list.</strong> Write a function <code>multiple</code> that takes as input two lists
+<code>L1</code> and <code>L2</code>, each consisting of integer values, and checks whether every
+number in <code>L1</code> is a multiple of at least one number in <code>L2</code>. Formally:
+\(\forall x \in L_1,, \exists y \in L_2\) such that <code>x</code> is a multiple of
+<code>y</code>.</p>
+<p>For example, <code>multiple([14,24,18,35,39], [6,13,7])</code> should return <code>True</code>,
+because <code>14</code> and <code>35</code> are multiples of <code>7</code>, <code>24</code> and <code>18</code> are multiples of
+<code>6</code>, and <code>39</code> is a multiple of <code>13</code>.</p>
+<pre><code class="language-python">def multiple(L1, L2):
+    # ADD ADDITIONAL CODE HERE!
+print(multiple([14,24,18,35,39], [6,13,7]))  # True
 print(multiple([14,24,18,35,39], [5,13,7]))  # False
 </code></pre>
 

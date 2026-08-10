@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-24d50d43.js";
+            window.path_to_searchindex_js = "../searchindex-e29b5d92.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -181,40 +181,62 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h1>
-<p><strong>1. <code>countChar(s, c)</code></strong> — count of a single character <code>c</code> in string <code>s</code>.</p>
-<pre><code class="language-python">print(countChar("AbAA","A"))  # 3
-print(countChar("abc","A"))   # 0
+<p><strong>1. Counting occurrences of a character in a string.</strong> Write a function
+<code>countChar</code> that takes as input a string <code>s</code> consisting of alphabetic
+characters and a single-character string <code>c</code>, and returns the number of
+times <code>c</code> appears in <code>s</code>.</p>
+<p><em>(Note: a “single character” means a string of length 1, such as <code>"a"</code>.)</em></p>
+<pre><code class="language-python">def countChar(s, c):
+    # ADD ADDITIONAL CODE HERE!
+print(countChar("AbAA","b"))         # 1
+print(countChar("AbAA","A"))         # 3
+print(countChar("DbDD","D"))         # 3
+print(countChar("bcdAAAdfAA","A"))   # 5
+print(countChar("abc","A"))          # 0
 </code></pre>
-<p><strong>2. <code>reverse(s)</code></strong> — reversed string.</p>
-<pre><code class="language-python">print(reverse("abcDF"))  # FDcba
+<p><strong>2. Reversing a string.</strong> Write a function <code>reverse</code> that takes as input a
+string <code>s</code> and returns a new string that is the reverse of <code>s</code>.</p>
+<p><em>Hint: initialize an empty string <code>""</code> and build the reversed string by
+concatenating characters one by one with <code>+</code>.</em></p>
+<pre><code class="language-python">def reverse(s):
+    # ADD ADDITIONAL CODE HERE!
+print(reverse("abc"))    # cba
+print(reverse("abcDF"))  # FDcba
+print(reverse("abcd"))   # dcba
 </code></pre>
-<blockquote>
-<p>Build the result by starting from <code>""</code> and concatenating characters with
-<code>+</code>.</p>
-</blockquote>
-<p><strong>3. <code>lenPrefix(s1, s2)</code></strong> — length of the longest common prefix of two
-strings.</p>
-<pre><code class="language-python">print(lenPrefix("ababade", "ababeee"))    # 4
-print(lenPrefix("predicate", "prediction")) # 6
+<p><strong>3. Finding the length of the longest common prefix.</strong> Write a function
+<code>lenPrefix</code> that takes as input two strings and returns the length of their
+longest common prefix.</p>
+<pre><code class="language-python">def lenPrefix(s1, s2):
+    # ADD ADDITIONAL CODE HERE!
+print(lenPrefix("ababade", "ababeee"))       # 4
+print(lenPrefix("predicate", "prediction"))  # 6
+print(lenPrefix("ababade", "xabds"))         # 0
 </code></pre>
-<p><strong>4. <code>duration(t1, t2)</code></strong> — time difference between two <code>"hhmm"</code>-format
-times, formatted like <code>"4 h 40 m"</code>.</p>
-<pre><code class="language-python">print(duration("1800","0920"))  # 8 h 40 m
+<p><strong>4. Calculating the duration between two times.</strong> Write a function
+<code>duration</code> that takes as input two times in <code>"hhmm"</code> format (hours and
+minutes) and calculates the time difference between them in hours and
+minutes. For example, given <code>"0910"</code> and <code>"1350"</code>, the function should
+output <code>"4 h 40 m"</code>.</p>
+<p><em>(Assumption: times are given in 24-hour format, and only valid times are
+provided — hours 0-23, minutes 0-59.)</em></p>
+<pre><code class="language-python">def duration(t1, t2):
+    # ADD ADDITIONAL CODE HERE!
+print(duration("1800","0920"))  # 8 h 40 m
 print(duration("0910","0910"))  # 0 m
 print(duration("0910","1310"))  # 4 h
 </code></pre>
-<blockquote>
-<p>Both times are valid 24-hour times.</p>
-</blockquote>
-<p><strong>5. <code>sortId(L)</code></strong> — a list where student IDs and names alternate; sort the
-whole list by ID.</p>
-<pre><code class="language-python">print(sortId(["20-012","Kim","20-009","Kang","22-005","Na","21-003","Kim"]))
+<p><strong>5. Sorting students by ID.</strong> Write a function <code>sortId</code> that takes as
+input a list of strings where student IDs and names appear alternately, and
+returns the result of sorting the list based on the student IDs.</p>
+<p><em>Hint: to sort by ID, you can use <code>L[::2]</code> to create a list containing only
+the IDs. Also, if <code>y = L.index(x)</code>, then <code>y</code> is the index of the first
+occurrence of <code>x</code> in <code>L</code>.</em></p>
+<pre><code class="language-python">def sortId(L):
+    # ADD ADDITIONAL CODE HERE!
+print(sortId(["20-012","Kim","20-009","Kang","22-005","Na","21-003","Kim"]))
 # ['20-009','Kang','20-012','Kim','21-003','Kim','22-005','Na']
 </code></pre>
-<blockquote>
-<p><code>L[::2]</code> pulls out just the IDs. <code>L.index(x)</code> gives the index of the first
-occurrence of <code>x</code>.</p>
-</blockquote>
 
                     </main>
 

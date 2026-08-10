@@ -1,7 +1,8 @@
 # Problem Set
 
-**1. Swap two variables** — given `a` and `b` read from input, print them
-swapped.
+**1.** Add additional code to the following program so that:
+- the values of the two variables `a`, `b` are changed (swapped).
+  - *Hint: use multiple assignment, i.e. `a,b = b,a`.*
 
 ```python
 a = input("Enter a: ")
@@ -11,8 +12,10 @@ print("Before swapping:", a, b)
 print("After swapping: ", a, b)
 ```
 
-**2. Rotate five variables** — given `a, b, c, d, e`, rotate their values so
-`a`'s value goes to `b`, `b`'s to `c`, ..., and `e`'s wraps around to `a`.
+**2.** Add additional code to the following program so that:
+- the values of the five variables `a,b,c,d,e` are rotated: `a`'s value goes
+  to `b`, `b`'s to `c`, and so on, wrapping `e`'s value back around to `a`.
+  - *Hint: use multiple assignment, i.e. `a,b,c,d,e = ...`.*
 
 ```python
 a = input("Enter a: ")
@@ -25,7 +28,9 @@ print("Before swapping:", a, b, c, d, e)
 print("After swapping: ", a, b, c, d, e)
 ```
 
-**3. Evaluate a quadratic** — read `a, b, c, x` and print \\(ax^2+bx+c\\).
+**3.** Add additional code to the following program so that:
+- the value of the expression \\(ax^2+bx+c\\) is printed.
+  - \\(x^2\\) can be computed by `x**2` or `x*x`.
 
 ```python
 a = input("Enter a: ")
@@ -41,8 +46,11 @@ x = int(x)
 print("Value of the quadratic formula:", y)
 ```
 
-**4. Rectangle area** — read two corner points `(x1,y1)`, `(x2,y2)` (bottom-left
-and top-right) and print the rectangle's area.
+**4.** Add additional code to the following program so that it:
+- reads four integers `x1,y1,x2,y2` from the keyboard, where `x1<x2` and
+  `y1<y2`;
+- prints the area of the rectangle represented by the two corner points
+  (`(x1,y1)` is the bottom-left corner, `(x2,y2)` is the top-right corner).
 
 ```python
 x1 = int(input("Enter x1: "))
@@ -54,8 +62,12 @@ y2 = int(input("Enter y2: "))
 print("Area of rectangle:", area)
 ```
 
-**5. Triangle area (Heron's formula)** — read side lengths `a, b, c` and print
-the area: \\(\sqrt{s(s-a)(s-b)(s-c)}\\) where \\(s = \frac{a+b+c}{2}\\).
+**5.** Add additional code to the following program so that it:
+- reads three float values `a,b,c` from the keyboard, where they satisfy
+  the triangle inequalities `a+b>c`, `b+c>a`, `c+a>b`;
+- prints the area of the triangle whose side lengths are `a,b,c`:
+  \\(\sqrt{s(s-a)(s-b)(s-c)}\\) where \\(s = \frac{a+b+c}{2}\\).
+  - \\(\sqrt{x}\\) (i.e. \\(x^{0.5}\\)) can be computed by `x**0.5`.
 
 ```python
 a = float(input("Enter a: "))
@@ -67,8 +79,12 @@ c = float(input("Enter c: "))
 print("Area of triangle:", area)
 ```
 
-**6. Remainder without `%`** — read positive integers `a, b` and compute
-`a % b` using only `-`, `*`, and `//`.
+**6.** Add additional code to the following program so that it:
+- reads two positive integers `a` and `b` from the keyboard;
+- computes the remainder when `a` is divided by `b`, **without using the `%`
+  operator** (only `-`, `*`, and `//`);
+  - *What is the value of `101//16`? What is the value of `(101//16)*16`?*
+- prints out the remainder.
 
 ```python
 a = int(input("Enter a: "))
@@ -78,8 +94,10 @@ b = int(input("Enter b: "))
 print("Remainder:", r)
 ```
 
-**7. Round to nearest integer** — read a positive float `x` and print the
-nearest integer, without using `round()`.
+**7.** Add additional code to the following program so that it:
+- reads a positive float value `x` from the keyboard;
+- prints the integer nearest to `x` (rounding), **without using `round()`**.
+  - *What is the value of `int(2.4+0.5)`? Of `int(2.5+0.5)`? Of `int(2.6+0.5)`?*
 
 ```python
 x = float(input("Enter x: "))
@@ -88,8 +106,11 @@ x = float(input("Enter x: "))
 print(x, "is rounded off to", y)
 ```
 
-**8. Fahrenheit to Celsius** — read an integer Fahrenheit temperature `F` and
-print the Celsius equivalent: \\(C = (F - 32) \cdot \frac{5}{9}\\).
+**8.** Add additional code to the following program so that it:
+- reads an integer `F` from the keyboard, representing a temperature in
+  Fahrenheit;
+- prints the equivalent temperature in Celsius: \\(C = (F-32) \cdot
+  \frac{5}{9}\\).
 
 ```python
 F = int(input("Enter F: "))
