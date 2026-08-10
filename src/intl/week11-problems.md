@@ -40,7 +40,3 @@ multiple of `y`)
 print(multiple([14,24,18,35,39], [6,13,7]))  # True
 print(multiple([14,24,18,35,39], [5,13,7]))  # False
 ```
-
----
-*Source: 2025 offering, `week11_List2_problem.pdf`. Wording condensed; code
-stubs kept close to the original.*

@@ -37,7 +37,3 @@ print(sortId(["20-012","Kim","20-009","Kang","22-005","Na","21-003","Kim"]))
 ```
 > `L[::2]` pulls out just the IDs. `L.index(x)` gives the index of the first
 > occurrence of `x`.
-
----
-*Source: 2025 offering, `week12_string_problem.pdf`. Wording condensed;
-code stubs kept close to the original.*

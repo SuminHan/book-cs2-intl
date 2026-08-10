@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
+            window.path_to_searchindex_js = "../searchindex-42cb563f.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -181,16 +181,108 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<ul>
-<li>Object-oriented basics: every value is an object belonging to a class</li>
-<li><code>__init__()</code>, <code>__str__()</code>, <code>self</code></li>
-<li>Attributes, getters/setters</li>
-<li>Using objects as parameters and return values</li>
-<li>Pure functions vs. modifier functions</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="classes-and-objects"><a class="header" href="#classes-and-objects">Classes and Objects</a></h2>
+<p>Python is object-oriented: every piece of data — <code>123</code>, <code>"hello"</code>, <code>[1,2,3]</code>
+— is an <strong>object</strong> belonging to a <strong>class</strong> (<code>int</code>, <code>str</code>, <code>list</code>
+respectively). A class is a blueprint; an object is one specific instance
+built from it. Analogy: the Sonata <em>blueprint</em> specifies an engine, a
+color, an efficiency rating, and behaviors like accelerating and braking —
+<em>your</em> Sonata is one object built from that blueprint, with its own
+specific attribute values, that can perform the behaviors the blueprint
+defines.</p>
+<p>You can define your own classes:</p>
+<pre><code class="language-python">class Point:                      # class name, capitalized by convention
+    def __init__(self, px, py):
+        self.x = px                # attribute
+        self.y = py
+
+p1 = Point(1, 2)
+p2 = Point(4, 6)
+</code></pre>
+<h2 id="__init__-and-self"><a class="header" href="#__init__-and-self"><code>__init__</code> and <code>self</code></a></h2>
+<p><code>__init__</code> is the <strong>constructor</strong> — it runs automatically whenever you
+create a new object (<code>Point(1, 2)</code> calls it). Every method’s first
+parameter is, by convention, <code>self</code> — it refers to <em>this</em> object, and
+Python passes it automatically; you never write it explicitly at the call
+site. <code>self.x</code>, <code>self.y</code> are <strong>state variables</strong> (attributes): data that
+belongs to this specific object, distinct from any local variable of the
+same name inside a method that isn’t written as <code>self.something</code>.</p>
+<h2 id="__str__"><a class="header" href="#__str__"><code>__str__</code></a></h2>
+<p>By default, <code>print</code>ing an object shows you a memory address — not useful.
+Defining <code>__str__</code> tells Python how to turn the object into a readable
+string; it’s called automatically whenever the object is printed:</p>
+<pre><code class="language-python">def __str__(self):
+    return "(" + str(self.x) + "," + str(self.y) + ")"
+
+print(p1)   # (1,2)
+</code></pre>
+<h2 id="getters-and-setters"><a class="header" href="#getters-and-setters">Getters and Setters</a></h2>
+<p>You <em>can</em> read/write <code>p1.x</code> directly, but the convention is to go through
+<strong>getter</strong>/<strong>setter</strong> methods instead:</p>
+<pre><code class="language-python">def getX(self):
+    return self.x
+def setX(self, v):
+    self.x = v
+
+p1 = Point(1, 2)
+print(p1.getX())    # 1
+p1.setX(5)
+print(p1)             # (5,2)
+</code></pre>
+<p>(<code>setX</code>, like any function without an explicit <code>return</code>, gives back <code>None</code>
+— printing its result directly is a bug, not a way to see the new value.)</p>
+<h2 id="methods-that-take-another-object-as-a-parameter"><a class="header" href="#methods-that-take-another-object-as-a-parameter">Methods That Take Another Object as a Parameter</a></h2>
+<p>A method’s parameters can themselves be objects of the same class:</p>
+<pre><code class="language-python">def distance(self, p):
+    dx = self.x - p.x
+    dy = self.y - p.y
+    return (dx**2 + dy**2)**0.5
+
+print(p1.distance(p2))   # 5.0
+print(p2.distance(p1))   # 5.0 — symmetric, as expected
+</code></pre>
+<h2 id="pure-functions-vs-modifiers"><a class="header" href="#pure-functions-vs-modifiers">Pure Functions vs. Modifiers</a></h2>
+<p>A <strong>pure function</strong> leaves the object unchanged and returns a new result.
+<code>add</code> below builds and returns a brand-new <code>Point</code> — <code>p1</code> and <code>p2</code> are
+untouched:</p>
+<pre><code class="language-python">def add(self, p):
+    x = self.x + p.x
+    y = self.y + p.y
+    return Point(x, y)
+
+p3 = p1.add(p2)
+print(p1)   # (1,2) — unchanged
+print(p2)   # (4,6) — unchanged
+print(p3)   # (5,8) — the new object
+</code></pre>
+<p>A <strong>modifier</strong> does the opposite: it changes <code>self</code> in place and returns
+<code>None</code>:</p>
+<pre><code class="language-python">def add_as_modifier(self, p):
+    self.x = self.x + p.x
+    self.y = self.y + p.y
+
+p3 = p1.add_as_modifier(p2)
+print(p3)   # None — modifiers don't return the new state
+print(p1)   # (5,8) — p1 itself changed
+</code></pre>
+<p>Know, for every method you write, which one it is — and say so in how you
+use it: call a pure function for its return value, call a modifier for its
+side effect, never both at once.</p>
+<h2 id="putting-a-class-under-test"><a class="header" href="#putting-a-class-under-test">Putting a Class Under Test</a></h2>
+<p>A common pattern: keep a <code>..._main()</code> function with your test/demo calls,
+and only run it when the file is executed directly (not when it’s
+imported):</p>
+<pre><code class="language-python">def point_main():
+    p1 = Point(1, 2)
+    p2 = Point(4, 6)
+    print(p1, p2)
+    print(p1.distance(p2))
+    p3 = p1.add(p2)
+    print(p3)
+
+if __name__ == '__main__':
+    point_main()
+</code></pre>
 
                     </main>
 

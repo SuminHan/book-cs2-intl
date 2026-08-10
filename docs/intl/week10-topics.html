@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
+            window.path_to_searchindex_js = "../searchindex-42cb563f.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -181,13 +181,74 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<ul>
-<li><code>while</code> loop syntax</li>
-<li>Toy Robot (continued)</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="while-loops"><a class="header" href="#while-loops"><code>while</code> Loops</a></h2>
+<pre><code class="language-python">while boolean_expression:
+    statements
+</code></pre>
+<p>Repeats the body for as long as the condition stays true — checked <em>before</em>
+every iteration, including the first. Counting the digits of <code>n = 713</code>:</p>
+<pre><code class="language-python">def countDigits(n):
+    counter = 0
+    while n &gt; 0:
+        counter += 1
+        n = n // 10
+    return counter
+</code></pre>
+<p>Trace it: <code>n=713 → counter=1,n=71 → counter=2,n=7 → counter=3,n=0</code>, loop
+condition now false, return <code>3</code>.</p>
+<h2 id="for-vs-while"><a class="header" href="#for-vs-while"><code>for</code> vs. <code>while</code></a></h2>
+<p>Any <code>for</code> loop can be rewritten as a <code>while</code> loop:</p>
+<pre><code class="language-python">for i in range(n):        # becomes:
+    total += i             i = 0
+                            while i &lt; n:
+                                total += i
+                                i += 1
+</code></pre>
+<p><strong>Use <code>for</code> when you know the number of iterations in advance</strong> (a fixed
+range, a list you’re walking through). <strong>Use <code>while</code></strong> when you don’t —
+<code>countDigits</code> above has to keep going until <code>n</code> reaches <code>0</code>, and there’s no
+way to know ahead of time how many digits <code>n</code> has without… counting
+them.</p>
+<h2 id="while-true--break"><a class="header" href="#while-true--break"><code>while True</code> + <code>break</code></a></h2>
+<p>When the loop-continuation condition is awkward to state directly, loop
+forever (<code>while True:</code>) and <code>break</code> out explicitly once some condition is
+met inside the body:</p>
+<pre><code class="language-python">while True:
+    ...
+    if some_condition:
+        break     # exit immediately, skip everything after
+    ...
+</code></pre>
+<pre><code class="language-python"># equivalent to the countDigits loop above, written with break instead
+while True:
+    counter += 1
+    n = n // 10
+    if n == 0:
+        break
+</code></pre>
+<h2 id="toy-robot-with-while"><a class="header" href="#toy-robot-with-while">Toy Robot with <code>while</code></a></h2>
+<p>Some robot tasks don’t have a fixed number of steps, which is exactly the
+<code>for</code>-can’t-do-it case. “Pick up beepers here, however many there are”:</p>
+<pre><code class="language-python">while hubo.on_beeper():
+    hubo.pick_beeper()
+</code></pre>
+<p>“Drop every beeper Hubo is carrying, walking forward after each”:</p>
+<pre><code class="language-python">hubo = Robot(beepers=50)
+while hubo.carries_beepers():
+    hubo.drop_beeper()
+    hubo.move()
+</code></pre>
+<p>If the condition is already false before the first check — e.g. Hubo was
+created with zero beepers — the loop body never runs at all, not even
+once. That’s different from a <code>for</code> loop over a nonempty range, and worth
+double-checking when a <code>while</code> loop “does nothing.”</p>
+<p>Composing two <code>while</code> loops handles “walk until you reach a pile of
+beepers, then pick them all up”:</p>
+<pre><code class="language-python">while not hubo.on_beeper():
+    hubo.move()
+while hubo.on_beeper():
+    hubo.pick_beeper()
+</code></pre>
 
                     </main>
 

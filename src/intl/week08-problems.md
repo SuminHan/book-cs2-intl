@@ -75,7 +75,3 @@ giving values `110, 49, 341`, so the answer is `341`.
 
 **17. `colinear(L)`** — count of collinear triples `L[i], L[j], L[k]`
 (`i<j<k`) among a list of points.
-
----
-*Source: 2025 offering, `week08_for_2_problem.pdf`. Wording condensed; code
-stubs kept close to the original.*

@@ -71,7 +71,3 @@ print(findMax())  # 9997
 
 **10. `withinRegion(a, c)`** — number of integer points `(x,y)` satisfying
 both \\(y \le -ax^2+c\\) and \\(y \ge ax^2-c\\) (the region between two parabolas).
-
----
-*Source: 2025 offering, `week06_for_1_problem.pdf`. Wording condensed; code
-stubs kept close to the original.*

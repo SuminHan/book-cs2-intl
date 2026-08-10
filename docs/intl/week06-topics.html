@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
+            window.path_to_searchindex_js = "../searchindex-42cb563f.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -181,14 +181,83 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<ul>
-<li>Increment/decrement operators</li>
-<li><code>for</code> loops with <code>range(·)</code> (various forms: start/stop/step)</li>
-<li>Shortcut assignment operators: <code>+= -= *= /=</code></li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="why-for-loops"><a class="header" href="#why-for-loops">Why <code>for</code> Loops</a></h2>
+<p>Computing <code>1 + 2 + ... + n</code> without a loop means writing one line per
+term — it doesn’t even work unless you already know <code>n</code> in advance:</p>
+<pre><code class="language-python">def sumTo(n):
+    total = 0
+    total = total + 1
+    total = total + 2
+    ...                  # can't write this for a variable n!
+</code></pre>
+<p>A <code>for</code> loop repeats a block once per value in a range:</p>
+<pre><code class="language-python">def sumTo(n):
+    total = 0
+    for i in range(1, n+1):   # i = 1, 2, ..., n
+        total = total + i
+    return total
+</code></pre>
+<h2 id="for-loops-with-range"><a class="header" href="#for-loops-with-range"><code>for</code> Loops with <code>range(·)</code></a></h2>
+<p><code>range</code> has three forms:</p>
+<pre><code class="language-python">for k in range(n):          # 0, 1, ..., n-1
+for k in range(m, n):       # m, m+1, ..., n-1
+for k in range(m, n, k):    # m, m+k, m+2k, ... (stops before n)
+</code></pre>
+<p><code>range(n)</code> is shorthand for <code>range(0, n, 1)</code>; <code>range(m, n)</code> is shorthand for
+<code>range(m, n, 1)</code>. A negative step counts down:</p>
+<pre><code class="language-python">for k in range(n, 0, -1):
+    print(k)      # n, n-1, ..., 1
+</code></pre>
+<p>Whichever form, the loop is equivalent to writing out the body once per
+value the range produces, in order — that mental model (unrolling the
+loop) is the way to check you picked the right range.</p>
+<h2 id="incrementdecrement-shortcuts"><a class="header" href="#incrementdecrement-shortcuts">Increment/Decrement Shortcuts</a></h2>
+<pre><code class="language-python">x += y   # x = x + y
+x -= y   # x = x - y
+x *= y   # x = x * y
+x /= y   # x = x / y
+x //= y  # x = x // y
+</code></pre>
+<pre><code class="language-python">total, product = 0, 1
+for k in range(1, n+1):
+    total += k     # running sum
+    product *= k   # running product
+</code></pre>
+<h2 id="loop--conditional"><a class="header" href="#loop--conditional">Loop + Conditional</a></h2>
+<p>A loop body can contain an <code>if</code>, applying different logic per iteration:</p>
+<pre><code class="language-python">for k in range(1, 11):
+    if k % 2 == 0:
+        print(k, "is even")
+    else:
+        print(k, "is odd")
+</code></pre>
+<h2 id="nested-loops"><a class="header" href="#nested-loops">Nested Loops</a></h2>
+<p>A loop body can itself contain another loop — the inner loop runs to
+completion for <em>every</em> iteration of the outer one. Printing a
+multiplication table is the canonical example:</p>
+<pre><code class="language-python">for i in range(1, 10):
+    for j in range(1, 10):
+        print(i*j, end=" ")
+    print()      # newline after each row
+</code></pre>
+<h2 id="pattern-find-maxmin-over-a-range"><a class="header" href="#pattern-find-maxmin-over-a-range">Pattern: Find Max/Min Over a Range</a></h2>
+<p>Track a running best value, and update it whenever you see something
+better. Initialize it with the <em>first</em> value the loop will consider (here
+<code>f(0)</code>), not an arbitrary constant like <code>0</code> — that only works by luck if
+every <code>f(i)</code> happens to be non-negative.</p>
+<pre><code class="language-python">def f(i):
+    return (i**5 + 2*i**3 + 7*i**2 + i + 500) % 1000
+
+def findMax():
+    best = f(0)
+    for i in range(100):
+        if f(i) &gt; best:
+            best = f(i)
+    return best
+</code></pre>
+<p>(<code>findMin</code> is the same pattern with <code>&lt;</code> instead of <code>&gt;</code>.) This “running
+best” pattern will come back constantly for the rest of the course — get
+comfortable with it now.</p>
 
                     </main>
 

@@ -16,8 +16,10 @@ print(f(16, 4))  # 2.0
 print(f(64, 6))  # 2.0
 ```
 
-**3. `f(x)` and `g(x, y)`** — \\(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\\), using
-`math.exp`, `math.sin`, `math.sqrt` (or `**0.5`), `math.pi`.
+**3. `f(x)` and `g(x, y)`** — \\(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\\) and
+\\(g(x,y) = \left(1+f\left(y^{1/x}\right)\right)^{f\left(y^{1/x}\right)}\\), using
+`math.exp`, `math.sin`, `math.sqrt` (or `**0.5`), `math.pi`. First compute
+`z = f(y**(1/x))`, then return `(1+z)**z`.
 
 ```python
 import math
@@ -28,10 +30,6 @@ def g(x, y):
 print(f(2), f(3))    # 0.8108255774981366 -0.43822461448665007
 print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
 ```
-> The definition of `g` involves a nested fraction that didn't survive PDF
-> text extraction cleanly — check the original PDF for the exact formula;
-> the hint structure is "compute `z = f(1/x)` (or similar), then return
-> `(1+z)**z`".
 
 **4. `force(m1, m2, r)`** — gravitational force between two masses:
 \\(F = G \cdot \frac{m_1 m_2}{r^2}\\) where \\(G = 6.67 \times 10^{-11}\\).
@@ -70,7 +68,3 @@ print(countCoins(790))  # 8
 print(countCoins(260))  # 4
 print(countCoins(70))   # 3
 ```
-
----
-*Source: 2025 offering, `week03_func_problem.pdf`. Wording condensed; code
-stubs kept close to the original.*

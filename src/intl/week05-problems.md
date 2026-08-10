@@ -75,7 +75,3 @@ print(blood(50, 36, 11, 3, 45, 38, 10, 7))  # True
 ```
 > Hint: check the four cumulative inequalities (`O`, `O+A`, `O+B`,
 > `O+A+B`, `O+A+B+AB` supply vs. matching demand). Is the converse also true?
-
----
-*Source: 2025 offering, `week05_bool_func_problem.pdf`. Wording condensed;
-code stubs kept close to the original.*

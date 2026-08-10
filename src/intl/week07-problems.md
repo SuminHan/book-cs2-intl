@@ -5,8 +5,8 @@
 print(sumSquares([3,5,4]))  # 50
 ```
 
-**2. `computePolynomial(a, x)`** — evaluate $a_0 + a_1x + a_2x^2 + \cdots +
-a_{n-1}x^{n-1}$.
+**2. `computePolynomial(a, x)`** — evaluate \\(a_0 + a_1x + a_2x^2 + \cdots +
+a_{n-1}x^{n-1}\\).
 ```python
 print(computePolynomial([3,5,4], 5))  # 128
 ```
@@ -74,7 +74,3 @@ def closestPair(p):
 points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
 print(closestPair(points))  # 4.47213595499958 (between [2,1] and [-2,-1])
 ```
-
----
-*Source: 2025 offering, `week07_list_problem.pdf`. Wording condensed; code
-stubs kept close to the original.*

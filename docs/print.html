@@ -39,7 +39,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-59e761b6.js";
+            window.path_to_searchindex_js = "searchindex-42cb563f.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-58861ff6.js"></script>
@@ -182,16 +182,6 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="cs2-international-supplement"><a class="header" href="#cs2-international-supplement">CS2 International Supplement</a></h1>
-<p>Supplementary notes for the International track of KSA Computer Science 2 (CS2).</p>
-<p>This is not a replacement for class — just supplementary material. The
-essay below and the weekly opener content are original 2026 material. The
-“Topics Covered” outline on each week page is a topic-title-only reference
-to the 2025 offering — full slide content is not reproduced.
-Instructor-only material (e.g. diagnostic pretests, the syllabus, and
-answer keys) is intentionally excluded.</p>
-<p>The Korean track (국내반) is maintained separately in <a href="https://github.com/SuminHan/book-cs2">book-cs2</a>.</p>
-<hr>
-<p><em>Computer Science 2</em></p>
 <h2 id="why-programming-matters"><a class="header" href="#why-programming-matters">Why Programming Matters</a></h2>
 <p>“AI writes code now. It writes it faster than me, and honestly better than
 me. So why am I sitting in a programming class?”</p>
@@ -328,15 +318,112 @@ did not expect. Knowing what the machine will actually do is a different
 skill from telling it what to do.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
+<h2 id="values--variables"><a class="header" href="#values--variables">Values &amp; Variables</a></h2>
+<p>Every piece of data a program works with is a <strong>value</strong>, and every value has
+a <strong>type</strong>:</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Examples</th><th>Kind</th><th>Type</th></tr>
+</thead>
+<tbody>
+<tr><td><code>11</code>, <code>0</code>, <code>-200</code></td><td>integers</td><td><code>int</code></td></tr>
+<tr><td><code>3.14159</code>, <code>1.234E-8</code></td><td>reals</td><td><code>float</code></td></tr>
+<tr><td><code>"abc"</code>, <code>'abc'</code>, <code>"123"</code></td><td>strings</td><td><code>str</code></td></tr>
+</tbody>
+</table>
+</div>
+<p>A <strong>variable</strong> is a named memory location that stores a value. Assignment
+writes a value into it; using the variable’s name later reads the value back
+out.</p>
+<pre><code class="language-python">x = 10          # writing 10 to x
+y = x*x + 1     # reading 10 from x, writing 101 to y
+print(y)        # reading 101 from y
+</code></pre>
+<p><code>10 = x</code> is illegal — the left side of <code>=</code> must be a variable name, not a
+value (compare: “let 10 be x” isn’t something you’d write in math either).
+The same variable can be assigned more than once; each assignment overwrites
+the previous value, which is exactly what makes accumulation work:</p>
+<pre><code class="language-python">total = 0
+total = total + 7
+total = total + 5
+print(total)    # 12
+</code></pre>
+<p>Python also allows assigning to several variables at once — this is how you
+swap two variables without a temporary:</p>
+<pre><code class="language-python">a, b, c = 1, 2, 4
+a, b = b, a          # swap
+x, y, z = y, z, x    # rotate
+</code></pre>
+<p>(Note <code>a = b</code> then <code>b = a</code>, done as two separate statements, does <strong>not</strong>
+swap — by the time the second line runs, <code>a</code> and <code>b</code> already hold the same
+value.)</p>
+<p>Variable names must be made of letters, digits, and <code>_</code>, must not start with
+a digit, and cannot be a <strong>keyword</strong> (<code>int</code>, <code>if</code>, <code>else</code>, <code>while</code>, <code>for</code>,
+<code>range</code>, … — reserved by Python itself).</p>
+<h2 id="expressions"><a class="header" href="#expressions">Expressions</a></h2>
+<p>An <strong>operator</strong> is a symbol for a basic computation. The arithmetic
+operators are <code>+ - * / // % **</code>:</p>
 <ul>
-<li>Computation in math vs. Python</li>
-<li>Variables &amp; values</li>
-<li>Operators &amp; expressions (<code>+ - * / // % **</code>)</li>
-<li>Input from keyboard, output to screen</li>
+<li><code>/</code> — division (always gives a <code>float</code>)</li>
+<li><code>//</code> — quotient (<code>7 // 3</code> → <code>2</code>)</li>
+<li><code>%</code> — remainder (<code>7 % 3</code> → <code>1</code>)</li>
+<li><code>**</code> — power (<code>2 ** 5</code> → <code>32</code>)</li>
 </ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<p>An <strong>expression</strong> is a legal combination of variables/values and operators
+(and, later, functions) — evaluating it substitutes each variable’s value
+and computes the result:</p>
+<pre><code class="language-python">z = x + y*(60 + x)
+</code></pre>
+<p><strong>Precedence</strong>, high to low: <code>()</code> &gt; <code>**</code> &gt; <code>* / // %</code> &gt; <code>+ -</code>. Same
+precedence breaks left-to-right:</p>
+<pre><code class="language-python">5 + 7*9          # 5 + (7*9) = 68, not (5+7)*9
+2*100 // 60      # (2*100) // 60 = 3
+2*(100 // 60)    # 2*(100//60) = 2
+</code></pre>
+<p>When you’re not sure how an expression will parse — or the reader won’t be
+— add parentheses. Don’t rely on memorizing the table.</p>
+<p><strong>Decompose</strong> long expressions into named intermediate steps. It costs a
+couple of extra lines and pays for itself the moment you need to debug or
+re-read the code:</p>
+<pre><code class="language-python"># hard to read, hard to debug
+p = (x+y**2)**3 + 2*(x+y**2) + (x**2+1)**y
+
+# same computation, decomposed
+a = x + y**2
+b = x**2 + 1
+p = a**3 + 2*a + b**y
+</code></pre>
+<h2 id="types"><a class="header" href="#types">Types</a></h2>
+<p><code>type(·)</code> tells you the type of a value, variable, or expression:</p>
+<pre><code class="language-python">print(type(7))        # &lt;class 'int'&gt;
+print(type(7.0))      # &lt;class 'float'&gt;
+print(type("7"))      # &lt;class 'str'&gt;
+print(type(7 // 3))   # &lt;class 'int'&gt;
+print(type(7 / 3))    # &lt;class 'float'&gt;
+</code></pre>
+<p><code>int(·)</code>, <code>float(·)</code>, <code>str(·)</code> convert between types:</p>
+<pre><code class="language-python">x = 7
+print(float(x))        # 7.0
+y = 7.51
+print(int(y))          # 7   (truncates, doesn't round)
+print(1 + int("7"))    # 8
+</code></pre>
+<h2 id="input--output"><a class="header" href="#input--output">Input / Output</a></h2>
+<p><code>print</code> writes to the screen; by default each argument is separated by a
+space and it ends with a newline. Both are overridable with <code>sep=</code> and
+<code>end=</code>:</p>
+<pre><code class="language-python">print(1, 2, 3)          # 1 2 3
+print(1, end=" ")
+print(2, end="")
+print(3)                 # 1 23
+</code></pre>
+<p><code>input(·)</code> reads a line typed by the user and <strong>always returns a <code>str</code></strong> —
+even if the user typed a number, you must convert it yourself:</p>
+<pre><code class="language-python">s = input("Enter an integer: ")
+n = int(s)          # input() gives str, not int
+print(n**2)
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h1>
 <p><strong>1. Swap two variables</strong> — given <code>a</code> and <code>b</code> read from input, print them
@@ -347,41 +434,72 @@ print("Before swapping:", a, b)
 # ADD ADDITIONAL CODE HERE!
 print("After swapping: ", a, b)
 </code></pre>
-<blockquote>
-<p>Hint: multiple assignment — <code>a, b = b, a</code>.</p>
-</blockquote>
 <p><strong>2. Rotate five variables</strong> — given <code>a, b, c, d, e</code>, rotate their values so
 <code>a</code>’s value goes to <code>b</code>, <code>b</code>’s to <code>c</code>, …, and <code>e</code>’s wraps around to <code>a</code>.</p>
-<blockquote>
-<p>Hint: multiple assignment generalizes: <code>a,b,c,d,e = e,a,b,c,d</code>.</p>
-</blockquote>
+<pre><code class="language-python">a = input("Enter a: ")
+b = input("Enter b: ")
+c = input("Enter c: ")
+d = input("Enter d: ")
+e = input("Enter e: ")
+print("Before swapping:", a, b, c, d, e)
+# ADD ADDITIONAL CODE HERE!
+print("After swapping: ", a, b, c, d, e)
+</code></pre>
 <p><strong>3. Evaluate a quadratic</strong> — read <code>a, b, c, x</code> and print \(ax^2+bx+c\).</p>
-<blockquote>
-<p><code>input()</code> always returns a string — convert with <code>int(a)</code> before doing
-arithmetic. <code>x**2</code> computes \(x^2\).</p>
-</blockquote>
+<pre><code class="language-python">a = input("Enter a: ")
+b = input("Enter b: ")
+c = input("Enter c: ")
+x = input("Enter x: ")
+a = int(a)  # input() gives string type
+b = int(b)
+c = int(c)
+x = int(x)
+# ADD ADDITIONAL CODE HERE!
+# y = ...
+print("Value of the quadratic formula:", y)
+</code></pre>
 <p><strong>4. Rectangle area</strong> — read two corner points <code>(x1,y1)</code>, <code>(x2,y2)</code> (bottom-left
 and top-right) and print the rectangle’s area.</p>
+<pre><code class="language-python">x1 = int(input("Enter x1: "))
+y1 = int(input("Enter y1: "))
+x2 = int(input("Enter x2: "))
+y2 = int(input("Enter y2: "))
+# ADD ADDITIONAL CODE HERE!
+# area = ...
+print("Area of rectangle:", area)
+</code></pre>
 <p><strong>5. Triangle area (Heron’s formula)</strong> — read side lengths <code>a, b, c</code> and print
 the area: \(\sqrt{s(s-a)(s-b)(s-c)}\) where \(s = \frac{a+b+c}{2}\).</p>
-<blockquote>
-<p><code>x**0.5</code> computes \(\sqrt{x}\).</p>
-</blockquote>
+<pre><code class="language-python">a = float(input("Enter a: "))
+b = float(input("Enter b: "))
+c = float(input("Enter c: "))
+# ADD ADDITIONAL CODE HERE!
+# s = ...
+# area = ...
+print("Area of triangle:", area)
+</code></pre>
 <p><strong>6. Remainder without <code>%</code></strong> — read positive integers <code>a, b</code> and compute
 <code>a % b</code> using only <code>-</code>, <code>*</code>, and <code>//</code>.</p>
-<blockquote>
-<p>What is <code>101 // 16</code>? What is <code>(101 // 16) * 16</code>?</p>
-</blockquote>
+<pre><code class="language-python">a = int(input("Enter a: "))
+b = int(input("Enter b: "))
+# ADD ADDITIONAL CODE HERE!
+# r = ...
+print("Remainder:", r)
+</code></pre>
 <p><strong>7. Round to nearest integer</strong> — read a positive float <code>x</code> and print the
 nearest integer, without using <code>round()</code>.</p>
-<blockquote>
-<p>What is <code>int(2.4 + 0.5)</code>? <code>int(2.5 + 0.5)</code>? <code>int(2.6 + 0.5)</code>?</p>
-</blockquote>
+<pre><code class="language-python">x = float(input("Enter x: "))
+# ADD ADDITIONAL CODE HERE!
+# y = ...
+print(x, "is rounded off to", y)
+</code></pre>
 <p><strong>8. Fahrenheit to Celsius</strong> — read an integer Fahrenheit temperature <code>F</code> and
 print the Celsius equivalent: \(C = (F - 32) \cdot \frac{5}{9}\).</p>
-<hr>
-<p><em>Source: 2025 offering, <code>week02_var_expr_problem.pdf</code>. Wording condensed;
-code stubs kept close to the original.</em></p>
+<pre><code class="language-python">F = int(input("Enter F: "))
+# ADD ADDITIONAL CODE HERE!
+# C = ...
+print("Temperature in Celcius:", C)
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
 <p>A function takes something in and gives something back. Usually that is
@@ -411,15 +529,102 @@ different job than the biologists thought it was doing.</p>
 expect something else?</strong></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-1"><a class="header" href="#topics-covered-1">Topics Covered</a></h1>
-<ul>
-<li>Indentation</li>
-<li>Built-in functions</li>
-<li>User-defined functions</li>
-<li>Parameters &amp; arguments</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="indentation"><a class="header" href="#indentation">Indentation</a></h2>
+<p>The body of a function (and later, of <code>if</code>/<code>for</code>/<code>while</code>) is marked purely
+by <strong>indentation</strong> — there are no <code>{ }</code> or <code>end</code> keywords. Use Tab (not the
+space bar) to indent consistently.</p>
+<pre><code class="language-python">def distance(x1, y1, x2, y2):
+    u = (x2-x1)**2
+    v = (y2-y1)**2
+    return math.sqrt(u+v)
+</code></pre>
+<p>Nested structure is represented by <em>nested</em> indentation, and different
+indentation gives a genuinely different program — these two are not the
+same function:</p>
+<pre><code class="language-python">def walk_9_by_9():
+    for j in range(4):
+        for i in range(9):
+            hubo.move()
+        hubo.turn_left()
+
+def walk_1_by_1_9_times():
+    for j in range(4):
+        for i in range(9):
+            hubo.move()
+            hubo.turn_left()
+</code></pre>
+<h2 id="built-in-functions"><a class="header" href="#built-in-functions">Built-in Functions</a></h2>
+<p>Python ships built-in functions for the common math functions: <code>math.sqrt</code>,
+the trig family (<code>math.sin</code>, <code>math.cos</code>, <code>math.tan</code>, <code>math.asin</code>, …),
+<code>math.exp</code>, <code>math.log</code>, and more (<code>import math</code> first).</p>
+<pre><code class="language-python">a = math.sqrt(17)
+b = math.sin(60 * math.pi / 180)
+c = math.log(20 * b)
+d = math.cos(b * math.cos(a + math.sqrt(c+1)) - 2)
+</code></pre>
+<p>A long composed expression like <code>d</code> above is exactly the case for
+<strong>decomposition</strong> (see Week 2): split it into named steps.</p>
+<pre><code class="language-python">x1 = a + math.sqrt(c+1)
+x2 = b * math.cos(x1) - 2
+d = math.cos(x2)
+</code></pre>
+<h2 id="user-defined-functions"><a class="header" href="#user-defined-functions">User-Defined Functions</a></h2>
+<p><code>math.sqrt</code> is built in; you can define your own functions the same
+way — either returning a value, or just doing something (printing,
+say) without returning one:</p>
+<pre><code class="language-python">def distance(x1, y1, x2, y2):     # returns a value
+    u = (x2-x1)**2
+    v = (y2-y1)**2
+    return math.sqrt(u+v)
+
+def printCircleArea(radius):      # no return — just prints
+    print(math.pi * radius**2)
+</code></pre>
+<p><strong>Define functions first, then write the code that calls them</strong> — the
+order the <code>def</code>s appear in the file doesn’t affect what they compute, but a
+function has to already be defined by the time you call it:</p>
+<pre><code class="language-python">def circleArea(radius):
+    return math.pi * radius**2
+
+def distance(x1, y1, x2, y2):
+    u = (x2-x1)**2
+    v = (y2-y1)**2
+    return math.sqrt(u+v)
+
+a = circleArea(10)
+b = distance(0, 0, 3, 4)
+</code></pre>
+<p>A common pattern is to wrap all the “main” calls in one <code>startFromHere()</code>
+function and call that last, so the file reads top-to-bottom as
+<em>definitions, then the program</em>:</p>
+<pre><code class="language-python">def startFromHere():
+    a = circleArea(10)
+    b = distance(0, 0, 3, 4)
+    printCircleArea(10)
+
+startFromHere()
+</code></pre>
+<h2 id="parameters--arguments"><a class="header" href="#parameters--arguments">Parameters &amp; Arguments</a></h2>
+<p>A <strong>parameter</strong> is the variable name a function receives its input through;
+an <strong>argument</strong> is the actual value passed in at the call site.</p>
+<pre><code class="language-python">def circleArea(radius):     # radius: parameter
+    return math.pi * radius**2
+
+a = circleArea(10)          # 10: argument — copied into radius
+</code></pre>
+<p>The argument variable’s name (if it even has one) has nothing to do with
+the parameter’s name — only the <em>value</em> is passed:</p>
+<pre><code class="language-python">def circleArea(x):
+    return math.pi * x**2
+
+x = 10
+circleArea(x)     # this call passes the value 10, not "the variable x"
+</code></pre>
+<p>A function can call another function, and can call itself… indirectly —
+you’ll see recursion later. For now: each function has its own local
+variables (its parameters, plus anything it assigns inside its body) —
+a variable named <code>y</code> inside one function is unrelated to a variable
+named <code>y</code> inside another, or at the top level.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-1"><a class="header" href="#problem-set-1">Problem Set</a></h1>
 <p><em>Use interactive mode (the Python shell) whenever a formula isn’t clear.</em></p>
@@ -433,8 +638,10 @@ print(f(3, 6))  # 0.25
 <pre><code class="language-python">print(f(16, 4))  # 2.0
 print(f(64, 6))  # 2.0
 </code></pre>
-<p><strong>3. <code>f(x)</code> and <code>g(x, y)</code></strong> — \(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\), using
-<code>math.exp</code>, <code>math.sin</code>, <code>math.sqrt</code> (or <code>**0.5</code>), <code>math.pi</code>.</p>
+<p><strong>3. <code>f(x)</code> and <code>g(x, y)</code></strong> — \(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\) and
+\(g(x,y) = \left(1+f\left(y^{1/x}\right)\right)^{f\left(y^{1/x}\right)}\), using
+<code>math.exp</code>, <code>math.sin</code>, <code>math.sqrt</code> (or <code>**0.5</code>), <code>math.pi</code>. First compute
+<code>z = f(y**(1/x))</code>, then return <code>(1+z)**z</code>.</p>
 <pre><code class="language-python">import math
 def f(x):
     # ADD ADDITIONAL CODE HERE!
@@ -443,12 +650,6 @@ def g(x, y):
 print(f(2), f(3))    # 0.8108255774981366 -0.43822461448665007
 print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
 </code></pre>
-<blockquote>
-<p>The definition of <code>g</code> involves a nested fraction that didn’t survive PDF
-text extraction cleanly — check the original PDF for the exact formula;
-the hint structure is “compute <code>z = f(1/x)</code> (or similar), then return
-<code>(1+z)**z</code>”.</p>
-</blockquote>
 <p><strong>4. <code>force(m1, m2, r)</code></strong> — gravitational force between two masses:
 \(F = G \cdot \frac{m_1 m_2}{r^2}\) where \(G = 6.67 \times 10^{-11}\).</p>
 <pre><code class="language-python">def force(m1, m2, r):
@@ -481,9 +682,6 @@ up to <code>n</code> won (<code>10 ≤ n ≤ 990</code>, multiple of 10). E.g. <
 print(countCoins(260))  # 4
 print(countCoins(70))   # 3
 </code></pre>
-<hr>
-<p><em>Source: 2025 offering, <code>week03_func_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h1>
 <p><strong>1 August 2012, 9:30 a.m.</strong> Knight Capital was the largest trader of US
@@ -515,14 +713,87 @@ changed — and a condition cannot notice that.</p>
 you forget you wrote it.</strong></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-2"><a class="header" href="#topics-covered-2">Topics Covered</a></h1>
-<ul>
-<li>Boolean type / boolean expressions</li>
-<li><code>if</code>-<code>else</code> conditionals</li>
-<li>Multiple return paths</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="boolean-type--expressions"><a class="header" href="#boolean-type--expressions">Boolean Type &amp; Expressions</a></h2>
+<p>A fourth type joins <code>int</code>/<code>float</code>/<code>str</code>: <code>bool</code>, whose only two values are
+<code>True</code> and <code>False</code>.</p>
+<p><strong>Relational operators</strong> build primitive boolean expressions: <code>== != &gt; &lt; &gt;= &lt;=</code>. Watch the difference between assignment and equality — “let x = y” in
+math becomes <code>x = y</code> (assignment) in Python, while “if x equals y” becomes
+<code>x == y</code> (a boolean expression, no side effect).</p>
+<p><strong>Logical operators</strong> combine boolean expressions: <code>and</code>, <code>or</code>, <code>not</code>.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>p</th><th>q</th><th><code>p and q</code></th><th><code>p or q</code></th><th><code>not p</code></th></tr>
+</thead>
+<tbody>
+<tr><td>True</td><td>True</td><td>True</td><td>True</td><td>False</td></tr>
+<tr><td>True</td><td>False</td><td>False</td><td>True</td><td>False</td></tr>
+<tr><td>False</td><td>True</td><td>False</td><td>True</td><td>True</td></tr>
+<tr><td>False</td><td>False</td><td>False</td><td>False</td><td>True</td></tr>
+</tbody>
+</table>
+</div>
+<p>Precedence, high to low: <code>()</code> &gt; <code>**</code> &gt; <code>* / // %</code> &gt; <code>+ -</code> &gt; relational
+(<code>== != &gt; &lt; &gt;= &lt;=</code>) &gt; <code>not</code> &gt; <code>and</code> &gt; <code>or</code>. As always, parenthesize
+anything you’re not 100% sure of:</p>
+<pre><code class="language-python">p = x%2 == 1 or x%3 != 0 and (not(y &lt;= 1) or x%2 == 1)
+</code></pre>
+<h2 id="if-else-conditionals"><a class="header" href="#if-else-conditionals"><code>if</code>-<code>else</code> Conditionals</a></h2>
+<pre><code class="language-python">if boolean_expression:
+    statements
+else:               # the else block may be omitted
+    statements
+</code></pre>
+<p>This is how a <strong>multi-case math definition</strong> (a curly-brace piecewise
+formula) becomes code — each case becomes a branch:</p>
+<pre><code class="language-python"># f(x) = 0 if x &lt;= 0, else x**2 + 1
+def f(x):
+    if x &lt;= 0:
+        y = 0
+    else:
+        y = x**2 + 1
+    return y
+</code></pre>
+<p>Chain more than two cases with <code>elif</code>:</p>
+<pre><code class="language-python">if b1:
+    statements          # runs if b1 is True
+elif b2:
+    statements           # runs if b1 is False and b2 is True
+elif b3:
+    statements           # runs if b1, b2 are False and b3 is True
+else:
+    statements           # runs if none of the above are True
+</code></pre>
+<p><code>if</code>s can also <strong>nest</strong> — but watch out, <code>if x != 0: if x &gt; 0: ... else: ...</code> is not the same branching as <code>if x &gt; 0: ... else: if x &lt; 0: ... else: ...</code>, even though both can compute the sign of <code>x</code>. Trace through <code>x == 0</code>
+by hand in each version if the difference isn’t obvious.</p>
+<h2 id="multiple-return-statements"><a class="header" href="#multiple-return-statements">Multiple <code>return</code> Statements</a></h2>
+<p>A function can have more than one <code>return</code> — commonly one per branch of a
+conditional. <strong>As soon as one <code>return</code> executes, the function ends
+immediately</strong> — no code after it runs, even if it’s inside more branches:</p>
+<pre><code class="language-python">def absoluteValue(x):
+    if x &lt; 0:
+        return -x
+    else:
+        return x
+</code></pre>
+<p>This lets you <strong>prune</strong> dead structure. Once a branch has returned, there’s
+no need for the surrounding <code>else</code> — the code after the <code>if</code> block only
+ever runs when that <code>if</code> didn’t return, so it’s implicitly the “else” case
+already:</p>
+<pre><code class="language-python"># before pruning                    # after pruning — equivalent
+if b1:                              if b1:
+    return v1                           return v1
+else:
+    if b2:                          if b2:
+        return v2                       return v2
+    else:
+        if b3:                      if b3:
+            return v3                    return v3
+        else:
+            return v4                return v4
+</code></pre>
+<p>Fewer nesting levels, same behavior — easier to read, easier to extend with
+one more case later.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-2"><a class="header" href="#problem-set-2">Problem Set</a></h1>
 <h3 id="required"><a class="header" href="#required">Required</a></h3>
@@ -594,9 +865,6 @@ axis-aligned squares (centers <code>(x1,y1)</code>/<code>(x2,y2)</code>, side le
 <blockquote>
 <p>Hint: \(m(m+1)/2 = n \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt; \sqrt{2n} &lt; m+1\).</p>
 </blockquote>
-<hr>
-<p><em>Source: 2025 offering, <code>week04_if_else_problem.pdf</code>. Wording condensed;
-code stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="boolean-functions"><a class="header" href="#boolean-functions">Boolean Functions</a></h1>
 <p>You want to check whether <code>x</code> is 1 or 2. In English that is one short
@@ -624,14 +892,95 @@ just quietly says yes to everything — and an <code>if</code> that is always tr
 exactly like an <code>if</code> that works.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-3"><a class="header" href="#topics-covered-3">Topics Covered</a></h1>
-<ul>
-<li>Defining &amp; using boolean functions</li>
-<li>Common mistake: returning the strings <code>"True"</code>/<code>"False"</code> instead of the
-boolean values <code>True</code>/<code>False</code></li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="boolean-functions-1"><a class="header" href="#boolean-functions-1">Boolean Functions</a></h2>
+<p>A <strong>boolean function</strong> is one that returns <code>True</code>/<code>False</code> — useful for
+hiding a complicated yes/no test behind a readable name, so the calling
+code can just write <code>if onePositive(x, y, z):</code> instead of repeating the
+whole condition inline. Whenever you’re facing a yes/no question, consider
+writing it as its own boolean function.</p>
+<pre><code class="language-python">def onePositive(x, y, z):
+    if x &gt; 0 and y &lt;= 0 and z &lt;= 0:
+        return True
+    if x &lt;= 0 and y &gt; 0 and z &lt;= 0:
+        return True
+    if x &lt;= 0 and y &lt;= 0 and z &gt; 0:
+        return True
+    return False
+</code></pre>
+<h2 id="common-mistake-string-true--false"><a class="header" href="#common-mistake-string-true--false">Common Mistake: String <code>"True"</code> / <code>"False"</code></a></h2>
+<p><code>"True"</code> and <code>"False"</code> (the strings) are <em>not</em> the same as <code>True</code> and
+<code>False</code> (the boolean values) — and a non-empty string is always truthy, so
+this bug won’t crash, it just silently always takes the <code>if</code> branch:</p>
+<pre><code class="language-python"># WRONG — returns the strings "True"/"False"
+def lessThan(x, y):
+    if x &lt; y:
+        return "True"
+    else:
+        return "False"
+
+if lessThan(a, b):   # always runs — "False" is a non-empty string!
+    ...
+</code></pre>
+<pre><code class="language-python"># correct
+def lessThan(x, y):
+    if x &lt; y:
+        return True
+    else:
+        return False
+</code></pre>
+<h2 id="tip-return-the-boolean-expression-directly"><a class="header" href="#tip-return-the-boolean-expression-directly">Tip: Return the Boolean Expression Directly</a></h2>
+<p>If your function’s job is exactly “is this condition true,” skip the
+<code>if</code>/<code>else</code> and return the condition itself:</p>
+<pre><code class="language-python">def lessThan(x, y):
+    return x &lt; y          # x &lt; y already IS True or False
+</code></pre>
+<p>The same shortcut applies to negation:</p>
+<pre><code class="language-python"># if boolean_expr: return False   else: return True
+# becomes:
+return not boolean_expr
+</code></pre>
+<h2 id="tip-drop--true--replace--false-with-not"><a class="header" href="#tip-drop--true--replace--false-with-not">Tip: Drop <code>== True</code> / Replace <code>== False</code> with <code>not</code></a></h2>
+<p><code>b == True</code> is just <code>b</code>; <code>b == False</code> is <code>not b</code>:</p>
+<pre><code class="language-python">if singleDigit(a) == True and singleDigit(b) == False:
+    ...
+# becomes:
+if singleDigit(a) and not singleDigit(b):
+    ...
+</code></pre>
+<p>Watch for the classic typo — <code>=</code> (assignment) where you meant <code>==</code>
+(comparison). <code>if singleDigit(a) = True:</code> is not valid boolean logic at
+all.</p>
+<h2 id="tip-decompose-complicated-boolean-expressions"><a class="header" href="#tip-decompose-complicated-boolean-expressions">Tip: Decompose Complicated Boolean Expressions</a></h2>
+<p>The same decomposition advice from Week 2 applies to conditions, maybe even
+more so — a condition repeated three times with permuted variables is easy
+to get wrong in one of the copies:</p>
+<pre><code class="language-python">a = (x2-x1)**2 + (y2-y1)**2
+b = (x3-x2)**2 + (y3-y2)**2
+c = (x1-x3)**2 + (y1-y3)**2
+if a+b == c or b+c == a or a+c == b:
+    ...
+</code></pre>
+<h2 id="tip-never--on-float"><a class="header" href="#tip-never--on-float">Tip: Never <code>==</code> on <code>float</code></a></h2>
+<pre><code class="language-python">print(0.1 + 0.2)          # 0.30000000000000004
+print(0.1 + 0.2 == 0.3)   # False
+print((111**0.5)**2)        # 110.99999999999999
+print((111**0.5)**2 == 111) # False
+</code></pre>
+<p><code>==</code> on floats is unreliable because of how binary floating point rounds.
+When possible, restructure the comparison to stay in integers rather than
+comparing floats at all:</p>
+<pre><code class="language-python"># unreliable: comparing floats
+d = ((x2-x1)**2 + (y2-y1)**2)**0.5
+if d == dist:
+    ...
+
+# better: compare the squared (integer) distance instead
+d = (x2-x1)**2 + (y2-y1)**2
+if d == dist**2:
+    ...
+</code></pre>
+<p>When you truly can’t avoid a float comparison, compare with a tolerance
+instead of <code>==</code> — see Week 2’s Introduction essay for why.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-3"><a class="header" href="#problem-set-3">Problem Set</a></h1>
 <p><strong>1. <code>inSecondQuadrant(x, y)</code> / <code>exactlyTwoSecondQuadrant(...)</code></strong> — the
@@ -702,9 +1051,6 @@ print(blood(50, 36, 11, 3, 45, 38, 10, 7))  # True
 <p>Hint: check the four cumulative inequalities (<code>O</code>, <code>O+A</code>, <code>O+B</code>,
 <code>O+A+B</code>, <code>O+A+B+AB</code> supply vs. matching demand). Is the converse also true?</p>
 </blockquote>
-<hr>
-<p><em>Source: 2025 offering, <code>week05_bool_func_problem.pdf</code>. Wording condensed;
-code stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-i"><a class="header" href="#for-loops-i">For Loops I</a></h1>
 <pre><code class="language-python">for i in range(10):
@@ -731,14 +1077,83 @@ write <code>+1</code>.</p>
 you are fighting the language — and whether the <code>+1</code> is about to cost you.</strong></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-4"><a class="header" href="#topics-covered-4">Topics Covered</a></h1>
-<ul>
-<li>Increment/decrement operators</li>
-<li><code>for</code> loops with <code>range(·)</code> (various forms: start/stop/step)</li>
-<li>Shortcut assignment operators: <code>+= -= *= /=</code></li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="why-for-loops"><a class="header" href="#why-for-loops">Why <code>for</code> Loops</a></h2>
+<p>Computing <code>1 + 2 + ... + n</code> without a loop means writing one line per
+term — it doesn’t even work unless you already know <code>n</code> in advance:</p>
+<pre><code class="language-python">def sumTo(n):
+    total = 0
+    total = total + 1
+    total = total + 2
+    ...                  # can't write this for a variable n!
+</code></pre>
+<p>A <code>for</code> loop repeats a block once per value in a range:</p>
+<pre><code class="language-python">def sumTo(n):
+    total = 0
+    for i in range(1, n+1):   # i = 1, 2, ..., n
+        total = total + i
+    return total
+</code></pre>
+<h2 id="for-loops-with-range"><a class="header" href="#for-loops-with-range"><code>for</code> Loops with <code>range(·)</code></a></h2>
+<p><code>range</code> has three forms:</p>
+<pre><code class="language-python">for k in range(n):          # 0, 1, ..., n-1
+for k in range(m, n):       # m, m+1, ..., n-1
+for k in range(m, n, k):    # m, m+k, m+2k, ... (stops before n)
+</code></pre>
+<p><code>range(n)</code> is shorthand for <code>range(0, n, 1)</code>; <code>range(m, n)</code> is shorthand for
+<code>range(m, n, 1)</code>. A negative step counts down:</p>
+<pre><code class="language-python">for k in range(n, 0, -1):
+    print(k)      # n, n-1, ..., 1
+</code></pre>
+<p>Whichever form, the loop is equivalent to writing out the body once per
+value the range produces, in order — that mental model (unrolling the
+loop) is the way to check you picked the right range.</p>
+<h2 id="incrementdecrement-shortcuts"><a class="header" href="#incrementdecrement-shortcuts">Increment/Decrement Shortcuts</a></h2>
+<pre><code class="language-python">x += y   # x = x + y
+x -= y   # x = x - y
+x *= y   # x = x * y
+x /= y   # x = x / y
+x //= y  # x = x // y
+</code></pre>
+<pre><code class="language-python">total, product = 0, 1
+for k in range(1, n+1):
+    total += k     # running sum
+    product *= k   # running product
+</code></pre>
+<h2 id="loop--conditional"><a class="header" href="#loop--conditional">Loop + Conditional</a></h2>
+<p>A loop body can contain an <code>if</code>, applying different logic per iteration:</p>
+<pre><code class="language-python">for k in range(1, 11):
+    if k % 2 == 0:
+        print(k, "is even")
+    else:
+        print(k, "is odd")
+</code></pre>
+<h2 id="nested-loops"><a class="header" href="#nested-loops">Nested Loops</a></h2>
+<p>A loop body can itself contain another loop — the inner loop runs to
+completion for <em>every</em> iteration of the outer one. Printing a
+multiplication table is the canonical example:</p>
+<pre><code class="language-python">for i in range(1, 10):
+    for j in range(1, 10):
+        print(i*j, end=" ")
+    print()      # newline after each row
+</code></pre>
+<h2 id="pattern-find-maxmin-over-a-range"><a class="header" href="#pattern-find-maxmin-over-a-range">Pattern: Find Max/Min Over a Range</a></h2>
+<p>Track a running best value, and update it whenever you see something
+better. Initialize it with the <em>first</em> value the loop will consider (here
+<code>f(0)</code>), not an arbitrary constant like <code>0</code> — that only works by luck if
+every <code>f(i)</code> happens to be non-negative.</p>
+<pre><code class="language-python">def f(i):
+    return (i**5 + 2*i**3 + 7*i**2 + i + 500) % 1000
+
+def findMax():
+    best = f(0)
+    for i in range(100):
+        if f(i) &gt; best:
+            best = f(i)
+    return best
+</code></pre>
+<p>(<code>findMin</code> is the same pattern with <code>&lt;</code> instead of <code>&gt;</code>.) This “running
+best” pattern will come back constantly for the rest of the course — get
+comfortable with it now.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-4"><a class="header" href="#problem-set-4">Problem Set</a></h1>
 <p><strong>1. <code>printMultTable1()</code> / <code>printMultTable2()</code></strong> — print parts of a
@@ -801,9 +1216,6 @@ and divide as you go to keep values manageable.</p>
 <code>maxPrimeFactor(12)</code> → <code>3</code> (since \(12 = 2 \times 2 \times 3\)).</p>
 <p><strong>10. <code>withinRegion(a, c)</code></strong> — number of integer points <code>(x,y)</code> satisfying
 both \(y \le -ax^2+c\) and \(y \ge ax^2-c\) (the region between two parabolas).</p>
-<hr>
-<p><em>Source: 2025 offering, <code>week06_for_1_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="lists"><a class="header" href="#lists">Lists</a></h1>
 <p>You want a 3×3 grid of zeros. You already know that <code>[0]*3</code> gives
@@ -832,21 +1244,87 @@ The grid <em>looks</em> right until you change one cell — and then it is wrong
 everywhere at once.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-5"><a class="header" href="#topics-covered-5">Topics Covered</a></h1>
-<ul>
-<li>Why lists reduce repetitive code (motivating example: summing many
-hand-named variables vs. one list)</li>
-<li>List indexing</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="why-lists"><a class="header" href="#why-lists">Why Lists</a></h2>
+<p>Without a list, summing eight numbers means eight separately-named
+variables — and code that can’t scale to a variable amount of data:</p>
+<pre><code class="language-python">number0, number1, number2, number3 = 2, 4, 3, 1
+number4, number5, number6, number7 = 7, 2, 5, 6
+total = number0 + number1 + number2 + number3 + number4 + number5 + number6 + number7
+</code></pre>
+<p>A <strong>list</strong> replaces the eight names with one, indexed by position:</p>
+<pre><code class="language-python">number = [2, 4, 3, 1, 7, 2, 5, 6]
+total = 0
+total += number[0]
+total += number[1]
+...
+</code></pre>
+<p>Combined with a <code>for</code> loop, this becomes genuinely concise — and now it
+works for a list of <em>any</em> length, not just 8:</p>
+<pre><code class="language-python">number = [2, 4, 3, 1, 7, 2, 5, 6]
+total = 0
+for i in range(len(number)):
+    total += number[i]
+print(total)
+</code></pre>
+<p>(<code>total += numberi</code> is not a thing — there’s no way to build a variable
+name out of a loop variable. Indexing is what a list buys you.)</p>
+<h2 id="creating-lists"><a class="header" href="#creating-lists">Creating Lists</a></h2>
+<pre><code class="language-python">number = [2, 5, 8, 11, 14]      # with initial values
+
+number = [None] * 5             # uninitialized, filled in later
+for i in range(len(number)):
+    number[i] = 3*i + 2
+</code></pre>
+<p><code>[None] * 5</code> is shorthand for <code>[None, None, None, None, None]</code> — <code>None</code>
+can be replaced with any placeholder value, e.g. <code>[-1] * 5</code>. Avoid <code>[0] * 5</code> as a placeholder specifically, since it invites confusion about whether
+<code>0</code> is a <em>real</em> value already written in, or just a placeholder waiting to
+be overwritten.</p>
+<h2 id="indexing"><a class="header" href="#indexing">Indexing</a></h2>
+<p><code>len(·)</code> gives the length; <strong>always use <code>len(·)</code> instead of a literal
+number</strong>, so the code keeps working if the list’s size changes.</p>
+<p><code>list[i]</code> is the <code>(i+1)</code>-th element (indices start at <code>0</code>). Valid indices
+are <code>0</code> to <code>len(·)-1</code>; <code>list[-1]</code> through <code>list[-len(·)]</code> also work,
+counting from the end (<code>list[-1]</code> is the last element). Anything else is
+out of range.</p>
+<pre><code class="language-python">number = [None] * 4
+number[0] = 7
+number[1] = number[0] * 2
+number[2] = number[0] + 1
+number[3] = number[2] - 60
+number[3] += number[1]
+</code></pre>
+<p>You can treat <code>number[i]</code> exactly like an <code>int</code> variable — read it, write
+it, use it in an expression. The index itself can be any expression that
+evaluates to an <code>int</code>:</p>
+<pre><code class="language-python">for i in range(4):
+    print(number[(i+2) % 4])   # prints number[2], number[3], number[0], number[1]
+</code></pre>
+<h2 id="lists-as-parameters-and-return-values"><a class="header" href="#lists-as-parameters-and-return-values">Lists as Parameters and Return Values</a></h2>
+<p>A list can be passed into a function just like any other value:</p>
+<pre><code class="language-python">def total(numbers):
+    s = 0
+    for i in range(len(numbers)):
+        s += numbers[i]
+    return s
+</code></pre>
+<p>And a function can build and return a new list:</p>
+<pre><code class="language-python">def incrementAll(b):
+    a = [None] * len(b)
+    for i in range(len(a)):
+        a[i] = b[i] + 1
+    return a
+
+print(incrementAll([2, 4, 3, 1, 7, 2, 5, 6]))   # [3, 5, 4, 2, 8, 3, 6, 7]
+</code></pre>
+<p>This “make a same-length output list, fill it in with one loop” shape is
+the pattern behind most of this week’s Problem Set.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-5"><a class="header" href="#problem-set-5">Problem Set</a></h1>
 <p><strong>1. <code>sumSquares(a)</code></strong> — sum of squares of a list’s elements.</p>
 <pre><code class="language-python">print(sumSquares([3,5,4]))  # 50
 </code></pre>
-<p><strong>2. <code>computePolynomial(a, x)</code></strong> — evaluate $a_0 + a_1x + a_2x^2 + \cdots +
-a_{n-1}x^{n-1}$.</p>
+<p><strong>2. <code>computePolynomial(a, x)</code></strong> — evaluate \(a_0 + a_1x + a_2x^2 + \cdots +
+a_{n-1}x^{n-1}\).</p>
 <pre><code class="language-python">print(computePolynomial([3,5,4], 5))  # 128
 </code></pre>
 <p><strong>3. <code>harmonicMean(a)</code></strong> — \(\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}\).</p>
@@ -901,9 +1379,6 @@ def closestPair(p):
 points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
 print(closestPair(points))  # 4.47213595499958 (between [2,1] and [-2,-1])
 </code></pre>
-<hr>
-<p><em>Source: 2025 offering, <code>week07_list_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-ii"><a class="header" href="#for-loops-ii">For Loops II</a></h1>
 <pre><code class="language-python">L = [3, -1, 4, -5, 2]
@@ -935,13 +1410,79 @@ print(count)      # 3
 counting belongs inside.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-6"><a class="header" href="#topics-covered-6">Topics Covered</a></h1>
-<ul>
-<li><code>for</code> loop pattern: counter (count elements satisfying a condition)</li>
-<li>Toy Robot: basic moves (<code>move()</code>, <code>turn_left()</code>, <code>turn_right()</code>)</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="the-counter-pattern"><a class="header" href="#the-counter-pattern">The Counter Pattern</a></h2>
+<p>Given a set (a list), count how many elements satisfy some condition — i.e.
+the size of <code>{x in numbers | condition(x)}</code>. This is the <strong>counter</strong>
+pattern: a running total, incremented once per element that qualifies.</p>
+<pre><code class="language-python">def countOdd(numbers):
+    counter = 0
+    for i in range(len(numbers)):
+        if numbers[i] % 2 == 1:
+            counter += 1
+    return counter
+
+num = [1, 7, 2, 4, 2, 3, 7, 4, 5]
+print(countOdd(num))   # 5
+</code></pre>
+<p>The condition can be as simple as equality…</p>
+<pre><code class="language-python">def countNumber(numbers, k):
+    counter = 0
+    for i in range(len(numbers)):
+        if numbers[i] == k:
+            counter += 1
+    return counter
+</code></pre>
+<p>…or arbitrarily complex — in which case, wrap it in a <strong>boolean
+function</strong> (Week 5) rather than inlining it, so the loop stays readable:</p>
+<pre><code class="language-python">def isPrime(p):
+    for i in range(2, p//2 + 1):
+        if p % i == 0:
+            return False
+    return True
+
+def countPrime(numbers):
+    counter = 0
+    for i in range(len(numbers)):
+        if isPrime(numbers[i]):
+            counter += 1
+    return counter
+</code></pre>
+<p>(<code>isPrime</code> itself is an instance of a “for all” pattern — checking that
+<em>no</em> divisor works — which next week covers in depth.)</p>
+<h2 id="toy-robot"><a class="header" href="#toy-robot">Toy Robot</a></h2>
+<p>The course uses a small robot simulator (<code>cs1robots</code>) to practice loops
+and nesting on something visual. After <code>from cs1robots import *</code> and
+<code>create_world()</code>, a robot appears in a grid world:</p>
+<pre><code class="language-python">from cs1robots import *
+create_world()
+hubo = Robot()
+</code></pre>
+<p>Three basic moves:</p>
+<pre><code class="language-python">hubo.move()          # one step forward
+hubo.turn_left()      # turn 90° counterclockwise in place
+hubo.turn_right()     # turn 90° clockwise in place
+</code></pre>
+<p><code>hubo.set_trace("blue")</code> draws the path it takes; <code>hubo.set_pause(0.5)</code>
+adds a delay (in seconds) after each move, so you can actually watch it
+move instead of jumping straight to the end state.</p>
+<p>Everything from here is composing those three moves with <code>for</code> loops.
+Walking one edge of a square and turning at each corner:</p>
+<pre><code class="language-python">def move_square():
+    for i in range(4):
+        hubo.move()
+        hubo.turn_left()
+</code></pre>
+<p>Nested loops sweep the whole grid — an outer loop for each row, an inner
+loop that walks across it, with a turn at the end of each row:</p>
+<pre><code class="language-python">for j in range(4):
+    for i in range(9):
+        hubo.move()
+    hubo.turn_left()
+</code></pre>
+<p>“Climbing stairs” (alternating a vertical and a horizontal move) is the
+same idea with a <code>turn_left()</code>/<code>turn_right()</code> pair around each move instead
+of one long straight run — trace it step by step on paper before you trust
+your code to get the corners right.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-6"><a class="header" href="#problem-set-6">Problem Set</a></h1>
 <h3 id="required-1"><a class="header" href="#required-1">Required</a></h3>
@@ -1002,9 +1543,6 @@ not prime. E.g. <code>L = [110,49,441,91,341,20]</code> — indices 0,1,4 are no
 giving values <code>110, 49, 341</code>, so the answer is <code>341</code>.</p>
 <p><strong>17. <code>colinear(L)</code></strong> — count of collinear triples <code>L[i], L[j], L[k]</code>
 (<code>i&lt;j&lt;k</code>) among a list of points.</p>
-<hr>
-<p><em>Source: 2025 offering, <code>week08_for_2_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-iii"><a class="header" href="#for-loops-iii">For Loops III</a></h1>
 <p>This is the quantifier pattern you just learned — “for all”.</p>
@@ -1033,14 +1571,88 @@ everyone passed.</p>
 should test.</strong></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-7"><a class="header" href="#topics-covered-7">Topics Covered</a></h1>
+<h2 id="recap-three-for-loop-patterns-so-far"><a class="header" href="#recap-three-for-loop-patterns-so-far">Recap: Three <code>for</code>-Loop Patterns So Far</a></h2>
 <ul>
-<li><code>for</code> loop patterns recap: max/min, counter, quantifier (“for some”/“for all”)</li>
-<li>Toy Robot: handling beepers (<code>drop_beeper()</code>, <code>pick_beeper()</code>,
-<code>on_beeper()</code>, <code>carries_beepers()</code>)</li>
+<li><strong>Max/min</strong> (Week 6) — track a running best value.</li>
+<li><strong>Counter</strong> (Week 8) — track a running count of elements matching a
+condition.</li>
+<li><strong>Quantifier</strong> (this week) — “for some” / “for all”: does <em>any</em>/<em>every</em>
+element satisfy a condition?</li>
 </ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="the-quantifier-pattern"><a class="header" href="#the-quantifier-pattern">The Quantifier Pattern</a></h2>
+<p>Given a list, “does <code>numbers[i] &gt; 0</code> for <strong>some</strong> <code>i</code>?” is an <em>existential</em>
+question (∃); “for <strong>all</strong> <code>i</code>?” is a <em>universal</em> one (∀). Both are
+naturally boolean functions:</p>
+<pre><code class="language-python">def somePositive(numbers):
+    for i in range(len(numbers)):
+        if numbers[i] &gt; 0:
+            return True
+    return False              # never found one
+</code></pre>
+<pre><code class="language-python">def allPositive(numbers):
+    for i in range(len(numbers)):
+        if not (numbers[i] &gt; 0):   # found a counterexample
+            return False
+    return True                     # never found a counterexample
+</code></pre>
+<p>The shapes are near-mirror images: “for some” returns <code>True</code> the instant it
+finds a match, and falls through to <code>False</code>. “For all” returns <code>False</code> the
+instant it finds a <em>counter</em>example, and falls through to <code>True</code>.</p>
+<p>This mirroring isn’t a coincidence — it’s <strong>De Morgan’s law</strong> applied to
+quantifiers: <code>not (for all x, p(x))</code> is the same statement as <code>for some x, not p(x)</code>. So “for all <code>p(x)</code>” can always be written as “not (for some <code>x</code>,
+<code>not p(x)</code>)” — which is exactly why the “for all” loop checks <code>not p(x)</code>
+and returns <code>False</code> on a hit.</p>
+<p>Two worked examples:</p>
+<pre><code class="language-python"># "for some": is n a sum of two squares?
+def sumOfTwoSquares(n):
+    b = int(math.sqrt(n))
+    for i in range(1, b+1):
+        for j in range(1, b+1):
+            if n == i*i + j*j:
+                return True
+    return False
+
+# "for all": is numbers non-decreasing?
+def isIncreasingSequence(numbers):
+    for i in range(len(numbers)-1):
+        if not (numbers[i] &lt;= numbers[i+1]):
+            return False
+    return True
+</code></pre>
+<p><code>isPrime</code> from Week 8 is secretly a “for all” too — “<code>p</code> is prime” means
+“for all <code>i</code> from 2 to <code>p//2</code>, <code>i</code> does not divide <code>p</code>”:</p>
+<pre><code class="language-python">def isPrime(p):
+    for i in range(2, p//2 + 1):
+        if p % i == 0:      # found a divisor — counterexample!
+            return False
+    return True
+</code></pre>
+<h2 id="toy-robot-beepers"><a class="header" href="#toy-robot-beepers">Toy Robot: Beepers</a></h2>
+<p>A beeper is a small marker the robot can only sense when standing directly
+on it. Create a robot carrying some:</p>
+<pre><code class="language-python">hubo = Robot(beepers=3)
+</code></pre>
+<ul>
+<li><code>hubo.drop_beeper()</code> — put one down (needs at least one in pocket)</li>
+<li><code>hubo.pick_beeper()</code> — pick one up (needs one at the current position)</li>
+<li><code>hubo.on_beeper()</code> — <code>True</code> if there’s a beeper right here</li>
+<li><code>hubo.carries_beepers()</code> — <code>True</code> if Hubo is currently holding at least one</li>
+</ul>
+<p>Calling <code>drop_beeper()</code> with an empty pocket, or <code>pick_beeper()</code> on an
+empty square, is an error — always guard with the matching boolean
+function first:</p>
+<pre><code class="language-python">if hubo.on_beeper():
+    hubo.pick_beeper()
+else:
+    hubo.turn_left()
+</code></pre>
+<p>Combine with a loop to sweep an entire row, picking up (or dropping) as you
+go:</p>
+<pre><code class="language-python">for i in range(9):
+    hubo.move()
+    if hubo.on_beeper():
+        hubo.pick_beeper()
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-7"><a class="header" href="#problem-set-7">Problem Set</a></h1>
 <p><strong>1. <code>sumOfThreeSquares(n)</code></strong> (“for some” pattern) — can <code>n</code> be written as
@@ -1090,9 +1702,6 @@ one) at each step of the sequence “1 L 2 L 3 L … 9 L 9”.</p>
     if hubo.carries_beepers():
         hubo.drop_beeper()
 </code></pre>
-<hr>
-<p><em>Source: 2025 offering, <code>week09_for_3_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="while-loops"><a class="header" href="#while-loops">While Loops</a></h1>
 <p><strong>14 August 2003, 2:14 p.m.</strong> A control room in Ohio. A program whose only
@@ -1125,13 +1734,74 @@ loop that will eventually make the condition false?” If you cannot point at
 that line, you have written an infinite loop.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-8"><a class="header" href="#topics-covered-8">Topics Covered</a></h1>
-<ul>
-<li><code>while</code> loop syntax</li>
-<li>Toy Robot (continued)</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="while-loops-1"><a class="header" href="#while-loops-1"><code>while</code> Loops</a></h2>
+<pre><code class="language-python">while boolean_expression:
+    statements
+</code></pre>
+<p>Repeats the body for as long as the condition stays true — checked <em>before</em>
+every iteration, including the first. Counting the digits of <code>n = 713</code>:</p>
+<pre><code class="language-python">def countDigits(n):
+    counter = 0
+    while n &gt; 0:
+        counter += 1
+        n = n // 10
+    return counter
+</code></pre>
+<p>Trace it: <code>n=713 → counter=1,n=71 → counter=2,n=7 → counter=3,n=0</code>, loop
+condition now false, return <code>3</code>.</p>
+<h2 id="for-vs-while"><a class="header" href="#for-vs-while"><code>for</code> vs. <code>while</code></a></h2>
+<p>Any <code>for</code> loop can be rewritten as a <code>while</code> loop:</p>
+<pre><code class="language-python">for i in range(n):        # becomes:
+    total += i             i = 0
+                            while i &lt; n:
+                                total += i
+                                i += 1
+</code></pre>
+<p><strong>Use <code>for</code> when you know the number of iterations in advance</strong> (a fixed
+range, a list you’re walking through). <strong>Use <code>while</code></strong> when you don’t —
+<code>countDigits</code> above has to keep going until <code>n</code> reaches <code>0</code>, and there’s no
+way to know ahead of time how many digits <code>n</code> has without… counting
+them.</p>
+<h2 id="while-true--break"><a class="header" href="#while-true--break"><code>while True</code> + <code>break</code></a></h2>
+<p>When the loop-continuation condition is awkward to state directly, loop
+forever (<code>while True:</code>) and <code>break</code> out explicitly once some condition is
+met inside the body:</p>
+<pre><code class="language-python">while True:
+    ...
+    if some_condition:
+        break     # exit immediately, skip everything after
+    ...
+</code></pre>
+<pre><code class="language-python"># equivalent to the countDigits loop above, written with break instead
+while True:
+    counter += 1
+    n = n // 10
+    if n == 0:
+        break
+</code></pre>
+<h2 id="toy-robot-with-while"><a class="header" href="#toy-robot-with-while">Toy Robot with <code>while</code></a></h2>
+<p>Some robot tasks don’t have a fixed number of steps, which is exactly the
+<code>for</code>-can’t-do-it case. “Pick up beepers here, however many there are”:</p>
+<pre><code class="language-python">while hubo.on_beeper():
+    hubo.pick_beeper()
+</code></pre>
+<p>“Drop every beeper Hubo is carrying, walking forward after each”:</p>
+<pre><code class="language-python">hubo = Robot(beepers=50)
+while hubo.carries_beepers():
+    hubo.drop_beeper()
+    hubo.move()
+</code></pre>
+<p>If the condition is already false before the first check — e.g. Hubo was
+created with zero beepers — the loop body never runs at all, not even
+once. That’s different from a <code>for</code> loop over a nonempty range, and worth
+double-checking when a <code>while</code> loop “does nothing.”</p>
+<p>Composing two <code>while</code> loops handles “walk until you reach a pile of
+beepers, then pick them all up”:</p>
+<pre><code class="language-python">while not hubo.on_beeper():
+    hubo.move()
+while hubo.on_beeper():
+    hubo.pick_beeper()
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-8"><a class="header" href="#problem-set-8">Problem Set</a></h1>
 <h3 id="required-2"><a class="header" href="#required-2">Required</a></h3>
@@ -1197,9 +1867,6 @@ reversed. E.g. <code>[12,40,2]</code> → \(21+4+2=27\).</p>
 <p><strong>14. <code>countAllZeros(L)</code></strong> — total count of <code>0</code> bits across the binary
 representations of the decimal numbers in <code>L</code>. E.g. <code>[10,20,30]</code> →
 binary <code>1010,10100,11110</code> → \(2+3+1=6\).</p>
-<hr>
-<p><em>Source: 2025 offering, <code>week10_while_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="list-ii"><a class="header" href="#list-ii">List II</a></h1>
 <p>You have just learned <code>.remove()</code>. This reads perfectly:</p>
@@ -1231,15 +1898,69 @@ def remove_negatives(L):
 <p><em>And notice again: no crash, no warning. Just a quietly wrong answer.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-9"><a class="header" href="#topics-covered-9">Topics Covered</a></h1>
-<ul>
-<li><code>.append()</code>, slicing <code>[:]</code></li>
-<li>List operations: <code>==</code>, <code>+</code>, <code>in</code></li>
-<li>Built-in functions: <code>sum()</code>, <code>max()</code>, <code>min()</code>, <code>sort()</code></li>
-<li>List comprehension</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="append"><a class="header" href="#append"><code>.append(·)</code></a></h2>
+<p>A second way to build a list, growing it one element at a time instead of
+pre-sizing with <code>[None] * n</code>:</p>
+<pre><code class="language-python">L = [1, 2, 3, 4, 5]
+n = len(L)
+M = []
+for i in range(n):
+    M.append(L[i] * 2)     # each call adds one element to the end
+</code></pre>
+<h2 id="slicing"><a class="header" href="#slicing">Slicing</a></h2>
+<p><code>L[i:j]</code> — elements <code>L[i]</code> through <code>L[j-1]</code> (note: <code>L[j]</code> itself is
+<strong>excluded</strong>). Omitting <code>i</code> means “from the start”; omitting <code>j</code> means “to
+the end”; omitting both copies the whole list.</p>
+<pre><code class="language-python">L = [0, 10, 20, 30, 40, 50]
+print(L[1:4])   # [10, 20, 30]
+print(L[:3])    # [0, 10, 20]     same as L[0:3]
+print(L[2:])    # [20, 30, 40, 50]  same as L[2:6]
+print(L[:])     # [0, 10, 20, 30, 40, 50]
+</code></pre>
+<p><code>L[i:j:k]</code> adds a step: take every <code>k</code>-th element from <code>L[i]</code> up to (not
+including) <code>L[j]</code>.</p>
+<pre><code class="language-python">L = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+print(L[1:9:2])    # [10, 30, 50, 70]
+print(L[1::2])     # [10, 30, 50, 70, 90]
+print(L[1:-1:2])   # [10, 30, 50, 70]   (-1: stop before the last element)
+</code></pre>
+<h2 id="comparison-membership-concatenation"><a class="header" href="#comparison-membership-concatenation">Comparison, Membership, Concatenation</a></h2>
+<pre><code class="language-python">L, M, N = [1,2,3], [1,2,3], [1,3,2]
+print(L == M)   # True  — same values, same order
+print(L == N)   # False — same values, different order
+
+print(3 in [0,1,2,3,4,5])          # True
+print([1,2] in [0,1,2,3,4,5])       # False — [1,2] is not itself an element
+print([1,2] in [0,[1,2],3])         # True  — here it is
+
+L = [0,1] + [2,3,4,5]   # [0,1,2,3,4,5]  concatenation
+M = [0,1] * 3            # [0,1,0,1,0,1]  repetition
+</code></pre>
+<h2 id="built-in-functions-1"><a class="header" href="#built-in-functions-1">Built-In Functions</a></h2>
+<p><code>sum(L)</code>, <code>max(L)</code>, <code>min(L)</code> work on lists of numbers directly — no loop
+needed. <code>L.sort()</code> is different from the rest: it’s a <strong>method</strong> (called as
+<code>L.sort()</code>, not <code>sort(L)</code>), it sorts <code>L</code> <strong>in place</strong>, and it returns
+<code>None</code> — printing the return value of <code>.sort()</code> is a reliable way to
+accidentally print <code>None</code> instead of your sorted list.</p>
+<pre><code class="language-python">L = [1, 2, 3, 2, 3, 2]
+M = L.sort()
+print(M)   # None  — NOT the sorted list
+print(L)   # [1, 2, 2, 2, 3, 3]  — L itself was modified
+</code></pre>
+<h2 id="list-comprehension"><a class="header" href="#list-comprehension">List Comprehension</a></h2>
+<p>A compact way to build a list from a loop, written <code>[expr for var in iterable]</code> — optionally with an <code>if</code> filter:</p>
+<pre><code class="language-python">a = [x for x in "hello"]              # ['h','e','l','l','o']
+b = [x**2 for x in range(6)]          # [0,1,4,9,16,25]
+c = [x**2 for x in range(10) if x%2==1]   # only odd x: [1,9,25,49,81]
+</code></pre>
+<p>Nested comprehensions build nested (2D) lists, the outer loop changing
+which row, the inner loop filling that row:</p>
+<pre><code class="language-python">d = [[i+j for i in range(4)] for j in range(3)]
+# [[0,1,2,3], [1,2,3,4], [2,3,4,5]]
+</code></pre>
+<p>A comprehension is optional — anything it does, a <code>for</code> loop with
+<code>.append()</code> also does. Use whichever reads more clearly for the problem at
+hand; a <code>for</code>-loop version is never wrong.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-9"><a class="header" href="#problem-set-9">Problem Set</a></h1>
 <p><strong>1. <code>deleteThree(L)</code></strong> — new list with every <code>3</code> removed from <code>L</code>.</p>
@@ -1281,9 +2002,6 @@ multiple of <code>y</code>)</p>
 <pre><code class="language-python">print(multiple([14,24,18,35,39], [6,13,7]))  # True
 print(multiple([14,24,18,35,39], [5,13,7]))  # False
 </code></pre>
-<hr>
-<p><em>Source: 2025 offering, <code>week11_List2_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
 <p>You have just met <code>.replace()</code>. The name says exactly what you want, so:</p>
@@ -1314,15 +2032,69 @@ one option: build a new string and return it.</p>
 <code>L</code>; <code>s.upper()</code> cannot change <code>s</code>.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-10"><a class="header" href="#topics-covered-10">Topics Covered</a></h1>
-<ul>
-<li>Indexing, slicing <code>[:]</code></li>
-<li>String operations: <code>==</code>, <code>&gt;</code>, <code>+</code>, <code>in</code></li>
-<li>Palindromes</li>
-<li>String methods</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="strings-as-immutable-lists-of-characters"><a class="header" href="#strings-as-immutable-lists-of-characters">Strings as Immutable Lists of Characters</a></h2>
+<p>A string behaves like a list of characters — <code>len(·)</code>, indexing, and
+slicing all work the same way — with one crucial difference: <strong>you cannot
+modify a string in place.</strong></p>
+<pre><code class="language-python">s = "computer"
+s[0] = "C"
+# TypeError: 'str' object does not support item assignment
+</code></pre>
+<p>To “change” a string, you build and assign a <em>new</em> one. This is the
+mutable/immutable distinction: <code>int</code>, <code>float</code>, <code>str</code>, and tuples are
+immutable (once created, that value never changes); <code>list</code> (and <code>set</code>) are
+mutable (you can modify them in place, as <code>.append()</code> and <code>.sort()</code> do).</p>
+<h2 id="indexing--slicing"><a class="header" href="#indexing--slicing">Indexing &amp; Slicing</a></h2>
+<p>Identical rules to lists:</p>
+<pre><code class="language-python">s = "computer"
+for i in range(len(s)):
+    print(s[i], end=" ")
+
+print(s[1:4])    # "omp"
+print(s[:3])     # "com"    same as s[0:3]
+print(s[2:])     # "mputer"
+print(s[1:6:2])  # step of 2
+</code></pre>
+<h2 id="comparison-membership-concatenation-1"><a class="header" href="#comparison-membership-concatenation-1">Comparison, Membership, Concatenation</a></h2>
+<pre><code class="language-python">s1, s2 = "computer", "science"
+print(s1 == s2)    # False
+print(s1 &lt; s2)      # True — lexicographic (dictionary) order
+print('abc' &lt; "XYZ")  # False — ALL uppercase letters sort before
+                        # any lowercase letter in ASCII
+</code></pre>
+<p><code>in</code> checks for a <strong>substring</strong>, not just a single character — and order
+matters:</p>
+<pre><code class="language-python">s1 = "computer"
+print("om" in s1)    # True
+print("OM" in s1)    # False — case-sensitive
+print("com" in s1)   # True  — characters in that exact order
+print("cmo" in s1)   # False — right characters, wrong order
+</code></pre>
+<p><code>+</code> concatenates, <code>*</code> repeats:</p>
+<pre><code class="language-python">s = "com" + "puter"    # "computer"
+t = "hi" * 3             # "hihihi"
+</code></pre>
+<p>Building a reversed string, one character at a time, is the same
+accumulator pattern from Week 2 — start from <code>""</code>, add on each iteration:</p>
+<pre><code class="language-python">s = "computer"
+r = ""
+for i in range(len(s)):
+    r = r + s[len(s) - i - 1]
+print(r)   # "retupmoc"
+</code></pre>
+<h2 id="palindromes"><a class="header" href="#palindromes">Palindromes</a></h2>
+<p>A palindrome reads the same forwards and backwards (<code>"radar"</code>, <code>"12321"</code>).
+The efficient check only needs to walk to the <em>midpoint</em>, comparing each
+character against its mirror from the other end — once every pair up to
+the middle matches, the rest are guaranteed to match too:</p>
+<pre><code class="language-python">def is_palindrome(s):
+    for i in range(len(s) // 2):
+        if s[i] != s[len(s) - i - 1]:
+            return False
+    return True
+
+print(is_palindrome("radar"))   # True
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-10"><a class="header" href="#problem-set-10">Problem Set</a></h1>
 <p><strong>1. <code>countChar(s, c)</code></strong> — count of a single character <code>c</code> in string <code>s</code>.</p>
@@ -1359,9 +2131,6 @@ whole list by ID.</p>
 <p><code>L[::2]</code> pulls out just the IDs. <code>L.index(x)</code> gives the index of the first
 occurrence of <code>x</code>.</p>
 </blockquote>
-<hr>
-<p><em>Source: 2025 offering, <code>week12_string_problem.pdf</code>. Wording condensed;
-code stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="break--continue"><a class="header" href="#break--continue">Break / Continue</a></h1>
 <p>Return the position of the first <code>target</code> in a grid, or <code>(-1,-1)</code> if it is
@@ -1396,13 +2165,65 @@ loop, and inside nested loops that is almost never what you meant.</p>
 <p><em>Choosing the input that exposes it — that was the real skill.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-11"><a class="header" href="#topics-covered-11">Topics Covered</a></h1>
+<h2 id="break-and-continue"><a class="header" href="#break-and-continue"><code>break</code> and <code>continue</code></a></h2>
 <ul>
-<li><code>break</code> — exits the innermost loop only</li>
-<li><code>continue</code> — skips the rest of the current iteration</li>
+<li><strong><code>break</code></strong> — exits the loop immediately. Nothing else in the loop body
+runs, and the loop doesn’t run again.</li>
+<li><strong><code>continue</code></strong> — skips the rest of <em>this</em> iteration only, and moves on
+to the next one. The loop keeps going.</li>
 </ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<pre><code class="language-python">for i in range(8):
+    if i == 5:
+        break              # stop the loop entirely once i reaches 5
+    print(i, end=" ")
+print()   # 0 1 2 3 4
+
+for i in range(8):
+    if i in [3, 5]:
+        continue            # skip printing 3 and 5, keep looping
+    print(i, end=" ")
+print()   # 0 1 2 4 6 7
+</code></pre>
+<h2 id="in-nested-loops-only-the-innermost-loop"><a class="header" href="#in-nested-loops-only-the-innermost-loop">In Nested Loops: Only the Innermost Loop</a></h2>
+<p>Both <code>break</code> and <code>continue</code> act on the <strong>innermost</strong> loop that contains
+them — they never reach out to an outer loop. This is the detail that
+trips people up, so trace it carefully:</p>
+<pre><code class="language-python">i = 0
+while i &lt; 5:
+    j = 0
+    while j &lt; 5:
+        if i &gt; 0:
+            break          # exits the INNER while j loop only
+        print(j, end=" ")
+        j += 1
+    print(i, end=" ")       # this line still runs every time
+    i += 1
+</code></pre>
+<p>Here, <code>break</code> fires as soon as <code>i &gt; 0</code> — but it only ever escapes the inner
+<code>j</code>-loop. The outer <code>i</code>-loop is completely unaffected: it keeps
+incrementing <code>i</code> and printing it every iteration, it just stops seeing any
+<code>j</code> values printed from the second iteration onward.</p>
+<p>Now compare with <code>continue</code> in the same position:</p>
+<pre><code class="language-python">i = 0
+while i &lt; 5:
+    j = 0
+    while j &lt; 5:
+        if i &gt; 0:
+            continue        # skips straight back to "while j &lt; 5" —
+                              # j never gets incremented!
+        print(j, end=" ")
+        j += 1
+    print(i, end=" ")
+    i += 1
+</code></pre>
+<p>This second version is a trap: once <code>i &gt; 0</code>, <code>continue</code> sends control back
+to the <code>while j &lt; 5</code> check <em>without</em> ever reaching <code>j += 1</code> — so <code>j</code> stays
+at whatever it was, the condition <code>j &lt; 5</code> is still true, and the loop spins
+forever. <strong><code>continue</code> re-checks the loop condition; it does not advance
+whatever variable your loop condition depends on for you.</strong> This is a good
+reason to prefer <code>for</code> loops (where the loop variable advances
+automatically) whenever the number of iterations is known in advance, and
+to be extra careful with <code>continue</code> inside a <code>while</code>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="multi-dimensional-lists"><a class="header" href="#multi-dimensional-lists">Multi-Dimensional Lists</a></h1>
 <p>A 2-D list of cells. Each is alive (<code>#</code>) or dead (<code>.</code>). Every step, every
@@ -1438,14 +2259,64 @@ it, you will be reading cells that have already changed</li>
 Week 11: do not modify the thing you are walking through.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-12"><a class="header" href="#topics-covered-12">Topics Covered</a></h1>
-<ul>
-<li>Creating a 2D list by assigning values directly</li>
-<li>Accessing elements in a 2D list using indices</li>
-<li>Lists store references, not the data itself</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="creating-a-2d-list"><a class="header" href="#creating-a-2d-list">Creating a 2D List</a></h2>
+<p>A 2D list is a list of lists — directly:</p>
+<pre><code class="language-python">table = [[1,2,3], [4,5,6]]
+table[0]        # [1, 2, 3]  — the first row
+table[0][0]     # 1          — the first element of that row
+</code></pre>
+<p>Or built up with nested loops, using a <strong>list comprehension</strong> to create the
+row structure first, then filling it in:</p>
+<pre><code class="language-python">height, width = 2, 3
+table = [[None] * width for i in range(height)]   # height rows of width Nones
+for i in range(height):
+    for j in range(width):
+        table[i][j] = i*3 + j + 1
+print(table)
+</code></pre>
+<p>A 3D list nests one level further — depth × height × width:</p>
+<pre><code class="language-python">depth, height, width = 2, 3, 4
+table = [[[None] * width for j in range(height)] for i in range(depth)]
+for i in range(depth):
+    for j in range(height):
+        for k in range(width):
+            table[i][j][k] = i*10 + j*4 + k
+</code></pre>
+<h2 id="references-not-data--aliases"><a class="header" href="#references-not-data--aliases">References, Not Data — Aliases</a></h2>
+<p><strong>In Python, a variable holding a list doesn’t hold the list’s data
+directly — it holds a reference to it.</strong> This matters the moment you assign
+a <em>sublist</em> to another variable:</p>
+<pre><code class="language-python">nation = [["Korea", "Seoul"], ["USA", "Washington"], ["China", "Beijing"]]
+a = nation[0]     # a now refers to the SAME inner list as nation[0]
+a[1] = "Busan"
+print(nation)     # [["Korea", "Busan"], ["USA", "Washington"], ["China", "Beijing"]]
+</code></pre>
+<p><code>a</code> is not a copy — it’s another name (an <strong>alias</strong>) for the exact same
+list object <code>nation[0]</code> already pointed to. Modifying <code>a</code> modifies
+<code>nation[0]</code> too, because there was only ever one list in memory. This is
+the same reason <code>int</code>/<code>float</code>/<code>str</code> (immutable — reassigning makes a new
+value) behave differently from <code>list</code> (mutable — modifying in place
+affects every alias).</p>
+<h2 id="copying-a-multi-dimensional-list--three-ways-not-equivalent"><a class="header" href="#copying-a-multi-dimensional-list--three-ways-not-equivalent">Copying a Multi-Dimensional List — Three Ways, Not Equivalent</a></h2>
+<pre><code class="language-python">import copy
+a = [[1, 2], [3, 4], [5, 6]]
+b = a                     # alias — b IS a, same object
+c = a[:]                  # shallow copy — new outer list, but inner lists still shared
+d = copy.deepcopy(a)      # deep copy — fully independent, all levels
+
+a[1][1] = 40
+print(a)   # [[1, 2], [3, 40], [5, 6]]
+print(b)   # [[1, 2], [3, 40], [5, 6]]   — b changed too, it's the same object
+print(c)   # [[1, 2], [3, 40], [5, 6]]   — c changed too! the inner lists are shared
+print(d)   # [[1, 2], [3, 4], [5, 6]]    — d is untouched
+</code></pre>
+<p><code>b = a</code> shares everything. <code>c = a[:]</code> (slicing) copies the <em>outer</em> list —
+<code>c</code> and <code>a</code> are different list objects — but each element of <code>c</code> is still
+the same inner-list object as in <code>a</code>, so a mutation through <code>a[1][1]</code>
+shows up in <code>c</code> too. Only <code>copy.deepcopy(a)</code> copies every level, giving you
+a result that’s fully independent of the original. When you need a true,
+independent copy of a nested list, <code>deepcopy</code> is the only one of the three
+that actually gives you one.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-11"><a class="header" href="#problem-set-11">Problem Set</a></h1>
 <p><strong>1. <code>countZero(a)</code></strong> — count of zeros in a 3D array.</p>
@@ -1498,9 +2369,6 @@ neighbors + self (9 cells).</p>
 def countMines(mineField):
     # ADD ADDITIONAL CODE HERE!
 </code></pre>
-<hr>
-<p><em>Source: 2025 offering, <code>week14_MDL_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="classes--objects"><a class="header" href="#classes--objects">Classes &amp; Objects</a></h1>
 <pre><code class="language-python">class Student:
@@ -1537,16 +2405,108 @@ class, or <em>one per object</em>?” One per object → it belongs inside
 <p><em>Once again: no error message. Just two students quietly sharing a report card.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="topics-covered-13"><a class="header" href="#topics-covered-13">Topics Covered</a></h1>
-<ul>
-<li>Object-oriented basics: every value is an object belonging to a class</li>
-<li><code>__init__()</code>, <code>__str__()</code>, <code>self</code></li>
-<li>Attributes, getters/setters</li>
-<li>Using objects as parameters and return values</li>
-<li>Pure functions vs. modifier functions</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="classes-and-objects"><a class="header" href="#classes-and-objects">Classes and Objects</a></h2>
+<p>Python is object-oriented: every piece of data — <code>123</code>, <code>"hello"</code>, <code>[1,2,3]</code>
+— is an <strong>object</strong> belonging to a <strong>class</strong> (<code>int</code>, <code>str</code>, <code>list</code>
+respectively). A class is a blueprint; an object is one specific instance
+built from it. Analogy: the Sonata <em>blueprint</em> specifies an engine, a
+color, an efficiency rating, and behaviors like accelerating and braking —
+<em>your</em> Sonata is one object built from that blueprint, with its own
+specific attribute values, that can perform the behaviors the blueprint
+defines.</p>
+<p>You can define your own classes:</p>
+<pre><code class="language-python">class Point:                      # class name, capitalized by convention
+    def __init__(self, px, py):
+        self.x = px                # attribute
+        self.y = py
+
+p1 = Point(1, 2)
+p2 = Point(4, 6)
+</code></pre>
+<h2 id="__init__-and-self"><a class="header" href="#__init__-and-self"><code>__init__</code> and <code>self</code></a></h2>
+<p><code>__init__</code> is the <strong>constructor</strong> — it runs automatically whenever you
+create a new object (<code>Point(1, 2)</code> calls it). Every method’s first
+parameter is, by convention, <code>self</code> — it refers to <em>this</em> object, and
+Python passes it automatically; you never write it explicitly at the call
+site. <code>self.x</code>, <code>self.y</code> are <strong>state variables</strong> (attributes): data that
+belongs to this specific object, distinct from any local variable of the
+same name inside a method that isn’t written as <code>self.something</code>.</p>
+<h2 id="__str__"><a class="header" href="#__str__"><code>__str__</code></a></h2>
+<p>By default, <code>print</code>ing an object shows you a memory address — not useful.
+Defining <code>__str__</code> tells Python how to turn the object into a readable
+string; it’s called automatically whenever the object is printed:</p>
+<pre><code class="language-python">def __str__(self):
+    return "(" + str(self.x) + "," + str(self.y) + ")"
+
+print(p1)   # (1,2)
+</code></pre>
+<h2 id="getters-and-setters"><a class="header" href="#getters-and-setters">Getters and Setters</a></h2>
+<p>You <em>can</em> read/write <code>p1.x</code> directly, but the convention is to go through
+<strong>getter</strong>/<strong>setter</strong> methods instead:</p>
+<pre><code class="language-python">def getX(self):
+    return self.x
+def setX(self, v):
+    self.x = v
+
+p1 = Point(1, 2)
+print(p1.getX())    # 1
+p1.setX(5)
+print(p1)             # (5,2)
+</code></pre>
+<p>(<code>setX</code>, like any function without an explicit <code>return</code>, gives back <code>None</code>
+— printing its result directly is a bug, not a way to see the new value.)</p>
+<h2 id="methods-that-take-another-object-as-a-parameter"><a class="header" href="#methods-that-take-another-object-as-a-parameter">Methods That Take Another Object as a Parameter</a></h2>
+<p>A method’s parameters can themselves be objects of the same class:</p>
+<pre><code class="language-python">def distance(self, p):
+    dx = self.x - p.x
+    dy = self.y - p.y
+    return (dx**2 + dy**2)**0.5
+
+print(p1.distance(p2))   # 5.0
+print(p2.distance(p1))   # 5.0 — symmetric, as expected
+</code></pre>
+<h2 id="pure-functions-vs-modifiers"><a class="header" href="#pure-functions-vs-modifiers">Pure Functions vs. Modifiers</a></h2>
+<p>A <strong>pure function</strong> leaves the object unchanged and returns a new result.
+<code>add</code> below builds and returns a brand-new <code>Point</code> — <code>p1</code> and <code>p2</code> are
+untouched:</p>
+<pre><code class="language-python">def add(self, p):
+    x = self.x + p.x
+    y = self.y + p.y
+    return Point(x, y)
+
+p3 = p1.add(p2)
+print(p1)   # (1,2) — unchanged
+print(p2)   # (4,6) — unchanged
+print(p3)   # (5,8) — the new object
+</code></pre>
+<p>A <strong>modifier</strong> does the opposite: it changes <code>self</code> in place and returns
+<code>None</code>:</p>
+<pre><code class="language-python">def add_as_modifier(self, p):
+    self.x = self.x + p.x
+    self.y = self.y + p.y
+
+p3 = p1.add_as_modifier(p2)
+print(p3)   # None — modifiers don't return the new state
+print(p1)   # (5,8) — p1 itself changed
+</code></pre>
+<p>Know, for every method you write, which one it is — and say so in how you
+use it: call a pure function for its return value, call a modifier for its
+side effect, never both at once.</p>
+<h2 id="putting-a-class-under-test"><a class="header" href="#putting-a-class-under-test">Putting a Class Under Test</a></h2>
+<p>A common pattern: keep a <code>..._main()</code> function with your test/demo calls,
+and only run it when the file is executed directly (not when it’s
+imported):</p>
+<pre><code class="language-python">def point_main():
+    p1 = Point(1, 2)
+    p2 = Point(4, 6)
+    print(p1, p2)
+    print(p1.distance(p2))
+    p3 = p1.add(p2)
+    print(p3)
+
+if __name__ == '__main__':
+    point_main()
+</code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="problem-set-12"><a class="header" href="#problem-set-12">Problem Set</a></h1>
 <p><strong>1. <code>Circle</code> class</strong> — a circle with a <code>Point</code> center (assume a <code>Point</code>
@@ -1575,9 +2535,6 @@ reduced; <code>self</code> and <code>r</code> unchanged</li>
 </ul>
 <p>(This is the same pair of classes as the Korean track’s L08 problem set —
 see there for full worked test cases if useful.)</p>
-<hr>
-<p><em>Source: 2025 offering, <code>week15_Class_problem.pdf</code>. Wording condensed; code
-stubs kept close to the original.</em></p>
 
                     </main>
 

@@ -89,7 +89,3 @@ axis-aligned squares (centers `(x1,y1)`/`(x2,y2)`, side lengths `l1≥l2`).
 **12. `triangular(n)`** — a positive integer `n` is *triangular* if
 \\(n = m(m+1)/2\\) for some positive integer `m`. Return that `m`, or `None`.
 > Hint: \\(m(m+1)/2 = n \Rightarrow m^2 < 2n < (m+1)^2 \Rightarrow m < \sqrt{2n} < m+1\\).
-
----
-*Source: 2025 offering, `week04_if_else_problem.pdf`. Wording condensed;
-code stubs kept close to the original.*

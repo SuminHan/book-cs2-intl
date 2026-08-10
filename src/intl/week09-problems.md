@@ -59,7 +59,3 @@ def move_and_drop():
     if hubo.carries_beepers():
         hubo.drop_beeper()
 ```
-
----
-*Source: 2025 offering, `week09_for_3_problem.pdf`. Wording condensed; code
-stubs kept close to the original.*

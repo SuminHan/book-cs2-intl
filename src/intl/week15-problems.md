@@ -24,7 +24,3 @@ class already exists) and integer radius.
 
 (This is the same pair of classes as the Korean track's L08 problem set —
 see there for full worked test cases if useful.)
-
----
-*Source: 2025 offering, `week15_Class_problem.pdf`. Wording condensed; code
-stubs kept close to the original.*

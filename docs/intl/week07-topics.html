@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-59e761b6.js";
+            window.path_to_searchindex_js = "../searchindex-42cb563f.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-58861ff6.js"></script>
@@ -181,14 +181,80 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<ul>
-<li>Why lists reduce repetitive code (motivating example: summing many
-hand-named variables vs. one list)</li>
-<li>List indexing</li>
-</ul>
-<p><em>Reference: 2025 offering topic outline. This year’s full lecture slides
-are still in development — only the topic list is reflected here, not the
-slide content.</em></p>
+<h2 id="why-lists"><a class="header" href="#why-lists">Why Lists</a></h2>
+<p>Without a list, summing eight numbers means eight separately-named
+variables — and code that can’t scale to a variable amount of data:</p>
+<pre><code class="language-python">number0, number1, number2, number3 = 2, 4, 3, 1
+number4, number5, number6, number7 = 7, 2, 5, 6
+total = number0 + number1 + number2 + number3 + number4 + number5 + number6 + number7
+</code></pre>
+<p>A <strong>list</strong> replaces the eight names with one, indexed by position:</p>
+<pre><code class="language-python">number = [2, 4, 3, 1, 7, 2, 5, 6]
+total = 0
+total += number[0]
+total += number[1]
+...
+</code></pre>
+<p>Combined with a <code>for</code> loop, this becomes genuinely concise — and now it
+works for a list of <em>any</em> length, not just 8:</p>
+<pre><code class="language-python">number = [2, 4, 3, 1, 7, 2, 5, 6]
+total = 0
+for i in range(len(number)):
+    total += number[i]
+print(total)
+</code></pre>
+<p>(<code>total += numberi</code> is not a thing — there’s no way to build a variable
+name out of a loop variable. Indexing is what a list buys you.)</p>
+<h2 id="creating-lists"><a class="header" href="#creating-lists">Creating Lists</a></h2>
+<pre><code class="language-python">number = [2, 5, 8, 11, 14]      # with initial values
+
+number = [None] * 5             # uninitialized, filled in later
+for i in range(len(number)):
+    number[i] = 3*i + 2
+</code></pre>
+<p><code>[None] * 5</code> is shorthand for <code>[None, None, None, None, None]</code> — <code>None</code>
+can be replaced with any placeholder value, e.g. <code>[-1] * 5</code>. Avoid <code>[0] * 5</code> as a placeholder specifically, since it invites confusion about whether
+<code>0</code> is a <em>real</em> value already written in, or just a placeholder waiting to
+be overwritten.</p>
+<h2 id="indexing"><a class="header" href="#indexing">Indexing</a></h2>
+<p><code>len(·)</code> gives the length; <strong>always use <code>len(·)</code> instead of a literal
+number</strong>, so the code keeps working if the list’s size changes.</p>
+<p><code>list[i]</code> is the <code>(i+1)</code>-th element (indices start at <code>0</code>). Valid indices
+are <code>0</code> to <code>len(·)-1</code>; <code>list[-1]</code> through <code>list[-len(·)]</code> also work,
+counting from the end (<code>list[-1]</code> is the last element). Anything else is
+out of range.</p>
+<pre><code class="language-python">number = [None] * 4
+number[0] = 7
+number[1] = number[0] * 2
+number[2] = number[0] + 1
+number[3] = number[2] - 60
+number[3] += number[1]
+</code></pre>
+<p>You can treat <code>number[i]</code> exactly like an <code>int</code> variable — read it, write
+it, use it in an expression. The index itself can be any expression that
+evaluates to an <code>int</code>:</p>
+<pre><code class="language-python">for i in range(4):
+    print(number[(i+2) % 4])   # prints number[2], number[3], number[0], number[1]
+</code></pre>
+<h2 id="lists-as-parameters-and-return-values"><a class="header" href="#lists-as-parameters-and-return-values">Lists as Parameters and Return Values</a></h2>
+<p>A list can be passed into a function just like any other value:</p>
+<pre><code class="language-python">def total(numbers):
+    s = 0
+    for i in range(len(numbers)):
+        s += numbers[i]
+    return s
+</code></pre>
+<p>And a function can build and return a new list:</p>
+<pre><code class="language-python">def incrementAll(b):
+    a = [None] * len(b)
+    for i in range(len(a)):
+        a[i] = b[i] + 1
+    return a
+
+print(incrementAll([2, 4, 3, 1, 7, 2, 5, 6]))   # [3, 5, 4, 2, 8, 3, 6, 7]
+</code></pre>
+<p>This “make a same-length output list, fill it in with one loop” shape is
+the pattern behind most of this week’s Problem Set.</p>
 
                     </main>
 

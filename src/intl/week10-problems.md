@@ -74,7 +74,3 @@ reversed. E.g. `[12,40,2]` → \\(21+4+2=27\\).
 **14. `countAllZeros(L)`** — total count of `0` bits across the binary
 representations of the decimal numbers in `L`. E.g. `[10,20,30]` →
 binary `1010,10100,11110` → \\(2+3+1=6\\).
-
----
-*Source: 2025 offering, `week10_while_problem.pdf`. Wording condensed; code
-stubs kept close to the original.*

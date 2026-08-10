@@ -62,7 +62,3 @@ def withinBoundary(height, width, i, j):
 def countMines(mineField):
     # ADD ADDITIONAL CODE HERE!
 ```
-
----
-*Source: 2025 offering, `week14_MDL_problem.pdf`. Wording condensed; code
-stubs kept close to the original.*
