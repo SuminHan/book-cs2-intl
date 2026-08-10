@@ -1,4 +1,4 @@
-# Week 13: Break / Continue
+# Break / Continue
 
 ## 1. Opener: Find Where the Target Is
 

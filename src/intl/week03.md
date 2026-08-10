@@ -1,4 +1,4 @@
-# Week 3: Functions
+# Functions
 
 ## 1. Opener: A Function You Did Not Write
 

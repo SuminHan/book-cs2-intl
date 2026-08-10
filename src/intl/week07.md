@@ -1,4 +1,4 @@
-# Week 7: Lists
+# Lists
 
 ## 1. Opener: Building a Grid the Short Way
 

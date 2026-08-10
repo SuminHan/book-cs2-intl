@@ -1,4 +1,4 @@
-# Week 8: For Loops II
+# For Loops II
 
 ## 1. Opener: Count the Positive Numbers
 

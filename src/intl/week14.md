@@ -1,4 +1,4 @@
-# Week 14: Multi-Dimensional Lists
+# Multi-Dimensional Lists
 
 ## 1. Opener: Three Rules on a Grid
 

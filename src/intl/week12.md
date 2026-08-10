@@ -1,4 +1,4 @@
-# Week 12: Strings
+# Strings
 
 ## 1. Opener: Fix the Sentence
 

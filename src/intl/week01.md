@@ -1,4 +1,4 @@
-# Week 1: Why Programming Matters
+# Why Programming Matters
 
 *Computer Science 2*
 

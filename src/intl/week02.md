@@ -1,4 +1,4 @@
-# Week 2: Basic Elements
+# Basic Elements
 
 ## 1. Opener: A Very Easy Question
 

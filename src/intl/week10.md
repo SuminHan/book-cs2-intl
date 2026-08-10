@@ -1,4 +1,4 @@
-# Week 10: While Loops
+# While Loops
 
 ## 1. Opener: The Alarm That Never Rang
 

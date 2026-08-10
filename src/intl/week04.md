@@ -1,4 +1,4 @@
-# Week 4: Conditionals
+# Conditionals
 
 ## 1. Opener: 45 Minutes
 

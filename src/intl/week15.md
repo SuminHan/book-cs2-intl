@@ -1,4 +1,4 @@
-# Week 15: Classes & Objects
+# Classes & Objects
 
 ## 1. Opener: Every Student Has Their Own Scores
 

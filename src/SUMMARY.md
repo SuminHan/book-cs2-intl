@@ -4,21 +4,21 @@
 
 # International
 
-- [Week 1: Why Programming Matters](intl/week01.md)
-- [Week 2: Basic Elements](intl/week02.md)
-- [Week 3: Functions](intl/week03.md)
-- [Week 4: Conditionals](intl/week04.md)
-- [Week 5: Boolean Functions](intl/week05.md)
-- [Week 6: For Loops I](intl/week06.md)
-- [Week 7: Lists](intl/week07.md)
-- [Week 8: For Loops II](intl/week08.md)
-- [Week 9: For Loops III](intl/week09.md)
-- [Week 10: While Loops](intl/week10.md)
-- [Week 11: List II](intl/week11.md)
-- [Week 12: Strings](intl/week12.md)
-- [Week 13: Break / Continue](intl/week13.md)
-- [Week 14: Multi-Dimensional Lists](intl/week14.md)
-- [Week 15: Classes & Objects](intl/week15.md)
+- [Why Programming Matters](intl/week01.md)
+- [Basic Elements](intl/week02.md)
+- [Functions](intl/week03.md)
+- [Conditionals](intl/week04.md)
+- [Boolean Functions](intl/week05.md)
+- [For Loops I](intl/week06.md)
+- [Lists](intl/week07.md)
+- [For Loops II](intl/week08.md)
+- [For Loops III](intl/week09.md)
+- [While Loops](intl/week10.md)
+- [List II](intl/week11.md)
+- [Strings](intl/week12.md)
+- [Break / Continue](intl/week13.md)
+- [Multi-Dimensional Lists](intl/week14.md)
+- [Classes & Objects](intl/week15.md)
 
 # General CS Concepts
 

@@ -1,4 +1,4 @@
-# Week 9: For Loops III
+# For Loops III
 
 ## 1. Opener: Are All of Them Positive?
 

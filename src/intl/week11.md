@@ -1,4 +1,4 @@
-# Week 11: List II
+# List II
 
 ## 1. Opener: Remove Every Negative Number
 

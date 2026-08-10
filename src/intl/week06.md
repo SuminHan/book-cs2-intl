@@ -1,4 +1,4 @@
-# Week 6: For Loops I
+# For Loops I
 
 ## 1. Opener: An Annoying Question
 

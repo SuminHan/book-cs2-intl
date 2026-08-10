@@ -1,4 +1,4 @@
-# Week 5: Boolean Functions
+# Boolean Functions
 
 ## 1. Opener: This Looks Completely Reasonable
 
