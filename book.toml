@@ -1,0 +1,11 @@
+[book]
+title = "CS2 International Supplement"
+description = "KSA Computer Science 2 (CS2), International track — supplementary notes"
+language = "en"
+src = "src"
+
+[output.html]
+git-repository-url = "https://github.com/SuminHan/book-cs2-intl"
+
+[build]
+build-dir = "docs"
