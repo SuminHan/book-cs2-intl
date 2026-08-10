@@ -2,16 +2,14 @@
 
 *Computer Science 2*
 
-[Download the full slide deck (PDF)](assets/week01-motivation.pdf)
-
 ## 1.1. The Question
 
 "AI writes code now. It writes it faster than me, and honestly better than
 me. So why am I sitting in a programming class?"
 
-That's a fair question — and the answer isn't "AI is bad at coding." It
-isn't. It's very good, and it's getting better every month. The answer is
-about **what job just opened up** because of that.
+That's a fair question — and the answer isn't "AI is bad at coding."
+**It isn't. It's very good, and it's getting better every month.** The
+answer is about **what job just opened up** because of that.
 
 ## 1.2. What Changed
 
@@ -32,14 +30,19 @@ This is already showing up in the job market: it's harder for new grads and
 interns to get hired, and average seniority at big tech companies keeps
 rising — while top tech companies are still hiring ~20% more than a year
 ago, with AI engineering listings up 50–100% at places like Apple and
-Google. Both are true at once: the old way in was "here is a small,
-well-defined task — go implement it," and that's exactly what AI does best
-now. **That first step is gone.** What's left starts one level up: decide,
-direct, verify.
+Google.[^job-market] Both are true at once: the old way in was "here is a
+small, well-defined task — go implement it," and that's exactly what AI
+does best now. **That first step is gone.** What's left starts one level
+up: decide, direct, verify.
+
+[^job-market]: The Pragmatic Engineer, [*State of the Software Engineering
+    Job Market 2026*](https://newsletter.pragmaticengineer.com/p/state-of-the-job-market-2026)
+    and [*The Job Market in 2026, Part 2*](http://newsletter.pragmaticengineer.com/p/the-job-market-in-2026-part-2).
 
 You can prompt in plain language going *in*. But coming *back*, the answer
-is always code — there is no human-language version of the output. If you
-cannot read what comes back, you did not give an instruction — you made a wish.
+is always code — there is no human-language version of the output.
+**If you cannot read what comes back, you did not give an instruction —
+you made a wish.**
 
 ## 1.3. The Gap
 
@@ -52,10 +55,10 @@ it can't know:
 - what happens when a student retakes a failed test — which score counts?
 - whether an attendance cutoff overrides everything else, or is checked first
 
-Nothing about the generated code *looks* wrong. It won't warn you. It just
-quietly computes the wrong grade — and you only know to fix the prompt if
-you already noticed the rule was missing. You had to read the code to see
-the holes.
+**Nothing about the generated code *looks* wrong. It won't warn you. It
+just quietly computes the wrong grade** — and you only know to fix the
+prompt if you already noticed the rule was missing. **You had to read the
+code to see the holes.**
 
 ## 1.4. The Trap
 
@@ -72,8 +75,8 @@ The same pattern, for real: NASA's *Mars Climate Orbiter* (1999) flew for
 ten months, then broke apart on arrival because one team's thruster
 calculations were in pounds of force and the other team read them as
 newtons — off by a factor of 4.45, for ten months, at a cost of $125
-million. Every line of that code ran perfectly. Nobody checked what the
-number *meant*.
+million. **Every line of that code ran perfectly. Nobody checked what the
+number *meant*.**
 
 ## 1.5. Your Job
 
