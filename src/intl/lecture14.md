@@ -1,40 +1,46 @@
-# Multi-Dimensional Lists
+# Classes & Objects
 
-A 2-D list of cells. Each is alive (`#`) or dead (`.`). Every step, every
-cell looks at its 8 neighbours and follows three rules:
+```python
+class Student:
+    scores = []
 
-- Alive with 2 or 3 living neighbours → stays alive.
-- Alive with anything else → dies.
-- Dead with exactly 3 living neighbours → becomes alive.
+    def __init__(self, name):
+        self.name = name
 
-That is the whole program. No randomness, no AI, nothing else. What can
-three rules possibly do?
+    def add(self, s):
+        self.scores.append(s)
 
-### Watch this shape
-
-```
-step 0        step 1        step 2        step 3        step 4
-.#....        ......        ......        ......        ......
-..#...        #.#...        ..#...        .#....        ..#...
-###...        .##...        #.#...        ..##..        ...#..
-......        .#....        .##...        .##...        .###..
+a = Student("Alice");  a.add(90)
+b = Student("Bob");    b.add(80)
+print(a.name, a.scores, "|", b.name, b.scores)
 ```
 
-Step 4 is the same shape as step 0 — moved one square down and one square
-right.
+Expected: `Alice [90] | Bob [80]`
 
-**It walks. Nobody wrote "walk."** (This is the classic *glider* from
-Conway's Game of Life.)
+### They are sharing one list
 
-### Why this is your week
+```
+Alice [90, 80] | Bob [90, 80]
+```
 
-Everything you need is what you are learning right now:
+`scores = []` sits directly under `class`, so it is made once, for the
+class itself — not once per student. Alice and Bob are appending to the
+same list.
 
-- a **2-D list** to hold the grid
-- **nested `for` loops** to visit every cell
-- an **`if`** for the three rules
-- and **a second grid** — because if you edit the first one while reading
-  it, you will be reading cells that have already changed
+```python
+# Correct -- give each object its own
+    def __init__(self, name):
+        self.name = name
+        self.scores = []      # made per student
+```
 
-That last point is this week's real trap, and it is the same trap as
-Week 11: do not modify the thing you are walking through.
+### The question that settles it
+
+Notice that `self.name` was fine all along. Only `scores` misbehaved —
+because it was created in a different place.
+
+**For every attribute, ask:** "Is there *one* of these for the whole
+class, or *one per object*?" One per object → it belongs inside
+`__init__`, with `self.`
+
+*Once again: no error message. Just two students quietly sharing a report card.*

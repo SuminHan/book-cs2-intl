@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,69 +181,65 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<h2 id="strings-as-immutable-lists-of-characters"><a class="header" href="#strings-as-immutable-lists-of-characters">Strings as Immutable Lists of Characters</a></h2>
-<p>A string behaves like a list of characters — <code>len(·)</code>, indexing, and
-slicing all work the same way — with one crucial difference: <strong>you cannot
-modify a string in place.</strong></p>
-<pre><code class="language-python">s = "computer"
-s[0] = "C"
-# TypeError: 'str' object does not support item assignment
-</code></pre>
-<p>To “change” a string, you build and assign a <em>new</em> one. This is the
-mutable/immutable distinction: <code>int</code>, <code>float</code>, <code>str</code>, and tuples are
-immutable (once created, that value never changes); <code>list</code> (and <code>set</code>) are
-mutable (you can modify them in place, as <code>.append()</code> and <code>.sort()</code> do).</p>
-<h2 id="indexing--slicing"><a class="header" href="#indexing--slicing">Indexing &amp; Slicing</a></h2>
-<p>Identical rules to lists:</p>
-<pre><code class="language-python">s = "computer"
-for i in range(len(s)):
-    print(s[i], end=" ")
+<h2 id="break-and-continue"><a class="header" href="#break-and-continue"><code>break</code> and <code>continue</code></a></h2>
+<ul>
+<li><strong><code>break</code></strong> — exits the loop immediately. Nothing else in the loop body
+runs, and the loop doesn’t run again.</li>
+<li><strong><code>continue</code></strong> — skips the rest of <em>this</em> iteration only, and moves on
+to the next one. The loop keeps going.</li>
+</ul>
+<pre><code class="language-python">for i in range(8):
+    if i == 5:
+        break              # stop the loop entirely once i reaches 5
+    print(i, end=" ")
+print()   # 0 1 2 3 4
 
-print(s[1:4])    # "omp"
-print(s[:3])     # "com"    same as s[0:3]
-print(s[2:])     # "mputer"
-print(s[1:6:2])  # step of 2
+for i in range(8):
+    if i in [3, 5]:
+        continue            # skip printing 3 and 5, keep looping
+    print(i, end=" ")
+print()   # 0 1 2 4 6 7
 </code></pre>
-<h2 id="comparison-membership-concatenation"><a class="header" href="#comparison-membership-concatenation">Comparison, Membership, Concatenation</a></h2>
-<pre><code class="language-python">s1, s2 = "computer", "science"
-print(s1 == s2)    # False
-print(s1 &lt; s2)      # True — lexicographic (dictionary) order
-print('abc' &lt; "XYZ")  # False — ALL uppercase letters sort before
-                        # any lowercase letter in ASCII
+<h2 id="in-nested-loops-only-the-innermost-loop"><a class="header" href="#in-nested-loops-only-the-innermost-loop">In Nested Loops: Only the Innermost Loop</a></h2>
+<p>Both <code>break</code> and <code>continue</code> act on the <strong>innermost</strong> loop that contains
+them — they never reach out to an outer loop. This is the detail that
+trips people up, so trace it carefully:</p>
+<pre><code class="language-python">i = 0
+while i &lt; 5:
+    j = 0
+    while j &lt; 5:
+        if i &gt; 0:
+            break          # exits the INNER while j loop only
+        print(j, end=" ")
+        j += 1
+    print(i, end=" ")       # this line still runs every time
+    i += 1
 </code></pre>
-<p><code>in</code> checks for a <strong>substring</strong>, not just a single character — and order
-matters:</p>
-<pre><code class="language-python">s1 = "computer"
-print("om" in s1)    # True
-print("OM" in s1)    # False — case-sensitive
-print("com" in s1)   # True  — characters in that exact order
-print("cmo" in s1)   # False — right characters, wrong order
+<p>Here, <code>break</code> fires as soon as <code>i &gt; 0</code> — but it only ever escapes the inner
+<code>j</code>-loop. The outer <code>i</code>-loop is completely unaffected: it keeps
+incrementing <code>i</code> and printing it every iteration, it just stops seeing any
+<code>j</code> values printed from the second iteration onward.</p>
+<p>Now compare with <code>continue</code> in the same position:</p>
+<pre><code class="language-python">i = 0
+while i &lt; 5:
+    j = 0
+    while j &lt; 5:
+        if i &gt; 0:
+            continue        # skips straight back to "while j &lt; 5" —
+                              # j never gets incremented!
+        print(j, end=" ")
+        j += 1
+    print(i, end=" ")
+    i += 1
 </code></pre>
-<p><code>+</code> concatenates, <code>*</code> repeats:</p>
-<pre><code class="language-python">s = "com" + "puter"    # "computer"
-t = "hi" * 3             # "hihihi"
-</code></pre>
-<p>Building a reversed string, one character at a time, is the same
-accumulator pattern from Week 2 — start from <code>""</code>, add on each iteration:</p>
-<pre><code class="language-python">s = "computer"
-r = ""
-for i in range(len(s)):
-    r = r + s[len(s) - i - 1]
-print(r)   # "retupmoc"
-</code></pre>
-<h2 id="palindromes"><a class="header" href="#palindromes">Palindromes</a></h2>
-<p>A palindrome reads the same forwards and backwards (<code>"radar"</code>, <code>"12321"</code>).
-The efficient check only needs to walk to the <em>midpoint</em>, comparing each
-character against its mirror from the other end — once every pair up to
-the middle matches, the rest are guaranteed to match too:</p>
-<pre><code class="language-python">def is_palindrome(s):
-    for i in range(len(s) // 2):
-        if s[i] != s[len(s) - i - 1]:
-            return False
-    return True
-
-print(is_palindrome("radar"))   # True
-</code></pre>
+<p>This second version is a trap: once <code>i &gt; 0</code>, <code>continue</code> sends control back
+to the <code>while j &lt; 5</code> check <em>without</em> ever reaching <code>j += 1</code> — so <code>j</code> stays
+at whatever it was, the condition <code>j &lt; 5</code> is still true, and the loop spins
+forever. <strong><code>continue</code> re-checks the loop condition; it does not advance
+whatever variable your loop condition depends on for you.</strong> This is a good
+reason to prefer <code>for</code> loops (where the loop variable advances
+automatically) whenever the number of iterations is known in advance, and
+to be extra careful with <code>continue</code> inside a <code>while</code>.</p>
 
                     </main>
 
@@ -253,7 +249,7 @@ print(is_palindrome("radar"))   # True
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../intl/lecture12-problems.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../intl/lecture13.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -267,7 +263,7 @@ print(is_palindrome("radar"))   # True
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../intl/lecture12-problems.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../intl/lecture13.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

@@ -1,104 +1,123 @@
 # Topics Covered
 
-## Boolean Type & Expressions
+## Boolean Functions
 
-A fourth type joins `int`/`float`/`str`: `bool`, whose only two values are
-`True` and `False`.
-
-**Relational operators** build primitive boolean expressions: `== != > < >=
-<=`. Watch the difference between assignment and equality — "let x = y" in
-math becomes `x = y` (assignment) in Python, while "if x equals y" becomes
-`x == y` (a boolean expression, no side effect).
-
-**Logical operators** combine boolean expressions: `and`, `or`, `not`.
-
-| p | q | `p and q` | `p or q` | `not p` |
-|---|---|---|---|---|
-| True | True | True | True | False |
-| True | False | False | True | False |
-| False | True | False | True | True |
-| False | False | False | False | True |
-
-Precedence, high to low: `()` > `**` > `* / // %` > `+ -` > relational
-(`== != > < >= <=`) > `not` > `and` > `or`. As always, parenthesize
-anything you're not 100% sure of:
+A **boolean function** is one that returns `True`/`False` — useful for
+hiding a complicated yes/no test behind a readable name, so the calling
+code can just write `if onePositive(x, y, z):` instead of repeating the
+whole condition inline. Whenever you're facing a yes/no question, consider
+writing it as its own boolean function.
 
 ```python
-p = x%2 == 1 or x%3 != 0 and (not(y <= 1) or x%2 == 1)
+def onePositive(x, y, z):
+    if x > 0 and y <= 0 and z <= 0:
+        return True
+    if x <= 0 and y > 0 and z <= 0:
+        return True
+    if x <= 0 and y <= 0 and z > 0:
+        return True
+    return False
 ```
 
-## `if`-`else` Conditionals
+## Common Mistake: String `"True"` / `"False"`
+
+`"True"` and `"False"` (the strings) are *not* the same as `True` and
+`False` (the boolean values) — and a non-empty string is always truthy, so
+this bug won't crash, it just silently always takes the `if` branch:
 
 ```python
-if boolean_expression:
-    statements
-else:               # the else block may be omitted
-    statements
-```
-
-This is how a **multi-case math definition** (a curly-brace piecewise
-formula) becomes code — each case becomes a branch:
-
-```python
-# f(x) = 0 if x <= 0, else x**2 + 1
-def f(x):
-    if x <= 0:
-        y = 0
+# WRONG — returns the strings "True"/"False"
+def lessThan(x, y):
+    if x < y:
+        return "True"
     else:
-        y = x**2 + 1
-    return y
+        return "False"
+
+if lessThan(a, b):   # always runs — "False" is a non-empty string!
+    ...
 ```
 
-Chain more than two cases with `elif`:
-
 ```python
-if b1:
-    statements          # runs if b1 is True
-elif b2:
-    statements           # runs if b1 is False and b2 is True
-elif b3:
-    statements           # runs if b1, b2 are False and b3 is True
-else:
-    statements           # runs if none of the above are True
-```
-
-`if`s can also **nest** — but watch out, `if x != 0: if x > 0: ... else:
-...` is not the same branching as `if x > 0: ... else: if x < 0: ... else:
-...`, even though both can compute the sign of `x`. Trace through `x == 0`
-by hand in each version if the difference isn't obvious.
-
-## Multiple `return` Statements
-
-A function can have more than one `return` — commonly one per branch of a
-conditional. **As soon as one `return` executes, the function ends
-immediately** — no code after it runs, even if it's inside more branches:
-
-```python
-def absoluteValue(x):
-    if x < 0:
-        return -x
+# correct
+def lessThan(x, y):
+    if x < y:
+        return True
     else:
-        return x
+        return False
 ```
 
-This lets you **prune** dead structure. Once a branch has returned, there's
-no need for the surrounding `else` — the code after the `if` block only
-ever runs when that `if` didn't return, so it's implicitly the "else" case
-already:
+## Tip: Return the Boolean Expression Directly
+
+If your function's job is exactly "is this condition true," skip the
+`if`/`else` and return the condition itself:
 
 ```python
-# before pruning                    # after pruning — equivalent
-if b1:                              if b1:
-    return v1                           return v1
-else:
-    if b2:                          if b2:
-        return v2                       return v2
-    else:
-        if b3:                      if b3:
-            return v3                    return v3
-        else:
-            return v4                return v4
+def lessThan(x, y):
+    return x < y          # x < y already IS True or False
 ```
 
-Fewer nesting levels, same behavior — easier to read, easier to extend with
-one more case later.
+The same shortcut applies to negation:
+
+```python
+# if boolean_expr: return False   else: return True
+# becomes:
+return not boolean_expr
+```
+
+## Tip: Drop `== True` / Replace `== False` with `not`
+
+`b == True` is just `b`; `b == False` is `not b`:
+
+```python
+if singleDigit(a) == True and singleDigit(b) == False:
+    ...
+# becomes:
+if singleDigit(a) and not singleDigit(b):
+    ...
+```
+
+Watch for the classic typo — `=` (assignment) where you meant `==`
+(comparison). `if singleDigit(a) = True:` is not valid boolean logic at
+all.
+
+## Tip: Decompose Complicated Boolean Expressions
+
+The same decomposition advice from Week 2 applies to conditions, maybe even
+more so — a condition repeated three times with permuted variables is easy
+to get wrong in one of the copies:
+
+```python
+a = (x2-x1)**2 + (y2-y1)**2
+b = (x3-x2)**2 + (y3-y2)**2
+c = (x1-x3)**2 + (y1-y3)**2
+if a+b == c or b+c == a or a+c == b:
+    ...
+```
+
+## Tip: Never `==` on `float`
+
+```python
+print(0.1 + 0.2)          # 0.30000000000000004
+print(0.1 + 0.2 == 0.3)   # False
+print((111**0.5)**2)        # 110.99999999999999
+print((111**0.5)**2 == 111) # False
+```
+
+`==` on floats is unreliable because of how binary floating point rounds.
+When possible, restructure the comparison to stay in integers rather than
+comparing floats at all:
+
+```python
+# unreliable: comparing floats
+d = ((x2-x1)**2 + (y2-y1)**2)**0.5
+if d == dist:
+    ...
+
+# better: compare the squared (integer) distance instead
+d = (x2-x1)**2 + (y2-y1)**2
+if d == dist**2:
+    ...
+```
+
+When you truly can't avoid a float comparison, compare with a tolerance
+instead of `==` — see Week 2's Introduction essay for why.

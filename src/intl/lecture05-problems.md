@@ -1,216 +1,167 @@
 # Problem Set
 
-**1.** Write a function `inSecondQuadrant` defined by:
-- input parameter: two integers `x, y`
-- return value: a boolean — `True` if the point `(x,y)` is in the second
-  quadrant, `False` otherwise
-  - *Do not return `"True"`/`"False"` — those are strings, not booleans.*
+**1.** Write functions `printMultTable1` and `printMultTable2` defined by:
+- input parameter: none
+- return value: none
+- action: print out parts of the multiplication table, as shown below
+  - *Copy and slightly modify `printMultTable0` from this week's lecture.*
+  - *What does `for i in range(1,10,2):` do? What about the nested
+    `for i in range(1,10,2): for j in range(1,i+1):`?*
 
 ```python
-def inSecondQuadrant(x, y):
+def printMultTable1():
     # ADD ADDITIONAL CODE HERE!
-print(type(inSecondQuadrant(0, 0)))  # <class 'bool'>
-print(inSecondQuadrant(-1, 2))   # True
-print(inSecondQuadrant(-1, -2))  # False
-print(inSecondQuadrant(1, -2))   # False
-print(inSecondQuadrant(-1, 0))   # False
+printMultTable1()
+```
+Output:
+```
+1 2 3 4 5 6 7 8 9
+3 6 9 12 15 18 21 24 27
+5 10 15 20 25 30 35 40 45
+7 14 21 28 35 42 49 56 63
+9 18 27 36 45 54 63 72 81
 ```
 
-Using `inSecondQuadrant` above, write a function `exactlyTwoSecondQuadrant`
-defined by:
-- input parameter: six integers `x1,y1,x2,y2,x3,y3` — `(x1,y1)`, `(x2,y2)`,
-  `(x3,y3)` represent three points in the plane
-- return value: a boolean — `True` if exactly two of the three points are in
-  the second quadrant, `False` otherwise
+```python
+def printMultTable2():
+    # ADD ADDITIONAL CODE HERE!
+printMultTable2()
+```
+Output:
+```
+1
+3 6 9
+5 10 15 20 25
+7 14 21 28 35 42 49
+9 18 27 36 45 54 63 72 81
+```
+
+**2.** Write a function `sumNumbers` defined by:
+- input parameter: two integers `a` and `b` where `a <= b`
+- return value: the sum of integers from `a` to `b`
+  - *What does `for i in range(a,b):` do? What about `for i in
+    range(a,b+1):`?*
 
 ```python
-def exactlyTwoSecondQuadrant(x1, y1, x2, y2, x3, y3):
+def sumNumbers(a, b):
+    total = 0
+    # ADD ADDITIONAL CODE HERE!
+print(sumNumbers(5, 10))   # 45
+print(sumNumbers(15, 100)) # 4945
+```
+
+**3.** Write a function `factorial` defined by:
+- input parameter: an integer `n`
+- return value: \\(n! = 1 \times 2 \times 3 \times \cdots \times (n-1)
+  \times n\\)
+
+```python
+def factorial(n):
+    prod = 1
+    # ADD ADDITIONAL CODE HERE!
+print(factorial(8))   # 40320
+print(factorial(12))  # 479001600
+```
+
+**4.** One way to compute \\(e^x\\) is the infinite series
+\\(e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} +
+\cdots + \frac{x^{100}}{100!}\\) (100 can be replaced by any larger integer
+for greater precision).
+
+Write a function `exp` defined by:
+- input parameter: a float `x`
+- return value: the approximation of \\(e^x\\) computed by the above formula
+  - *Copy the `factorial` function from problem 3 here, and make use of it.*
+
+```python
+# copy factorial() from problem 3 here, and make use of it
+def exp(x):
+    total = 1
+    # ADD ADDITIONAL CODE HERE!
+print(exp(1.0))  # 2.7182818284590455
+print(exp(2.0))  # 7.389056098930649
+print(exp(4.0))  # 54.598150033144265
+```
+
+**5.** Write a function `withinCircle` defined by:
+- input parameter: a positive integer `r`
+- return value: the number of integer-coordinate points `(x,y)` with
+  \\(x^2+y^2 \le r^2\\) (i.e. points within the circle of radius `r`)
+
+```python
+def withinCircle(r):
     counter = 0
-    if inSecondQuadrant(x1, y1):
-        counter = counter + 1
-    # ADD ADDITIONAL CODE HERE!
-    return (counter == 2)
-print(exactlyTwoSecondQuadrant(-1,2, 2,1, -2,1))  # True
-print(exactlyTwoSecondQuadrant(1,2, -2,1, -3,3))  # True
-print(exactlyTwoSecondQuadrant(1,2, -2,-1, -2,1)) # False
-print(exactlyTwoSecondQuadrant(-1,2, -2,1, -2,2)) # False
+    for x in range(-r, r+1):
+        for y in range(-r, r+1):
+            # ADD ADDITIONAL CODE HERE!
+    return counter
+print(withinCircle(100) / 100**2)    # 3.1417
+print(withinCircle(1000) / 1000**2)  # 3.141549
 ```
 
-**2.** Write a function `withinInterval` defined by:
-- input parameter: three integers `lower, upper, n` (where `lower <= upper`)
-- return value: a boolean — `True` if `lower <= n <= upper`, `False`
-  otherwise
+**6.** Write a function `dayOfWeek` defined by:
+- input parameter: three integers `year, month, day` where `year >= 2000`
+- return value: the day of the week for that date, as one of the strings
+  `"Mon"`, `"Tue"`, `"Wed"`, `"Thu"`, `"Fri"`, `"Sat"`, `"Sun"`
+  - *Make use of `leapYear`/`numDays` from last week. `2000/1/1` was a
+    Saturday. Count the number of days elapsed from `2000/1/1` to
+    `year/month/day` in three steps — e.g. for `2015/4/13`: (1) days from
+    2000 through 2014, (2) days from `2015/Jan` through `2015/Mar`, (3) days
+    from `2015/Apr/1` to `2015/Apr/12`.*
 
 ```python
-def withinInterval(lower, upper, n):
-    # ADD ADDITIONAL CODE HERE!
-print(type(withinInterval(1, 5, 0)))  # <class 'bool'>
-print(withinInterval(1, 5, 0))  # False
-print(withinInterval(1, 5, 1))  # True
-print(withinInterval(1, 5, 3))  # True
-print(withinInterval(1, 5, 5))  # True
-print(withinInterval(1, 5, 6))  # False
-```
-
-Using `withinInterval` above, write a function `exactlyThreeWithinInterval`
-defined by:
-- input parameter: seven integers `lower, upper, n1,n2,n3,n4,n5` —
-  `[lower,upper]` represents an interval
-- return value: a boolean — `True` if exactly three of `n1,n2,n3,n4,n5` fall
-  within the interval, `False` otherwise
-
-```python
-def exactlyThreeWithinInterval(lower, upper, n1, n2, n3, n4, n5):
+def dayOfWeek(year, month, day):
     counter = 0
-    if withinInterval(lower, upper, n1):
-        counter = counter + 1
-    # ADD ADDITIONAL CODE HERE!
-print(exactlyThreeWithinInterval(1,5, 1,0,6,5,3))  # True
-print(exactlyThreeWithinInterval(1,5, 6,1,0,3,5))  # True
-print(exactlyThreeWithinInterval(1,5, 6,1,0,7,2))  # False
-print(exactlyThreeWithinInterval(1,5, 6,7,0,1,2))  # False
+    # step 1: count the number of days from 2000 to year-1
+    # step 2: count the number of days from year/Jan to year/(month-1)
+    # step 3: count the days from year/month/1 to year/month/(day-1)
+    n = counter % 7
+    if n == 0:
+        return "Sat"
+    # step 4: complete the code for the other cases
+print(dayOfWeek(2001, 1, 28))  # Sun
+print(dayOfWeek(2002, 11, 21)) # Thu
+print(dayOfWeek(2004, 3, 4))   # Thu
+print(dayOfWeek(2008, 7, 1))   # Tue
+print(dayOfWeek(2011, 5, 8))   # Sun
+print(dayOfWeek(2013, 3, 23))  # Sat
 ```
 
-**3.** Write a function `triangle` defined by:
-- input parameter: two integers `a, b`
-- return value: a boolean — `True` if the x-axis, the y-axis, and the line
-  `y = ax+b` together form a triangle in the plane, `False` otherwise
+**7.** Let \\(f: \{0,1,\ldots,99\}^2 \to \mathbb{Z}\\) be defined by
+\\(f(i,j) = (i^5 + 2i^3j^2 + 5i^2 + j + 5000) \bmod 10000\\).
+
+Write a function `findMax` defined by:
+- input parameter: none
+- return value: the maximum value of `f` defined above
 
 ```python
-# ADD FUNCTION HERE!
-print(triangle(-3, -2))  # True
-print(triangle(3, 0))    # False
-print(triangle(0, 2))    # False
-print(triangle(0, 0))    # False
+def f(i, j):
+    return (i**5 + 2*(i**3)*(j**2) + 5*i**2 + j + 5000) % 10000
+def findMax():
+    best = f(0, 0)
+    for i in range(100):
+        for j in range(100):
+            # ADD ADDITIONAL CODE HERE!
+    return best
+print("max value:", findMax())  # 9997
 ```
 
-**4.** Write a function `triangle` defined by:
-- input parameter: three positive integers `a, b, c`
-- return value: a boolean — `True` if a triangle with side lengths `a,b,c`
-  can be formed, `False` otherwise
-  - *If a triangle exists, `a+b>c` and `b+c>a` and `c+a>b` all hold. What
-    about the converse?*
+**8.** Write a function `combination` defined by:
+- input parameter: two integers `n` and `k` with `1 <= k <= n <= 250`
+- return value: the number of ways to choose `k` from a set of `n`
+  (\\(\binom{n}{k}\\)), as an `int` (not `float`)
+  - *Use the formula \\(\prod_{i=1}^{k} \frac{n+1-i}{i} = \frac{n}{1} \cdot
+    \frac{n-1}{2} \cdot \frac{n-2}{3} \cdots \frac{n+2-k}{k-1} \cdot
+    \frac{n+1-k}{k}\\).*
 
-```python
-# ADD FUNCTION HERE!
-print(triangle(3, 4, 5))  # True
-print(triangle(1, 5, 2))  # False
-print(triangle(3, 1, 1))  # False
-```
+**9.** Write a function `maxPrimeFactor` defined by:
+- input parameter: an integer `n >= 2`
+- return value: the largest prime factor of `n` — e.g. `maxPrimeFactor(12)`
+  returns `3`, since `12 = 2×2×3`
+  - *Use an `isPrime` function to check primality.*
 
-**5.** Write a function `rightAngled` defined by:
-- input parameter: six integers `x1,y1,x2,y2,x3,y3` — `(x1,y1)`, `(x2,y2)`,
-  `(x3,y3)` represent three points in the plane
-- return value: a boolean — `True` if the three points form a right-angled
-  triangle, `False` otherwise
-
-```python
-def rightAngled(x1, y1, x2, y2, x3, y3):
-    a = (x2-x1)**2 + (y2-y1)**2
-    b = (x3-x2)**2 + (y3-y2)**2
-    c = (x1-x3)**2 + (y1-y3)**2
-    # ADD ADDITIONAL CODE HERE!
-print(rightAngled(1, 1, 5, 2, -1, 9))  # True
-print(rightAngled(1, 2, 4, 2, 5, 4))   # False
-print(rightAngled(1, 2, 4, 2, 4, 3))   # True
-```
-
-**6.** Write a function `acuteAngled` defined by:
-- input parameter: six integers `x1,y1,x2,y2,x3,y3` — `(x1,y1)`, `(x2,y2)`,
-  `(x3,y3)` represent three points in the plane
-- return value: a boolean — `True` if the three points form an acute-angled
-  triangle, `False` otherwise
-
-```python
-# ADD FUNCTION HERE!
-print(acuteAngled(1, 2, 4, 3, 2, 7))  # True
-print(acuteAngled(1, 2, 4, 2, 5, 4))  # False
-print(acuteAngled(1, 2, 4, 2, 4, 3))  # False
-```
-
-**7.** Write a function `intersect` defined by:
-- input parameter: six integers `x1,y1,r1,x2,y2,r2`, where `x1,y1,r1`
-  represent a circle centered at `(x1,y1)` with radius `r1`, and `x2,y2,r2`
-  represent another circle centered at `(x2,y2)` with radius `r2`
-- return value: a boolean — `True` if the two circles intersect at two
-  points, `False` otherwise
-  - *Use `abs(x)` to compute the absolute value \\(|x|\\).*
-
-```python
-# ADD FUNCTION HERE!
-print(intersect(1, 1, 3, 5, 4, 2))  # False
-print(intersect(1, 1, 3, 4, 3, 2))  # True
-print(intersect(1, 1, 3, 2, 1, 2))  # False
-```
-
-**8.** Write a function `leapYear` defined by:
-- input parameter: a positive integer `year`
-- return value: a boolean — `True` if `year` is a leap year, `False`
-  otherwise
-  - Basically, leap years occur in years divisible by 4 (2009-2011 are not
-    leap years, while 2008 and 2012 are).
-  - Years ending in `00` are leap years only if divisible by 400 (1700,
-    1800, 1900, 2100, 2200 are not leap years; 1600, 2000, 2400 are).
-
-```python
-def leapYear(year):
-    if year % 4 != 0:
-        return False
-    # now, year is divisible by 4
-    # ADD ADDITIONAL CODE HERE!
-print(leapYear(2008), leapYear(2011), leapYear(2012))  # True False True
-print(leapYear(2000), leapYear(2100), leapYear(2200))  # True False False
-print(leapYear(2300), leapYear(2400), leapYear(3200))  # False True True
-```
-
-Using `leapYear` above, write a function `numDays` defined by:
-- input parameter: two positive integers `year, month`
-- return value: the number of days in that year and month
-
-```python
-def numDays(year, month):
-    assert (1 <= month <= 12)
-    if month == 1 or month == 3 or month == 5 or month == 7 or \
-       month == 8 or month == 10 or month == 12:
-        return 31
-    # ADD ADDITIONAL CODE HERE!
-print(numDays(2000,1), numDays(2001,4), numDays(2004,8))  # 31 30 31
-print(numDays(2004,9), numDays(2005,3), numDays(2005,7))  # 30 31 31
-print(numDays(2008,2), numDays(2011,2), numDays(2012,2))  # 29 28 29
-print(numDays(2000,2), numDays(2100,2), numDays(2200,2))  # 29 28 28
-print(numDays(2300,2), numDays(2400,2), numDays(3200,2))  # 28 29 29
-```
-
-**9.** Big hospitals are always ready for emergency medical treatment, which
-often requires blood transfusions. Consider the problem faced by a hospital
-trying to determine whether its blood supply is sufficient.
-
-The basic rule for blood donation (ABO type only, ignoring Rh type for
-simplicity):
-- Patients with type O can receive only blood type O.
-- Patients with type A can receive only blood types A or O.
-- Patients with type B can receive only blood types B or O.
-- Patients with type AB can receive any of the four types.
-
-Write a function `blood` defined by:
-- input parameter: eight integers — `supplyO,supplyA,supplyB,supplyAB` (the
-  current supply of each blood type) and `demandO,demandA,demandB,demandAB`
-  (the current demand)
-- return value: a boolean — `True` if the current supply suffices for the
-  current demand, `False` otherwise
-  - *Hint: the supply does **not** suffice if any of these hold:*
-    `supplyO < demandO`; `supplyO+supplyA < demandO+demandA`;
-    `supplyO+supplyB < demandO+demandB`;
-    `supplyO+supplyA+supplyB < demandO+demandA+demandB`;
-    `supplyO+supplyA+supplyB+supplyAB < demandO+demandA+demandB+demandAB`.
-    *What about the converse?*
-
-```python
-def blood(supplyO, supplyA, supplyB, supplyAB,
-          demandO, demandA, demandB, demandAB):
-    if supplyO < demandO:
-        return False
-    # ADD ADDITIONAL CODE HERE!
-print(blood(50, 36, 11, 8, 45, 42, 10, 3))  # False
-print(blood(50, 36, 11, 3, 45, 38, 10, 7))  # True
-```
+**10.** Write a function `withinRegion` defined by:
+- input parameter: two positive integers `a, c`
+- return value: the number of integer-coordinate points `(x,y)` that satisfy
+  both \\(y \le -ax^2+c\\) and \\(y \ge ax^2-c\\) (points within the region
+  bounded by the two parabolas)

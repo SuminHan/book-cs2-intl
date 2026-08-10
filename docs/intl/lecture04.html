@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Conditionals - CS2 International Supplement</title>
+        <title>Boolean Functions - CS2 International Supplement</title>
 
 
         <!-- Custom HTML head -->
@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,34 +180,30 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h1>
-<p><strong>1 August 2012, 9:30 a.m.</strong> Knight Capital was the largest trader of US
-stocks. Its software started buying high and selling low — thousands of
-times per second.</p>
-<p>It was meant to place 212 orders. It placed more than 4 million.</p>
-<p>Forty-five minutes later the company had lost <strong>$440 million</strong> — more than
-it was worth.</p>
-<h3 id="the-cause-was-an-if"><a class="header" href="#the-cause-was-an-if">The cause was an <code>if</code></a></h3>
-<p>Back in 2003 the code had a switch that turned on an old feature called
-<em>Power Peg</em>:</p>
-<pre><code class="language-python">if flag:
-    run_power_peg()      # 2003: an old testing feature
+                        <h1 id="boolean-functions"><a class="header" href="#boolean-functions">Boolean Functions</a></h1>
+<p>You want to check whether <code>x</code> is 1 or 2. In English that is one short
+sentence, so you write it the way you say it:</p>
+<pre><code class="language-python">x = 5
+print(x == 1 or 2)
 </code></pre>
-<p>Years later that same <code>flag</code> was reused to mean something completely
-different — and nobody deleted the old branch.</p>
-<p>On deployment day the new code reached 7 of the 8 servers. The eighth still
-had the 2003 branch. When the flag went up, that server did what it was told.</p>
-<blockquote>
-<p>Widely documented; see the SEC administrative proceeding against Knight
-Capital (2013).</p>
-</blockquote>
-<h3 id="what-an-if-really-is"><a class="header" href="#what-an-if-really-is">What an <code>if</code> really is</a></h3>
-<p>An <code>if</code> is a promise about the future: “whenever this condition is true, do
-this.”</p>
-<p>The condition was still true. The code still ran. Only the meaning had
-changed — and a condition cannot notice that.</p>
-<p><strong>Every <code>if</code> you write this week is a promise that has to stay true after
-you forget you wrote it.</strong></p>
+<p><code>x</code> is 5. So this prints <code>False</code> — right?</p>
+<p><strong>It prints <code>2</code>.</strong></p>
+<p>Python read it as <code>(x == 1) or 2</code>:</p>
+<ul>
+<li><code>x == 1</code> is <code>False</code></li>
+<li>so <code>or</code> moves on and hands back <code>2</code></li>
+<li>and <code>2</code> counts as true</li>
+</ul>
+<p>So inside an <code>if</code>, this condition is true for every value of <code>x</code> — 5, 99,
+anything.</p>
+<h3 id="say-it-twice"><a class="header" href="#say-it-twice">Say it twice</a></h3>
+<p><code>or</code> joins two complete comparisons, not one comparison and a leftover number.</p>
+<pre><code class="language-python"># Correct
+print(x == 1 or x == 2)     # False
+</code></pre>
+<p><strong>Why this one is dangerous:</strong> it never crashes. It never warns you. It
+just quietly says yes to everything — and an <code>if</code> that is always true looks
+exactly like an <code>if</code> that works.</p>
 
                     </main>
 

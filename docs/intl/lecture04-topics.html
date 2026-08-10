@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,87 +181,95 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<h2 id="boolean-type--expressions"><a class="header" href="#boolean-type--expressions">Boolean Type &amp; Expressions</a></h2>
-<p>A fourth type joins <code>int</code>/<code>float</code>/<code>str</code>: <code>bool</code>, whose only two values are
-<code>True</code> and <code>False</code>.</p>
-<p><strong>Relational operators</strong> build primitive boolean expressions: <code>== != &gt; &lt; &gt;= &lt;=</code>. Watch the difference between assignment and equality — “let x = y” in
-math becomes <code>x = y</code> (assignment) in Python, while “if x equals y” becomes
-<code>x == y</code> (a boolean expression, no side effect).</p>
-<p><strong>Logical operators</strong> combine boolean expressions: <code>and</code>, <code>or</code>, <code>not</code>.</p>
-<div class="table-wrapper">
-<table>
-<thead>
-<tr><th>p</th><th>q</th><th><code>p and q</code></th><th><code>p or q</code></th><th><code>not p</code></th></tr>
-</thead>
-<tbody>
-<tr><td>True</td><td>True</td><td>True</td><td>True</td><td>False</td></tr>
-<tr><td>True</td><td>False</td><td>False</td><td>True</td><td>False</td></tr>
-<tr><td>False</td><td>True</td><td>False</td><td>True</td><td>True</td></tr>
-<tr><td>False</td><td>False</td><td>False</td><td>False</td><td>True</td></tr>
-</tbody>
-</table>
-</div>
-<p>Precedence, high to low: <code>()</code> &gt; <code>**</code> &gt; <code>* / // %</code> &gt; <code>+ -</code> &gt; relational
-(<code>== != &gt; &lt; &gt;= &lt;=</code>) &gt; <code>not</code> &gt; <code>and</code> &gt; <code>or</code>. As always, parenthesize
-anything you’re not 100% sure of:</p>
-<pre><code class="language-python">p = x%2 == 1 or x%3 != 0 and (not(y &lt;= 1) or x%2 == 1)
+<h2 id="boolean-functions"><a class="header" href="#boolean-functions">Boolean Functions</a></h2>
+<p>A <strong>boolean function</strong> is one that returns <code>True</code>/<code>False</code> — useful for
+hiding a complicated yes/no test behind a readable name, so the calling
+code can just write <code>if onePositive(x, y, z):</code> instead of repeating the
+whole condition inline. Whenever you’re facing a yes/no question, consider
+writing it as its own boolean function.</p>
+<pre><code class="language-python">def onePositive(x, y, z):
+    if x &gt; 0 and y &lt;= 0 and z &lt;= 0:
+        return True
+    if x &lt;= 0 and y &gt; 0 and z &lt;= 0:
+        return True
+    if x &lt;= 0 and y &lt;= 0 and z &gt; 0:
+        return True
+    return False
 </code></pre>
-<h2 id="if-else-conditionals"><a class="header" href="#if-else-conditionals"><code>if</code>-<code>else</code> Conditionals</a></h2>
-<pre><code class="language-python">if boolean_expression:
-    statements
-else:               # the else block may be omitted
-    statements
-</code></pre>
-<p>This is how a <strong>multi-case math definition</strong> (a curly-brace piecewise
-formula) becomes code — each case becomes a branch:</p>
-<pre><code class="language-python"># f(x) = 0 if x &lt;= 0, else x**2 + 1
-def f(x):
-    if x &lt;= 0:
-        y = 0
+<h2 id="common-mistake-string-true--false"><a class="header" href="#common-mistake-string-true--false">Common Mistake: String <code>"True"</code> / <code>"False"</code></a></h2>
+<p><code>"True"</code> and <code>"False"</code> (the strings) are <em>not</em> the same as <code>True</code> and
+<code>False</code> (the boolean values) — and a non-empty string is always truthy, so
+this bug won’t crash, it just silently always takes the <code>if</code> branch:</p>
+<pre><code class="language-python"># WRONG — returns the strings "True"/"False"
+def lessThan(x, y):
+    if x &lt; y:
+        return "True"
     else:
-        y = x**2 + 1
-    return y
+        return "False"
+
+if lessThan(a, b):   # always runs — "False" is a non-empty string!
+    ...
 </code></pre>
-<p>Chain more than two cases with <code>elif</code>:</p>
-<pre><code class="language-python">if b1:
-    statements          # runs if b1 is True
-elif b2:
-    statements           # runs if b1 is False and b2 is True
-elif b3:
-    statements           # runs if b1, b2 are False and b3 is True
-else:
-    statements           # runs if none of the above are True
-</code></pre>
-<p><code>if</code>s can also <strong>nest</strong> — but watch out, <code>if x != 0: if x &gt; 0: ... else: ...</code> is not the same branching as <code>if x &gt; 0: ... else: if x &lt; 0: ... else: ...</code>, even though both can compute the sign of <code>x</code>. Trace through <code>x == 0</code>
-by hand in each version if the difference isn’t obvious.</p>
-<h2 id="multiple-return-statements"><a class="header" href="#multiple-return-statements">Multiple <code>return</code> Statements</a></h2>
-<p>A function can have more than one <code>return</code> — commonly one per branch of a
-conditional. <strong>As soon as one <code>return</code> executes, the function ends
-immediately</strong> — no code after it runs, even if it’s inside more branches:</p>
-<pre><code class="language-python">def absoluteValue(x):
-    if x &lt; 0:
-        return -x
+<pre><code class="language-python"># correct
+def lessThan(x, y):
+    if x &lt; y:
+        return True
     else:
-        return x
+        return False
 </code></pre>
-<p>This lets you <strong>prune</strong> dead structure. Once a branch has returned, there’s
-no need for the surrounding <code>else</code> — the code after the <code>if</code> block only
-ever runs when that <code>if</code> didn’t return, so it’s implicitly the “else” case
-already:</p>
-<pre><code class="language-python"># before pruning                    # after pruning — equivalent
-if b1:                              if b1:
-    return v1                           return v1
-else:
-    if b2:                          if b2:
-        return v2                       return v2
-    else:
-        if b3:                      if b3:
-            return v3                    return v3
-        else:
-            return v4                return v4
+<h2 id="tip-return-the-boolean-expression-directly"><a class="header" href="#tip-return-the-boolean-expression-directly">Tip: Return the Boolean Expression Directly</a></h2>
+<p>If your function’s job is exactly “is this condition true,” skip the
+<code>if</code>/<code>else</code> and return the condition itself:</p>
+<pre><code class="language-python">def lessThan(x, y):
+    return x &lt; y          # x &lt; y already IS True or False
 </code></pre>
-<p>Fewer nesting levels, same behavior — easier to read, easier to extend with
-one more case later.</p>
+<p>The same shortcut applies to negation:</p>
+<pre><code class="language-python"># if boolean_expr: return False   else: return True
+# becomes:
+return not boolean_expr
+</code></pre>
+<h2 id="tip-drop--true--replace--false-with-not"><a class="header" href="#tip-drop--true--replace--false-with-not">Tip: Drop <code>== True</code> / Replace <code>== False</code> with <code>not</code></a></h2>
+<p><code>b == True</code> is just <code>b</code>; <code>b == False</code> is <code>not b</code>:</p>
+<pre><code class="language-python">if singleDigit(a) == True and singleDigit(b) == False:
+    ...
+# becomes:
+if singleDigit(a) and not singleDigit(b):
+    ...
+</code></pre>
+<p>Watch for the classic typo — <code>=</code> (assignment) where you meant <code>==</code>
+(comparison). <code>if singleDigit(a) = True:</code> is not valid boolean logic at
+all.</p>
+<h2 id="tip-decompose-complicated-boolean-expressions"><a class="header" href="#tip-decompose-complicated-boolean-expressions">Tip: Decompose Complicated Boolean Expressions</a></h2>
+<p>The same decomposition advice from Week 2 applies to conditions, maybe even
+more so — a condition repeated three times with permuted variables is easy
+to get wrong in one of the copies:</p>
+<pre><code class="language-python">a = (x2-x1)**2 + (y2-y1)**2
+b = (x3-x2)**2 + (y3-y2)**2
+c = (x1-x3)**2 + (y1-y3)**2
+if a+b == c or b+c == a or a+c == b:
+    ...
+</code></pre>
+<h2 id="tip-never--on-float"><a class="header" href="#tip-never--on-float">Tip: Never <code>==</code> on <code>float</code></a></h2>
+<pre><code class="language-python">print(0.1 + 0.2)          # 0.30000000000000004
+print(0.1 + 0.2 == 0.3)   # False
+print((111**0.5)**2)        # 110.99999999999999
+print((111**0.5)**2 == 111) # False
+</code></pre>
+<p><code>==</code> on floats is unreliable because of how binary floating point rounds.
+When possible, restructure the comparison to stay in integers rather than
+comparing floats at all:</p>
+<pre><code class="language-python"># unreliable: comparing floats
+d = ((x2-x1)**2 + (y2-y1)**2)**0.5
+if d == dist:
+    ...
+
+# better: compare the squared (integer) distance instead
+d = (x2-x1)**2 + (y2-y1)**2
+if d == dist**2:
+    ...
+</code></pre>
+<p>When you truly can’t avoid a float comparison, compare with a tolerance
+instead of <code>==</code> — see Week 2’s Introduction essay for why.</p>
 
                     </main>
 

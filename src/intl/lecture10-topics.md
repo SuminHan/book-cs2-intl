@@ -1,98 +1,91 @@
 # Topics Covered
 
-## `while` Loops
+## `.append(·)`
+
+A second way to build a list, growing it one element at a time instead of
+pre-sizing with `[None] * n`:
 
 ```python
-while boolean_expression:
-    statements
+L = [1, 2, 3, 4, 5]
+n = len(L)
+M = []
+for i in range(n):
+    M.append(L[i] * 2)     # each call adds one element to the end
 ```
 
-Repeats the body for as long as the condition stays true — checked *before*
-every iteration, including the first. Counting the digits of `n = 713`:
+## Slicing
+
+`L[i:j]` — elements `L[i]` through `L[j-1]` (note: `L[j]` itself is
+**excluded**). Omitting `i` means "from the start"; omitting `j` means "to
+the end"; omitting both copies the whole list.
 
 ```python
-def countDigits(n):
-    counter = 0
-    while n > 0:
-        counter += 1
-        n = n // 10
-    return counter
+L = [0, 10, 20, 30, 40, 50]
+print(L[1:4])   # [10, 20, 30]
+print(L[:3])    # [0, 10, 20]     same as L[0:3]
+print(L[2:])    # [20, 30, 40, 50]  same as L[2:6]
+print(L[:])     # [0, 10, 20, 30, 40, 50]
 ```
 
-Trace it: `n=713 → counter=1,n=71 → counter=2,n=7 → counter=3,n=0`, loop
-condition now false, return `3`.
-
-## `for` vs. `while`
-
-Any `for` loop can be rewritten as a `while` loop:
+`L[i:j:k]` adds a step: take every `k`-th element from `L[i]` up to (not
+including) `L[j]`.
 
 ```python
-for i in range(n):        # becomes:
-    total += i             i = 0
-                            while i < n:
-                                total += i
-                                i += 1
+L = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+print(L[1:9:2])    # [10, 30, 50, 70]
+print(L[1::2])     # [10, 30, 50, 70, 90]
+print(L[1:-1:2])   # [10, 30, 50, 70]   (-1: stop before the last element)
 ```
 
-**Use `for` when you know the number of iterations in advance** (a fixed
-range, a list you're walking through). **Use `while`** when you don't —
-`countDigits` above has to keep going until `n` reaches `0`, and there's no
-way to know ahead of time how many digits `n` has without... counting
-them.
-
-## `while True` + `break`
-
-When the loop-continuation condition is awkward to state directly, loop
-forever (`while True:`) and `break` out explicitly once some condition is
-met inside the body:
+## Comparison, Membership, Concatenation
 
 ```python
-while True:
-    ...
-    if some_condition:
-        break     # exit immediately, skip everything after
-    ...
+L, M, N = [1,2,3], [1,2,3], [1,3,2]
+print(L == M)   # True  — same values, same order
+print(L == N)   # False — same values, different order
+
+print(3 in [0,1,2,3,4,5])          # True
+print([1,2] in [0,1,2,3,4,5])       # False — [1,2] is not itself an element
+print([1,2] in [0,[1,2],3])         # True  — here it is
+
+L = [0,1] + [2,3,4,5]   # [0,1,2,3,4,5]  concatenation
+M = [0,1] * 3            # [0,1,0,1,0,1]  repetition
 ```
+
+## Built-In Functions
+
+`sum(L)`, `max(L)`, `min(L)` work on lists of numbers directly — no loop
+needed. `L.sort()` is different from the rest: it's a **method** (called as
+`L.sort()`, not `sort(L)`), it sorts `L` **in place**, and it returns
+`None` — printing the return value of `.sort()` is a reliable way to
+accidentally print `None` instead of your sorted list.
 
 ```python
-# equivalent to the countDigits loop above, written with break instead
-while True:
-    counter += 1
-    n = n // 10
-    if n == 0:
-        break
+L = [1, 2, 3, 2, 3, 2]
+M = L.sort()
+print(M)   # None  — NOT the sorted list
+print(L)   # [1, 2, 2, 2, 3, 3]  — L itself was modified
 ```
 
-## Toy Robot with `while`
+## List Comprehension
 
-Some robot tasks don't have a fixed number of steps, which is exactly the
-`for`-can't-do-it case. "Pick up beepers here, however many there are":
+A compact way to build a list from a loop, written `[expr for var in
+iterable]` — optionally with an `if` filter:
 
 ```python
-while hubo.on_beeper():
-    hubo.pick_beeper()
+a = [x for x in "hello"]              # ['h','e','l','l','o']
+b = [x**2 for x in range(6)]          # [0,1,4,9,16,25]
+c = [x**2 for x in range(10) if x%2==1]   # only odd x: [1,9,25,49,81]
 ```
 
-"Drop every beeper Hubo is carrying, walking forward after each":
+Nested comprehensions build nested (2D) lists, the outer loop changing
+which row, the inner loop filling that row:
 
 ```python
-hubo = Robot(beepers=50)
-while hubo.carries_beepers():
-    hubo.drop_beeper()
-    hubo.move()
+d = [[i+j for i in range(4)] for j in range(3)]
+# [[0,1,2,3], [1,2,3,4], [2,3,4,5]]
 ```
 
-If the condition is already false before the first check — e.g. Hubo was
-created with zero beepers — the loop body never runs at all, not even
-once. That's different from a `for` loop over a nonempty range, and worth
-double-checking when a `while` loop "does nothing."
-
-Composing two `while` loops handles "walk until you reach a pile of
-beepers, then pick them all up":
-
-```python
-while not hubo.on_beeper():
-    hubo.move()
-while hubo.on_beeper():
-    hubo.pick_beeper()
-```
+A comprehension is optional — anything it does, a `for` loop with
+`.append()` also does. Use whichever reads more clearly for the problem at
+hand; a `for`-loop version is never wrong.

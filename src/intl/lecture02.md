@@ -1,56 +1,36 @@
-# Basic Elements
+# Functions
 
-You have just learned variables, expressions, and `print`. So this should be easy:
+A function takes something in and gives something back. Usually that is
+exactly what you want.
 
-```python
-print(0.1 + 0.2)
-```
+Biologists study a gene called `SEPT2`. Another is called `MARCH1`. They
+typed those names into Excel. Excel has a helpful little function that
+looks at what you typed and decides what you *meant*. What do you think it did?
 
-What does Python print? Everyone knows this one — say it out loud.
-
-**Python disagrees:**
-
-```
-0.30000000000000004
-```
-
-```python
-print(0.1 + 0.2 == 0.3)      # False
-```
-
-This is not a bug. Every computer on Earth agrees with Python here.
-
-### Why: some numbers have no exact form
-
-Write \\(1/3\\) in decimal: \\(0.3333\ldots\\) — it never ends. You have to stop
-somewhere, so you store something slightly wrong. A computer stores numbers
-in **binary**, and in binary \\(0.1\\) is a number that never ends either. Here
-is what is really in memory:
+**It turned genes into dates:**
 
 ```
-0.1  ->  0.10000000000000000555
-0.2  ->  0.20000000000000001110
-0.3  ->  0.29999999999999998890
+SEPT2   ->   2-Sep
+MARCH1  ->   1-Mar
 ```
 
-The first two add up to a hair *more* than the third. That hair is the
-`...004` you saw.
+Nobody asked for this. Nobody was warned. The gene names were simply gone,
+and once saved they are very hard to get back.
 
-### Where this bites you
+A 2016 study checked 35,175 spreadsheets from 3,597 published papers: about
+one paper in five carried these corrupted names. A follow-up covering
+2014–2020 found over 30%.
 
-Tiny errors pile up. Add 0.1 ten times:
+> Sources: Ziemann et al., *Genome Biology* (2016); Abeysooriya et al.,
+> *PLOS Computational Biology* (2021).
 
-```python
-total = 0.0
-for i in range(10):
-    total = total + 0.1
-print(total)          # 0.9999999999999999
-print(total == 1.0)   # False
-```
+### The lesson for this week
 
-**The rule to remember all semester:** never test two decimals with `==`.
-Ask whether the gap is small enough instead: `abs(a - b) < 0.000001`.
+When you call a function, you are trusting it to do exactly one thing — the
+thing its name says.
 
-The computer did the arithmetic perfectly. It still gave you an answer you
-did not expect. Knowing what the machine will actually do is a different
-skill from telling it what to do.
+Excel's autocorrect was doing its job perfectly. It was just doing a
+different job than the biologists thought it was doing.
+
+**When you write a function this week, ask: could someone read the name and
+expect something else?**

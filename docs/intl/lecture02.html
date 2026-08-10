@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Basic Elements - CS2 International Supplement</title>
+        <title>Functions - CS2 International Supplement</title>
 
 
         <!-- Custom HTML head -->
@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,47 +180,38 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="basic-elements"><a class="header" href="#basic-elements">Basic Elements</a></h1>
-<p>You have just learned variables, expressions, and <code>print</code>. So this should be easy:</p>
-<pre><code class="language-python">print(0.1 + 0.2)
+                        <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<p>A function takes something in and gives something back. Usually that is
+exactly what you want.</p>
+<p>Biologists study a gene called <code>SEPT2</code>. Another is called <code>MARCH1</code>. They
+typed those names into Excel. Excel has a helpful little function that
+looks at what you typed and decides what you <em>meant</em>. What do you think it did?</p>
+<p><strong>It turned genes into dates:</strong></p>
+<pre><code>SEPT2   -&gt;   2-Sep
+MARCH1  -&gt;   1-Mar
 </code></pre>
-<p>What does Python print? Everyone knows this one — say it out loud.</p>
-<p><strong>Python disagrees:</strong></p>
-<pre><code>0.30000000000000004
-</code></pre>
-<pre><code class="language-python">print(0.1 + 0.2 == 0.3)      # False
-</code></pre>
-<p>This is not a bug. Every computer on Earth agrees with Python here.</p>
-<h3 id="why-some-numbers-have-no-exact-form"><a class="header" href="#why-some-numbers-have-no-exact-form">Why: some numbers have no exact form</a></h3>
-<p>Write \(1/3\) in decimal: \(0.3333\ldots\) — it never ends. You have to stop
-somewhere, so you store something slightly wrong. A computer stores numbers
-in <strong>binary</strong>, and in binary \(0.1\) is a number that never ends either. Here
-is what is really in memory:</p>
-<pre><code>0.1  -&gt;  0.10000000000000000555
-0.2  -&gt;  0.20000000000000001110
-0.3  -&gt;  0.29999999999999998890
-</code></pre>
-<p>The first two add up to a hair <em>more</em> than the third. That hair is the
-<code>...004</code> you saw.</p>
-<h3 id="where-this-bites-you"><a class="header" href="#where-this-bites-you">Where this bites you</a></h3>
-<p>Tiny errors pile up. Add 0.1 ten times:</p>
-<pre><code class="language-python">total = 0.0
-for i in range(10):
-    total = total + 0.1
-print(total)          # 0.9999999999999999
-print(total == 1.0)   # False
-</code></pre>
-<p><strong>The rule to remember all semester:</strong> never test two decimals with <code>==</code>.
-Ask whether the gap is small enough instead: <code>abs(a - b) &lt; 0.000001</code>.</p>
-<p>The computer did the arithmetic perfectly. It still gave you an answer you
-did not expect. Knowing what the machine will actually do is a different
-skill from telling it what to do.</p>
+<p>Nobody asked for this. Nobody was warned. The gene names were simply gone,
+and once saved they are very hard to get back.</p>
+<p>A 2016 study checked 35,175 spreadsheets from 3,597 published papers: about
+one paper in five carried these corrupted names. A follow-up covering
+2014–2020 found over 30%.</p>
+<blockquote>
+<p>Sources: Ziemann et al., <em>Genome Biology</em> (2016); Abeysooriya et al.,
+<em>PLOS Computational Biology</em> (2021).</p>
+</blockquote>
+<h3 id="the-lesson-for-this-week"><a class="header" href="#the-lesson-for-this-week">The lesson for this week</a></h3>
+<p>When you call a function, you are trusting it to do exactly one thing — the
+thing its name says.</p>
+<p>Excel’s autocorrect was doing its job perfectly. It was just doing a
+different job than the biologists thought it was doing.</p>
+<p><strong>When you write a function this week, ask: could someone read the name and
+expect something else?</strong></p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../index.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../intl/lecture01-problems.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
@@ -234,7 +225,7 @@ skill from telling it what to do.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../index.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../intl/lecture01-problems.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 

@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,116 +181,196 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h1>
-<p><em>Use interactive mode (the Python shell) whenever a formula isn’t clear.</em></p>
-<p><strong>1.</strong> Write a function <code>f</code> defined by:</p>
+<h3 id="required"><a class="header" href="#required">Required</a></h3>
+<p><strong>1.</strong> Write a function <code>maximum</code> defined by:</p>
 <ul>
-<li>input parameter: two positive integers <code>x, y</code></li>
-<li>return value: the float value \(\frac{x}{2y}\)</li>
+<li>input parameter: two integers <code>n1, n2</code></li>
+<li>return value: the maximum value among <code>n1</code> and <code>n2</code></li>
 </ul>
-<pre><code class="language-python">def f(x, y):
+<pre><code class="language-python">def maximum(n1, n2):
     # ADD ADDITIONAL CODE HERE!
-print(f(1, 2))  # 0.25
-print(f(3, 6))  # 0.25
+print(maximum(5, 7))  # 7
+print(maximum(7, 5))  # 7
+print(maximum(5, 5))  # 5
 </code></pre>
-<p><strong>2.</strong> Write a function <code>f</code> defined by:</p>
+<p><strong>2.</strong> Write a function <code>countZeros</code> defined by:</p>
 <ul>
-<li>input parameter: two positive integers <code>x, y</code></li>
-<li>return value: the float value \(x^{1/y}\)</li>
+<li>input parameter: five integers <code>n1, n2, n3, n4, n5</code></li>
+<li>return value: the number of <code>0</code>s among <code>n1, n2, n3, n4, n5</code></li>
 </ul>
-<pre><code class="language-python">print(f(16, 4))  # 2.0
-print(f(64, 6))  # 2.0
+<pre><code class="language-python">def countZeros(n1, n2, n3, n4, n5):
+    counter = 0
+    if n1 == 0:
+        counter = counter + 1
+    if n2 == 0:
+        counter = counter + 1
+    # ADD ADDITIONAL CODE HERE!
+print(countZeros(1, 0, 3, 0, 0))  # 3
+print(countZeros(0, 2, 2, 0, 4))  # 2
+print(countZeros(1, 2, 3, 0, 4))  # 1
+print(countZeros(1, 2, 3, 5, 4))  # 0
 </code></pre>
-<p><strong>3.</strong> Write functions <code>f</code> and <code>g</code> defined by:</p>
+<p><strong>3.</strong> Write a function <code>smaller</code> defined by:</p>
 <ul>
-<li>\(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\)
+<li>input parameter: two integers <code>n1, n2</code></li>
+<li>return value: a string — <code>"left"</code> if <code>n1</code> is less than <code>n2</code>, <code>"right"</code> if
+<code>n2</code> is less than <code>n1</code>, <code>"equal"</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def smaller(n1, n2):
+    # ADD ADDITIONAL CODE HERE!
+print(smaller(5, 7))  # left
+print(smaller(7, 5))  # right
+print(smaller(5, 5))  # equal
+</code></pre>
+<p><strong>4.</strong> Write a function <code>quadrant</code> defined by:</p>
 <ul>
-<li>use <code>math.exp(t)</code> to compute \(e^t\)</li>
-<li>use <code>math.sin(t)</code> to compute \(\sin(t)\)</li>
-<li>use <code>math.sqrt(t)</code> or <code>t**0.5</code> to compute \(\sqrt{t}\)</li>
-<li>use <code>math.pi</code> to represent \(\pi\)</li>
+<li>input parameter: two integers <code>x, y</code> (the x/y coordinates of a point)</li>
+<li>return value: a string — <code>"First Quadrant"</code> if <code>x,y &gt; 0</code>, <code>"Second Quadrant"</code> if <code>x &lt; 0, y &gt; 0</code>, <code>"Third Quadrant"</code> if <code>x,y &lt; 0</code>, <code>"Fourth Quadrant"</code> if <code>x &gt; 0, y &lt; 0</code>, <code>"On the Boundary"</code> otherwise</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(quadrant(10, 5))   # First Quadrant
+print(quadrant(-5, 3))   # Second Quadrant
+print(quadrant(-5, -7))  # Third Quadrant
+print(quadrant(3, -5))   # Fourth Quadrant
+print(quadrant(0, -3))   # On the Boundary
+</code></pre>
+<p><strong>5.</strong> Write a function <code>round</code> defined by:</p>
+<ul>
+<li>input parameter: a float <code>x &gt;= 0</code></li>
+<li>return value: the integer nearest to <code>x</code> (rounding) — e.g. <code>2.4</code> → <code>2</code>,
+<code>2.5</code> → <code>3</code>, <code>2.6</code> → <code>3</code>
+<ul>
+<li><em>Make use of the value <code>x - int(x)</code>.</em></li>
 </ul>
 </li>
-<li>\(g(x,y) = \left(1+f\left(y^{1/x}\right)\right)^{f\left(y^{1/x}\right)}\)
+</ul>
+<pre><code class="language-python">def round(x):
+    fraction = x - int(x)
+    # ADD ADDITIONAL CODE HERE!
+print(round(2.4))  # 2
+print(round(2.5))  # 3
+print(round(2.6))  # 3
+</code></pre>
+<p><strong>6.</strong> Write a function <code>ceiling</code> defined by:</p>
 <ul>
-<li>first, write code for <code>z = f(y**(1/x))</code></li>
-<li>then, write code to <code>return (1+z)**z</code></li>
+<li>input parameter: a float <code>x &gt;= 0</code></li>
+<li>return value: the integer \(\lceil x \rceil\) (ceiling) — e.g. <code>2.0</code> →
+<code>2</code>, <code>2.1</code> → <code>3</code>, <code>2.6</code> → <code>3</code></li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(ceiling(2.0))              # 2
+print(ceiling(2.0000000000001))  # 3
+print(ceiling(2.99))             # 3
+</code></pre>
+<p><strong>7.</strong> Write a function <code>quadratic</code> defined by:</p>
+<ul>
+<li>input parameter: three integers <code>a, b, c</code></li>
+<li>return value: the number of real roots of \(ax^2+bx+c=0\)
+<ul>
+<li><em>Note: <code>a</code> and <code>b</code> may be 0; assume <code>a=b=c=0</code> is never given as input.</em></li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-python">import math
-def f(x):
-    # ADD ADDITIONAL CODE HERE!
-def g(x, y):
-    # ADD ADDITIONAL CODE HERE!
-print(f(2), f(3))    # 0.8108255774981366 -0.43822461448665007
-print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
+<pre><code class="language-python">def quadratic(a, b, c):
+    if a == 0:
+        # ADD ADDITIONAL CODE HERE!
+    else:
+        D = b**2 - 4*a*c
+        # ADD ADDITIONAL CODE HERE!
+print(quadratic(0, 0, 1))   # 0
+print(quadratic(0, 1, 1))   # 1
+print(quadratic(1, -2, 1))  # 1
+print(quadratic(1, 1, 1))   # 0
+print(quadratic(1, -4, 1))  # 2
 </code></pre>
-<p><strong>4.</strong> Write a function <code>force</code> defined by:</p>
+<p><strong>8.</strong> Write a function <code>minX</code> defined by:</p>
 <ul>
-<li>input parameter: three positive float values <code>m1, m2, r</code> — where <code>m1</code> and
-<code>m2</code> represent the mass of two objects, and <code>r</code> the distance between them</li>
-<li>return value: the gravitational force between the two objects,
-\(F = G \cdot \frac{m_1 m_2}{r^2}\) where \(G = 6.67 \times 10^{-11}\)</li>
-</ul>
-<pre><code class="language-python">def force(m1, m2, r):
-    G = 6.67 * 10**(-11)
-    # ADD ADDITIONAL CODE HERE!
-print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
-</code></pre>
-<p><strong>5.</strong> Write a function <code>minValue</code> defined by:</p>
+<li>input parameter: three integers <code>a, b, c</code> where <code>a &gt; 0</code> and <code>b &lt; 0</code></li>
+<li>return value: the integer <code>x</code> that minimizes \(ax^2+bx+c\) (the smallest
+such integer, if there’s a tie)
 <ul>
-<li>input parameter: three integers <code>a, b, c</code> where <code>a &gt; 0</code></li>
-<li>return value: the minimum value of \(f(x) = ax^2+bx+c\)
-<ul>
-<li>first, write code for \(x_0 = \frac{-b}{2a}\)</li>
-<li>then, write code to <code>return f(x0)</code></li>
+<li>e.g. if <code>a=1, b=-9, c=2</code>, then <code>x=4</code> is returned (not <code>4.5</code> or <code>5</code>).</li>
+<li><em>Focus on <code>x0 = int(-b/(2*a))</code> and <code>x0 + 1</code>.</em></li>
 </ul>
 </li>
 </ul>
 <pre><code class="language-python">def f(a, b, c, x):
     return a*x**2 + b*x + c
-def minValue(a, b, c):
+def minX(a, b, c):
+    x0 = int(-b / (2*a))
     # ADD ADDITIONAL CODE HERE!
-print(minValue(1, 5, 10))   # 3.75
-print(minValue(1, -5, 10))  # 3.75
-print(minValue(3, 7, 5))    # 0.9166666666666661
+print(minX(1, -9, 2))   # 4
+print(minX(9, -5, 0))   # 0
+print(minX(9, -15, 0))  # 1
+print(minX(7, -13, 3))  # 1
 </code></pre>
-<p><strong>6.</strong> Write a function <code>reverse</code> defined by:</p>
+<p><strong>9.</strong> Write a function <code>rock_paper_scissors</code> defined by:</p>
 <ul>
-<li>input parameter: an integer <code>n</code> where <code>1000 &lt;= n &lt;= 9999</code> (a 4-digit
-integer)</li>
-<li>return value: the integer formed by reversing the digits of <code>n</code>
+<li>input parameter: two strings <code>first, second</code>, each one of <code>"R"</code>, <code>"P"</code>,
+<code>"S"</code> (Rock/Paper/Scissors)</li>
+<li>return value: a string — <code>"First"</code> if <code>first</code> wins, <code>"Second"</code> if <code>second</code>
+wins, <code>"Tie"</code> if the game is tied</li>
+</ul>
+<pre><code class="language-python">def rock_paper_scissors(first, second):
+    if first == second:
+        return "Tie"
+    # ADD ADDITIONAL CODE HERE!
+    # if first == "R" ...
+print(rock_paper_scissors("R","R"))  # Tie
+print(rock_paper_scissors("R","S"))  # First
+print(rock_paper_scissors("R","P"))  # Second
+print(rock_paper_scissors("S","S"))  # Tie
+print(rock_paper_scissors("S","P"))  # First
+print(rock_paper_scissors("S","R"))  # Second
+print(rock_paper_scissors("P","P"))  # Tie
+print(rock_paper_scissors("P","R"))  # First
+print(rock_paper_scissors("P","S"))  # Second
+</code></pre>
+<p><strong>10.</strong> Write a function <code>better</code> defined by:</p>
 <ul>
-<li>e.g. <code>reverse(3712)</code> returns <code>2173</code>, and <code>reverse(3710)</code> returns <code>173</code>.</li>
-<li><em>What is the value of <code>n % 10</code>? Of <code>(n // 10) % 10</code>? Of <code>(n // 100) % 10</code>?
-Of <code>n // 1000</code>?</em></li>
+<li>input parameter: six integers representing the medal standings of two
+countries — <code>gold1,silver1,bronze1</code> for the first, <code>gold2,silver2,bronze2</code>
+for the second</li>
+<li>return value: a string — <code>"First"</code> if the first country’s result is
+better, <code>"Second"</code> if the second’s is better, <code>"Tie"</code> if tied — ranked in
+gold-silver-bronze order (<strong>not</strong> by total medal count)</li>
+</ul>
+<pre><code class="language-python">def better(gold1, silver1, bronze1, gold2, silver2, bronze2):
+    if gold1 &gt; gold2:
+        return "First"
+    if gold1 &lt; gold2:
+        return "Second"
+    # ADD ADDITIONAL CODE HERE!
+print(better(10,4,24, 1,35,25))    # First
+print(better(1,35,25, 10,4,24))    # Second
+print(better(10,18,0, 10,4,24))    # First
+print(better(10,4,24, 10,18,0))    # Second
+print(better(10,20,5, 10,20,4))    # First
+print(better(10,20,4, 10,20,5))    # Second
+print(better(10,20,5, 10,20,5))    # Tie
+</code></pre>
+<h3 id="optional-problems"><a class="header" href="#optional-problems">Optional Problems</a></h3>
+<p><strong>11.</strong> Write a function <code>area</code> defined by:</p>
+<ul>
+<li>input parameter: six positive integers <code>x1,y1,l1,x2,y2,l2</code>, where
+<code>x1,y1,l1</code> represent a square centered at <code>(x1,y1)</code> with side length <code>l1</code>,
+and <code>x2,y2,l2</code> represent another square centered at <code>(x2,y2)</code> with side
+length <code>l2</code> (assume <code>l1 &gt;= l2</code>)</li>
+<li>return value: the area of the intersection of the two squares</li>
+</ul>
+<p><strong>12.</strong> A positive integer <code>n</code> is a <em>triangular number</em> if there exists a
+positive integer <code>m</code> such that \(n = m(m+1)/2\).</p>
+<p>Write a function <code>triangular</code> defined by:</p>
+<ul>
+<li>input parameter: a positive integer <code>n</code></li>
+<li>return value: the positive integer <code>m</code> such that \(n=m(m+1)/2\), or
+<code>None</code> if <code>n</code> is not a triangular number
+<ul>
+<li><em>Hint: \(n = m(m+1)/2 \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt;
+\sqrt{2n} &lt; m+1\).</em></li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-python"># ADD FUNCTION HERE!
-print(reverse(3702))  # 2073
-print(reverse(3710))  # 173
-print(reverse(3700))  # 73
-</code></pre>
-<p><strong>7.</strong> What is the fewest number of Korean coins needed to make 730 Korean
-won? The answer is 6.</p>
-<p>Write a function <code>countCoins</code> defined by:</p>
-<ul>
-<li>input parameter: an integer <code>n</code> where <code>10 &lt;= n &lt;= 990</code> and <code>n</code> is a
-multiple of 10</li>
-<li>return value: the fewest number of Korean coins (10, 50, 100, 500 won)
-needed to make <code>n</code> Korean won
-<ul>
-<li>e.g. <code>countCoins(730)</code> returns <code>6</code>.</li>
-</ul>
-</li>
-</ul>
-<pre><code class="language-python"># ADD FUNCTION HERE!
-print(countCoins(730))  # 6
-print(countCoins(790))  # 8
-print(countCoins(260))  # 4
-print(countCoins(70))   # 3
-</code></pre>
 
                     </main>
 

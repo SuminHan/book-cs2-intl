@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Strings - CS2 International Supplement</title>
+        <title>Break / Continue - CS2 International Supplement</title>
 
 
         <!-- Custom HTML head -->
@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,33 +180,37 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
-<p>You have just met <code>.replace()</code>. The name says exactly what you want, so:</p>
-<pre><code class="language-python">s = "hello world"
-s.replace("world", "python")
-print(s)
+                        <h1 id="break--continue"><a class="header" href="#break--continue">Break / Continue</a></h1>
+<p>Return the position of the first <code>target</code> in a grid, or <code>(-1,-1)</code> if it is
+not there.</p>
+<pre><code class="language-python">def find_position(M, target):
+    pos = (-1, -1)
+    for i in range(len(M)):
+        for j in range(len(M[i])):
+            if M[i][j] == target:
+                pos = (i, j)
+                break
+    return pos
 </code></pre>
-<p>What prints?</p>
-<p><strong>Nothing changed:</strong></p>
-<pre><code>hello world
+<p>You test it: <code>find_position([[1,2],[3,4]], 9)</code> gives <code>(-1,-1)</code>. Correct. Ship it?</p>
+<h3 id="now-a-grid-that-has-the-target"><a class="header" href="#now-a-grid-that-has-the-target">Now a grid that has the target</a></h3>
+<pre><code class="language-python">find_position([[7,1],[2,7],[7,3]], 7)
 </code></pre>
-<p><code>.replace()</code> did its job perfectly — it built the new sentence and handed
-it back to you. You just did not catch it, so it was thrown away.</p>
-<pre><code class="language-python"># Correct -- catch the return value
-s = s.replace("world", "python")
-print(s)          # hello python
+<p><strong>Expected:</strong> <code>(0, 0)</code> — 7 is right there in the corner.</p>
+<p><strong>Execution result:</strong> <code>(2, 0)</code></p>
+<p>Why: <code>break</code> leaves <em>one</em> loop — the inner one. The outer loop keeps going,
+finds 7 again on the next row, and overwrites the answer. You get the
+<em>last</em> match, not the first.</p>
+<p>The test you ran had no target in it at all, so the inner loop never broke
+and the bug never showed.</p>
+<h3 id="two-fixes-one-lesson"><a class="header" href="#two-fixes-one-lesson">Two fixes, one lesson</a></h3>
+<pre><code class="language-python"># Leave the whole function at once
+            if M[i][j] == target:
+                return (i, j)     # not break
 </code></pre>
-<h3 id="why-it-works-that-way"><a class="header" href="#why-it-works-that-way">Why it works that way</a></h3>
-<p>In Python a string can never be edited. Not by <code>replace</code>, not by you:</p>
-<pre><code class="language-python">s = "Hello"
-s[0] = "J"
-</code></pre>
-<pre><code>TypeError: 'str' object does not support item assignment
-</code></pre>
-<p>So every string method — <code>.upper()</code>, <code>.strip()</code>, <code>.replace()</code> — has only
-one option: build a new string and return it.</p>
-<p><em>This is why lists and strings behave differently. <code>L.append(x)</code> changes
-<code>L</code>; <code>s.upper()</code> cannot change <code>s</code>.</em></p>
+<p><strong>The lesson:</strong> <code>break</code> is smaller than it looks. It escapes exactly one
+loop, and inside nested loops that is almost never what you meant.</p>
+<p><em>Choosing the input that exposes it — that was the real skill.</em></p>
 
                     </main>
 

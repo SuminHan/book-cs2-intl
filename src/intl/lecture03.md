@@ -1,36 +1,40 @@
-# Functions
+# Conditionals
 
-A function takes something in and gives something back. Usually that is
-exactly what you want.
+**1 August 2012, 9:30 a.m.** Knight Capital was the largest trader of US
+stocks. Its software started buying high and selling low — thousands of
+times per second.
 
-Biologists study a gene called `SEPT2`. Another is called `MARCH1`. They
-typed those names into Excel. Excel has a helpful little function that
-looks at what you typed and decides what you *meant*. What do you think it did?
+It was meant to place 212 orders. It placed more than 4 million.
 
-**It turned genes into dates:**
+Forty-five minutes later the company had lost **$440 million** — more than
+it was worth.
 
+### The cause was an `if`
+
+Back in 2003 the code had a switch that turned on an old feature called
+*Power Peg*:
+
+```python
+if flag:
+    run_power_peg()      # 2003: an old testing feature
 ```
-SEPT2   ->   2-Sep
-MARCH1  ->   1-Mar
-```
 
-Nobody asked for this. Nobody was warned. The gene names were simply gone,
-and once saved they are very hard to get back.
+Years later that same `flag` was reused to mean something completely
+different — and nobody deleted the old branch.
 
-A 2016 study checked 35,175 spreadsheets from 3,597 published papers: about
-one paper in five carried these corrupted names. A follow-up covering
-2014–2020 found over 30%.
+On deployment day the new code reached 7 of the 8 servers. The eighth still
+had the 2003 branch. When the flag went up, that server did what it was told.
 
-> Sources: Ziemann et al., *Genome Biology* (2016); Abeysooriya et al.,
-> *PLOS Computational Biology* (2021).
+> Widely documented; see the SEC administrative proceeding against Knight
+> Capital (2013).
 
-### The lesson for this week
+### What an `if` really is
 
-When you call a function, you are trusting it to do exactly one thing — the
-thing its name says.
+An `if` is a promise about the future: "whenever this condition is true, do
+this."
 
-Excel's autocorrect was doing its job perfectly. It was just doing a
-different job than the biologists thought it was doing.
+The condition was still true. The code still ran. Only the meaning had
+changed — and a condition cannot notice that.
 
-**When you write a function this week, ask: could someone read the name and
-expect something else?**
+**Every `if` you write this week is a promise that has to stay true after
+you forget you wrote it.**

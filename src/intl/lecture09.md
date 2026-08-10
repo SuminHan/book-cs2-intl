@@ -1,39 +1,40 @@
-# For Loops III
+# While Loops
 
-This is the quantifier pattern you just learned — "for all".
+**14 August 2003, 2:14 p.m.** A control room in Ohio. A program whose only
+job is to raise an alarm when the power grid is in trouble.
+
+Two parts of that program reached for the same piece of data at the same
+moment. The program did not crash. It did not print an error. It started
+going round and round, and never came back out.
+
+The screens kept showing the last thing they had seen: everything normal.
+
+### Nobody knew anything was wrong
+
+Power lines were failing. The operators could not see it, because the
+thing that tells them was stuck in a loop.
+
+By the end of the evening the failure had cascaded across eight US states
+and into Ontario. **About 55 million people** lost power.
+
+*The software was a widely used energy management system. The loop had run
+correctly for years — it only misbehaved when two things happened at once.*
+
+> Sources: US–Canada Power System Outage Task Force final report (2004);
+> contemporaneous reporting on the GE XA/21 alarm failure.
+
+### Why `while` deserves your respect
+
+A `for` loop always ends: the list runs out. A `while` loop ends only if
+you make it end.
 
 ```python
-def all_positive(L):
-    for x in L:
-        if x <= 0:
-            return False
-    return True
+n = 10
+while n > 0:
+    print(n)
+    n = n - 1        # remove this line and it never stops
 ```
 
-`all_positive([1, 2, 3])` is `True`. `all_positive([1, -2])` is `False`. Good.
-
-Now: `all_positive([])` — the empty list. Is every number in it positive?
-
-**Python says `True`.**
-
-Follow the code: the loop body never runs, so nothing ever returns `False`,
-so it falls through to `return True`.
-
-And that is *not a bug* — it is the correct answer. To prove "all of them
-are positive" false, you must point at one that isn't. In an empty list
-there is nothing to point at.
-
-*Mathematicians call this a vacuous truth. Python's own `all([])` is `True`
-for the same reason, and `any([])` is `False`.*
-
-### Where it will bite you
-
-```python
-if all_passed(students): print("Everyone passed!")
-```
-
-Run that on a class with no students and it happily announces that
-everyone passed.
-
-**The empty case is not an edge case you forgot. It is the first case you
-should test.**
+**Ask this every single time you write `while`:** "What changes inside the
+loop that will eventually make the condition false?" If you cannot point at
+that line, you have written an infinite loop.

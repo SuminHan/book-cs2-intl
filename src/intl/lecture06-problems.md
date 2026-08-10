@@ -1,167 +1,205 @@
 # Problem Set
 
-**1.** Write functions `printMultTable1` and `printMultTable2` defined by:
-- input parameter: none
-- return value: none
-- action: print out parts of the multiplication table, as shown below
-  - *Copy and slightly modify `printMultTable0` from this week's lecture.*
-  - *What does `for i in range(1,10,2):` do? What about the nested
-    `for i in range(1,10,2): for j in range(1,i+1):`?*
+**1.** Write a function `sumSquares` defined by:
+- input parameter: an integer list `a` (of length `n`)
+- return value: \\(a_0^2 + a_1^2 + a_2^2 + \cdots + a_{n-1}^2\\) — the sum of
+  squares of the elements of `a`
+  - e.g. `sumSquares([4,3,12])` returns `169` (\\(=4^2+3^2+12^2\\)).
 
 ```python
-def printMultTable1():
-    # ADD ADDITIONAL CODE HERE!
-printMultTable1()
-```
-Output:
-```
-1 2 3 4 5 6 7 8 9
-3 6 9 12 15 18 21 24 27
-5 10 15 20 25 30 35 40 45
-7 14 21 28 35 42 49 56 63
-9 18 27 36 45 54 63 72 81
-```
-
-```python
-def printMultTable2():
-    # ADD ADDITIONAL CODE HERE!
-printMultTable2()
-```
-Output:
-```
-1
-3 6 9
-5 10 15 20 25
-7 14 21 28 35 42 49
-9 18 27 36 45 54 63 72 81
-```
-
-**2.** Write a function `sumNumbers` defined by:
-- input parameter: two integers `a` and `b` where `a <= b`
-- return value: the sum of integers from `a` to `b`
-  - *What does `for i in range(a,b):` do? What about `for i in
-    range(a,b+1):`?*
-
-```python
-def sumNumbers(a, b):
+def sumSquares(a):
+    n = len(a)
     total = 0
     # ADD ADDITIONAL CODE HERE!
-print(sumNumbers(5, 10))   # 45
-print(sumNumbers(15, 100)) # 4945
+print(sumSquares([3,5,4]))               # 50
+print(sumSquares([2,5,4,0,1,-1,5,1]))    # 73
 ```
 
-**3.** Write a function `factorial` defined by:
-- input parameter: an integer `n`
-- return value: \\(n! = 1 \times 2 \times 3 \times \cdots \times (n-1)
-  \times n\\)
+**2.** Write a function `computePolynomial` defined by:
+- input parameter: an integer list `a` (of length `n`) and an integer `x`
+- return value: \\(a_0 + a_1 x + a_2 x^2 + \cdots + a_{n-1}x^{n-1}\\)
 
 ```python
-def factorial(n):
+def computePolynomial(a, x):
+    n = len(a)
+    total = 0
+    # ADD ADDITIONAL CODE HERE!
+print(computePolynomial([3,5,4], 5))            # 128
+print(computePolynomial([2,0,4,0,1,-1,5,1], 3)) # 5708
+```
+
+**3.** Write a function `harmonicMean` defined by:
+- input parameter: a list `a` of `n` positive integers
+- return value: the harmonic mean of the values in `a`,
+  \\(\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}\\)
+  - *First write code to compute the sum of reciprocals, then return `n /
+    sum`.*
+
+```python
+def harmonicMean(a):
+    n = len(a)
+    # ADD ADDITIONAL CODE HERE!
+numbers = [2, 4, 3, 10, 7, 2, 5, 6]
+print(harmonicMean(numbers))  # 3.648208469055375
+```
+
+**4.** Write a function `geometricMean` defined by:
+- input parameter: a list `a` of `n` positive integers
+- return value: the geometric mean of the values in `a`,
+  \\(\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}\\)
+  - *First compute `prod = a[0]*a[1]*...*a[n-1]`, then return `prod**(1/n)`.*
+
+```python
+def geometricMean(a):
+    n = len(a)
     prod = 1
     # ADD ADDITIONAL CODE HERE!
-print(factorial(8))   # 40320
-print(factorial(12))  # 479001600
+print(geometricMean([3,2,6,4,7]))           # 3.987421134470927
+print(geometricMean([2,4,3,10,7,2,5,6]))    # 4.221167313317658
 ```
 
-**4.** One way to compute \\(e^x\\) is the infinite series
-\\(e^x \approx 1 + x + \frac{x^2}{2!} + \frac{x^3}{3!} + \frac{x^4}{4!} +
-\cdots + \frac{x^{100}}{100!}\\) (100 can be replaced by any larger integer
-for greater precision).
-
-Write a function `exp` defined by:
-- input parameter: a float `x`
-- return value: the approximation of \\(e^x\\) computed by the above formula
-  - *Copy the `factorial` function from problem 3 here, and make use of it.*
+**5.** Write a function `reverse` defined by:
+- input parameter: a list of integers
+- return value: a new list, same length, with the order reversed
+  - e.g. `reverse([1,5,3,7,6])` returns `[6,7,3,5,1]`.
 
 ```python
-# copy factorial() from problem 3 here, and make use of it
-def exp(x):
-    total = 1
+def reverse(a):
+    n = len(a)
+    b = [None] * n
+    for i in range(n):
+        b[i] = a[??]  # ADD ADDITIONAL CODE HERE!
+    return b
+print(reverse([3,1,5,2,4]))          # [4,2,5,1,3]
+print(reverse([7,6,3,1,5,8,2,4]))    # [4,2,8,5,1,3,6,7]
+```
+
+**6.** Write a function `square` defined by:
+- input parameter: a list of integers
+- return value: a new list, same length, with each element squared
+  - e.g. `square([1,3,5,6,7])` returns `[1,9,25,36,49]`.
+  - *The overall structure is very similar to `reverse` above.*
+
+```python
+def square(a):
     # ADD ADDITIONAL CODE HERE!
-print(exp(1.0))  # 2.7182818284590455
-print(exp(2.0))  # 7.389056098930649
-print(exp(4.0))  # 54.598150033144265
+L = [7,6,3,1,5,8,2,4]
+print(square(L))  # [49,36,9,1,25,64,4,16]
+print(L)          # [7,6,3,1,5,8,2,4]  -- L itself unchanged
 ```
 
-**5.** Write a function `withinCircle` defined by:
-- input parameter: a positive integer `r`
-- return value: the number of integer-coordinate points `(x,y)` with
-  \\(x^2+y^2 \le r^2\\) (i.e. points within the circle of radius `r`)
+**7.** Write a function `accumulate` defined by:
+- input parameter: an integer list `a`
+- return value: a list `b`, same length, of running sums —
+  `b[i] = a[0]+a[1]+...+a[i]` for each `i`
+  - e.g. `accumulate([1,2,1,3,1])` returns `[1,3,4,7,8]`.
+  - *Use the fact that `b[i] == b[i-1]+a[i]` for `i = 1,2,...`.*
 
 ```python
-def withinCircle(r):
-    counter = 0
-    for x in range(-r, r+1):
-        for y in range(-r, r+1):
-            # ADD ADDITIONAL CODE HERE!
-    return counter
-print(withinCircle(100) / 100**2)    # 3.1417
-print(withinCircle(1000) / 1000**2)  # 3.141549
+def accumulate(a):
+    n = len(a)
+    b = [None] * n
+    b[0] = a[0]
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(1, n):  # note that i starts from 1, not 0
+        ...
+print(accumulate([1,2,3,4,5]))        # [1,3,6,10,15]
+print(accumulate([7,6,3,1,5,8,2,4]))  # [7,13,16,17,22,30,32,36]
 ```
 
-**6.** Write a function `dayOfWeek` defined by:
-- input parameter: three integers `year, month, day` where `year >= 2000`
-- return value: the day of the week for that date, as one of the strings
-  `"Mon"`, `"Tue"`, `"Wed"`, `"Thu"`, `"Fri"`, `"Sat"`, `"Sun"`
-  - *Make use of `leapYear`/`numDays` from last week. `2000/1/1` was a
-    Saturday. Count the number of days elapsed from `2000/1/1` to
-    `year/month/day` in three steps — e.g. for `2015/4/13`: (1) days from
-    2000 through 2014, (2) days from `2015/Jan` through `2015/Mar`, (3) days
-    from `2015/Apr/1` to `2015/Apr/12`.*
+**8.** Fibonacci numbers form the sequence `1, 1, 2, 3, 5, 8, 13, 21, 34, 55,
+89, 144, ...`.
+
+Write a function `fibonacci` defined by:
+- input parameter: an integer `n`
+- return value: a list `b` of the first `n` Fibonacci numbers
+  - e.g. `fibonacci(5)` returns `[1,1,2,3,5]`.
+  - *Use the fact that `b[i] == b[i-1]+b[i-2]` for `i = 2,3,...`.*
 
 ```python
-def dayOfWeek(year, month, day):
-    counter = 0
-    # step 1: count the number of days from 2000 to year-1
-    # step 2: count the number of days from year/Jan to year/(month-1)
-    # step 3: count the days from year/month/1 to year/month/(day-1)
-    n = counter % 7
-    if n == 0:
-        return "Sat"
-    # step 4: complete the code for the other cases
-print(dayOfWeek(2001, 1, 28))  # Sun
-print(dayOfWeek(2002, 11, 21)) # Thu
-print(dayOfWeek(2004, 3, 4))   # Thu
-print(dayOfWeek(2008, 7, 1))   # Tue
-print(dayOfWeek(2011, 5, 8))   # Sun
-print(dayOfWeek(2013, 3, 23))  # Sat
+def fibonacci(n):
+    b = [None] * n
+    b[0] = 1
+    b[1] = 1
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(??):  # note that i starts from 2
+        ...
+print(fibonacci(5))   # [1,1,2,3,5]
+print(fibonacci(10))  # [1,1,2,3,5,8,13,21,34,55]
 ```
 
-**7.** Let \\(f: \{0,1,\ldots,99\}^2 \to \mathbb{Z}\\) be defined by
-\\(f(i,j) = (i^5 + 2i^3j^2 + 5i^2 + j + 5000) \bmod 10000\\).
-
-Write a function `findMax` defined by:
-- input parameter: none
-- return value: the maximum value of `f` defined above
+**9.** Write a function `area` defined by:
+- input parameter: a list of points representing a polygon, given in
+  counter-clockwise order — each point is a list `[x,y]` of two integers
+  - e.g. `[[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]` represents an
+    8-sided polygon.
+- return value: the area of the polygon
+  - *Use the Shoelace formula:*
+    \\(\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot
+    (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|\\)
+  - *What does `p[i][0] * (p[(i+1)%n][1] - p[(i-1)%n][1])` mean, where `p`
+    is the input polygon?*
+  - *Use `abs(x)` for \\(|x|\\).*
 
 ```python
-def f(i, j):
-    return (i**5 + 2*(i**3)*(j**2) + 5*i**2 + j + 5000) % 10000
-def findMax():
-    best = f(0, 0)
-    for i in range(100):
-        for j in range(100):
-            # ADD ADDITIONAL CODE HERE!
-    return best
-print("max value:", findMax())  # 9997
+def area(p):
+    n = len(p)
+    total = 0
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(n):
+        ...
+points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
+print(area(points))  # 22.0
 ```
 
-**8.** Write a function `combination` defined by:
-- input parameter: two integers `n` and `k` with `1 <= k <= n <= 250`
-- return value: the number of ways to choose `k` from a set of `n`
-  (\\(\binom{n}{k}\\)), as an `int` (not `float`)
-  - *Use the formula \\(\prod_{i=1}^{k} \frac{n+1-i}{i} = \frac{n}{1} \cdot
-    \frac{n-1}{2} \cdot \frac{n-2}{3} \cdots \frac{n+2-k}{k-1} \cdot
-    \frac{n+1-k}{k}\\).*
+**10.** Write a function `perimeter` defined by:
+- input parameter: a list of points representing a polygon, as in the
+  previous problem
+- return value: the perimeter of the polygon
+  - *As in the previous problem, use the expression `p[(i+1)%n]`.*
 
-**9.** Write a function `maxPrimeFactor` defined by:
-- input parameter: an integer `n >= 2`
-- return value: the largest prime factor of `n` — e.g. `maxPrimeFactor(12)`
-  returns `3`, since `12 = 2×2×3`
-  - *Use an `isPrime` function to check primality.*
+```python
+# ADD FUNCTION HERE!
+points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
+print(perimeter(points))  # 23.85332583138582
+```
 
-**10.** Write a function `withinRegion` defined by:
-- input parameter: two positive integers `a, c`
-- return value: the number of integer-coordinate points `(x,y)` that satisfy
-  both \\(y \le -ax^2+c\\) and \\(y \ge ax^2-c\\) (points within the region
-  bounded by the two parabolas)
+**11.** Write a function `findMin` defined by:
+- input parameter: a list of integers
+- return value: the minimum value among the elements
+  - *This is the max/min pattern from Week 6.*
+
+```python
+def findMin(a):
+    best = a[0]
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(1, len(a)):
+        if a[i] < best:
+            ...
+print(findMin([7,8,3,4,3,6]))        # 3
+print(findMin([3,5,7,2,7,2,3,8,6]))  # 2
+```
+
+**12.** Write a function `closestPair` defined by:
+- input parameter: a list of points in the plane, each represented as
+  `[x,y]` as in problem 9
+  - e.g. `[[4,-4],[7,5],[2,1]]` represents the points `(4,-4)`, `(7,5)`,
+    `(2,1)`.
+- return value: the distance of the closest pair of points (the minimum
+  pairwise distance)
+
+```python
+def distSquared(p1, p2):
+    return (p2[0]-p1[0])**2 + (p2[1]-p1[1])**2
+def closestPair(p):
+    n = len(p)
+    best = distSquared(p[0], p[1])
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(n):
+        for j in range(i+1, n):
+            d = distSquared(p[i], p[j])
+            if d < best:
+                ...
+points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
+print(closestPair(points))  # 4.47213595499958  (between [2,1] and [-2,-1])
+```

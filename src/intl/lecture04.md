@@ -1,40 +1,35 @@
-# Conditionals
+# Boolean Functions
 
-**1 August 2012, 9:30 a.m.** Knight Capital was the largest trader of US
-stocks. Its software started buying high and selling low — thousands of
-times per second.
-
-It was meant to place 212 orders. It placed more than 4 million.
-
-Forty-five minutes later the company had lost **$440 million** — more than
-it was worth.
-
-### The cause was an `if`
-
-Back in 2003 the code had a switch that turned on an old feature called
-*Power Peg*:
+You want to check whether `x` is 1 or 2. In English that is one short
+sentence, so you write it the way you say it:
 
 ```python
-if flag:
-    run_power_peg()      # 2003: an old testing feature
+x = 5
+print(x == 1 or 2)
 ```
 
-Years later that same `flag` was reused to mean something completely
-different — and nobody deleted the old branch.
+`x` is 5. So this prints `False` — right?
 
-On deployment day the new code reached 7 of the 8 servers. The eighth still
-had the 2003 branch. When the flag went up, that server did what it was told.
+**It prints `2`.**
 
-> Widely documented; see the SEC administrative proceeding against Knight
-> Capital (2013).
+Python read it as `(x == 1) or 2`:
 
-### What an `if` really is
+- `x == 1` is `False`
+- so `or` moves on and hands back `2`
+- and `2` counts as true
 
-An `if` is a promise about the future: "whenever this condition is true, do
-this."
+So inside an `if`, this condition is true for every value of `x` — 5, 99,
+anything.
 
-The condition was still true. The code still ran. Only the meaning had
-changed — and a condition cannot notice that.
+### Say it twice
 
-**Every `if` you write this week is a promise that has to stay true after
-you forget you wrote it.**
+`or` joins two complete comparisons, not one comparison and a leftover number.
+
+```python
+# Correct
+print(x == 1 or x == 2)     # False
+```
+
+**Why this one is dangerous:** it never crashes. It never warns you. It
+just quietly says yes to everything — and an `if` that is always true looks
+exactly like an `if` that works.

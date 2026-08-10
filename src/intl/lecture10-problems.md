@@ -1,163 +1,82 @@
 # Problem Set
 
-### Required
+**1. Removing all 3's from a list.** Write a function `deleteThree` that
+takes as input a list `L` consisting of integer values, and returns a new
+list containing all elements of `L` except those equal to the integer `3`.
 
-**1.** Write a function `countSevens` defined by:
-- input parameter: a positive integer `n`
-- return value: the number of occurrences of digit `7` in `n`
-  - *Refer to `countDigits` from this week's lecture:*
-    `while n > 0: counter += 1; n //= 10`. *What does `n % 10` give you on
-    each iteration? Increment the counter only when `n % 10 == 7`.*
+*Hint: when using `L.pop()`, the indices change as you go — instead of
+removing `3` directly from the original list, create a new empty list and
+add only the values that are not `3`.*
 
 ```python
-def countSevens(n):
+def deleteThree(L):
     # ADD ADDITIONAL CODE HERE!
-print(countSevens(1723))        # 1
-print(countSevens(1357924770))  # 3
+print(deleteThree([2,5,7,3,2,8,3,3]))  # [2,5,7,2,8]
+print(deleteThree([3,3,7,3,2,8,3,3]))  # [7,2,8]
 ```
 
-**2.** Write a function `countEvenDigits` defined by:
-- input parameter: a positive integer `n`
-- return value: the number of even digits in `n`
-  - *The solution is very similar to `countSevens` above. What does `n % 2`
-    give you on each iteration?*
+**2. Finding the k-th smallest integer in a list.** Write a function
+`kthSmallest` that takes as input a list `L` consisting of integer values
+and an integer `k`, and returns the `k`-th smallest integer in `L`. Assume
+`k` is always between `1` and `len(L)`, inclusive.
+
+*Hint: use `L.sort()` to sort the list, then index into it to find the
+desired element.*
 
 ```python
-# ADD FUNCTION HERE!
-print(countEvenDigits(2723))        # 2
-print(countEvenDigits(1326924870))  # 6
-```
-
-**3.** Write a function `gcd` defined by:
-- input parameter: two positive integers `a` and `b`
-- return value: the greatest common divisor of `a` and `b`
-
-The GCD can be computed by the **Euclidean algorithm**: given positive
-integers `a >= b`, let `r = a % b`. Then `gcd(a,b) == gcd(b,r)`. For
-example, `gcd(36,20) = gcd(20,16) = gcd(16,4) = gcd(4,0) = 4`. Repeating
-this reduction always eventually reaches a pair whose second number is 0 —
-the GCD is then the other number.
-
-```python
-def gcd(a, b):
-    if a < b:  # swap so that a >= b
-        a, b = b, a
+def kthSmallest(L, k):
     # ADD ADDITIONAL CODE HERE!
-    while b != 0:
-        r = a % b
-        a = ??
-        b = ??
-    return ??
-print(gcd(36, 20))          # 4
-print(gcd(2408208, 2790876)) # 132
-```
-*Hint: during the loop, `a,b` should take the values `36,20 → 20,16 →
-16,4 → 4,0`.*
-
-**4.** Write a function `walk_square_picking_all_beepers` defined by:
-- input parameter: none
-- return value: none
-- action: make Hubo walk along the world boundary picking up all the
-  beepers
-  - *This is a small extension of Week 9 problem 7, allowing multiple
-    beepers at one position — copy that code and replace the `if` with a
-    `while`.*
-
-**5.** Write a function `collect_garbages` defined by:
-- input parameter: none
-- return value: none
-- action: make Hubo collect all the garbage (represented by beepers) and
-  put it in the garbage can, located north of the starting point
-
-```python
-def collect_garbages():
-    # move to the right wall while collecting beepers
-    # turn back
-    # move to the left wall
-    # move upwards
-    # put all the beepers down
-    # move to the starting position
-collect_garbages()
+print(kthSmallest([3,4,2,8,8], 1))  # 2
+print(kthSmallest([3,4,2,8,8], 3))  # 4
+print(kthSmallest([3,4,2,8,8], 4))  # 8
 ```
 
-**6.** Write a function `putNumber` defined by:
-- input parameter: an integer `num`
-- return value: none
-- action: make Hubo drop beepers that spell out the digits of `num`
-  - e.g. `putNumber(2291)` makes Hubo drop the corresponding beepers.
-  - *What does the following code do?*
-    ```python
-    while num > 0:
-        digit = num % 10
-        num = num // 10
-        print(digit)
-    ```
-    *What does `digit` represent on each iteration? Replace the `print`
-    with code that drops beepers and moves forward.*
+**3. Checking if two lists contain the same elements regardless of order.**
+Write a function `same` that takes as input two lists `L1` and `L2`, each
+consisting of integer values, and checks whether the two lists contain
+exactly the same elements with the same multiplicities, regardless of
+order.
+
+*Hint: remember that `L1 == L2` returns `True` only if the elements *and*
+their order are identical.*
 
 ```python
-def putNumber(num):
+def same(L1, L2):
     # ADD ADDITIONAL CODE HERE!
-putNumber(2291)
+print(same([2,3,2,7], [2,7,2,3]))  # True
+print(same([2,5,7,8], [2,3,4,5]))  # False
 ```
 
-### Optional Problems
+**4. Creating a sorted list of distinct integers.** Write a function
+`makeSet` that takes as input a list `L` consisting of integer values and
+returns a sorted list containing each distinct element of `L` exactly once.
 
-*Not for submission/grading, but good practice (mostly past exam problems).*
+*Hint: although this can be solved easily using the `set` type, do not use
+type conversion functions here — use operators such as `in`/`not in`
+instead.*
 
-**7.** Srinivasa Ramanujan proposed a formula to approximate \\(\pi\\):
-\\[\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}
-\frac{(4k)!(1103+26390k)}{(k!)^4\, 396^{4k}}\\]
+```python
+def makeSet(L):
+    # ADD ADDITIONAL CODE HERE!
+print(makeSet([1,1,3,5]))          # [1,3,5]
+print(makeSet([2,1,2,8,8]))        # [1,2,8]
+print(makeSet([3,4,5,6,7,3,4]))    # [3,4,5,6,7]
+```
 
-Write a function `estimatePI` defined by:
-- input parameter: none
-- return value: an approximation of \\(\pi\\) computed by the formula above
-  - *The difference from `math.pi` should be \\(\le 10^{-15}\\).*
+**5. Checking if every element of one list is a multiple of some element in
+another list.** Write a function `multiple` that takes as input two lists
+`L1` and `L2`, each consisting of integer values, and checks whether every
+number in `L1` is a multiple of at least one number in `L2`. Formally:
+\\(\forall x \in L_1,\, \exists y \in L_2\\) such that `x` is a multiple of
+`y`.
 
-**8.** Write a function `estimatePI` defined by:
-- input parameter: an integer `n` (from -4 to 0), an error bound
-- return value: an approximation of \\(\pi\\) accurate to within \\(10^n\\)
-  - *Stop the `while` loop once the approximation is within \\(10^n\\) of
-    `math.pi`. Use the formula* \\[\pi = \sqrt{6\sum_{i=1}^{\infty}
-    \frac{1}{i^2}}\\]
+For example, `multiple([14,24,18,35,39], [6,13,7])` should return `True`,
+because `14` and `35` are multiples of `7`, `24` and `18` are multiples of
+`6`, and `39` is a multiple of `13`.
 
-**9.** Write a function `estimatePI` defined by:
-- input parameter: an integer `n` (from -4 to 0), an error bound
-- return value: an approximation of \\(\pi\\) accurate to within \\(10^n\\)
-  - *Stop the `while` loop once the approximation is within \\(10^n\\) of
-    `math.pi`. Use the Leibniz formula* \\[\pi = 4\left(1-\frac13+\frac15-
-    \frac17+\frac19-\cdots\right)\\]
-
-**10.** Two lab mice A and B start at the same weight, but grow at
-different weekly rates.
-
-Write a function `countWeek` defined by:
-- input parameter: three integers `rateA, rateB, x` (with `rateA < rateB`)
-  — the weekly growth rates of A and B
-- return value: the minimum number of weeks until B weighs at least `x`%
-  more than A
-
-**11.** Write a function `reverseSum` defined by:
-- input parameter: a list of positive integers
-- return value: the sum of the numbers in the list, each with its digits
-  reversed — e.g. `[12,40,2]` → `21+4+2 = 27`
-
-**12.** Write a function `evenDigits` defined by:
-- input parameter: a positive integer `num`
-- return value: the integer formed from the even digits of `num`, in the
-  same order they appear in `num` — `0` if `num` has no even digits (e.g.
-  `37153` → `0`)
-
-**13.** Write a function `findMax` defined by:
-- input parameter: a list of `[number, base]` pairs — e.g.
-  `[[151,8],[1111001,2],[-10101,2],[2731,8],[1001,10]]` represents an octal
-  number 151, a binary number 1111001, a binary number -10101, an octal
-  number 2731, and a decimal number 1001
-- return value: the decimal representation of the maximum value in the list
-  - *Implement a helper `toDecimal([number, base])` first, and use it.*
-
-**14.** Write a function `countAllZeros` defined by:
-- input parameter: a list `L` of decimal numbers
-- return value: the total number of `0`s in the binary representations of
-  the numbers in `L` — e.g. `[10,20,30]` → `[1010,10100,11110]` →
-  `2+3+1 = 6`
+```python
+def multiple(L1, L2):
+    # ADD ADDITIONAL CODE HERE!
+print(multiple([14,24,18,35,39], [6,13,7]))  # True
+print(multiple([14,24,18,35,39], [5,13,7]))  # False
+```

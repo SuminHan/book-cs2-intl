@@ -1,120 +1,105 @@
 # Problem Set
 
-**1.** Add additional code to the following program so that:
-- the values of the two variables `a`, `b` are changed (swapped).
-  - *Hint: use multiple assignment, i.e. `a,b = b,a`.*
+*Use interactive mode (the Python shell) whenever a formula isn't clear.*
+
+**1.** Write a function `f` defined by:
+- input parameter: two positive integers `x, y`
+- return value: the float value \\(\frac{x}{2y}\\)
 
 ```python
-a = input("Enter a: ")
-b = input("Enter b: ")
-print("Before swapping:", a, b)
-# ADD ADDITIONAL CODE HERE!
-print("After swapping: ", a, b)
+def f(x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(f(1, 2))  # 0.25
+print(f(3, 6))  # 0.25
 ```
 
-**2.** Add additional code to the following program so that:
-- the values of the five variables `a,b,c,d,e` are rotated: `a`'s value goes
-  to `b`, `b`'s to `c`, and so on, wrapping `e`'s value back around to `a`.
-  - *Hint: use multiple assignment, i.e. `a,b,c,d,e = ...`.*
+**2.** Write a function `f` defined by:
+- input parameter: two positive integers `x, y`
+- return value: the float value \\(x^{1/y}\\)
 
 ```python
-a = input("Enter a: ")
-b = input("Enter b: ")
-c = input("Enter c: ")
-d = input("Enter d: ")
-e = input("Enter e: ")
-print("Before swapping:", a, b, c, d, e)
-# ADD ADDITIONAL CODE HERE!
-print("After swapping: ", a, b, c, d, e)
+print(f(16, 4))  # 2.0
+print(f(64, 6))  # 2.0
 ```
 
-**3.** Add additional code to the following program so that:
-- the value of the expression \\(ax^2+bx+c\\) is printed.
-  - \\(x^2\\) can be computed by `x**2` or `x*x`.
+**3.** Write functions `f` and `g` defined by:
+- \\(f(x) = e^{-x} + \sin(\pi\sqrt{1+x^2})\\)
+  - use `math.exp(t)` to compute \\(e^t\\)
+  - use `math.sin(t)` to compute \\(\sin(t)\\)
+  - use `math.sqrt(t)` or `t**0.5` to compute \\(\sqrt{t}\\)
+  - use `math.pi` to represent \\(\pi\\)
+- \\(g(x,y) = \left(1+f\left(y^{1/x}\right)\right)^{f\left(y^{1/x}\right)}\\)
+  - first, write code for `z = f(y**(1/x))`
+  - then, write code to `return (1+z)**z`
 
 ```python
-a = input("Enter a: ")
-b = input("Enter b: ")
-c = input("Enter c: ")
-x = input("Enter x: ")
-a = int(a)  # input() gives string type
-b = int(b)
-c = int(c)
-x = int(x)
-# ADD ADDITIONAL CODE HERE!
-# y = ...
-print("Value of the quadratic formula:", y)
+import math
+def f(x):
+    # ADD ADDITIONAL CODE HERE!
+def g(x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(f(2), f(3))    # 0.8108255774981366 -0.43822461448665007
+print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
 ```
 
-**4.** Add additional code to the following program so that it:
-- reads four integers `x1,y1,x2,y2` from the keyboard, where `x1<x2` and
-  `y1<y2`;
-- prints the area of the rectangle represented by the two corner points
-  (`(x1,y1)` is the bottom-left corner, `(x2,y2)` is the top-right corner).
+**4.** Write a function `force` defined by:
+- input parameter: three positive float values `m1, m2, r` — where `m1` and
+  `m2` represent the mass of two objects, and `r` the distance between them
+- return value: the gravitational force between the two objects,
+  \\(F = G \cdot \frac{m_1 m_2}{r^2}\\) where \\(G = 6.67 \times 10^{-11}\\)
 
 ```python
-x1 = int(input("Enter x1: "))
-y1 = int(input("Enter y1: "))
-x2 = int(input("Enter x2: "))
-y2 = int(input("Enter y2: "))
-# ADD ADDITIONAL CODE HERE!
-# area = ...
-print("Area of rectangle:", area)
+def force(m1, m2, r):
+    G = 6.67 * 10**(-11)
+    # ADD ADDITIONAL CODE HERE!
+print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
 ```
 
-**5.** Add additional code to the following program so that it:
-- reads three float values `a,b,c` from the keyboard, where they satisfy
-  the triangle inequalities `a+b>c`, `b+c>a`, `c+a>b`;
-- prints the area of the triangle whose side lengths are `a,b,c`:
-  \\(\sqrt{s(s-a)(s-b)(s-c)}\\) where \\(s = \frac{a+b+c}{2}\\).
-  - \\(\sqrt{x}\\) (i.e. \\(x^{0.5}\\)) can be computed by `x**0.5`.
+**5.** Write a function `minValue` defined by:
+- input parameter: three integers `a, b, c` where `a > 0`
+- return value: the minimum value of \\(f(x) = ax^2+bx+c\\)
+  - first, write code for \\(x_0 = \frac{-b}{2a}\\)
+  - then, write code to `return f(x0)`
 
 ```python
-a = float(input("Enter a: "))
-b = float(input("Enter b: "))
-c = float(input("Enter c: "))
-# ADD ADDITIONAL CODE HERE!
-# s = ...
-# area = ...
-print("Area of triangle:", area)
+def f(a, b, c, x):
+    return a*x**2 + b*x + c
+def minValue(a, b, c):
+    # ADD ADDITIONAL CODE HERE!
+print(minValue(1, 5, 10))   # 3.75
+print(minValue(1, -5, 10))  # 3.75
+print(minValue(3, 7, 5))    # 0.9166666666666661
 ```
 
-**6.** Add additional code to the following program so that it:
-- reads two positive integers `a` and `b` from the keyboard;
-- computes the remainder when `a` is divided by `b`, **without using the `%`
-  operator** (only `-`, `*`, and `//`);
-  - *What is the value of `101//16`? What is the value of `(101//16)*16`?*
-- prints out the remainder.
+**6.** Write a function `reverse` defined by:
+- input parameter: an integer `n` where `1000 <= n <= 9999` (a 4-digit
+  integer)
+- return value: the integer formed by reversing the digits of `n`
+  - e.g. `reverse(3712)` returns `2173`, and `reverse(3710)` returns `173`.
+  - *What is the value of `n % 10`? Of `(n // 10) % 10`? Of `(n // 100) % 10`?
+    Of `n // 1000`?*
 
 ```python
-a = int(input("Enter a: "))
-b = int(input("Enter b: "))
-# ADD ADDITIONAL CODE HERE!
-# r = ...
-print("Remainder:", r)
+# ADD FUNCTION HERE!
+print(reverse(3702))  # 2073
+print(reverse(3710))  # 173
+print(reverse(3700))  # 73
 ```
 
-**7.** Add additional code to the following program so that it:
-- reads a positive float value `x` from the keyboard;
-- prints the integer nearest to `x` (rounding), **without using `round()`**.
-  - *What is the value of `int(2.4+0.5)`? Of `int(2.5+0.5)`? Of `int(2.6+0.5)`?*
+**7.** What is the fewest number of Korean coins needed to make 730 Korean
+won? The answer is 6.
+
+Write a function `countCoins` defined by:
+- input parameter: an integer `n` where `10 <= n <= 990` and `n` is a
+  multiple of 10
+- return value: the fewest number of Korean coins (10, 50, 100, 500 won)
+  needed to make `n` Korean won
+  - e.g. `countCoins(730)` returns `6`.
 
 ```python
-x = float(input("Enter x: "))
-# ADD ADDITIONAL CODE HERE!
-# y = ...
-print(x, "is rounded off to", y)
-```
-
-**8.** Add additional code to the following program so that it:
-- reads an integer `F` from the keyboard, representing a temperature in
-  Fahrenheit;
-- prints the equivalent temperature in Celsius: \\(C = (F-32) \cdot
-  \frac{5}{9}\\).
-
-```python
-F = int(input("Enter F: "))
-# ADD ADDITIONAL CODE HERE!
-# C = ...
-print("Temperature in Celcius:", C)
+# ADD FUNCTION HERE!
+print(countCoins(730))  # 6
+print(countCoins(790))  # 8
+print(countCoins(260))  # 4
+print(countCoins(70))   # 3
 ```

@@ -1,111 +1,107 @@
 # Topics Covered
 
-## Why `for` Loops
+## Why Lists
 
-Computing `1 + 2 + ... + n` without a loop means writing one line per
-term — it doesn't even work unless you already know `n` in advance:
-
-```python
-def sumTo(n):
-    total = 0
-    total = total + 1
-    total = total + 2
-    ...                  # can't write this for a variable n!
-```
-
-A `for` loop repeats a block once per value in a range:
+Without a list, summing eight numbers means eight separately-named
+variables — and code that can't scale to a variable amount of data:
 
 ```python
-def sumTo(n):
-    total = 0
-    for i in range(1, n+1):   # i = 1, 2, ..., n
-        total = total + i
-    return total
+number0, number1, number2, number3 = 2, 4, 3, 1
+number4, number5, number6, number7 = 7, 2, 5, 6
+total = number0 + number1 + number2 + number3 + number4 + number5 + number6 + number7
 ```
 
-## `for` Loops with `range(·)`
-
-`range` has three forms:
+A **list** replaces the eight names with one, indexed by position:
 
 ```python
-for k in range(n):          # 0, 1, ..., n-1
-for k in range(m, n):       # m, m+1, ..., n-1
-for k in range(m, n, k):    # m, m+k, m+2k, ... (stops before n)
+number = [2, 4, 3, 1, 7, 2, 5, 6]
+total = 0
+total += number[0]
+total += number[1]
+...
 ```
 
-`range(n)` is shorthand for `range(0, n, 1)`; `range(m, n)` is shorthand for
-`range(m, n, 1)`. A negative step counts down:
+Combined with a `for` loop, this becomes genuinely concise — and now it
+works for a list of *any* length, not just 8:
 
 ```python
-for k in range(n, 0, -1):
-    print(k)      # n, n-1, ..., 1
+number = [2, 4, 3, 1, 7, 2, 5, 6]
+total = 0
+for i in range(len(number)):
+    total += number[i]
+print(total)
 ```
 
-Whichever form, the loop is equivalent to writing out the body once per
-value the range produces, in order — that mental model (unrolling the
-loop) is the way to check you picked the right range.
+(`total += numberi` is not a thing — there's no way to build a variable
+name out of a loop variable. Indexing is what a list buys you.)
 
-## Increment/Decrement Shortcuts
+## Creating Lists
 
 ```python
-x += y   # x = x + y
-x -= y   # x = x - y
-x *= y   # x = x * y
-x /= y   # x = x / y
-x //= y  # x = x // y
+number = [2, 5, 8, 11, 14]      # with initial values
+
+number = [None] * 5             # uninitialized, filled in later
+for i in range(len(number)):
+    number[i] = 3*i + 2
 ```
+
+`[None] * 5` is shorthand for `[None, None, None, None, None]` — `None`
+can be replaced with any placeholder value, e.g. `[-1] * 5`. Avoid `[0] *
+5` as a placeholder specifically, since it invites confusion about whether
+`0` is a *real* value already written in, or just a placeholder waiting to
+be overwritten.
+
+## Indexing
+
+`len(·)` gives the length; **always use `len(·)` instead of a literal
+number**, so the code keeps working if the list's size changes.
+
+`list[i]` is the `(i+1)`-th element (indices start at `0`). Valid indices
+are `0` to `len(·)-1`; `list[-1]` through `list[-len(·)]` also work,
+counting from the end (`list[-1]` is the last element). Anything else is
+out of range.
 
 ```python
-total, product = 0, 1
-for k in range(1, n+1):
-    total += k     # running sum
-    product *= k   # running product
+number = [None] * 4
+number[0] = 7
+number[1] = number[0] * 2
+number[2] = number[0] + 1
+number[3] = number[2] - 60
+number[3] += number[1]
 ```
 
-## Loop + Conditional
-
-A loop body can contain an `if`, applying different logic per iteration:
+You can treat `number[i]` exactly like an `int` variable — read it, write
+it, use it in an expression. The index itself can be any expression that
+evaluates to an `int`:
 
 ```python
-for k in range(1, 11):
-    if k % 2 == 0:
-        print(k, "is even")
-    else:
-        print(k, "is odd")
+for i in range(4):
+    print(number[(i+2) % 4])   # prints number[2], number[3], number[0], number[1]
 ```
 
-## Nested Loops
+## Lists as Parameters and Return Values
 
-A loop body can itself contain another loop — the inner loop runs to
-completion for *every* iteration of the outer one. Printing a
-multiplication table is the canonical example:
+A list can be passed into a function just like any other value:
 
 ```python
-for i in range(1, 10):
-    for j in range(1, 10):
-        print(i*j, end=" ")
-    print()      # newline after each row
+def total(numbers):
+    s = 0
+    for i in range(len(numbers)):
+        s += numbers[i]
+    return s
 ```
 
-## Pattern: Find Max/Min Over a Range
-
-Track a running best value, and update it whenever you see something
-better. Initialize it with the *first* value the loop will consider (here
-`f(0)`), not an arbitrary constant like `0` — that only works by luck if
-every `f(i)` happens to be non-negative.
+And a function can build and return a new list:
 
 ```python
-def f(i):
-    return (i**5 + 2*i**3 + 7*i**2 + i + 500) % 1000
+def incrementAll(b):
+    a = [None] * len(b)
+    for i in range(len(a)):
+        a[i] = b[i] + 1
+    return a
 
-def findMax():
-    best = f(0)
-    for i in range(100):
-        if f(i) > best:
-            best = f(i)
-    return best
+print(incrementAll([2, 4, 3, 1, 7, 2, 5, 6]))   # [3, 5, 4, 2, 8, 3, 6, 7]
 ```
 
-(`findMin` is the same pattern with `<` instead of `>`.) This "running
-best" pattern will come back constantly for the rest of the course — get
-comfortable with it now.
+This "make a same-length output list, fill it in with one loop" shape is
+the pattern behind most of this week's Problem Set.

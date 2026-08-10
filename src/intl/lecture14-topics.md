@@ -1,78 +1,135 @@
 # Topics Covered
 
-## Creating a 2D List
+## Classes and Objects
 
-A 2D list is a list of lists — directly:
+Python is object-oriented: every piece of data — `123`, `"hello"`, `[1,2,3]`
+— is an **object** belonging to a **class** (`int`, `str`, `list`
+respectively). A class is a blueprint; an object is one specific instance
+built from it. Analogy: the Sonata *blueprint* specifies an engine, a
+color, an efficiency rating, and behaviors like accelerating and braking —
+*your* Sonata is one object built from that blueprint, with its own
+specific attribute values, that can perform the behaviors the blueprint
+defines.
 
-```python
-table = [[1,2,3], [4,5,6]]
-table[0]        # [1, 2, 3]  — the first row
-table[0][0]     # 1          — the first element of that row
-```
-
-Or built up with nested loops, using a **list comprehension** to create the
-row structure first, then filling it in:
-
-```python
-height, width = 2, 3
-table = [[None] * width for i in range(height)]   # height rows of width Nones
-for i in range(height):
-    for j in range(width):
-        table[i][j] = i*3 + j + 1
-print(table)
-```
-
-A 3D list nests one level further — depth × height × width:
+You can define your own classes:
 
 ```python
-depth, height, width = 2, 3, 4
-table = [[[None] * width for j in range(height)] for i in range(depth)]
-for i in range(depth):
-    for j in range(height):
-        for k in range(width):
-            table[i][j][k] = i*10 + j*4 + k
+class Point:                      # class name, capitalized by convention
+    def __init__(self, px, py):
+        self.x = px                # attribute
+        self.y = py
+
+p1 = Point(1, 2)
+p2 = Point(4, 6)
 ```
 
-## References, Not Data — Aliases
+## `__init__` and `self`
 
-**In Python, a variable holding a list doesn't hold the list's data
-directly — it holds a reference to it.** This matters the moment you assign
-a *sublist* to another variable:
+`__init__` is the **constructor** — it runs automatically whenever you
+create a new object (`Point(1, 2)` calls it). Every method's first
+parameter is, by convention, `self` — it refers to *this* object, and
+Python passes it automatically; you never write it explicitly at the call
+site. `self.x`, `self.y` are **state variables** (attributes): data that
+belongs to this specific object, distinct from any local variable of the
+same name inside a method that isn't written as `self.something`.
+
+## `__str__`
+
+By default, `print`ing an object shows you a memory address — not useful.
+Defining `__str__` tells Python how to turn the object into a readable
+string; it's called automatically whenever the object is printed:
 
 ```python
-nation = [["Korea", "Seoul"], ["USA", "Washington"], ["China", "Beijing"]]
-a = nation[0]     # a now refers to the SAME inner list as nation[0]
-a[1] = "Busan"
-print(nation)     # [["Korea", "Busan"], ["USA", "Washington"], ["China", "Beijing"]]
+def __str__(self):
+    return "(" + str(self.x) + "," + str(self.y) + ")"
+
+print(p1)   # (1,2)
 ```
 
-`a` is not a copy — it's another name (an **alias**) for the exact same
-list object `nation[0]` already pointed to. Modifying `a` modifies
-`nation[0]` too, because there was only ever one list in memory. This is
-the same reason `int`/`float`/`str` (immutable — reassigning makes a new
-value) behave differently from `list` (mutable — modifying in place
-affects every alias).
+## Getters and Setters
 
-## Copying a Multi-Dimensional List — Three Ways, Not Equivalent
+You *can* read/write `p1.x` directly, but the convention is to go through
+**getter**/**setter** methods instead:
 
 ```python
-import copy
-a = [[1, 2], [3, 4], [5, 6]]
-b = a                     # alias — b IS a, same object
-c = a[:]                  # shallow copy — new outer list, but inner lists still shared
-d = copy.deepcopy(a)      # deep copy — fully independent, all levels
+def getX(self):
+    return self.x
+def setX(self, v):
+    self.x = v
 
-a[1][1] = 40
-print(a)   # [[1, 2], [3, 40], [5, 6]]
-print(b)   # [[1, 2], [3, 40], [5, 6]]   — b changed too, it's the same object
-print(c)   # [[1, 2], [3, 40], [5, 6]]   — c changed too! the inner lists are shared
-print(d)   # [[1, 2], [3, 4], [5, 6]]    — d is untouched
+p1 = Point(1, 2)
+print(p1.getX())    # 1
+p1.setX(5)
+print(p1)             # (5,2)
 ```
 
-`b = a` shares everything. `c = a[:]` (slicing) copies the *outer* list —
-`c` and `a` are different list objects — but each element of `c` is still
-the same inner-list object as in `a`, so a mutation through `a[1][1]`
-shows up in `c` too. Only `copy.deepcopy(a)` copies every level, giving you
-a result that's fully independent of the original. When you need a true,
-independent copy of a nested list, `deepcopy` is the only one of the three
-that actually gives you one.
+(`setX`, like any function without an explicit `return`, gives back `None`
+— printing its result directly is a bug, not a way to see the new value.)
+
+## Methods That Take Another Object as a Parameter
+
+A method's parameters can themselves be objects of the same class:
+
+```python
+def distance(self, p):
+    dx = self.x - p.x
+    dy = self.y - p.y
+    return (dx**2 + dy**2)**0.5
+
+print(p1.distance(p2))   # 5.0
+print(p2.distance(p1))   # 5.0 — symmetric, as expected
+```
+
+## Pure Functions vs. Modifiers
+
+A **pure function** leaves the object unchanged and returns a new result.
+`add` below builds and returns a brand-new `Point` — `p1` and `p2` are
+untouched:
+
+```python
+def add(self, p):
+    x = self.x + p.x
+    y = self.y + p.y
+    return Point(x, y)
+
+p3 = p1.add(p2)
+print(p1)   # (1,2) — unchanged
+print(p2)   # (4,6) — unchanged
+print(p3)   # (5,8) — the new object
+```
+
+A **modifier** does the opposite: it changes `self` in place and returns
+`None`:
+
+```python
+def add_as_modifier(self, p):
+    self.x = self.x + p.x
+    self.y = self.y + p.y
+
+p3 = p1.add_as_modifier(p2)
+print(p3)   # None — modifiers don't return the new state
+print(p1)   # (5,8) — p1 itself changed
+```
+
+Know, for every method you write, which one it is — and say so in how you
+use it: call a pure function for its return value, call a modifier for its
+side effect, never both at once.
+
+## Putting a Class Under Test
+
+A common pattern: keep a `..._main()` function with your test/demo calls,
+and only run it when the file is executed directly (not when it's
+imported):
+
+```python
+def point_main():
+    p1 = Point(1, 2)
+    p2 = Point(4, 6)
+    print(p1, p2)
+    print(p1.distance(p2))
+    p3 = p1.add(p2)
+    print(p3)
+
+if __name__ == '__main__':
+    point_main()
+```

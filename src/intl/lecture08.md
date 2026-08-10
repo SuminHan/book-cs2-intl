@@ -1,39 +1,39 @@
-# For Loops II
+# For Loops III
+
+This is the quantifier pattern you just learned — "for all".
 
 ```python
-L = [3, -1, 4, -5, 2]
-
-for x in L:
-    count = 0
-    if x > 0:
-        count = count + 1
-
-print(count)
+def all_positive(L):
+    for x in L:
+        if x <= 0:
+            return False
+    return True
 ```
 
-There are three positive numbers. Does this print 3?
+`all_positive([1, 2, 3])` is `True`. `all_positive([1, -2])` is `False`. Good.
 
-**It prints 1.**
+Now: `all_positive([])` — the empty list. Is every number in it positive?
 
-`count = 0` sits inside the loop. So every single time around, the count is
-thrown away and started again.
+**Python says `True`.**
 
-The number you see at the end is not a total. It is just whatever happened
-on the last item — and `2` is positive, so you get 1.
+Follow the code: the loop body never runs, so nothing ever returns `False`,
+so it falls through to `return True`.
 
-*Try `L = [3, -1, 4, -5, -2]` and it prints `0`. Same code, different last item.*
+And that is *not a bug* — it is the correct answer. To prove "all of them
+are positive" false, you must point at one that isn't. In an empty list
+there is nothing to point at.
 
-### One space is the whole bug
+*Mathematicians call this a vacuous truth. Python's own `all([])` is `True`
+for the same reason, and `any([])` is `False`.*
+
+### Where it will bite you
 
 ```python
-# Correct -- set up before the loop
-count = 0
-for x in L:
-    if x > 0:
-        count = count + 1
-print(count)      # 3
+if all_passed(students): print("Everyone passed!")
 ```
 
-**The question to ask every counter:** "Does this line need to happen
-*once*, or *every time around*?" Setting up belongs outside. Only the
-counting belongs inside.
+Run that on a class with no students and it happily announces that
+everyone passed.
+
+**The empty case is not an edge case you forgot. It is the first case you
+should test.**

@@ -1,107 +1,98 @@
 # Topics Covered
 
-## Recap: Three `for`-Loop Patterns So Far
-
-- **Max/min** (Week 6) — track a running best value.
-- **Counter** (Week 8) — track a running count of elements matching a
-  condition.
-- **Quantifier** (this week) — "for some" / "for all": does *any*/*every*
-  element satisfy a condition?
-
-## The Quantifier Pattern
-
-Given a list, "does `numbers[i] > 0` for **some** `i`?" is an *existential*
-question (∃); "for **all** `i`?" is a *universal* one (∀). Both are
-naturally boolean functions:
+## `while` Loops
 
 ```python
-def somePositive(numbers):
-    for i in range(len(numbers)):
-        if numbers[i] > 0:
-            return True
-    return False              # never found one
+while boolean_expression:
+    statements
+```
+
+Repeats the body for as long as the condition stays true — checked *before*
+every iteration, including the first. Counting the digits of `n = 713`:
+
+```python
+def countDigits(n):
+    counter = 0
+    while n > 0:
+        counter += 1
+        n = n // 10
+    return counter
+```
+
+Trace it: `n=713 → counter=1,n=71 → counter=2,n=7 → counter=3,n=0`, loop
+condition now false, return `3`.
+
+## `for` vs. `while`
+
+Any `for` loop can be rewritten as a `while` loop:
+
+```python
+for i in range(n):        # becomes:
+    total += i             i = 0
+                            while i < n:
+                                total += i
+                                i += 1
+```
+
+**Use `for` when you know the number of iterations in advance** (a fixed
+range, a list you're walking through). **Use `while`** when you don't —
+`countDigits` above has to keep going until `n` reaches `0`, and there's no
+way to know ahead of time how many digits `n` has without... counting
+them.
+
+## `while True` + `break`
+
+When the loop-continuation condition is awkward to state directly, loop
+forever (`while True:`) and `break` out explicitly once some condition is
+met inside the body:
+
+```python
+while True:
+    ...
+    if some_condition:
+        break     # exit immediately, skip everything after
+    ...
 ```
 
 ```python
-def allPositive(numbers):
-    for i in range(len(numbers)):
-        if not (numbers[i] > 0):   # found a counterexample
-            return False
-    return True                     # never found a counterexample
+# equivalent to the countDigits loop above, written with break instead
+while True:
+    counter += 1
+    n = n // 10
+    if n == 0:
+        break
 ```
 
-The shapes are near-mirror images: "for some" returns `True` the instant it
-finds a match, and falls through to `False`. "For all" returns `False` the
-instant it finds a *counter*example, and falls through to `True`.
+## Toy Robot with `while`
 
-This mirroring isn't a coincidence — it's **De Morgan's law** applied to
-quantifiers: `not (for all x, p(x))` is the same statement as `for some x,
-not p(x)`. So "for all `p(x)`" can always be written as "not (for some `x`,
-`not p(x)`)" — which is exactly why the "for all" loop checks `not p(x)`
-and returns `False` on a hit.
-
-Two worked examples:
+Some robot tasks don't have a fixed number of steps, which is exactly the
+`for`-can't-do-it case. "Pick up beepers here, however many there are":
 
 ```python
-# "for some": is n a sum of two squares?
-def sumOfTwoSquares(n):
-    b = int(math.sqrt(n))
-    for i in range(1, b+1):
-        for j in range(1, b+1):
-            if n == i*i + j*j:
-                return True
-    return False
-
-# "for all": is numbers non-decreasing?
-def isIncreasingSequence(numbers):
-    for i in range(len(numbers)-1):
-        if not (numbers[i] <= numbers[i+1]):
-            return False
-    return True
-```
-
-`isPrime` from Week 8 is secretly a "for all" too — "`p` is prime" means
-"for all `i` from 2 to `p//2`, `i` does not divide `p`":
-
-```python
-def isPrime(p):
-    for i in range(2, p//2 + 1):
-        if p % i == 0:      # found a divisor — counterexample!
-            return False
-    return True
-```
-
-## Toy Robot: Beepers
-
-A beeper is a small marker the robot can only sense when standing directly
-on it. Create a robot carrying some:
-
-```python
-hubo = Robot(beepers=3)
-```
-
-- `hubo.drop_beeper()` — put one down (needs at least one in pocket)
-- `hubo.pick_beeper()` — pick one up (needs one at the current position)
-- `hubo.on_beeper()` — `True` if there's a beeper right here
-- `hubo.carries_beepers()` — `True` if Hubo is currently holding at least one
-
-Calling `drop_beeper()` with an empty pocket, or `pick_beeper()` on an
-empty square, is an error — always guard with the matching boolean
-function first:
-
-```python
-if hubo.on_beeper():
+while hubo.on_beeper():
     hubo.pick_beeper()
-else:
-    hubo.turn_left()
 ```
 
-Combine with a loop to sweep an entire row, picking up (or dropping) as you
-go:
+"Drop every beeper Hubo is carrying, walking forward after each":
 
 ```python
-for i in range(9):
+hubo = Robot(beepers=50)
+while hubo.carries_beepers():
+    hubo.drop_beeper()
     hubo.move()
-    if hubo.on_beeper():
-        hubo.pick_beeper()
+```
+
+If the condition is already false before the first check — e.g. Hubo was
+created with zero beepers — the loop body never runs at all, not even
+once. That's different from a `for` loop over a nonempty range, and worth
+double-checking when a `while` loop "does nothing."
+
+Composing two `while` loops handles "walk until you reach a pile of
+beepers, then pick them all up":
+
+```python
+while not hubo.on_beeper():
+    hubo.move()
+while hubo.on_beeper():
+    hubo.pick_beeper()
 ```

@@ -1,45 +1,47 @@
-# Strings
+# Break / Continue
 
-You have just met `.replace()`. The name says exactly what you want, so:
-
-```python
-s = "hello world"
-s.replace("world", "python")
-print(s)
-```
-
-What prints?
-
-**Nothing changed:**
-
-```
-hello world
-```
-
-`.replace()` did its job perfectly — it built the new sentence and handed
-it back to you. You just did not catch it, so it was thrown away.
+Return the position of the first `target` in a grid, or `(-1,-1)` if it is
+not there.
 
 ```python
-# Correct -- catch the return value
-s = s.replace("world", "python")
-print(s)          # hello python
+def find_position(M, target):
+    pos = (-1, -1)
+    for i in range(len(M)):
+        for j in range(len(M[i])):
+            if M[i][j] == target:
+                pos = (i, j)
+                break
+    return pos
 ```
 
-### Why it works that way
+You test it: `find_position([[1,2],[3,4]], 9)` gives `(-1,-1)`. Correct. Ship it?
 
-In Python a string can never be edited. Not by `replace`, not by you:
+### Now a grid that has the target
 
 ```python
-s = "Hello"
-s[0] = "J"
+find_position([[7,1],[2,7],[7,3]], 7)
 ```
 
-```
-TypeError: 'str' object does not support item assignment
+**Expected:** `(0, 0)` — 7 is right there in the corner.
+
+**Execution result:** `(2, 0)`
+
+Why: `break` leaves *one* loop — the inner one. The outer loop keeps going,
+finds 7 again on the next row, and overwrites the answer. You get the
+*last* match, not the first.
+
+The test you ran had no target in it at all, so the inner loop never broke
+and the bug never showed.
+
+### Two fixes, one lesson
+
+```python
+# Leave the whole function at once
+            if M[i][j] == target:
+                return (i, j)     # not break
 ```
 
-So every string method — `.upper()`, `.strip()`, `.replace()` — has only
-one option: build a new string and return it.
+**The lesson:** `break` is smaller than it looks. It escapes exactly one
+loop, and inside nested loops that is almost never what you meant.
 
-*This is why lists and strings behave differently. `L.append(x)` changes
-`L`; `s.upper()` cannot change `s`.*
+*Choosing the input that exposes it — that was the real skill.*

@@ -1,205 +1,228 @@
 # Problem Set
 
-**1.** Write a function `sumSquares` defined by:
-- input parameter: an integer list `a` (of length `n`)
-- return value: \\(a_0^2 + a_1^2 + a_2^2 + \cdots + a_{n-1}^2\\) — the sum of
-  squares of the elements of `a`
-  - e.g. `sumSquares([4,3,12])` returns `169` (\\(=4^2+3^2+12^2\\)).
+### Required
+
+**1.** Write a function `countZero` defined by:
+- input parameter: an integer list `numbers`
+- return value: the number of occurrences of `0` in `numbers`
 
 ```python
-def sumSquares(a):
-    n = len(a)
-    total = 0
+def countZero(numbers):
     # ADD ADDITIONAL CODE HERE!
-print(sumSquares([3,5,4]))               # 50
-print(sumSquares([2,5,4,0,1,-1,5,1]))    # 73
+print(countZero([0,4,0,-2,4,0]))          # 3
+print(countZero([1,0,-2,4,0,0,-7,0,5]))   # 4
 ```
 
-**2.** Write a function `computePolynomial` defined by:
-- input parameter: an integer list `a` (of length `n`) and an integer `x`
-- return value: \\(a_0 + a_1 x + a_2 x^2 + \cdots + a_{n-1}x^{n-1}\\)
+**2.** Write a function `countRange` defined by:
+- input parameter: an integer list `numbers` and two integers `lower, upper`
+- return value: the number of integers in `numbers` within `[lower, upper]`
+  (i.e. `lower <= x <= upper`)
 
 ```python
-def computePolynomial(a, x):
-    n = len(a)
-    total = 0
+def countRange(numbers, lower, upper):
     # ADD ADDITIONAL CODE HERE!
-print(computePolynomial([3,5,4], 5))            # 128
-print(computePolynomial([2,0,4,0,1,-1,5,1], 3)) # 5708
+print(countRange([0,6,2,1,3,4,7], 2, 5))                      # 3
+print(countRange([8,9,10,2,4,5,9,7,2,3,7], 3, 7))             # 5
 ```
 
-**3.** Write a function `harmonicMean` defined by:
-- input parameter: a list `a` of `n` positive integers
-- return value: the harmonic mean of the values in `a`,
-  \\(\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}\\)
-  - *First write code to compute the sum of reciprocals, then return `n /
-    sum`.*
-
-```python
-def harmonicMean(a):
-    n = len(a)
-    # ADD ADDITIONAL CODE HERE!
-numbers = [2, 4, 3, 10, 7, 2, 5, 6]
-print(harmonicMean(numbers))  # 3.648208469055375
-```
-
-**4.** Write a function `geometricMean` defined by:
-- input parameter: a list `a` of `n` positive integers
-- return value: the geometric mean of the values in `a`,
-  \\(\sqrt[n]{a_0 \cdot a_1 \cdots a_{n-1}}\\)
-  - *First compute `prod = a[0]*a[1]*...*a[n-1]`, then return `prod**(1/n)`.*
-
-```python
-def geometricMean(a):
-    n = len(a)
-    prod = 1
-    # ADD ADDITIONAL CODE HERE!
-print(geometricMean([3,2,6,4,7]))           # 3.987421134470927
-print(geometricMean([2,4,3,10,7,2,5,6]))    # 4.221167313317658
-```
-
-**5.** Write a function `reverse` defined by:
-- input parameter: a list of integers
-- return value: a new list, same length, with the order reversed
-  - e.g. `reverse([1,5,3,7,6])` returns `[6,7,3,5,1]`.
-
-```python
-def reverse(a):
-    n = len(a)
-    b = [None] * n
-    for i in range(n):
-        b[i] = a[??]  # ADD ADDITIONAL CODE HERE!
-    return b
-print(reverse([3,1,5,2,4]))          # [4,2,5,1,3]
-print(reverse([7,6,3,1,5,8,2,4]))    # [4,2,8,5,1,3,6,7]
-```
-
-**6.** Write a function `square` defined by:
-- input parameter: a list of integers
-- return value: a new list, same length, with each element squared
-  - e.g. `square([1,3,5,6,7])` returns `[1,9,25,36,49]`.
-  - *The overall structure is very similar to `reverse` above.*
-
-```python
-def square(a):
-    # ADD ADDITIONAL CODE HERE!
-L = [7,6,3,1,5,8,2,4]
-print(square(L))  # [49,36,9,1,25,64,4,16]
-print(L)          # [7,6,3,1,5,8,2,4]  -- L itself unchanged
-```
-
-**7.** Write a function `accumulate` defined by:
-- input parameter: an integer list `a`
-- return value: a list `b`, same length, of running sums —
-  `b[i] = a[0]+a[1]+...+a[i]` for each `i`
-  - e.g. `accumulate([1,2,1,3,1])` returns `[1,3,4,7,8]`.
-  - *Use the fact that `b[i] == b[i-1]+a[i]` for `i = 1,2,...`.*
-
-```python
-def accumulate(a):
-    n = len(a)
-    b = [None] * n
-    b[0] = a[0]
-    # ADD ADDITIONAL CODE HERE!
-    for i in range(1, n):  # note that i starts from 1, not 0
-        ...
-print(accumulate([1,2,3,4,5]))        # [1,3,6,10,15]
-print(accumulate([7,6,3,1,5,8,2,4]))  # [7,13,16,17,22,30,32,36]
-```
-
-**8.** Fibonacci numbers form the sequence `1, 1, 2, 3, 5, 8, 13, 21, 34, 55,
-89, 144, ...`.
-
-Write a function `fibonacci` defined by:
-- input parameter: an integer `n`
-- return value: a list `b` of the first `n` Fibonacci numbers
-  - e.g. `fibonacci(5)` returns `[1,1,2,3,5]`.
-  - *Use the fact that `b[i] == b[i-1]+b[i-2]` for `i = 2,3,...`.*
-
-```python
-def fibonacci(n):
-    b = [None] * n
-    b[0] = 1
-    b[1] = 1
-    # ADD ADDITIONAL CODE HERE!
-    for i in range(??):  # note that i starts from 2
-        ...
-print(fibonacci(5))   # [1,1,2,3,5]
-print(fibonacci(10))  # [1,1,2,3,5,8,13,21,34,55]
-```
-
-**9.** Write a function `area` defined by:
-- input parameter: a list of points representing a polygon, given in
-  counter-clockwise order — each point is a list `[x,y]` of two integers
-  - e.g. `[[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]` represents an
-    8-sided polygon.
-- return value: the area of the polygon
-  - *Use the Shoelace formula:*
-    \\(\text{area} = \frac{1}{2}\left|\sum_{i=0}^{n-1} x_i \cdot
-    (y_{(i+1)\bmod n} - y_{(i-1)\bmod n})\right|\\)
-  - *What does `p[i][0] * (p[(i+1)%n][1] - p[(i-1)%n][1])` mean, where `p`
-    is the input polygon?*
-  - *Use `abs(x)` for \\(|x|\\).*
-
-```python
-def area(p):
-    n = len(p)
-    total = 0
-    # ADD ADDITIONAL CODE HERE!
-    for i in range(n):
-        ...
-points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
-print(area(points))  # 22.0
-```
-
-**10.** Write a function `perimeter` defined by:
-- input parameter: a list of points representing a polygon, as in the
-  previous problem
-- return value: the perimeter of the polygon
-  - *As in the previous problem, use the expression `p[(i+1)%n]`.*
-
-```python
-# ADD FUNCTION HERE!
-points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
-print(perimeter(points))  # 23.85332583138582
-```
-
-**11.** Write a function `findMin` defined by:
-- input parameter: a list of integers
-- return value: the minimum value among the elements
-  - *This is the max/min pattern from Week 6.*
-
-```python
-def findMin(a):
-    best = a[0]
-    # ADD ADDITIONAL CODE HERE!
-    for i in range(1, len(a)):
-        if a[i] < best:
-            ...
-print(findMin([7,8,3,4,3,6]))        # 3
-print(findMin([3,5,7,2,7,2,3,8,6]))  # 2
-```
-
-**12.** Write a function `closestPair` defined by:
+**3.** Write a function `countSecondQuadrant` defined by:
 - input parameter: a list of points in the plane, each represented as
-  `[x,y]` as in problem 9
-  - e.g. `[[4,-4],[7,5],[2,1]]` represents the points `(4,-4)`, `(7,5)`,
-    `(2,1)`.
-- return value: the distance of the closest pair of points (the minimum
-  pairwise distance)
+  `[x,y]`
+- return value: the number of points in the second quadrant
+  - *What does `p[i][0] < 0 and p[i][1] > 0` mean?*
 
 ```python
-def distSquared(p1, p2):
-    return (p2[0]-p1[0])**2 + (p2[1]-p1[1])**2
-def closestPair(p):
-    n = len(p)
-    best = distSquared(p[0], p[1])
+def countSecondQuadrant(p):
     # ADD ADDITIONAL CODE HERE!
-    for i in range(n):
-        for j in range(i+1, n):
-            d = distSquared(p[i], p[j])
-            if d < best:
-                ...
-points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
-print(closestPair(points))  # 4.47213595499958  (between [2,1] and [-2,-1])
+points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
+          [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+print(countSecondQuadrant(points))  # 3
 ```
+
+**4.** Write a function `countWithinCircle` defined by:
+- input parameter: a list of points in the plane (as in problem 3) and a
+  positive integer `r`
+- return value: the number of points `(x,y)` with \\(x^2+y^2 \le r^2\\)
+
+```python
+def countWithinCircle(p, r):
+    # ADD ADDITIONAL CODE HERE!
+points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
+          [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+print(countWithinCircle(points, 3))  # 2
+print(countWithinCircle(points, 5))  # 4
+print(countWithinCircle(points, 8))  # 9
+```
+
+**5.** Write a boolean function `withinRect` defined by:
+- input parameter: six integers `top, bottom, left, right, x, y` —
+  `top,bottom,left,right` represent an axis-aligned rectangle (e.g.
+  `(top,bottom,left,right) = (2,-4,-5,6)`)
+- return value: a boolean — `True` if `(x,y)` is inside the rectangle
+  (boundary included), `False` otherwise
+
+```python
+def withinRect(top, bottom, left, right, x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(withinRect(2,-4,-5,6, -5,2))  # True
+print(withinRect(2,-4,-5,6, 6,-1))  # True
+print(withinRect(2,-4,-5,6, 0,1))   # True
+print(withinRect(2,-4,-5,6, -6,0))  # False
+print(withinRect(2,-4,-5,6, 0,3))   # False
+```
+
+Using `withinRect` above, write a function `countWithinRect` defined by:
+- input parameter: `top,bottom,left,right` (an axis-aligned rectangle) and a
+  list of points in the plane (as in problem 3)
+- return value: the number of points within the rectangle (boundary
+  included)
+
+```python
+def countWithinRect(top, bottom, left, right, p):
+    counter = 0
+    for i in range(len(p)):
+        if withinRect(top, bottom, left, right, p[i][0], p[i][1]):
+            # ADD ADDITIONAL CODE HERE!
+            ...
+points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
+          [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+print(countWithinRect(2,-4,-5,6, points))  # 7
+```
+
+**6.** Write a function `countLeapYear` defined by:
+- input parameter: a list `numbers` of positive integers, each representing
+  a year
+- return value: the number of leap years in `numbers`
+  - *Use the `leapYear` boolean function from Week 5.*
+
+```python
+def countLeapYear(numbers):
+    # ADD ADDITIONAL CODE HERE!
+print(countLeapYear([2008,2011,2012,2000]))  # 3
+print(countLeapYear([2100,2300,2400,2200]))  # 1
+```
+
+**7.** Write a function `countComposite` defined by:
+- input parameter: a list `numbers` of positive integers
+- return value: the number of composite numbers in `numbers`
+  - *`not isPrime(p)` is true iff `p` is composite.*
+
+```python
+def isPrime(p):
+    for i in range(2, p//2 + 1):
+        if p % i == 0:
+            return False
+    return True
+def countComposite(numbers):
+    # ADD ADDITIONAL CODE HERE!
+num = [217, 287, 181, 143, 163, 319, 233, 399, 203]
+print(countComposite(num))  # 6
+```
+
+**8.** Write a function `zigzagEntireWorld` defined by:
+- input parameter: none
+- return value: none
+- action: make Hubo visit the entire world in a zig-zag pattern and return
+  - *Use `move9steps()` and `zigzag()` below (`move9steps()` moves Hubo 9
+    steps forward; `zigzag()` makes Hubo zig-zag one round).*
+
+```python
+def move9steps():
+    for i in range(9):
+        hubo.move()
+def zigzag():
+    move9steps()
+    hubo.turn_left(); hubo.move(); hubo.turn_left()
+    move9steps()
+    hubo.turn_right(); hubo.move(); hubo.turn_right()
+def zigzagEntireWorld():
+    # ADD ADDITIONAL CODE HERE!
+    zigzag()
+zigzagEntireWorld()
+```
+
+**9.** Write a function `whirlEntireWorld` defined by:
+- input parameter: none
+- return value: none
+- action: make Hubo visit the entire world in a spiral pattern
+  - *Using `L` for "turn left" and a number for "move that many steps
+    forward," Hubo's full action sequence is:*
+    `1 L 1 L 2 L 2 L 3 L 3 L ... 9 L 9 L 9`
+
+```python
+def whirlEntireWorld():
+    # ADD ADDITIONAL CODE HERE!
+    for n in range(1, 10):
+        ...
+whirlEntireWorld()
+```
+
+**10.** Write a function `zigzagEntireWorld` defined by (a different
+pattern from problem 8):
+- input parameter: none
+- return value: none
+- action: make Hubo visit the entire world in the pattern below
+  - *Using `L`/`R` for "turn left"/"turn right" and a number for "move that
+    many steps forward," Hubo's full action sequence is:*
+    `L 1 L 1 L 1 R 1 R 2 R 2 L 1 L 3 L 3 R 1 R 4 R 4`
+    `L 1 L 5 L 5 R 1 R 6 R 6 L 1 L 7 L 7 R 1 R 8 R 8`
+
+```python
+def zigzagEntireWorld():
+    hubo.turn_right()
+    # ADD ADDITIONAL CODE HERE!
+    for n in range(1, 9):
+        if n % 2 == 1:
+            ...
+zigzagEntireWorld()
+```
+
+### Optional Problems
+
+*Not for submission/grading, but good practice (mostly past exam problems).*
+
+**11.** Write a function `countOutOfCircle` defined by:
+- input parameter: a list `L` of points in the plane (as in Week 7 problem
+  9) and a positive integer `r`
+- return value: the number of points in `L` outside the circle
+  \\(x^2+y^2=r^2\\)
+
+**12.** Write a function `countLower` defined by:
+- input parameter: an integer list `L`
+- return value: the number of integers in `L` smaller than the average of
+  all integers in `L`
+
+**13.** Write a function `countWithinRange` defined by:
+- input parameter: an integer list `L`, each element a cube's side length
+- return value: the number of cubes whose volume falls within `[A-B, A+B]`,
+  where `A` is the average volume of the cubes and `B` is the standard
+  deviation of their volumes
+  - *The standard deviation \\(\sigma\\) of numbers \\(x_1,\ldots,x_n\\) is
+    \\(\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}\\) where
+    \\(\bar{x} = \frac{\sum_{i=1}^n x_i}{n}\\).*
+
+**14.** A positive integer `q` is called a *double prime* if `q = 2p` for
+some prime `p`.
+
+Write a function `countDoublePrime` defined by:
+- input parameter: a list `L` of positive integers
+- return value: the number of double primes in `L`
+
+**15.** Write a function `countTriangular` defined by:
+- input parameter: a list `L` of positive integers
+- return value: the number of triangular numbers in `L` (`n` is triangular
+  if \\(n = m(m+1)/2\\) for some positive integer `m`)
+  - *Hint: \\(n = m(m+1)/2 \Rightarrow m^2 < 2n < (m+1)^2 \Rightarrow m <
+    \sqrt{2n} < m+1\\).*
+
+**16.** Write a function `findMax` defined by:
+- input parameter: a list `L` of positive integers
+- return value: the maximum value in `L` among elements whose *index* is
+  not prime
+  - e.g. `L = [110,49,441,91,341,20]`: indices 0,1,4 are non-prime, giving
+    values `110, 49, 341` — the maximum is `341`.
+
+**17.** Write a function `colinear` defined by:
+- input parameter: a list `L` of points in the plane, each represented as
+  `[x,y]` (as in Week 7 problem 12)
+- return value: the number of collinear triples `L[i], L[j], L[k]` (`i<j<k`)

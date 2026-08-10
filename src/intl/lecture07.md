@@ -1,40 +1,39 @@
-# Lists
-
-You want a 3×3 grid of zeros. You already know that `[0]*3` gives
-`[0, 0, 0]`, so:
+# For Loops II
 
 ```python
-grid = [[0]*3] * 3
-grid[0][0] = 1
-print(grid)
+L = [3, -1, 4, -5, 2]
+
+for x in L:
+    count = 0
+    if x > 0:
+        count = count + 1
+
+print(count)
 ```
 
-You changed **one** cell. What prints?
+There are three positive numbers. Does this print 3?
 
-**All three rows changed:**
+**It prints 1.**
 
-```
-[[1, 0, 0], [1, 0, 0], [1, 0, 0]]
-```
+`count = 0` sits inside the loop. So every single time around, the count is
+thrown away and started again.
 
-`* 3` did not make three rows. It made three names for the same row.
+The number you see at the end is not a total. It is just whatever happened
+on the last item — and `2` is positive, so you get 1.
+
+*Try `L = [3, -1, 4, -5, -2]` and it prints `0`. Same code, different last item.*
+
+### One space is the whole bug
 
 ```python
-print(grid[0] is grid[1])    # True -- the same object
+# Correct -- set up before the loop
+count = 0
+for x in L:
+    if x > 0:
+        count = count + 1
+print(count)      # 3
 ```
 
-A list does not hold rows inside itself; it holds directions to rows.
-Copying the directions three times still leaves one row.
-
-### Make each row separately
-
-```python
-# Correct
-grid = [[0]*3 for _ in range(3)]
-grid[0][0] = 1
-print(grid)   # [[1,0,0], [0,0,0], [0,0,0]]
-```
-
-**Why this bug is worth remembering:** the code runs. There is no error.
-The grid *looks* right until you change one cell — and then it is wrong
-everywhere at once.
+**The question to ask every counter:** "Does this line need to happen
+*once*, or *every time around*?" Setting up belongs outside. Only the
+counting belongs inside.

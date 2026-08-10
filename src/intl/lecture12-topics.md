@@ -1,89 +1,71 @@
 # Topics Covered
 
-## Strings as Immutable Lists of Characters
+## `break` and `continue`
 
-A string behaves like a list of characters — `len(·)`, indexing, and
-slicing all work the same way — with one crucial difference: **you cannot
-modify a string in place.**
-
-```python
-s = "computer"
-s[0] = "C"
-# TypeError: 'str' object does not support item assignment
-```
-
-To "change" a string, you build and assign a *new* one. This is the
-mutable/immutable distinction: `int`, `float`, `str`, and tuples are
-immutable (once created, that value never changes); `list` (and `set`) are
-mutable (you can modify them in place, as `.append()` and `.sort()` do).
-
-## Indexing & Slicing
-
-Identical rules to lists:
+- **`break`** — exits the loop immediately. Nothing else in the loop body
+  runs, and the loop doesn't run again.
+- **`continue`** — skips the rest of *this* iteration only, and moves on
+  to the next one. The loop keeps going.
 
 ```python
-s = "computer"
-for i in range(len(s)):
-    print(s[i], end=" ")
+for i in range(8):
+    if i == 5:
+        break              # stop the loop entirely once i reaches 5
+    print(i, end=" ")
+print()   # 0 1 2 3 4
 
-print(s[1:4])    # "omp"
-print(s[:3])     # "com"    same as s[0:3]
-print(s[2:])     # "mputer"
-print(s[1:6:2])  # step of 2
+for i in range(8):
+    if i in [3, 5]:
+        continue            # skip printing 3 and 5, keep looping
+    print(i, end=" ")
+print()   # 0 1 2 4 6 7
 ```
 
-## Comparison, Membership, Concatenation
+## In Nested Loops: Only the Innermost Loop
+
+Both `break` and `continue` act on the **innermost** loop that contains
+them — they never reach out to an outer loop. This is the detail that
+trips people up, so trace it carefully:
 
 ```python
-s1, s2 = "computer", "science"
-print(s1 == s2)    # False
-print(s1 < s2)      # True — lexicographic (dictionary) order
-print('abc' < "XYZ")  # False — ALL uppercase letters sort before
-                        # any lowercase letter in ASCII
+i = 0
+while i < 5:
+    j = 0
+    while j < 5:
+        if i > 0:
+            break          # exits the INNER while j loop only
+        print(j, end=" ")
+        j += 1
+    print(i, end=" ")       # this line still runs every time
+    i += 1
 ```
 
-`in` checks for a **substring**, not just a single character — and order
-matters:
+Here, `break` fires as soon as `i > 0` — but it only ever escapes the inner
+`j`-loop. The outer `i`-loop is completely unaffected: it keeps
+incrementing `i` and printing it every iteration, it just stops seeing any
+`j` values printed from the second iteration onward.
+
+Now compare with `continue` in the same position:
 
 ```python
-s1 = "computer"
-print("om" in s1)    # True
-print("OM" in s1)    # False — case-sensitive
-print("com" in s1)   # True  — characters in that exact order
-print("cmo" in s1)   # False — right characters, wrong order
+i = 0
+while i < 5:
+    j = 0
+    while j < 5:
+        if i > 0:
+            continue        # skips straight back to "while j < 5" —
+                              # j never gets incremented!
+        print(j, end=" ")
+        j += 1
+    print(i, end=" ")
+    i += 1
 ```
 
-`+` concatenates, `*` repeats:
-
-```python
-s = "com" + "puter"    # "computer"
-t = "hi" * 3             # "hihihi"
-```
-
-Building a reversed string, one character at a time, is the same
-accumulator pattern from Week 2 — start from `""`, add on each iteration:
-
-```python
-s = "computer"
-r = ""
-for i in range(len(s)):
-    r = r + s[len(s) - i - 1]
-print(r)   # "retupmoc"
-```
-
-## Palindromes
-
-A palindrome reads the same forwards and backwards (`"radar"`, `"12321"`).
-The efficient check only needs to walk to the *midpoint*, comparing each
-character against its mirror from the other end — once every pair up to
-the middle matches, the rest are guaranteed to match too:
-
-```python
-def is_palindrome(s):
-    for i in range(len(s) // 2):
-        if s[i] != s[len(s) - i - 1]:
-            return False
-    return True
-
-print(is_palindrome("radar"))   # True
-```
+This second version is a trap: once `i > 0`, `continue` sends control back
+to the `while j < 5` check *without* ever reaching `j += 1` — so `j` stays
+at whatever it was, the condition `j < 5` is still true, and the loop spins
+forever. **`continue` re-checks the loop condition; it does not advance
+whatever variable your loop condition depends on for you.** This is a good
+reason to prefer `for` loops (where the loop variable advances
+automatically) whenever the number of iterations is known in advance, and
+to be extra careful with `continue` inside a `while`.

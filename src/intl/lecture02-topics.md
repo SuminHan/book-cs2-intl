@@ -1,143 +1,129 @@
 # Topics Covered
 
-## Values & Variables
+## Indentation
 
-Every piece of data a program works with is a **value**, and every value has
-a **type**:
-
-| Examples | Kind | Type |
-|---|---|---|
-| `11`, `0`, `-200` | integers | `int` |
-| `3.14159`, `1.234E-8` | reals | `float` |
-| `"abc"`, `'abc'`, `"123"` | strings | `str` |
-
-A **variable** is a named memory location that stores a value. Assignment
-writes a value into it; using the variable's name later reads the value back
-out.
+The body of a function (and later, of `if`/`for`/`while`) is marked purely
+by **indentation** — there are no `{ }` or `end` keywords. Use Tab (not the
+space bar) to indent consistently.
 
 ```python
-x = 10          # writing 10 to x
-y = x*x + 1     # reading 10 from x, writing 101 to y
-print(y)        # reading 101 from y
+def distance(x1, y1, x2, y2):
+    u = (x2-x1)**2
+    v = (y2-y1)**2
+    return math.sqrt(u+v)
 ```
 
-`10 = x` is illegal — the left side of `=` must be a variable name, not a
-value (compare: "let 10 be x" isn't something you'd write in math either).
-The same variable can be assigned more than once; each assignment overwrites
-the previous value, which is exactly what makes accumulation work:
+Nested structure is represented by *nested* indentation, and different
+indentation gives a genuinely different program — these two are not the
+same function:
 
 ```python
-total = 0
-total = total + 7
-total = total + 5
-print(total)    # 12
+def walk_9_by_9():
+    for j in range(4):
+        for i in range(9):
+            hubo.move()
+        hubo.turn_left()
+
+def walk_1_by_1_9_times():
+    for j in range(4):
+        for i in range(9):
+            hubo.move()
+            hubo.turn_left()
 ```
 
-Python also allows assigning to several variables at once — this is how you
-swap two variables without a temporary:
+## Built-in Functions
+
+Python ships built-in functions for the common math functions: `math.sqrt`,
+the trig family (`math.sin`, `math.cos`, `math.tan`, `math.asin`, ...),
+`math.exp`, `math.log`, and more (`import math` first).
 
 ```python
-a, b, c = 1, 2, 4
-a, b = b, a          # swap
-x, y, z = y, z, x    # rotate
+a = math.sqrt(17)
+b = math.sin(60 * math.pi / 180)
+c = math.log(20 * b)
+d = math.cos(b * math.cos(a + math.sqrt(c+1)) - 2)
 ```
 
-(Note `a = b` then `b = a`, done as two separate statements, does **not**
-swap — by the time the second line runs, `a` and `b` already hold the same
-value.)
-
-Variable names must be made of letters, digits, and `_`, must not start with
-a digit, and cannot be a **keyword** (`int`, `if`, `else`, `while`, `for`,
-`range`, ... — reserved by Python itself).
-
-## Expressions
-
-An **operator** is a symbol for a basic computation. The arithmetic
-operators are `+ - * / // % **`:
-
-- `/` — division (always gives a `float`)
-- `//` — quotient (`7 // 3` → `2`)
-- `%` — remainder (`7 % 3` → `1`)
-- `**` — power (`2 ** 5` → `32`)
-
-An **expression** is a legal combination of variables/values and operators
-(and, later, functions) — evaluating it substitutes each variable's value
-and computes the result:
+A long composed expression like `d` above is exactly the case for
+**decomposition** (see Week 2): split it into named steps.
 
 ```python
-z = x + y*(60 + x)
+x1 = a + math.sqrt(c+1)
+x2 = b * math.cos(x1) - 2
+d = math.cos(x2)
 ```
 
-**Precedence**, high to low: `()` > `**` > `* / // %` > `+ -`. Same
-precedence breaks left-to-right:
+## User-Defined Functions
+
+`math.sqrt` is built in; you can define your own functions the same
+way — either returning a value, or just doing something (printing,
+say) without returning one:
 
 ```python
-5 + 7*9          # 5 + (7*9) = 68, not (5+7)*9
-2*100 // 60      # (2*100) // 60 = 3
-2*(100 // 60)    # 2*(100//60) = 2
+def distance(x1, y1, x2, y2):     # returns a value
+    u = (x2-x1)**2
+    v = (y2-y1)**2
+    return math.sqrt(u+v)
+
+def printCircleArea(radius):      # no return — just prints
+    print(math.pi * radius**2)
 ```
 
-When you're not sure how an expression will parse — or the reader won't be
-— add parentheses. Don't rely on memorizing the table.
-
-**Decompose** long expressions into named intermediate steps. It costs a
-couple of extra lines and pays for itself the moment you need to debug or
-re-read the code:
+**Define functions first, then write the code that calls them** — the
+order the `def`s appear in the file doesn't affect what they compute, but a
+function has to already be defined by the time you call it:
 
 ```python
-# hard to read, hard to debug
-p = (x+y**2)**3 + 2*(x+y**2) + (x**2+1)**y
+def circleArea(radius):
+    return math.pi * radius**2
 
-# same computation, decomposed
-a = x + y**2
-b = x**2 + 1
-p = a**3 + 2*a + b**y
+def distance(x1, y1, x2, y2):
+    u = (x2-x1)**2
+    v = (y2-y1)**2
+    return math.sqrt(u+v)
+
+a = circleArea(10)
+b = distance(0, 0, 3, 4)
 ```
 
-## Types
-
-`type(·)` tells you the type of a value, variable, or expression:
+A common pattern is to wrap all the "main" calls in one `startFromHere()`
+function and call that last, so the file reads top-to-bottom as
+*definitions, then the program*:
 
 ```python
-print(type(7))        # <class 'int'>
-print(type(7.0))      # <class 'float'>
-print(type("7"))      # <class 'str'>
-print(type(7 // 3))   # <class 'int'>
-print(type(7 / 3))    # <class 'float'>
+def startFromHere():
+    a = circleArea(10)
+    b = distance(0, 0, 3, 4)
+    printCircleArea(10)
+
+startFromHere()
 ```
 
-`int(·)`, `float(·)`, `str(·)` convert between types:
+## Parameters & Arguments
+
+A **parameter** is the variable name a function receives its input through;
+an **argument** is the actual value passed in at the call site.
 
 ```python
-x = 7
-print(float(x))        # 7.0
-y = 7.51
-print(int(y))          # 7   (truncates, doesn't round)
-print(1 + int("7"))    # 8
+def circleArea(radius):     # radius: parameter
+    return math.pi * radius**2
+
+a = circleArea(10)          # 10: argument — copied into radius
 ```
 
-*Curious what `int`/`float` actually look like in memory, and why that's
-the reason `0.1 + 0.2 != 0.3`? See [How Numbers Live in
-Memory](../general/number-representation.md).*
-
-## Input / Output
-
-`print` writes to the screen; by default each argument is separated by a
-space and it ends with a newline. Both are overridable with `sep=` and
-`end=`:
+The argument variable's name (if it even has one) has nothing to do with
+the parameter's name — only the *value* is passed:
 
 ```python
-print(1, 2, 3)          # 1 2 3
-print(1, end=" ")
-print(2, end="")
-print(3)                 # 1 23
+def circleArea(x):
+    return math.pi * x**2
+
+x = 10
+circleArea(x)     # this call passes the value 10, not "the variable x"
 ```
 
-`input(·)` reads a line typed by the user and **always returns a `str`** —
-even if the user typed a number, you must convert it yourself:
-
-```python
-s = input("Enter an integer: ")
-n = int(s)          # input() gives str, not int
-print(n**2)
-```
+A function can call another function, and can call itself... indirectly —
+you'll see recursion later. For now: each function has its own local
+variables (its parameters, plus anything it assigns inside its body) —
+a variable named `y` inside one function is unrelated to a variable
+named `y` inside another, or at the top level.

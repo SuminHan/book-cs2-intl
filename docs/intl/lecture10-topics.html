@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,74 +181,69 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<h2 id="while-loops"><a class="header" href="#while-loops"><code>while</code> Loops</a></h2>
-<pre><code class="language-python">while boolean_expression:
-    statements
+<h2 id="append"><a class="header" href="#append"><code>.append(·)</code></a></h2>
+<p>A second way to build a list, growing it one element at a time instead of
+pre-sizing with <code>[None] * n</code>:</p>
+<pre><code class="language-python">L = [1, 2, 3, 4, 5]
+n = len(L)
+M = []
+for i in range(n):
+    M.append(L[i] * 2)     # each call adds one element to the end
 </code></pre>
-<p>Repeats the body for as long as the condition stays true — checked <em>before</em>
-every iteration, including the first. Counting the digits of <code>n = 713</code>:</p>
-<pre><code class="language-python">def countDigits(n):
-    counter = 0
-    while n &gt; 0:
-        counter += 1
-        n = n // 10
-    return counter
+<h2 id="slicing"><a class="header" href="#slicing">Slicing</a></h2>
+<p><code>L[i:j]</code> — elements <code>L[i]</code> through <code>L[j-1]</code> (note: <code>L[j]</code> itself is
+<strong>excluded</strong>). Omitting <code>i</code> means “from the start”; omitting <code>j</code> means “to
+the end”; omitting both copies the whole list.</p>
+<pre><code class="language-python">L = [0, 10, 20, 30, 40, 50]
+print(L[1:4])   # [10, 20, 30]
+print(L[:3])    # [0, 10, 20]     same as L[0:3]
+print(L[2:])    # [20, 30, 40, 50]  same as L[2:6]
+print(L[:])     # [0, 10, 20, 30, 40, 50]
 </code></pre>
-<p>Trace it: <code>n=713 → counter=1,n=71 → counter=2,n=7 → counter=3,n=0</code>, loop
-condition now false, return <code>3</code>.</p>
-<h2 id="for-vs-while"><a class="header" href="#for-vs-while"><code>for</code> vs. <code>while</code></a></h2>
-<p>Any <code>for</code> loop can be rewritten as a <code>while</code> loop:</p>
-<pre><code class="language-python">for i in range(n):        # becomes:
-    total += i             i = 0
-                            while i &lt; n:
-                                total += i
-                                i += 1
+<p><code>L[i:j:k]</code> adds a step: take every <code>k</code>-th element from <code>L[i]</code> up to (not
+including) <code>L[j]</code>.</p>
+<pre><code class="language-python">L = [0, 10, 20, 30, 40, 50, 60, 70, 80, 90]
+print(L[1:9:2])    # [10, 30, 50, 70]
+print(L[1::2])     # [10, 30, 50, 70, 90]
+print(L[1:-1:2])   # [10, 30, 50, 70]   (-1: stop before the last element)
 </code></pre>
-<p><strong>Use <code>for</code> when you know the number of iterations in advance</strong> (a fixed
-range, a list you’re walking through). <strong>Use <code>while</code></strong> when you don’t —
-<code>countDigits</code> above has to keep going until <code>n</code> reaches <code>0</code>, and there’s no
-way to know ahead of time how many digits <code>n</code> has without… counting
-them.</p>
-<h2 id="while-true--break"><a class="header" href="#while-true--break"><code>while True</code> + <code>break</code></a></h2>
-<p>When the loop-continuation condition is awkward to state directly, loop
-forever (<code>while True:</code>) and <code>break</code> out explicitly once some condition is
-met inside the body:</p>
-<pre><code class="language-python">while True:
-    ...
-    if some_condition:
-        break     # exit immediately, skip everything after
-    ...
+<h2 id="comparison-membership-concatenation"><a class="header" href="#comparison-membership-concatenation">Comparison, Membership, Concatenation</a></h2>
+<pre><code class="language-python">L, M, N = [1,2,3], [1,2,3], [1,3,2]
+print(L == M)   # True  — same values, same order
+print(L == N)   # False — same values, different order
+
+print(3 in [0,1,2,3,4,5])          # True
+print([1,2] in [0,1,2,3,4,5])       # False — [1,2] is not itself an element
+print([1,2] in [0,[1,2],3])         # True  — here it is
+
+L = [0,1] + [2,3,4,5]   # [0,1,2,3,4,5]  concatenation
+M = [0,1] * 3            # [0,1,0,1,0,1]  repetition
 </code></pre>
-<pre><code class="language-python"># equivalent to the countDigits loop above, written with break instead
-while True:
-    counter += 1
-    n = n // 10
-    if n == 0:
-        break
+<h2 id="built-in-functions"><a class="header" href="#built-in-functions">Built-In Functions</a></h2>
+<p><code>sum(L)</code>, <code>max(L)</code>, <code>min(L)</code> work on lists of numbers directly — no loop
+needed. <code>L.sort()</code> is different from the rest: it’s a <strong>method</strong> (called as
+<code>L.sort()</code>, not <code>sort(L)</code>), it sorts <code>L</code> <strong>in place</strong>, and it returns
+<code>None</code> — printing the return value of <code>.sort()</code> is a reliable way to
+accidentally print <code>None</code> instead of your sorted list.</p>
+<pre><code class="language-python">L = [1, 2, 3, 2, 3, 2]
+M = L.sort()
+print(M)   # None  — NOT the sorted list
+print(L)   # [1, 2, 2, 2, 3, 3]  — L itself was modified
 </code></pre>
-<h2 id="toy-robot-with-while"><a class="header" href="#toy-robot-with-while">Toy Robot with <code>while</code></a></h2>
-<p>Some robot tasks don’t have a fixed number of steps, which is exactly the
-<code>for</code>-can’t-do-it case. “Pick up beepers here, however many there are”:</p>
-<pre><code class="language-python">while hubo.on_beeper():
-    hubo.pick_beeper()
+<h2 id="list-comprehension"><a class="header" href="#list-comprehension">List Comprehension</a></h2>
+<p>A compact way to build a list from a loop, written <code>[expr for var in iterable]</code> — optionally with an <code>if</code> filter:</p>
+<pre><code class="language-python">a = [x for x in "hello"]              # ['h','e','l','l','o']
+b = [x**2 for x in range(6)]          # [0,1,4,9,16,25]
+c = [x**2 for x in range(10) if x%2==1]   # only odd x: [1,9,25,49,81]
 </code></pre>
-<p>“Drop every beeper Hubo is carrying, walking forward after each”:</p>
-<pre><code class="language-python">hubo = Robot(beepers=50)
-while hubo.carries_beepers():
-    hubo.drop_beeper()
-    hubo.move()
+<p>Nested comprehensions build nested (2D) lists, the outer loop changing
+which row, the inner loop filling that row:</p>
+<pre><code class="language-python">d = [[i+j for i in range(4)] for j in range(3)]
+# [[0,1,2,3], [1,2,3,4], [2,3,4,5]]
 </code></pre>
-<p>If the condition is already false before the first check — e.g. Hubo was
-created with zero beepers — the loop body never runs at all, not even
-once. That’s different from a <code>for</code> loop over a nonempty range, and worth
-double-checking when a <code>while</code> loop “does nothing.”</p>
-<p>Composing two <code>while</code> loops handles “walk until you reach a pile of
-beepers, then pick them all up”:</p>
-<pre><code class="language-python">while not hubo.on_beeper():
-    hubo.move()
-while hubo.on_beeper():
-    hubo.pick_beeper()
-</code></pre>
+<p>A comprehension is optional — anything it does, a <code>for</code> loop with
+<code>.append()</code> also does. Use whichever reads more clearly for the problem at
+hand; a <code>for</code>-loop version is never wrong.</p>
 
                     </main>
 

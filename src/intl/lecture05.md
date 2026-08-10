@@ -1,35 +1,31 @@
-# Boolean Functions
-
-You want to check whether `x` is 1 or 2. In English that is one short
-sentence, so you write it the way you say it:
+# For Loops I
 
 ```python
-x = 5
-print(x == 1 or 2)
+for i in range(10):
+    print(i)
 ```
 
-`x` is 5. So this prints `False` — right?
+This prints 0 to 9. Not 1 to 10. Why would anyone design it that way?
+Nobody counts like this.
 
-**It prints `2`.**
+### Because of the subtraction
 
-Python read it as `(x == 1) or 2`:
+`range(a, b)` means start at `a`, stop before `b`. That one choice makes
+three annoying things disappear:
 
-- `x == 1` is `False`
-- so `or` moves on and hands back `2`
-- and `2` counts as true
+- **How many items?** \\(b - a\\). Nothing to add, nothing to subtract.
+  `range(0,10)` has 10 items.
+- **Splitting a list.** `range(0,5)` and `range(5,10)` fit together
+  perfectly — no gap, no overlap, no 5 appearing twice.
+- **Empty is natural.** `range(3,3)` is simply empty. No special case needed.
 
-So inside an `if`, this condition is true for every value of `x` — 5, 99,
-anything.
+If it counted 1 to 10 instead, every one of those would need a `+1` or `-1`
+somewhere — and that is exactly where off-by-one bugs live.
 
-### Say it twice
+### The habit to build this week
 
-`or` joins two complete comparisons, not one comparison and a leftover number.
+The design is not there to annoy you. It is there so that you never have to
+write `+1`.
 
-```python
-# Correct
-print(x == 1 or x == 2)     # False
-```
-
-**Why this one is dangerous:** it never crashes. It never warns you. It
-just quietly says yes to everything — and an `if` that is always true looks
-exactly like an `if` that works.
+**Whenever you catch yourself typing `range(1, n+1)`, stop and ask whether
+you are fighting the language — and whether the `+1` is about to cost you.**

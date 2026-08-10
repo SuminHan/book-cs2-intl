@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,196 +181,224 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h1>
-<h3 id="required"><a class="header" href="#required">Required</a></h3>
-<p><strong>1.</strong> Write a function <code>maximum</code> defined by:</p>
+<p><strong>1.</strong> Write a function <code>inSecondQuadrant</code> defined by:</p>
 <ul>
-<li>input parameter: two integers <code>n1, n2</code></li>
-<li>return value: the maximum value among <code>n1</code> and <code>n2</code></li>
+<li>input parameter: two integers <code>x, y</code></li>
+<li>return value: a boolean — <code>True</code> if the point <code>(x,y)</code> is in the second
+quadrant, <code>False</code> otherwise
+<ul>
+<li><em>Do not return <code>"True"</code>/<code>"False"</code> — those are strings, not booleans.</em></li>
 </ul>
-<pre><code class="language-python">def maximum(n1, n2):
+</li>
+</ul>
+<pre><code class="language-python">def inSecondQuadrant(x, y):
     # ADD ADDITIONAL CODE HERE!
-print(maximum(5, 7))  # 7
-print(maximum(7, 5))  # 7
-print(maximum(5, 5))  # 5
+print(type(inSecondQuadrant(0, 0)))  # &lt;class 'bool'&gt;
+print(inSecondQuadrant(-1, 2))   # True
+print(inSecondQuadrant(-1, -2))  # False
+print(inSecondQuadrant(1, -2))   # False
+print(inSecondQuadrant(-1, 0))   # False
 </code></pre>
-<p><strong>2.</strong> Write a function <code>countZeros</code> defined by:</p>
+<p>Using <code>inSecondQuadrant</code> above, write a function <code>exactlyTwoSecondQuadrant</code>
+defined by:</p>
 <ul>
-<li>input parameter: five integers <code>n1, n2, n3, n4, n5</code></li>
-<li>return value: the number of <code>0</code>s among <code>n1, n2, n3, n4, n5</code></li>
+<li>input parameter: six integers <code>x1,y1,x2,y2,x3,y3</code> — <code>(x1,y1)</code>, <code>(x2,y2)</code>,
+<code>(x3,y3)</code> represent three points in the plane</li>
+<li>return value: a boolean — <code>True</code> if exactly two of the three points are in
+the second quadrant, <code>False</code> otherwise</li>
 </ul>
-<pre><code class="language-python">def countZeros(n1, n2, n3, n4, n5):
+<pre><code class="language-python">def exactlyTwoSecondQuadrant(x1, y1, x2, y2, x3, y3):
     counter = 0
-    if n1 == 0:
-        counter = counter + 1
-    if n2 == 0:
+    if inSecondQuadrant(x1, y1):
         counter = counter + 1
     # ADD ADDITIONAL CODE HERE!
-print(countZeros(1, 0, 3, 0, 0))  # 3
-print(countZeros(0, 2, 2, 0, 4))  # 2
-print(countZeros(1, 2, 3, 0, 4))  # 1
-print(countZeros(1, 2, 3, 5, 4))  # 0
+    return (counter == 2)
+print(exactlyTwoSecondQuadrant(-1,2, 2,1, -2,1))  # True
+print(exactlyTwoSecondQuadrant(1,2, -2,1, -3,3))  # True
+print(exactlyTwoSecondQuadrant(1,2, -2,-1, -2,1)) # False
+print(exactlyTwoSecondQuadrant(-1,2, -2,1, -2,2)) # False
 </code></pre>
-<p><strong>3.</strong> Write a function <code>smaller</code> defined by:</p>
+<p><strong>2.</strong> Write a function <code>withinInterval</code> defined by:</p>
 <ul>
-<li>input parameter: two integers <code>n1, n2</code></li>
-<li>return value: a string — <code>"left"</code> if <code>n1</code> is less than <code>n2</code>, <code>"right"</code> if
-<code>n2</code> is less than <code>n1</code>, <code>"equal"</code> otherwise</li>
+<li>input parameter: three integers <code>lower, upper, n</code> (where <code>lower &lt;= upper</code>)</li>
+<li>return value: a boolean — <code>True</code> if <code>lower &lt;= n &lt;= upper</code>, <code>False</code>
+otherwise</li>
 </ul>
-<pre><code class="language-python">def smaller(n1, n2):
+<pre><code class="language-python">def withinInterval(lower, upper, n):
     # ADD ADDITIONAL CODE HERE!
-print(smaller(5, 7))  # left
-print(smaller(7, 5))  # right
-print(smaller(5, 5))  # equal
+print(type(withinInterval(1, 5, 0)))  # &lt;class 'bool'&gt;
+print(withinInterval(1, 5, 0))  # False
+print(withinInterval(1, 5, 1))  # True
+print(withinInterval(1, 5, 3))  # True
+print(withinInterval(1, 5, 5))  # True
+print(withinInterval(1, 5, 6))  # False
 </code></pre>
-<p><strong>4.</strong> Write a function <code>quadrant</code> defined by:</p>
+<p>Using <code>withinInterval</code> above, write a function <code>exactlyThreeWithinInterval</code>
+defined by:</p>
 <ul>
-<li>input parameter: two integers <code>x, y</code> (the x/y coordinates of a point)</li>
-<li>return value: a string — <code>"First Quadrant"</code> if <code>x,y &gt; 0</code>, <code>"Second Quadrant"</code> if <code>x &lt; 0, y &gt; 0</code>, <code>"Third Quadrant"</code> if <code>x,y &lt; 0</code>, <code>"Fourth Quadrant"</code> if <code>x &gt; 0, y &lt; 0</code>, <code>"On the Boundary"</code> otherwise</li>
+<li>input parameter: seven integers <code>lower, upper, n1,n2,n3,n4,n5</code> —
+<code>[lower,upper]</code> represents an interval</li>
+<li>return value: a boolean — <code>True</code> if exactly three of <code>n1,n2,n3,n4,n5</code> fall
+within the interval, <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def exactlyThreeWithinInterval(lower, upper, n1, n2, n3, n4, n5):
+    counter = 0
+    if withinInterval(lower, upper, n1):
+        counter = counter + 1
+    # ADD ADDITIONAL CODE HERE!
+print(exactlyThreeWithinInterval(1,5, 1,0,6,5,3))  # True
+print(exactlyThreeWithinInterval(1,5, 6,1,0,3,5))  # True
+print(exactlyThreeWithinInterval(1,5, 6,1,0,7,2))  # False
+print(exactlyThreeWithinInterval(1,5, 6,7,0,1,2))  # False
+</code></pre>
+<p><strong>3.</strong> Write a function <code>triangle</code> defined by:</p>
+<ul>
+<li>input parameter: two integers <code>a, b</code></li>
+<li>return value: a boolean — <code>True</code> if the x-axis, the y-axis, and the line
+<code>y = ax+b</code> together form a triangle in the plane, <code>False</code> otherwise</li>
 </ul>
 <pre><code class="language-python"># ADD FUNCTION HERE!
-print(quadrant(10, 5))   # First Quadrant
-print(quadrant(-5, 3))   # Second Quadrant
-print(quadrant(-5, -7))  # Third Quadrant
-print(quadrant(3, -5))   # Fourth Quadrant
-print(quadrant(0, -3))   # On the Boundary
+print(triangle(-3, -2))  # True
+print(triangle(3, 0))    # False
+print(triangle(0, 2))    # False
+print(triangle(0, 0))    # False
 </code></pre>
-<p><strong>5.</strong> Write a function <code>round</code> defined by:</p>
+<p><strong>4.</strong> Write a function <code>triangle</code> defined by:</p>
 <ul>
-<li>input parameter: a float <code>x &gt;= 0</code></li>
-<li>return value: the integer nearest to <code>x</code> (rounding) — e.g. <code>2.4</code> → <code>2</code>,
-<code>2.5</code> → <code>3</code>, <code>2.6</code> → <code>3</code>
+<li>input parameter: three positive integers <code>a, b, c</code></li>
+<li>return value: a boolean — <code>True</code> if a triangle with side lengths <code>a,b,c</code>
+can be formed, <code>False</code> otherwise
 <ul>
-<li><em>Make use of the value <code>x - int(x)</code>.</em></li>
+<li><em>If a triangle exists, <code>a+b&gt;c</code> and <code>b+c&gt;a</code> and <code>c+a&gt;b</code> all hold. What
+about the converse?</em></li>
 </ul>
 </li>
-</ul>
-<pre><code class="language-python">def round(x):
-    fraction = x - int(x)
-    # ADD ADDITIONAL CODE HERE!
-print(round(2.4))  # 2
-print(round(2.5))  # 3
-print(round(2.6))  # 3
-</code></pre>
-<p><strong>6.</strong> Write a function <code>ceiling</code> defined by:</p>
-<ul>
-<li>input parameter: a float <code>x &gt;= 0</code></li>
-<li>return value: the integer \(\lceil x \rceil\) (ceiling) — e.g. <code>2.0</code> →
-<code>2</code>, <code>2.1</code> → <code>3</code>, <code>2.6</code> → <code>3</code></li>
 </ul>
 <pre><code class="language-python"># ADD FUNCTION HERE!
-print(ceiling(2.0))              # 2
-print(ceiling(2.0000000000001))  # 3
-print(ceiling(2.99))             # 3
+print(triangle(3, 4, 5))  # True
+print(triangle(1, 5, 2))  # False
+print(triangle(3, 1, 1))  # False
 </code></pre>
-<p><strong>7.</strong> Write a function <code>quadratic</code> defined by:</p>
+<p><strong>5.</strong> Write a function <code>rightAngled</code> defined by:</p>
 <ul>
-<li>input parameter: three integers <code>a, b, c</code></li>
-<li>return value: the number of real roots of \(ax^2+bx+c=0\)
+<li>input parameter: six integers <code>x1,y1,x2,y2,x3,y3</code> — <code>(x1,y1)</code>, <code>(x2,y2)</code>,
+<code>(x3,y3)</code> represent three points in the plane</li>
+<li>return value: a boolean — <code>True</code> if the three points form a right-angled
+triangle, <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python">def rightAngled(x1, y1, x2, y2, x3, y3):
+    a = (x2-x1)**2 + (y2-y1)**2
+    b = (x3-x2)**2 + (y3-y2)**2
+    c = (x1-x3)**2 + (y1-y3)**2
+    # ADD ADDITIONAL CODE HERE!
+print(rightAngled(1, 1, 5, 2, -1, 9))  # True
+print(rightAngled(1, 2, 4, 2, 5, 4))   # False
+print(rightAngled(1, 2, 4, 2, 4, 3))   # True
+</code></pre>
+<p><strong>6.</strong> Write a function <code>acuteAngled</code> defined by:</p>
 <ul>
-<li><em>Note: <code>a</code> and <code>b</code> may be 0; assume <code>a=b=c=0</code> is never given as input.</em></li>
+<li>input parameter: six integers <code>x1,y1,x2,y2,x3,y3</code> — <code>(x1,y1)</code>, <code>(x2,y2)</code>,
+<code>(x3,y3)</code> represent three points in the plane</li>
+<li>return value: a boolean — <code>True</code> if the three points form an acute-angled
+triangle, <code>False</code> otherwise</li>
+</ul>
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(acuteAngled(1, 2, 4, 3, 2, 7))  # True
+print(acuteAngled(1, 2, 4, 2, 5, 4))  # False
+print(acuteAngled(1, 2, 4, 2, 4, 3))  # False
+</code></pre>
+<p><strong>7.</strong> Write a function <code>intersect</code> defined by:</p>
+<ul>
+<li>input parameter: six integers <code>x1,y1,r1,x2,y2,r2</code>, where <code>x1,y1,r1</code>
+represent a circle centered at <code>(x1,y1)</code> with radius <code>r1</code>, and <code>x2,y2,r2</code>
+represent another circle centered at <code>(x2,y2)</code> with radius <code>r2</code></li>
+<li>return value: a boolean — <code>True</code> if the two circles intersect at two
+points, <code>False</code> otherwise
+<ul>
+<li><em>Use <code>abs(x)</code> to compute the absolute value \(|x|\).</em></li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-python">def quadratic(a, b, c):
-    if a == 0:
-        # ADD ADDITIONAL CODE HERE!
-    else:
-        D = b**2 - 4*a*c
-        # ADD ADDITIONAL CODE HERE!
-print(quadratic(0, 0, 1))   # 0
-print(quadratic(0, 1, 1))   # 1
-print(quadratic(1, -2, 1))  # 1
-print(quadratic(1, 1, 1))   # 0
-print(quadratic(1, -4, 1))  # 2
+<pre><code class="language-python"># ADD FUNCTION HERE!
+print(intersect(1, 1, 3, 5, 4, 2))  # False
+print(intersect(1, 1, 3, 4, 3, 2))  # True
+print(intersect(1, 1, 3, 2, 1, 2))  # False
 </code></pre>
-<p><strong>8.</strong> Write a function <code>minX</code> defined by:</p>
+<p><strong>8.</strong> Write a function <code>leapYear</code> defined by:</p>
 <ul>
-<li>input parameter: three integers <code>a, b, c</code> where <code>a &gt; 0</code> and <code>b &lt; 0</code></li>
-<li>return value: the integer <code>x</code> that minimizes \(ax^2+bx+c\) (the smallest
-such integer, if there’s a tie)
+<li>input parameter: a positive integer <code>year</code></li>
+<li>return value: a boolean — <code>True</code> if <code>year</code> is a leap year, <code>False</code>
+otherwise
 <ul>
-<li>e.g. if <code>a=1, b=-9, c=2</code>, then <code>x=4</code> is returned (not <code>4.5</code> or <code>5</code>).</li>
-<li><em>Focus on <code>x0 = int(-b/(2*a))</code> and <code>x0 + 1</code>.</em></li>
+<li>Basically, leap years occur in years divisible by 4 (2009-2011 are not
+leap years, while 2008 and 2012 are).</li>
+<li>Years ending in <code>00</code> are leap years only if divisible by 400 (1700,
+1800, 1900, 2100, 2200 are not leap years; 1600, 2000, 2400 are).</li>
 </ul>
 </li>
 </ul>
-<pre><code class="language-python">def f(a, b, c, x):
-    return a*x**2 + b*x + c
-def minX(a, b, c):
-    x0 = int(-b / (2*a))
+<pre><code class="language-python">def leapYear(year):
+    if year % 4 != 0:
+        return False
+    # now, year is divisible by 4
     # ADD ADDITIONAL CODE HERE!
-print(minX(1, -9, 2))   # 4
-print(minX(9, -5, 0))   # 0
-print(minX(9, -15, 0))  # 1
-print(minX(7, -13, 3))  # 1
+print(leapYear(2008), leapYear(2011), leapYear(2012))  # True False True
+print(leapYear(2000), leapYear(2100), leapYear(2200))  # True False False
+print(leapYear(2300), leapYear(2400), leapYear(3200))  # False True True
 </code></pre>
-<p><strong>9.</strong> Write a function <code>rock_paper_scissors</code> defined by:</p>
+<p>Using <code>leapYear</code> above, write a function <code>numDays</code> defined by:</p>
 <ul>
-<li>input parameter: two strings <code>first, second</code>, each one of <code>"R"</code>, <code>"P"</code>,
-<code>"S"</code> (Rock/Paper/Scissors)</li>
-<li>return value: a string — <code>"First"</code> if <code>first</code> wins, <code>"Second"</code> if <code>second</code>
-wins, <code>"Tie"</code> if the game is tied</li>
+<li>input parameter: two positive integers <code>year, month</code></li>
+<li>return value: the number of days in that year and month</li>
 </ul>
-<pre><code class="language-python">def rock_paper_scissors(first, second):
-    if first == second:
-        return "Tie"
+<pre><code class="language-python">def numDays(year, month):
+    assert (1 &lt;= month &lt;= 12)
+    if month == 1 or month == 3 or month == 5 or month == 7 or \
+       month == 8 or month == 10 or month == 12:
+        return 31
     # ADD ADDITIONAL CODE HERE!
-    # if first == "R" ...
-print(rock_paper_scissors("R","R"))  # Tie
-print(rock_paper_scissors("R","S"))  # First
-print(rock_paper_scissors("R","P"))  # Second
-print(rock_paper_scissors("S","S"))  # Tie
-print(rock_paper_scissors("S","P"))  # First
-print(rock_paper_scissors("S","R"))  # Second
-print(rock_paper_scissors("P","P"))  # Tie
-print(rock_paper_scissors("P","R"))  # First
-print(rock_paper_scissors("P","S"))  # Second
+print(numDays(2000,1), numDays(2001,4), numDays(2004,8))  # 31 30 31
+print(numDays(2004,9), numDays(2005,3), numDays(2005,7))  # 30 31 31
+print(numDays(2008,2), numDays(2011,2), numDays(2012,2))  # 29 28 29
+print(numDays(2000,2), numDays(2100,2), numDays(2200,2))  # 29 28 28
+print(numDays(2300,2), numDays(2400,2), numDays(3200,2))  # 28 29 29
 </code></pre>
-<p><strong>10.</strong> Write a function <code>better</code> defined by:</p>
+<p><strong>9.</strong> Big hospitals are always ready for emergency medical treatment, which
+often requires blood transfusions. Consider the problem faced by a hospital
+trying to determine whether its blood supply is sufficient.</p>
+<p>The basic rule for blood donation (ABO type only, ignoring Rh type for
+simplicity):</p>
 <ul>
-<li>input parameter: six integers representing the medal standings of two
-countries — <code>gold1,silver1,bronze1</code> for the first, <code>gold2,silver2,bronze2</code>
-for the second</li>
-<li>return value: a string — <code>"First"</code> if the first country’s result is
-better, <code>"Second"</code> if the second’s is better, <code>"Tie"</code> if tied — ranked in
-gold-silver-bronze order (<strong>not</strong> by total medal count)</li>
+<li>Patients with type O can receive only blood type O.</li>
+<li>Patients with type A can receive only blood types A or O.</li>
+<li>Patients with type B can receive only blood types B or O.</li>
+<li>Patients with type AB can receive any of the four types.</li>
 </ul>
-<pre><code class="language-python">def better(gold1, silver1, bronze1, gold2, silver2, bronze2):
-    if gold1 &gt; gold2:
-        return "First"
-    if gold1 &lt; gold2:
-        return "Second"
-    # ADD ADDITIONAL CODE HERE!
-print(better(10,4,24, 1,35,25))    # First
-print(better(1,35,25, 10,4,24))    # Second
-print(better(10,18,0, 10,4,24))    # First
-print(better(10,4,24, 10,18,0))    # Second
-print(better(10,20,5, 10,20,4))    # First
-print(better(10,20,4, 10,20,5))    # Second
-print(better(10,20,5, 10,20,5))    # Tie
-</code></pre>
-<h3 id="optional-problems"><a class="header" href="#optional-problems">Optional Problems</a></h3>
-<p><strong>11.</strong> Write a function <code>area</code> defined by:</p>
+<p>Write a function <code>blood</code> defined by:</p>
 <ul>
-<li>input parameter: six positive integers <code>x1,y1,l1,x2,y2,l2</code>, where
-<code>x1,y1,l1</code> represent a square centered at <code>(x1,y1)</code> with side length <code>l1</code>,
-and <code>x2,y2,l2</code> represent another square centered at <code>(x2,y2)</code> with side
-length <code>l2</code> (assume <code>l1 &gt;= l2</code>)</li>
-<li>return value: the area of the intersection of the two squares</li>
-</ul>
-<p><strong>12.</strong> A positive integer <code>n</code> is a <em>triangular number</em> if there exists a
-positive integer <code>m</code> such that \(n = m(m+1)/2\).</p>
-<p>Write a function <code>triangular</code> defined by:</p>
+<li>input parameter: eight integers — <code>supplyO,supplyA,supplyB,supplyAB</code> (the
+current supply of each blood type) and <code>demandO,demandA,demandB,demandAB</code>
+(the current demand)</li>
+<li>return value: a boolean — <code>True</code> if the current supply suffices for the
+current demand, <code>False</code> otherwise
 <ul>
-<li>input parameter: a positive integer <code>n</code></li>
-<li>return value: the positive integer <code>m</code> such that \(n=m(m+1)/2\), or
-<code>None</code> if <code>n</code> is not a triangular number
-<ul>
-<li><em>Hint: \(n = m(m+1)/2 \Rightarrow m^2 &lt; 2n &lt; (m+1)^2 \Rightarrow m &lt;
-\sqrt{2n} &lt; m+1\).</em></li>
+<li><em>Hint: the supply does <strong>not</strong> suffice if any of these hold:</em>
+<code>supplyO &lt; demandO</code>; <code>supplyO+supplyA &lt; demandO+demandA</code>;
+<code>supplyO+supplyB &lt; demandO+demandB</code>;
+<code>supplyO+supplyA+supplyB &lt; demandO+demandA+demandB</code>;
+<code>supplyO+supplyA+supplyB+supplyAB &lt; demandO+demandA+demandB+demandAB</code>.
+<em>What about the converse?</em></li>
 </ul>
 </li>
 </ul>
+<pre><code class="language-python">def blood(supplyO, supplyA, supplyB, supplyAB,
+          demandO, demandA, demandB, demandAB):
+    if supplyO &lt; demandO:
+        return False
+    # ADD ADDITIONAL CODE HERE!
+print(blood(50, 36, 11, 8, 45, 42, 10, 3))  # False
+print(blood(50, 36, 11, 3, 45, 38, 10, 7))  # True
+</code></pre>
 
                     </main>
 

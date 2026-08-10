@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>For Loops III - CS2 International Supplement</title>
+        <title>While Loops - CS2 International Supplement</title>
 
 
         <!-- Custom HTML head -->
@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,31 +180,35 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="for-loops-iii"><a class="header" href="#for-loops-iii">For Loops III</a></h1>
-<p>This is the quantifier pattern you just learned — “for all”.</p>
-<pre><code class="language-python">def all_positive(L):
-    for x in L:
-        if x &lt;= 0:
-            return False
-    return True
+                        <h1 id="while-loops"><a class="header" href="#while-loops">While Loops</a></h1>
+<p><strong>14 August 2003, 2:14 p.m.</strong> A control room in Ohio. A program whose only
+job is to raise an alarm when the power grid is in trouble.</p>
+<p>Two parts of that program reached for the same piece of data at the same
+moment. The program did not crash. It did not print an error. It started
+going round and round, and never came back out.</p>
+<p>The screens kept showing the last thing they had seen: everything normal.</p>
+<h3 id="nobody-knew-anything-was-wrong"><a class="header" href="#nobody-knew-anything-was-wrong">Nobody knew anything was wrong</a></h3>
+<p>Power lines were failing. The operators could not see it, because the
+thing that tells them was stuck in a loop.</p>
+<p>By the end of the evening the failure had cascaded across eight US states
+and into Ontario. <strong>About 55 million people</strong> lost power.</p>
+<p><em>The software was a widely used energy management system. The loop had run
+correctly for years — it only misbehaved when two things happened at once.</em></p>
+<blockquote>
+<p>Sources: US–Canada Power System Outage Task Force final report (2004);
+contemporaneous reporting on the GE XA/21 alarm failure.</p>
+</blockquote>
+<h3 id="why-while-deserves-your-respect"><a class="header" href="#why-while-deserves-your-respect">Why <code>while</code> deserves your respect</a></h3>
+<p>A <code>for</code> loop always ends: the list runs out. A <code>while</code> loop ends only if
+you make it end.</p>
+<pre><code class="language-python">n = 10
+while n &gt; 0:
+    print(n)
+    n = n - 1        # remove this line and it never stops
 </code></pre>
-<p><code>all_positive([1, 2, 3])</code> is <code>True</code>. <code>all_positive([1, -2])</code> is <code>False</code>. Good.</p>
-<p>Now: <code>all_positive([])</code> — the empty list. Is every number in it positive?</p>
-<p><strong>Python says <code>True</code>.</strong></p>
-<p>Follow the code: the loop body never runs, so nothing ever returns <code>False</code>,
-so it falls through to <code>return True</code>.</p>
-<p>And that is <em>not a bug</em> — it is the correct answer. To prove “all of them
-are positive” false, you must point at one that isn’t. In an empty list
-there is nothing to point at.</p>
-<p><em>Mathematicians call this a vacuous truth. Python’s own <code>all([])</code> is <code>True</code>
-for the same reason, and <code>any([])</code> is <code>False</code>.</em></p>
-<h3 id="where-it-will-bite-you"><a class="header" href="#where-it-will-bite-you">Where it will bite you</a></h3>
-<pre><code class="language-python">if all_passed(students): print("Everyone passed!")
-</code></pre>
-<p>Run that on a class with no students and it happily announces that
-everyone passed.</p>
-<p><strong>The empty case is not an edge case you forgot. It is the first case you
-should test.</strong></p>
+<p><strong>Ask this every single time you write <code>while</code>:</strong> “What changes inside the
+loop that will eventually make the condition false?” If you cannot point at
+that line, you have written an infinite loop.</p>
 
                     </main>
 

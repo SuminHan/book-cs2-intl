@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>For Loops I - CS2 International Supplement</title>
+        <title>Lists - CS2 International Supplement</title>
 
 
         <!-- Custom HTML head -->
@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,29 +180,31 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="for-loops-i"><a class="header" href="#for-loops-i">For Loops I</a></h1>
-<pre><code class="language-python">for i in range(10):
-    print(i)
+                        <h1 id="lists"><a class="header" href="#lists">Lists</a></h1>
+<p>You want a 3×3 grid of zeros. You already know that <code>[0]*3</code> gives
+<code>[0, 0, 0]</code>, so:</p>
+<pre><code class="language-python">grid = [[0]*3] * 3
+grid[0][0] = 1
+print(grid)
 </code></pre>
-<p>This prints 0 to 9. Not 1 to 10. Why would anyone design it that way?
-Nobody counts like this.</p>
-<h3 id="because-of-the-subtraction"><a class="header" href="#because-of-the-subtraction">Because of the subtraction</a></h3>
-<p><code>range(a, b)</code> means start at <code>a</code>, stop before <code>b</code>. That one choice makes
-three annoying things disappear:</p>
-<ul>
-<li><strong>How many items?</strong> \(b - a\). Nothing to add, nothing to subtract.
-<code>range(0,10)</code> has 10 items.</li>
-<li><strong>Splitting a list.</strong> <code>range(0,5)</code> and <code>range(5,10)</code> fit together
-perfectly — no gap, no overlap, no 5 appearing twice.</li>
-<li><strong>Empty is natural.</strong> <code>range(3,3)</code> is simply empty. No special case needed.</li>
-</ul>
-<p>If it counted 1 to 10 instead, every one of those would need a <code>+1</code> or <code>-1</code>
-somewhere — and that is exactly where off-by-one bugs live.</p>
-<h3 id="the-habit-to-build-this-week"><a class="header" href="#the-habit-to-build-this-week">The habit to build this week</a></h3>
-<p>The design is not there to annoy you. It is there so that you never have to
-write <code>+1</code>.</p>
-<p><strong>Whenever you catch yourself typing <code>range(1, n+1)</code>, stop and ask whether
-you are fighting the language — and whether the <code>+1</code> is about to cost you.</strong></p>
+<p>You changed <strong>one</strong> cell. What prints?</p>
+<p><strong>All three rows changed:</strong></p>
+<pre><code>[[1, 0, 0], [1, 0, 0], [1, 0, 0]]
+</code></pre>
+<p><code>* 3</code> did not make three rows. It made three names for the same row.</p>
+<pre><code class="language-python">print(grid[0] is grid[1])    # True -- the same object
+</code></pre>
+<p>A list does not hold rows inside itself; it holds directions to rows.
+Copying the directions three times still leaves one row.</p>
+<h3 id="make-each-row-separately"><a class="header" href="#make-each-row-separately">Make each row separately</a></h3>
+<pre><code class="language-python"># Correct
+grid = [[0]*3 for _ in range(3)]
+grid[0][0] = 1
+print(grid)   # [[1,0,0], [0,0,0], [0,0,0]]
+</code></pre>
+<p><strong>Why this bug is worth remembering:</strong> the code runs. There is no error.
+The grid <em>looks</em> right until you change one cell — and then it is wrong
+everywhere at once.</p>
 
                     </main>
 

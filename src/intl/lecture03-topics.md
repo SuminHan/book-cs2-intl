@@ -1,129 +1,104 @@
 # Topics Covered
 
-## Indentation
+## Boolean Type & Expressions
 
-The body of a function (and later, of `if`/`for`/`while`) is marked purely
-by **indentation** — there are no `{ }` or `end` keywords. Use Tab (not the
-space bar) to indent consistently.
+A fourth type joins `int`/`float`/`str`: `bool`, whose only two values are
+`True` and `False`.
 
-```python
-def distance(x1, y1, x2, y2):
-    u = (x2-x1)**2
-    v = (y2-y1)**2
-    return math.sqrt(u+v)
-```
+**Relational operators** build primitive boolean expressions: `== != > < >=
+<=`. Watch the difference between assignment and equality — "let x = y" in
+math becomes `x = y` (assignment) in Python, while "if x equals y" becomes
+`x == y` (a boolean expression, no side effect).
 
-Nested structure is represented by *nested* indentation, and different
-indentation gives a genuinely different program — these two are not the
-same function:
+**Logical operators** combine boolean expressions: `and`, `or`, `not`.
 
-```python
-def walk_9_by_9():
-    for j in range(4):
-        for i in range(9):
-            hubo.move()
-        hubo.turn_left()
+| p | q | `p and q` | `p or q` | `not p` |
+|---|---|---|---|---|
+| True | True | True | True | False |
+| True | False | False | True | False |
+| False | True | False | True | True |
+| False | False | False | False | True |
 
-def walk_1_by_1_9_times():
-    for j in range(4):
-        for i in range(9):
-            hubo.move()
-            hubo.turn_left()
-```
-
-## Built-in Functions
-
-Python ships built-in functions for the common math functions: `math.sqrt`,
-the trig family (`math.sin`, `math.cos`, `math.tan`, `math.asin`, ...),
-`math.exp`, `math.log`, and more (`import math` first).
+Precedence, high to low: `()` > `**` > `* / // %` > `+ -` > relational
+(`== != > < >= <=`) > `not` > `and` > `or`. As always, parenthesize
+anything you're not 100% sure of:
 
 ```python
-a = math.sqrt(17)
-b = math.sin(60 * math.pi / 180)
-c = math.log(20 * b)
-d = math.cos(b * math.cos(a + math.sqrt(c+1)) - 2)
+p = x%2 == 1 or x%3 != 0 and (not(y <= 1) or x%2 == 1)
 ```
 
-A long composed expression like `d` above is exactly the case for
-**decomposition** (see Week 2): split it into named steps.
+## `if`-`else` Conditionals
 
 ```python
-x1 = a + math.sqrt(c+1)
-x2 = b * math.cos(x1) - 2
-d = math.cos(x2)
+if boolean_expression:
+    statements
+else:               # the else block may be omitted
+    statements
 ```
 
-## User-Defined Functions
-
-`math.sqrt` is built in; you can define your own functions the same
-way — either returning a value, or just doing something (printing,
-say) without returning one:
+This is how a **multi-case math definition** (a curly-brace piecewise
+formula) becomes code — each case becomes a branch:
 
 ```python
-def distance(x1, y1, x2, y2):     # returns a value
-    u = (x2-x1)**2
-    v = (y2-y1)**2
-    return math.sqrt(u+v)
-
-def printCircleArea(radius):      # no return — just prints
-    print(math.pi * radius**2)
+# f(x) = 0 if x <= 0, else x**2 + 1
+def f(x):
+    if x <= 0:
+        y = 0
+    else:
+        y = x**2 + 1
+    return y
 ```
 
-**Define functions first, then write the code that calls them** — the
-order the `def`s appear in the file doesn't affect what they compute, but a
-function has to already be defined by the time you call it:
+Chain more than two cases with `elif`:
 
 ```python
-def circleArea(radius):
-    return math.pi * radius**2
-
-def distance(x1, y1, x2, y2):
-    u = (x2-x1)**2
-    v = (y2-y1)**2
-    return math.sqrt(u+v)
-
-a = circleArea(10)
-b = distance(0, 0, 3, 4)
+if b1:
+    statements          # runs if b1 is True
+elif b2:
+    statements           # runs if b1 is False and b2 is True
+elif b3:
+    statements           # runs if b1, b2 are False and b3 is True
+else:
+    statements           # runs if none of the above are True
 ```
 
-A common pattern is to wrap all the "main" calls in one `startFromHere()`
-function and call that last, so the file reads top-to-bottom as
-*definitions, then the program*:
+`if`s can also **nest** — but watch out, `if x != 0: if x > 0: ... else:
+...` is not the same branching as `if x > 0: ... else: if x < 0: ... else:
+...`, even though both can compute the sign of `x`. Trace through `x == 0`
+by hand in each version if the difference isn't obvious.
+
+## Multiple `return` Statements
+
+A function can have more than one `return` — commonly one per branch of a
+conditional. **As soon as one `return` executes, the function ends
+immediately** — no code after it runs, even if it's inside more branches:
 
 ```python
-def startFromHere():
-    a = circleArea(10)
-    b = distance(0, 0, 3, 4)
-    printCircleArea(10)
-
-startFromHere()
+def absoluteValue(x):
+    if x < 0:
+        return -x
+    else:
+        return x
 ```
 
-## Parameters & Arguments
-
-A **parameter** is the variable name a function receives its input through;
-an **argument** is the actual value passed in at the call site.
+This lets you **prune** dead structure. Once a branch has returned, there's
+no need for the surrounding `else` — the code after the `if` block only
+ever runs when that `if` didn't return, so it's implicitly the "else" case
+already:
 
 ```python
-def circleArea(radius):     # radius: parameter
-    return math.pi * radius**2
-
-a = circleArea(10)          # 10: argument — copied into radius
+# before pruning                    # after pruning — equivalent
+if b1:                              if b1:
+    return v1                           return v1
+else:
+    if b2:                          if b2:
+        return v2                       return v2
+    else:
+        if b3:                      if b3:
+            return v3                    return v3
+        else:
+            return v4                return v4
 ```
 
-The argument variable's name (if it even has one) has nothing to do with
-the parameter's name — only the *value* is passed:
-
-```python
-def circleArea(x):
-    return math.pi * x**2
-
-x = 10
-circleArea(x)     # this call passes the value 10, not "the variable x"
-```
-
-A function can call another function, and can call itself... indirectly —
-you'll see recursion later. For now: each function has its own local
-variables (its parameters, plus anything it assigns inside its body) —
-a variable named `y` inside one function is unrelated to a variable
-named `y` inside another, or at the top level.
+Fewer nesting levels, same behavior — easier to read, easier to extend with
+one more case later.

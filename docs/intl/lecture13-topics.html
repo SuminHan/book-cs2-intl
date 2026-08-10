@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,65 +181,64 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<h2 id="break-and-continue"><a class="header" href="#break-and-continue"><code>break</code> and <code>continue</code></a></h2>
-<ul>
-<li><strong><code>break</code></strong> — exits the loop immediately. Nothing else in the loop body
-runs, and the loop doesn’t run again.</li>
-<li><strong><code>continue</code></strong> — skips the rest of <em>this</em> iteration only, and moves on
-to the next one. The loop keeps going.</li>
-</ul>
-<pre><code class="language-python">for i in range(8):
-    if i == 5:
-        break              # stop the loop entirely once i reaches 5
-    print(i, end=" ")
-print()   # 0 1 2 3 4
+<h2 id="creating-a-2d-list"><a class="header" href="#creating-a-2d-list">Creating a 2D List</a></h2>
+<p>A 2D list is a list of lists — directly:</p>
+<pre><code class="language-python">table = [[1,2,3], [4,5,6]]
+table[0]        # [1, 2, 3]  — the first row
+table[0][0]     # 1          — the first element of that row
+</code></pre>
+<p>Or built up with nested loops, using a <strong>list comprehension</strong> to create the
+row structure first, then filling it in:</p>
+<pre><code class="language-python">height, width = 2, 3
+table = [[None] * width for i in range(height)]   # height rows of width Nones
+for i in range(height):
+    for j in range(width):
+        table[i][j] = i*3 + j + 1
+print(table)
+</code></pre>
+<p>A 3D list nests one level further — depth × height × width:</p>
+<pre><code class="language-python">depth, height, width = 2, 3, 4
+table = [[[None] * width for j in range(height)] for i in range(depth)]
+for i in range(depth):
+    for j in range(height):
+        for k in range(width):
+            table[i][j][k] = i*10 + j*4 + k
+</code></pre>
+<h2 id="references-not-data--aliases"><a class="header" href="#references-not-data--aliases">References, Not Data — Aliases</a></h2>
+<p><strong>In Python, a variable holding a list doesn’t hold the list’s data
+directly — it holds a reference to it.</strong> This matters the moment you assign
+a <em>sublist</em> to another variable:</p>
+<pre><code class="language-python">nation = [["Korea", "Seoul"], ["USA", "Washington"], ["China", "Beijing"]]
+a = nation[0]     # a now refers to the SAME inner list as nation[0]
+a[1] = "Busan"
+print(nation)     # [["Korea", "Busan"], ["USA", "Washington"], ["China", "Beijing"]]
+</code></pre>
+<p><code>a</code> is not a copy — it’s another name (an <strong>alias</strong>) for the exact same
+list object <code>nation[0]</code> already pointed to. Modifying <code>a</code> modifies
+<code>nation[0]</code> too, because there was only ever one list in memory. This is
+the same reason <code>int</code>/<code>float</code>/<code>str</code> (immutable — reassigning makes a new
+value) behave differently from <code>list</code> (mutable — modifying in place
+affects every alias).</p>
+<h2 id="copying-a-multi-dimensional-list--three-ways-not-equivalent"><a class="header" href="#copying-a-multi-dimensional-list--three-ways-not-equivalent">Copying a Multi-Dimensional List — Three Ways, Not Equivalent</a></h2>
+<pre><code class="language-python">import copy
+a = [[1, 2], [3, 4], [5, 6]]
+b = a                     # alias — b IS a, same object
+c = a[:]                  # shallow copy — new outer list, but inner lists still shared
+d = copy.deepcopy(a)      # deep copy — fully independent, all levels
 
-for i in range(8):
-    if i in [3, 5]:
-        continue            # skip printing 3 and 5, keep looping
-    print(i, end=" ")
-print()   # 0 1 2 4 6 7
+a[1][1] = 40
+print(a)   # [[1, 2], [3, 40], [5, 6]]
+print(b)   # [[1, 2], [3, 40], [5, 6]]   — b changed too, it's the same object
+print(c)   # [[1, 2], [3, 40], [5, 6]]   — c changed too! the inner lists are shared
+print(d)   # [[1, 2], [3, 4], [5, 6]]    — d is untouched
 </code></pre>
-<h2 id="in-nested-loops-only-the-innermost-loop"><a class="header" href="#in-nested-loops-only-the-innermost-loop">In Nested Loops: Only the Innermost Loop</a></h2>
-<p>Both <code>break</code> and <code>continue</code> act on the <strong>innermost</strong> loop that contains
-them — they never reach out to an outer loop. This is the detail that
-trips people up, so trace it carefully:</p>
-<pre><code class="language-python">i = 0
-while i &lt; 5:
-    j = 0
-    while j &lt; 5:
-        if i &gt; 0:
-            break          # exits the INNER while j loop only
-        print(j, end=" ")
-        j += 1
-    print(i, end=" ")       # this line still runs every time
-    i += 1
-</code></pre>
-<p>Here, <code>break</code> fires as soon as <code>i &gt; 0</code> — but it only ever escapes the inner
-<code>j</code>-loop. The outer <code>i</code>-loop is completely unaffected: it keeps
-incrementing <code>i</code> and printing it every iteration, it just stops seeing any
-<code>j</code> values printed from the second iteration onward.</p>
-<p>Now compare with <code>continue</code> in the same position:</p>
-<pre><code class="language-python">i = 0
-while i &lt; 5:
-    j = 0
-    while j &lt; 5:
-        if i &gt; 0:
-            continue        # skips straight back to "while j &lt; 5" —
-                              # j never gets incremented!
-        print(j, end=" ")
-        j += 1
-    print(i, end=" ")
-    i += 1
-</code></pre>
-<p>This second version is a trap: once <code>i &gt; 0</code>, <code>continue</code> sends control back
-to the <code>while j &lt; 5</code> check <em>without</em> ever reaching <code>j += 1</code> — so <code>j</code> stays
-at whatever it was, the condition <code>j &lt; 5</code> is still true, and the loop spins
-forever. <strong><code>continue</code> re-checks the loop condition; it does not advance
-whatever variable your loop condition depends on for you.</strong> This is a good
-reason to prefer <code>for</code> loops (where the loop variable advances
-automatically) whenever the number of iterations is known in advance, and
-to be extra careful with <code>continue</code> inside a <code>while</code>.</p>
+<p><code>b = a</code> shares everything. <code>c = a[:]</code> (slicing) copies the <em>outer</em> list —
+<code>c</code> and <code>a</code> are different list objects — but each element of <code>c</code> is still
+the same inner-list object as in <code>a</code>, so a mutation through <code>a[1][1]</code>
+shows up in <code>c</code> too. Only <code>copy.deepcopy(a)</code> copies every level, giving you
+a result that’s fully independent of the original. When you need a true,
+independent copy of a nested list, <code>deepcopy</code> is the only one of the three
+that actually gives you one.</p>
 
                     </main>
 
@@ -249,7 +248,7 @@ to be extra careful with <code>continue</code> inside a <code>while</code>.</p>
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../intl/lecture14.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../intl/lecture13-problems.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -263,7 +262,7 @@ to be extra careful with <code>continue</code> inside a <code>while</code>.</p>
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../intl/lecture14.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../intl/lecture13-problems.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Functions - CS2 International Supplement</title>
+        <title>Conditionals - CS2 International Supplement</title>
 
 
         <!-- Custom HTML head -->
@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,32 +180,34 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
-<p>A function takes something in and gives something back. Usually that is
-exactly what you want.</p>
-<p>Biologists study a gene called <code>SEPT2</code>. Another is called <code>MARCH1</code>. They
-typed those names into Excel. Excel has a helpful little function that
-looks at what you typed and decides what you <em>meant</em>. What do you think it did?</p>
-<p><strong>It turned genes into dates:</strong></p>
-<pre><code>SEPT2   -&gt;   2-Sep
-MARCH1  -&gt;   1-Mar
+                        <h1 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h1>
+<p><strong>1 August 2012, 9:30 a.m.</strong> Knight Capital was the largest trader of US
+stocks. Its software started buying high and selling low — thousands of
+times per second.</p>
+<p>It was meant to place 212 orders. It placed more than 4 million.</p>
+<p>Forty-five minutes later the company had lost <strong>$440 million</strong> — more than
+it was worth.</p>
+<h3 id="the-cause-was-an-if"><a class="header" href="#the-cause-was-an-if">The cause was an <code>if</code></a></h3>
+<p>Back in 2003 the code had a switch that turned on an old feature called
+<em>Power Peg</em>:</p>
+<pre><code class="language-python">if flag:
+    run_power_peg()      # 2003: an old testing feature
 </code></pre>
-<p>Nobody asked for this. Nobody was warned. The gene names were simply gone,
-and once saved they are very hard to get back.</p>
-<p>A 2016 study checked 35,175 spreadsheets from 3,597 published papers: about
-one paper in five carried these corrupted names. A follow-up covering
-2014–2020 found over 30%.</p>
+<p>Years later that same <code>flag</code> was reused to mean something completely
+different — and nobody deleted the old branch.</p>
+<p>On deployment day the new code reached 7 of the 8 servers. The eighth still
+had the 2003 branch. When the flag went up, that server did what it was told.</p>
 <blockquote>
-<p>Sources: Ziemann et al., <em>Genome Biology</em> (2016); Abeysooriya et al.,
-<em>PLOS Computational Biology</em> (2021).</p>
+<p>Widely documented; see the SEC administrative proceeding against Knight
+Capital (2013).</p>
 </blockquote>
-<h3 id="the-lesson-for-this-week"><a class="header" href="#the-lesson-for-this-week">The lesson for this week</a></h3>
-<p>When you call a function, you are trusting it to do exactly one thing — the
-thing its name says.</p>
-<p>Excel’s autocorrect was doing its job perfectly. It was just doing a
-different job than the biologists thought it was doing.</p>
-<p><strong>When you write a function this week, ask: could someone read the name and
-expect something else?</strong></p>
+<h3 id="what-an-if-really-is"><a class="header" href="#what-an-if-really-is">What an <code>if</code> really is</a></h3>
+<p>An <code>if</code> is a promise about the future: “whenever this condition is true, do
+this.”</p>
+<p>The condition was still true. The code still ran. Only the meaning had
+changed — and a condition cannot notice that.</p>
+<p><strong>Every <code>if</code> you write this week is a promise that has to stay true after
+you forget you wrote it.</strong></p>
 
                     </main>
 

@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Boolean Functions - CS2 International Supplement</title>
+        <title>For Loops I - CS2 International Supplement</title>
 
 
         <!-- Custom HTML head -->
@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,30 +180,29 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="boolean-functions"><a class="header" href="#boolean-functions">Boolean Functions</a></h1>
-<p>You want to check whether <code>x</code> is 1 or 2. In English that is one short
-sentence, so you write it the way you say it:</p>
-<pre><code class="language-python">x = 5
-print(x == 1 or 2)
+                        <h1 id="for-loops-i"><a class="header" href="#for-loops-i">For Loops I</a></h1>
+<pre><code class="language-python">for i in range(10):
+    print(i)
 </code></pre>
-<p><code>x</code> is 5. So this prints <code>False</code> — right?</p>
-<p><strong>It prints <code>2</code>.</strong></p>
-<p>Python read it as <code>(x == 1) or 2</code>:</p>
+<p>This prints 0 to 9. Not 1 to 10. Why would anyone design it that way?
+Nobody counts like this.</p>
+<h3 id="because-of-the-subtraction"><a class="header" href="#because-of-the-subtraction">Because of the subtraction</a></h3>
+<p><code>range(a, b)</code> means start at <code>a</code>, stop before <code>b</code>. That one choice makes
+three annoying things disappear:</p>
 <ul>
-<li><code>x == 1</code> is <code>False</code></li>
-<li>so <code>or</code> moves on and hands back <code>2</code></li>
-<li>and <code>2</code> counts as true</li>
+<li><strong>How many items?</strong> \(b - a\). Nothing to add, nothing to subtract.
+<code>range(0,10)</code> has 10 items.</li>
+<li><strong>Splitting a list.</strong> <code>range(0,5)</code> and <code>range(5,10)</code> fit together
+perfectly — no gap, no overlap, no 5 appearing twice.</li>
+<li><strong>Empty is natural.</strong> <code>range(3,3)</code> is simply empty. No special case needed.</li>
 </ul>
-<p>So inside an <code>if</code>, this condition is true for every value of <code>x</code> — 5, 99,
-anything.</p>
-<h3 id="say-it-twice"><a class="header" href="#say-it-twice">Say it twice</a></h3>
-<p><code>or</code> joins two complete comparisons, not one comparison and a leftover number.</p>
-<pre><code class="language-python"># Correct
-print(x == 1 or x == 2)     # False
-</code></pre>
-<p><strong>Why this one is dangerous:</strong> it never crashes. It never warns you. It
-just quietly says yes to everything — and an <code>if</code> that is always true looks
-exactly like an <code>if</code> that works.</p>
+<p>If it counted 1 to 10 instead, every one of those would need a <code>+1</code> or <code>-1</code>
+somewhere — and that is exactly where off-by-one bugs live.</p>
+<h3 id="the-habit-to-build-this-week"><a class="header" href="#the-habit-to-build-this-week">The habit to build this week</a></h3>
+<p>The design is not there to annoy you. It is there so that you never have to
+write <code>+1</code>.</p>
+<p><strong>Whenever you catch yourself typing <code>range(1, n+1)</code>, stop and ask whether
+you are fighting the language — and whether the <code>+1</code> is about to cost you.</strong></p>
 
                     </main>
 

@@ -1,31 +1,40 @@
-# For Loops I
+# Lists
+
+You want a 3×3 grid of zeros. You already know that `[0]*3` gives
+`[0, 0, 0]`, so:
 
 ```python
-for i in range(10):
-    print(i)
+grid = [[0]*3] * 3
+grid[0][0] = 1
+print(grid)
 ```
 
-This prints 0 to 9. Not 1 to 10. Why would anyone design it that way?
-Nobody counts like this.
+You changed **one** cell. What prints?
 
-### Because of the subtraction
+**All three rows changed:**
 
-`range(a, b)` means start at `a`, stop before `b`. That one choice makes
-three annoying things disappear:
+```
+[[1, 0, 0], [1, 0, 0], [1, 0, 0]]
+```
 
-- **How many items?** \\(b - a\\). Nothing to add, nothing to subtract.
-  `range(0,10)` has 10 items.
-- **Splitting a list.** `range(0,5)` and `range(5,10)` fit together
-  perfectly — no gap, no overlap, no 5 appearing twice.
-- **Empty is natural.** `range(3,3)` is simply empty. No special case needed.
+`* 3` did not make three rows. It made three names for the same row.
 
-If it counted 1 to 10 instead, every one of those would need a `+1` or `-1`
-somewhere — and that is exactly where off-by-one bugs live.
+```python
+print(grid[0] is grid[1])    # True -- the same object
+```
 
-### The habit to build this week
+A list does not hold rows inside itself; it holds directions to rows.
+Copying the directions three times still leaves one row.
 
-The design is not there to annoy you. It is there so that you never have to
-write `+1`.
+### Make each row separately
 
-**Whenever you catch yourself typing `range(1, n+1)`, stop and ask whether
-you are fighting the language — and whether the `+1` is about to cost you.**
+```python
+# Correct
+grid = [[0]*3 for _ in range(3)]
+grid[0][0] = 1
+print(grid)   # [[1,0,0], [0,0,0], [0,0,0]]
+```
+
+**Why this bug is worth remembering:** the code runs. There is no error.
+The grid *looks* right until you change one cell — and then it is wrong
+everywhere at once.

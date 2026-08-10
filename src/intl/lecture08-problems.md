@@ -1,111 +1,48 @@
 # Problem Set
 
-### Required
-
-**1.** Write a function `countZero` defined by:
-- input parameter: an integer list `numbers`
-- return value: the number of occurrences of `0` in `numbers`
+**1.** Write a function `sumOfThreeSquares` ("for some" pattern) defined by:
+- input parameter: a positive integer `n`
+- return value: a boolean — `True` if `n` can be written as a sum of squares
+  of three positive integers (e.g. \\(38=2^2+3^2+5^2\\), \\(43=3^2+3^2+5^2\\)),
+  `False` otherwise
+  - *Refer to `sumOfTwoSquares` from this week's lecture.*
 
 ```python
-def countZero(numbers):
+def sumOfThreeSquares(n):
     # ADD ADDITIONAL CODE HERE!
-print(countZero([0,4,0,-2,4,0]))          # 3
-print(countZero([1,0,-2,4,0,0,-7,0,5]))   # 4
+    b = int(n**0.5)
+    for i in range(1, b+1):
+        for j in range(1, b+1):
+            for k in range(1, b+1):
+                ...
+for n in range(20, 31):
+    print(n, sumOfThreeSquares(n))
 ```
+Output: `20 False, 21 True, 22 True, 23 False, 24 True, 25 False, 26 True,
+27 True, 28 False, 29 True, 30 True`
 
-**2.** Write a function `countRange` defined by:
-- input parameter: an integer list `numbers` and two integers `lower, upper`
-- return value: the number of integers in `numbers` within `[lower, upper]`
-  (i.e. `lower <= x <= upper`)
+**2.** Write a function `sumOfThreeDistinctSquares` ("for some" pattern)
+defined by:
+- input parameter: a positive integer `n`
+- return value: a boolean — `True` if `n` can be written as a sum of squares
+  of three *distinct* positive integers, `False` otherwise
+  - *Use the loop template from `closestPair` (Week 7):*
+    `for i in range(1,b+1): for j in range(i+1,b+1): for k in
+    range(j+1,b+1): ...`
 
 ```python
-def countRange(numbers, lower, upper):
+def sumOfThreeDistinctSquares(n):
     # ADD ADDITIONAL CODE HERE!
-print(countRange([0,6,2,1,3,4,7], 2, 5))                      # 3
-print(countRange([8,9,10,2,4,5,9,7,2,3,7], 3, 7))             # 5
+for n in range(20, 31):
+    print(n, sumOfThreeDistinctSquares(n))
 ```
+Output: `20 False, 21 True, 22 False, 23 False, 24 False, 25 False, 26 True,
+27 False, 28 False, 29 True, 30 True`
 
-**3.** Write a function `countSecondQuadrant` defined by:
-- input parameter: a list of points in the plane, each represented as
-  `[x,y]`
-- return value: the number of points in the second quadrant
-  - *What does `p[i][0] < 0 and p[i][1] > 0` mean?*
-
-```python
-def countSecondQuadrant(p):
-    # ADD ADDITIONAL CODE HERE!
-points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
-          [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
-print(countSecondQuadrant(points))  # 3
-```
-
-**4.** Write a function `countWithinCircle` defined by:
-- input parameter: a list of points in the plane (as in problem 3) and a
-  positive integer `r`
-- return value: the number of points `(x,y)` with \\(x^2+y^2 \le r^2\\)
-
-```python
-def countWithinCircle(p, r):
-    # ADD ADDITIONAL CODE HERE!
-points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
-          [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
-print(countWithinCircle(points, 3))  # 2
-print(countWithinCircle(points, 5))  # 4
-print(countWithinCircle(points, 8))  # 9
-```
-
-**5.** Write a boolean function `withinRect` defined by:
-- input parameter: six integers `top, bottom, left, right, x, y` —
-  `top,bottom,left,right` represent an axis-aligned rectangle (e.g.
-  `(top,bottom,left,right) = (2,-4,-5,6)`)
-- return value: a boolean — `True` if `(x,y)` is inside the rectangle
-  (boundary included), `False` otherwise
-
-```python
-def withinRect(top, bottom, left, right, x, y):
-    # ADD ADDITIONAL CODE HERE!
-print(withinRect(2,-4,-5,6, -5,2))  # True
-print(withinRect(2,-4,-5,6, 6,-1))  # True
-print(withinRect(2,-4,-5,6, 0,1))   # True
-print(withinRect(2,-4,-5,6, -6,0))  # False
-print(withinRect(2,-4,-5,6, 0,3))   # False
-```
-
-Using `withinRect` above, write a function `countWithinRect` defined by:
-- input parameter: `top,bottom,left,right` (an axis-aligned rectangle) and a
-  list of points in the plane (as in problem 3)
-- return value: the number of points within the rectangle (boundary
-  included)
-
-```python
-def countWithinRect(top, bottom, left, right, p):
-    counter = 0
-    for i in range(len(p)):
-        if withinRect(top, bottom, left, right, p[i][0], p[i][1]):
-            # ADD ADDITIONAL CODE HERE!
-            ...
-points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
-          [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
-print(countWithinRect(2,-4,-5,6, points))  # 7
-```
-
-**6.** Write a function `countLeapYear` defined by:
-- input parameter: a list `numbers` of positive integers, each representing
-  a year
-- return value: the number of leap years in `numbers`
-  - *Use the `leapYear` boolean function from Week 5.*
-
-```python
-def countLeapYear(numbers):
-    # ADD ADDITIONAL CODE HERE!
-print(countLeapYear([2008,2011,2012,2000]))  # 3
-print(countLeapYear([2100,2300,2400,2200]))  # 1
-```
-
-**7.** Write a function `countComposite` defined by:
-- input parameter: a list `numbers` of positive integers
-- return value: the number of composite numbers in `numbers`
-  - *`not isPrime(p)` is true iff `p` is composite.*
+**3.** Write a function `sumOfTwoPrimes` ("for some" pattern) defined by:
+- input parameter: a positive integer `n`
+- return value: a boolean — `True` if `n` can be written as a sum of two
+  primes (e.g. `21=2+19`, `22=11+11`), `False` otherwise
 
 ```python
 def isPrime(p):
@@ -113,116 +50,154 @@ def isPrime(p):
         if p % i == 0:
             return False
     return True
-def countComposite(numbers):
+def sumOfTwoPrimes(n):
     # ADD ADDITIONAL CODE HERE!
-num = [217, 287, 181, 143, 163, 319, 233, 399, 203]
-print(countComposite(num))  # 6
+    for i in range(2, n-1):
+        for j in range(2, n-1):
+            if isPrime(i) and isPrime(j) and n == i+j:
+                ...
+for n in range(20, 31):
+    print(n, sumOfTwoPrimes(n))
 ```
+Output: `20 True, 21 True, 22 True, 23 False, 24 True, 25 True, 26 True,
+27 False, 28 True, 29 False, 30 True`
 
-**8.** Write a function `zigzagEntireWorld` defined by:
-- input parameter: none
-- return value: none
-- action: make Hubo visit the entire world in a zig-zag pattern and return
-  - *Use `move9steps()` and `zigzag()` below (`move9steps()` moves Hubo 9
-    steps forward; `zigzag()` makes Hubo zig-zag one round).*
+**4.** Write a function `sumOfTwoPrimeSquares` ("for some" pattern) defined
+by:
+- input parameter: a positive integer `n`
+- return value: a boolean — `True` if `n` can be written as a sum of squares
+  of two primes (e.g. `50=5²+5²`, `53=2²+7²`), `False` otherwise
 
 ```python
-def move9steps():
-    for i in range(9):
-        hubo.move()
-def zigzag():
-    move9steps()
-    hubo.turn_left(); hubo.move(); hubo.turn_left()
-    move9steps()
-    hubo.turn_right(); hubo.move(); hubo.turn_right()
-def zigzagEntireWorld():
+def isPrime(p):
+    for i in range(2, p//2 + 1):
+        if p % i == 0:
+            return False
+    return True
+def sumOfTwoPrimeSquares(n):
     # ADD ADDITIONAL CODE HERE!
-    zigzag()
-zigzagEntireWorld()
+for n in range(50, 61):
+    print(n, sumOfTwoPrimeSquares(n))
 ```
+Output: `50 True, 51 False, 52 False, 53 True, 54 False, 55 False, 56 False,
+57 False, 58 True, 59 False, 60 False`
 
-**9.** Write a function `whirlEntireWorld` defined by:
-- input parameter: none
-- return value: none
-- action: make Hubo visit the entire world in a spiral pattern
-  - *Using `L` for "turn left" and a number for "move that many steps
-    forward," Hubo's full action sequence is:*
-    `1 L 1 L 2 L 2 L 3 L 3 L ... 9 L 9 L 9`
+**5.** Write functions `somePrime` and `allPrime` ("for some" and "for all"
+patterns) defined by:
+- input parameter: a list of positive integers
+- return value: a boolean — for `somePrime`, `True` if there is a prime in
+  the list; for `allPrime`, `True` if every number in the list is prime;
+  `False` otherwise
 
 ```python
-def whirlEntireWorld():
+def isPrime(p):
+    for i in range(2, p//2 + 1):
+        if p % i == 0:
+            return False
+    return True
+# "for some" pattern
+def somePrime(numbers):
     # ADD ADDITIONAL CODE HERE!
-    for n in range(1, 10):
-        ...
-whirlEntireWorld()
-```
-
-**10.** Write a function `zigzagEntireWorld` defined by (a different
-pattern from problem 8):
-- input parameter: none
-- return value: none
-- action: make Hubo visit the entire world in the pattern below
-  - *Using `L`/`R` for "turn left"/"turn right" and a number for "move that
-    many steps forward," Hubo's full action sequence is:*
-    `L 1 L 1 L 1 R 1 R 2 R 2 L 1 L 3 L 3 R 1 R 4 R 4`
-    `L 1 L 5 L 5 R 1 R 6 R 6 L 1 L 7 L 7 R 1 R 8 R 8`
-
-```python
-def zigzagEntireWorld():
-    hubo.turn_right()
-    # ADD ADDITIONAL CODE HERE!
-    for n in range(1, 9):
-        if n % 2 == 1:
+    for i in range(len(numbers)):
+        if isPrime(numbers[i]):
             ...
-zigzagEntireWorld()
+# "for all" pattern
+def allPrime(numbers):
+    # ADD ADDITIONAL CODE HERE!
+num1 = [217, 287, 143, 163, 319]
+num2 = [217, 287, 143, 169, 319]
+num3 = [223, 281, 227, 151, 149]
+print(somePrime(num1), allPrime(num1))  # True False
+print(somePrime(num2), allPrime(num2))  # False False
+print(somePrime(num3), allPrime(num3))  # True True
 ```
 
-### Optional Problems
+**6.** Write a function `allDistinct` ("for all" pattern) defined by:
+- input parameter: an integer list `numbers`
+- return value: a boolean — `True` if `numbers[0], numbers[1], ...` are all
+  distinct, `False` otherwise
 
-*Not for submission/grading, but good practice (mostly past exam problems).*
+```python
+def allDistinct(numbers):
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(len(numbers)):
+        for j in range(i+1, len(numbers)):
+            ...
+print(allDistinct([1,3,2,5,2,1]))  # False
+print(allDistinct([1,0,2,5,3,4]))  # True
+```
 
-**11.** Write a function `countOutOfCircle` defined by:
-- input parameter: a list `L` of points in the plane (as in Week 7 problem
-  9) and a positive integer `r`
-- return value: the number of points in `L` outside the circle
-  \\(x^2+y^2=r^2\\)
+Write a function `allWithinRange` ("for all" pattern) defined by:
+- input parameter: an integer list `numbers` and two integers `lower,upper`
+- return value: a boolean — `True` if `lower <= numbers[i] <= upper` for
+  every `i`, `False` otherwise
 
-**12.** Write a function `countLower` defined by:
-- input parameter: an integer list `L`
-- return value: the number of integers in `L` smaller than the average of
-  all integers in `L`
+```python
+def allWithinRange(numbers, lower, upper):
+    # ADD ADDITIONAL CODE HERE!
+print(allWithinRange([1,0,2,6,3,4], 0, 5))  # False
+print(allWithinRange([1,0,2,5,3,4], 0, 5))  # True
+```
 
-**13.** Write a function `countWithinRange` defined by:
-- input parameter: an integer list `L`, each element a cube's side length
-- return value: the number of cubes whose volume falls within `[A-B, A+B]`,
-  where `A` is the average volume of the cubes and `B` is the standard
-  deviation of their volumes
-  - *The standard deviation \\(\sigma\\) of numbers \\(x_1,\ldots,x_n\\) is
-    \\(\sigma = \sqrt{\frac{\sum_{i=1}^n (x_i-\bar{x})^2}{n}}\\) where
-    \\(\bar{x} = \frac{\sum_{i=1}^n x_i}{n}\\).*
+Using `allDistinct` and `allWithinRange` above, write a function
+`isPermutation` defined by (*this is simple — one line is enough!*):
+- input parameter: an integer list `numbers`
+- return value: a boolean — `True` if `numbers` (length `n`) is a
+  permutation (all elements distinct **and** `0 <= numbers[i] <= n-1` for
+  every `i`), `False` otherwise
 
-**14.** A positive integer `q` is called a *double prime* if `q = 2p` for
-some prime `p`.
+```python
+print(isPermutation([1,3,2,5,2,1]))  # False
+print(isPermutation([1,0,2,5,3,4]))  # True
+print(isPermutation([1,0,2,6,3,4]))  # False
+```
 
-Write a function `countDoublePrime` defined by:
-- input parameter: a list `L` of positive integers
-- return value: the number of double primes in `L`
+**7.** Write a function `walk_square_picking_all_beepers` defined by:
+- input parameter: none
+- return value: none
+- action: make Hubo walk along the world boundary, picking up every beeper
+  it stands on
+  - *Use the Week 8 boundary-walk code — `for j in range(4): for i in
+    range(9): hubo.move(); hubo.turn_left()` — but replace `hubo.move()`
+    with `move_and_pick()` below.*
 
-**15.** Write a function `countTriangular` defined by:
-- input parameter: a list `L` of positive integers
-- return value: the number of triangular numbers in `L` (`n` is triangular
-  if \\(n = m(m+1)/2\\) for some positive integer `m`)
-  - *Hint: \\(n = m(m+1)/2 \Rightarrow m^2 < 2n < (m+1)^2 \Rightarrow m <
-    \sqrt{2n} < m+1\\).*
+```python
+def move_and_pick():
+    hubo.move()
+    if hubo.on_beeper():
+        hubo.pick_beeper()
+def walk_square_picking_all_beepers():
+    # ADD ADDITIONAL CODE HERE!
+walk_square_picking_all_beepers()
+```
 
-**16.** Write a function `findMax` defined by:
-- input parameter: a list `L` of positive integers
-- return value: the maximum value in `L` among elements whose *index* is
-  not prime
-  - e.g. `L = [110,49,441,91,341,20]`: indices 0,1,4 are non-prime, giving
-    values `110, 49, 341` — the maximum is `341`.
+**8.** Write a function `whirl_picking_all_beepers` defined by:
+- input parameter: none
+- return value: none
+- action: make Hubo visit the entire world (as in Week 8's `whirl` spiral
+  pattern), picking up every beeper it stands on
+  - *Replace `hubo.move()` with `move_and_pick()` from problem 7.*
 
-**17.** Write a function `colinear` defined by:
-- input parameter: a list `L` of points in the plane, each represented as
-  `[x,y]` (as in Week 7 problem 12)
-- return value: the number of collinear triples `L[i], L[j], L[k]` (`i<j<k`)
+```python
+def whirl_picking_all_beepers():
+    # ADD ADDITIONAL CODE HERE!
+whirl_picking_all_beepers()
+```
+
+**9.** Write a function `whirl_dropping_beepers` defined by:
+- input parameter: none
+- return value: none
+- action: make Hubo visit the world dropping beepers
+  - *Using `L` for "turn left" and a number for "move that many steps
+    forward," Hubo's action sequence is: `1 L 2 L 3 L ... 9 L 9`. Replace
+    `hubo.move()` with `move_and_drop()` below.*
+
+```python
+def move_and_drop():
+    hubo.move()
+    if hubo.carries_beepers():
+        hubo.drop_beeper()
+def whirl_dropping_beepers():
+    # ADD ADDITIONAL CODE HERE!
+whirl_dropping_beepers()
+```

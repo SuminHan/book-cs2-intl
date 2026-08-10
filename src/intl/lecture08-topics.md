@@ -1,100 +1,107 @@
 # Topics Covered
 
-## The Counter Pattern
+## Recap: Three `for`-Loop Patterns So Far
 
-Given a set (a list), count how many elements satisfy some condition — i.e.
-the size of `{x in numbers | condition(x)}`. This is the **counter**
-pattern: a running total, incremented once per element that qualifies.
+- **Max/min** (Week 6) — track a running best value.
+- **Counter** (Week 8) — track a running count of elements matching a
+  condition.
+- **Quantifier** (this week) — "for some" / "for all": does *any*/*every*
+  element satisfy a condition?
 
-```python
-def countOdd(numbers):
-    counter = 0
-    for i in range(len(numbers)):
-        if numbers[i] % 2 == 1:
-            counter += 1
-    return counter
+## The Quantifier Pattern
 
-num = [1, 7, 2, 4, 2, 3, 7, 4, 5]
-print(countOdd(num))   # 5
-```
-
-The condition can be as simple as equality...
+Given a list, "does `numbers[i] > 0` for **some** `i`?" is an *existential*
+question (∃); "for **all** `i`?" is a *universal* one (∀). Both are
+naturally boolean functions:
 
 ```python
-def countNumber(numbers, k):
-    counter = 0
+def somePositive(numbers):
     for i in range(len(numbers)):
-        if numbers[i] == k:
-            counter += 1
-    return counter
+        if numbers[i] > 0:
+            return True
+    return False              # never found one
 ```
 
-...or arbitrarily complex — in which case, wrap it in a **boolean
-function** (Week 5) rather than inlining it, so the loop stays readable:
+```python
+def allPositive(numbers):
+    for i in range(len(numbers)):
+        if not (numbers[i] > 0):   # found a counterexample
+            return False
+    return True                     # never found a counterexample
+```
+
+The shapes are near-mirror images: "for some" returns `True` the instant it
+finds a match, and falls through to `False`. "For all" returns `False` the
+instant it finds a *counter*example, and falls through to `True`.
+
+This mirroring isn't a coincidence — it's **De Morgan's law** applied to
+quantifiers: `not (for all x, p(x))` is the same statement as `for some x,
+not p(x)`. So "for all `p(x)`" can always be written as "not (for some `x`,
+`not p(x)`)" — which is exactly why the "for all" loop checks `not p(x)`
+and returns `False` on a hit.
+
+Two worked examples:
+
+```python
+# "for some": is n a sum of two squares?
+def sumOfTwoSquares(n):
+    b = int(math.sqrt(n))
+    for i in range(1, b+1):
+        for j in range(1, b+1):
+            if n == i*i + j*j:
+                return True
+    return False
+
+# "for all": is numbers non-decreasing?
+def isIncreasingSequence(numbers):
+    for i in range(len(numbers)-1):
+        if not (numbers[i] <= numbers[i+1]):
+            return False
+    return True
+```
+
+`isPrime` from Week 8 is secretly a "for all" too — "`p` is prime" means
+"for all `i` from 2 to `p//2`, `i` does not divide `p`":
 
 ```python
 def isPrime(p):
     for i in range(2, p//2 + 1):
-        if p % i == 0:
+        if p % i == 0:      # found a divisor — counterexample!
             return False
     return True
-
-def countPrime(numbers):
-    counter = 0
-    for i in range(len(numbers)):
-        if isPrime(numbers[i]):
-            counter += 1
-    return counter
 ```
 
-(`isPrime` itself is an instance of a "for all" pattern — checking that
-*no* divisor works — which next week covers in depth.)
+## Toy Robot: Beepers
 
-## Toy Robot
-
-The course uses a small robot simulator (`cs1robots`) to practice loops
-and nesting on something visual. After `from cs1robots import *` and
-`create_world()`, a robot appears in a grid world:
+A beeper is a small marker the robot can only sense when standing directly
+on it. Create a robot carrying some:
 
 ```python
-from cs1robots import *
-create_world()
-hubo = Robot()
+hubo = Robot(beepers=3)
 ```
 
-Three basic moves:
+- `hubo.drop_beeper()` — put one down (needs at least one in pocket)
+- `hubo.pick_beeper()` — pick one up (needs one at the current position)
+- `hubo.on_beeper()` — `True` if there's a beeper right here
+- `hubo.carries_beepers()` — `True` if Hubo is currently holding at least one
+
+Calling `drop_beeper()` with an empty pocket, or `pick_beeper()` on an
+empty square, is an error — always guard with the matching boolean
+function first:
 
 ```python
-hubo.move()          # one step forward
-hubo.turn_left()      # turn 90° counterclockwise in place
-hubo.turn_right()     # turn 90° clockwise in place
-```
-
-`hubo.set_trace("blue")` draws the path it takes; `hubo.set_pause(0.5)`
-adds a delay (in seconds) after each move, so you can actually watch it
-move instead of jumping straight to the end state.
-
-Everything from here is composing those three moves with `for` loops.
-Walking one edge of a square and turning at each corner:
-
-```python
-def move_square():
-    for i in range(4):
-        hubo.move()
-        hubo.turn_left()
-```
-
-Nested loops sweep the whole grid — an outer loop for each row, an inner
-loop that walks across it, with a turn at the end of each row:
-
-```python
-for j in range(4):
-    for i in range(9):
-        hubo.move()
+if hubo.on_beeper():
+    hubo.pick_beeper()
+else:
     hubo.turn_left()
 ```
 
-"Climbing stairs" (alternating a vertical and a horizontal move) is the
-same idea with a `turn_left()`/`turn_right()` pair around each move instead
-of one long straight run — trace it step by step on paper before you trust
-your code to get the corners right.
+Combine with a loop to sweep an entire row, picking up (or dropping) as you
+go:
+
+```python
+for i in range(9):
+    hubo.move()
+    if hubo.on_beeper():
+        hubo.pick_beeper()
+```

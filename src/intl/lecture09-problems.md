@@ -1,203 +1,163 @@
 # Problem Set
 
-**1.** Write a function `sumOfThreeSquares` ("for some" pattern) defined by:
+### Required
+
+**1.** Write a function `countSevens` defined by:
 - input parameter: a positive integer `n`
-- return value: a boolean — `True` if `n` can be written as a sum of squares
-  of three positive integers (e.g. \\(38=2^2+3^2+5^2\\), \\(43=3^2+3^2+5^2\\)),
-  `False` otherwise
-  - *Refer to `sumOfTwoSquares` from this week's lecture.*
+- return value: the number of occurrences of digit `7` in `n`
+  - *Refer to `countDigits` from this week's lecture:*
+    `while n > 0: counter += 1; n //= 10`. *What does `n % 10` give you on
+    each iteration? Increment the counter only when `n % 10 == 7`.*
 
 ```python
-def sumOfThreeSquares(n):
+def countSevens(n):
     # ADD ADDITIONAL CODE HERE!
-    b = int(n**0.5)
-    for i in range(1, b+1):
-        for j in range(1, b+1):
-            for k in range(1, b+1):
-                ...
-for n in range(20, 31):
-    print(n, sumOfThreeSquares(n))
+print(countSevens(1723))        # 1
+print(countSevens(1357924770))  # 3
 ```
-Output: `20 False, 21 True, 22 True, 23 False, 24 True, 25 False, 26 True,
-27 True, 28 False, 29 True, 30 True`
 
-**2.** Write a function `sumOfThreeDistinctSquares` ("for some" pattern)
-defined by:
+**2.** Write a function `countEvenDigits` defined by:
 - input parameter: a positive integer `n`
-- return value: a boolean — `True` if `n` can be written as a sum of squares
-  of three *distinct* positive integers, `False` otherwise
-  - *Use the loop template from `closestPair` (Week 7):*
-    `for i in range(1,b+1): for j in range(i+1,b+1): for k in
-    range(j+1,b+1): ...`
+- return value: the number of even digits in `n`
+  - *The solution is very similar to `countSevens` above. What does `n % 2`
+    give you on each iteration?*
 
 ```python
-def sumOfThreeDistinctSquares(n):
-    # ADD ADDITIONAL CODE HERE!
-for n in range(20, 31):
-    print(n, sumOfThreeDistinctSquares(n))
+# ADD FUNCTION HERE!
+print(countEvenDigits(2723))        # 2
+print(countEvenDigits(1326924870))  # 6
 ```
-Output: `20 False, 21 True, 22 False, 23 False, 24 False, 25 False, 26 True,
-27 False, 28 False, 29 True, 30 True`
 
-**3.** Write a function `sumOfTwoPrimes` ("for some" pattern) defined by:
-- input parameter: a positive integer `n`
-- return value: a boolean — `True` if `n` can be written as a sum of two
-  primes (e.g. `21=2+19`, `22=11+11`), `False` otherwise
+**3.** Write a function `gcd` defined by:
+- input parameter: two positive integers `a` and `b`
+- return value: the greatest common divisor of `a` and `b`
+
+The GCD can be computed by the **Euclidean algorithm**: given positive
+integers `a >= b`, let `r = a % b`. Then `gcd(a,b) == gcd(b,r)`. For
+example, `gcd(36,20) = gcd(20,16) = gcd(16,4) = gcd(4,0) = 4`. Repeating
+this reduction always eventually reaches a pair whose second number is 0 —
+the GCD is then the other number.
 
 ```python
-def isPrime(p):
-    for i in range(2, p//2 + 1):
-        if p % i == 0:
-            return False
-    return True
-def sumOfTwoPrimes(n):
+def gcd(a, b):
+    if a < b:  # swap so that a >= b
+        a, b = b, a
     # ADD ADDITIONAL CODE HERE!
-    for i in range(2, n-1):
-        for j in range(2, n-1):
-            if isPrime(i) and isPrime(j) and n == i+j:
-                ...
-for n in range(20, 31):
-    print(n, sumOfTwoPrimes(n))
+    while b != 0:
+        r = a % b
+        a = ??
+        b = ??
+    return ??
+print(gcd(36, 20))          # 4
+print(gcd(2408208, 2790876)) # 132
 ```
-Output: `20 True, 21 True, 22 True, 23 False, 24 True, 25 True, 26 True,
-27 False, 28 True, 29 False, 30 True`
+*Hint: during the loop, `a,b` should take the values `36,20 → 20,16 →
+16,4 → 4,0`.*
 
-**4.** Write a function `sumOfTwoPrimeSquares` ("for some" pattern) defined
-by:
-- input parameter: a positive integer `n`
-- return value: a boolean — `True` if `n` can be written as a sum of squares
-  of two primes (e.g. `50=5²+5²`, `53=2²+7²`), `False` otherwise
+**4.** Write a function `walk_square_picking_all_beepers` defined by:
+- input parameter: none
+- return value: none
+- action: make Hubo walk along the world boundary picking up all the
+  beepers
+  - *This is a small extension of Week 9 problem 7, allowing multiple
+    beepers at one position — copy that code and replace the `if` with a
+    `while`.*
+
+**5.** Write a function `collect_garbages` defined by:
+- input parameter: none
+- return value: none
+- action: make Hubo collect all the garbage (represented by beepers) and
+  put it in the garbage can, located north of the starting point
 
 ```python
-def isPrime(p):
-    for i in range(2, p//2 + 1):
-        if p % i == 0:
-            return False
-    return True
-def sumOfTwoPrimeSquares(n):
-    # ADD ADDITIONAL CODE HERE!
-for n in range(50, 61):
-    print(n, sumOfTwoPrimeSquares(n))
+def collect_garbages():
+    # move to the right wall while collecting beepers
+    # turn back
+    # move to the left wall
+    # move upwards
+    # put all the beepers down
+    # move to the starting position
+collect_garbages()
 ```
-Output: `50 True, 51 False, 52 False, 53 True, 54 False, 55 False, 56 False,
-57 False, 58 True, 59 False, 60 False`
 
-**5.** Write functions `somePrime` and `allPrime` ("for some" and "for all"
-patterns) defined by:
+**6.** Write a function `putNumber` defined by:
+- input parameter: an integer `num`
+- return value: none
+- action: make Hubo drop beepers that spell out the digits of `num`
+  - e.g. `putNumber(2291)` makes Hubo drop the corresponding beepers.
+  - *What does the following code do?*
+    ```python
+    while num > 0:
+        digit = num % 10
+        num = num // 10
+        print(digit)
+    ```
+    *What does `digit` represent on each iteration? Replace the `print`
+    with code that drops beepers and moves forward.*
+
+```python
+def putNumber(num):
+    # ADD ADDITIONAL CODE HERE!
+putNumber(2291)
+```
+
+### Optional Problems
+
+*Not for submission/grading, but good practice (mostly past exam problems).*
+
+**7.** Srinivasa Ramanujan proposed a formula to approximate \\(\pi\\):
+\\[\frac{1}{\pi} = \frac{2\sqrt2}{9801}\sum_{k=0}^{\infty}
+\frac{(4k)!(1103+26390k)}{(k!)^4\, 396^{4k}}\\]
+
+Write a function `estimatePI` defined by:
+- input parameter: none
+- return value: an approximation of \\(\pi\\) computed by the formula above
+  - *The difference from `math.pi` should be \\(\le 10^{-15}\\).*
+
+**8.** Write a function `estimatePI` defined by:
+- input parameter: an integer `n` (from -4 to 0), an error bound
+- return value: an approximation of \\(\pi\\) accurate to within \\(10^n\\)
+  - *Stop the `while` loop once the approximation is within \\(10^n\\) of
+    `math.pi`. Use the formula* \\[\pi = \sqrt{6\sum_{i=1}^{\infty}
+    \frac{1}{i^2}}\\]
+
+**9.** Write a function `estimatePI` defined by:
+- input parameter: an integer `n` (from -4 to 0), an error bound
+- return value: an approximation of \\(\pi\\) accurate to within \\(10^n\\)
+  - *Stop the `while` loop once the approximation is within \\(10^n\\) of
+    `math.pi`. Use the Leibniz formula* \\[\pi = 4\left(1-\frac13+\frac15-
+    \frac17+\frac19-\cdots\right)\\]
+
+**10.** Two lab mice A and B start at the same weight, but grow at
+different weekly rates.
+
+Write a function `countWeek` defined by:
+- input parameter: three integers `rateA, rateB, x` (with `rateA < rateB`)
+  — the weekly growth rates of A and B
+- return value: the minimum number of weeks until B weighs at least `x`%
+  more than A
+
+**11.** Write a function `reverseSum` defined by:
 - input parameter: a list of positive integers
-- return value: a boolean — for `somePrime`, `True` if there is a prime in
-  the list; for `allPrime`, `True` if every number in the list is prime;
-  `False` otherwise
+- return value: the sum of the numbers in the list, each with its digits
+  reversed — e.g. `[12,40,2]` → `21+4+2 = 27`
 
-```python
-def isPrime(p):
-    for i in range(2, p//2 + 1):
-        if p % i == 0:
-            return False
-    return True
-# "for some" pattern
-def somePrime(numbers):
-    # ADD ADDITIONAL CODE HERE!
-    for i in range(len(numbers)):
-        if isPrime(numbers[i]):
-            ...
-# "for all" pattern
-def allPrime(numbers):
-    # ADD ADDITIONAL CODE HERE!
-num1 = [217, 287, 143, 163, 319]
-num2 = [217, 287, 143, 169, 319]
-num3 = [223, 281, 227, 151, 149]
-print(somePrime(num1), allPrime(num1))  # True False
-print(somePrime(num2), allPrime(num2))  # False False
-print(somePrime(num3), allPrime(num3))  # True True
-```
+**12.** Write a function `evenDigits` defined by:
+- input parameter: a positive integer `num`
+- return value: the integer formed from the even digits of `num`, in the
+  same order they appear in `num` — `0` if `num` has no even digits (e.g.
+  `37153` → `0`)
 
-**6.** Write a function `allDistinct` ("for all" pattern) defined by:
-- input parameter: an integer list `numbers`
-- return value: a boolean — `True` if `numbers[0], numbers[1], ...` are all
-  distinct, `False` otherwise
+**13.** Write a function `findMax` defined by:
+- input parameter: a list of `[number, base]` pairs — e.g.
+  `[[151,8],[1111001,2],[-10101,2],[2731,8],[1001,10]]` represents an octal
+  number 151, a binary number 1111001, a binary number -10101, an octal
+  number 2731, and a decimal number 1001
+- return value: the decimal representation of the maximum value in the list
+  - *Implement a helper `toDecimal([number, base])` first, and use it.*
 
-```python
-def allDistinct(numbers):
-    # ADD ADDITIONAL CODE HERE!
-    for i in range(len(numbers)):
-        for j in range(i+1, len(numbers)):
-            ...
-print(allDistinct([1,3,2,5,2,1]))  # False
-print(allDistinct([1,0,2,5,3,4]))  # True
-```
-
-Write a function `allWithinRange` ("for all" pattern) defined by:
-- input parameter: an integer list `numbers` and two integers `lower,upper`
-- return value: a boolean — `True` if `lower <= numbers[i] <= upper` for
-  every `i`, `False` otherwise
-
-```python
-def allWithinRange(numbers, lower, upper):
-    # ADD ADDITIONAL CODE HERE!
-print(allWithinRange([1,0,2,6,3,4], 0, 5))  # False
-print(allWithinRange([1,0,2,5,3,4], 0, 5))  # True
-```
-
-Using `allDistinct` and `allWithinRange` above, write a function
-`isPermutation` defined by (*this is simple — one line is enough!*):
-- input parameter: an integer list `numbers`
-- return value: a boolean — `True` if `numbers` (length `n`) is a
-  permutation (all elements distinct **and** `0 <= numbers[i] <= n-1` for
-  every `i`), `False` otherwise
-
-```python
-print(isPermutation([1,3,2,5,2,1]))  # False
-print(isPermutation([1,0,2,5,3,4]))  # True
-print(isPermutation([1,0,2,6,3,4]))  # False
-```
-
-**7.** Write a function `walk_square_picking_all_beepers` defined by:
-- input parameter: none
-- return value: none
-- action: make Hubo walk along the world boundary, picking up every beeper
-  it stands on
-  - *Use the Week 8 boundary-walk code — `for j in range(4): for i in
-    range(9): hubo.move(); hubo.turn_left()` — but replace `hubo.move()`
-    with `move_and_pick()` below.*
-
-```python
-def move_and_pick():
-    hubo.move()
-    if hubo.on_beeper():
-        hubo.pick_beeper()
-def walk_square_picking_all_beepers():
-    # ADD ADDITIONAL CODE HERE!
-walk_square_picking_all_beepers()
-```
-
-**8.** Write a function `whirl_picking_all_beepers` defined by:
-- input parameter: none
-- return value: none
-- action: make Hubo visit the entire world (as in Week 8's `whirl` spiral
-  pattern), picking up every beeper it stands on
-  - *Replace `hubo.move()` with `move_and_pick()` from problem 7.*
-
-```python
-def whirl_picking_all_beepers():
-    # ADD ADDITIONAL CODE HERE!
-whirl_picking_all_beepers()
-```
-
-**9.** Write a function `whirl_dropping_beepers` defined by:
-- input parameter: none
-- return value: none
-- action: make Hubo visit the world dropping beepers
-  - *Using `L` for "turn left" and a number for "move that many steps
-    forward," Hubo's action sequence is: `1 L 2 L 3 L ... 9 L 9`. Replace
-    `hubo.move()` with `move_and_drop()` below.*
-
-```python
-def move_and_drop():
-    hubo.move()
-    if hubo.carries_beepers():
-        hubo.drop_beeper()
-def whirl_dropping_beepers():
-    # ADD ADDITIONAL CODE HERE!
-whirl_dropping_beepers()
-```
+**14.** Write a function `countAllZeros` defined by:
+- input parameter: a list `L` of decimal numbers
+- return value: the total number of `0`s in the binary representations of
+  the numbers in `L` — e.g. `[10,20,30]` → `[1010,10100,11110]` →
+  `2+3+1 = 6`

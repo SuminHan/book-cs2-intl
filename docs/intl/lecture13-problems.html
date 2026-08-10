@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>Topics Covered - CS2 International Supplement</title>
+        <title>Problem Set - CS2 International Supplement</title>
 
 
         <!-- Custom HTML head -->
@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-63d0fb10.js";
+            window.path_to_searchindex_js = "../searchindex-2d026a3b.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-b4f032b5.js"></script>
+        <script src="../toc-6b7ca9ac.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,119 +180,154 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<h2 id="classes-and-objects"><a class="header" href="#classes-and-objects">Classes and Objects</a></h2>
-<p>Python is object-oriented: every piece of data — <code>123</code>, <code>"hello"</code>, <code>[1,2,3]</code>
-— is an <strong>object</strong> belonging to a <strong>class</strong> (<code>int</code>, <code>str</code>, <code>list</code>
-respectively). A class is a blueprint; an object is one specific instance
-built from it. Analogy: the Sonata <em>blueprint</em> specifies an engine, a
-color, an efficiency rating, and behaviors like accelerating and braking —
-<em>your</em> Sonata is one object built from that blueprint, with its own
-specific attribute values, that can perform the behaviors the blueprint
-defines.</p>
-<p>You can define your own classes:</p>
-<pre><code class="language-python">class Point:                      # class name, capitalized by convention
-    def __init__(self, px, py):
-        self.x = px                # attribute
-        self.y = py
-
-p1 = Point(1, 2)
-p2 = Point(4, 6)
+                        <h1 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h1>
+<p><strong>1. Counting zeros in a 3D array.</strong> Write a function <code>countZero</code> that
+takes as input a list of integers representing a three-dimensional array
+and counts the number of zeros contained in the array.</p>
+<pre><code class="language-python">def countZero(a):
+    depth = len(a)
+    height = len(a[0])
+    width = len(a[0][0])
+    # ADD ADDITIONAL CODE HERE!
+print(countZero([[[1,2],[0,0]],[[0,0],[0,0]]]))                # 6
+print(countZero([[[1,2],[0,0]],[[0,0],[0,0]],[[0,0],[0,0]]]))  # 10
 </code></pre>
-<h2 id="__init__-and-self"><a class="header" href="#__init__-and-self"><code>__init__</code> and <code>self</code></a></h2>
-<p><code>__init__</code> is the <strong>constructor</strong> — it runs automatically whenever you
-create a new object (<code>Point(1, 2)</code> calls it). Every method’s first
-parameter is, by convention, <code>self</code> — it refers to <em>this</em> object, and
-Python passes it automatically; you never write it explicitly at the call
-site. <code>self.x</code>, <code>self.y</code> are <strong>state variables</strong> (attributes): data that
-belongs to this specific object, distinct from any local variable of the
-same name inside a method that isn’t written as <code>self.something</code>.</p>
-<h2 id="__str__"><a class="header" href="#__str__"><code>__str__</code></a></h2>
-<p>By default, <code>print</code>ing an object shows you a memory address — not useful.
-Defining <code>__str__</code> tells Python how to turn the object into a readable
-string; it’s called automatically whenever the object is printed:</p>
-<pre><code class="language-python">def __str__(self):
-    return "(" + str(self.x) + "," + str(self.y) + ")"
-
-print(p1)   # (1,2)
+<p><strong>2. Checking sorted order in a 2D array.</strong> Write a function <code>isSorted</code>
+that takes as input a list of integers representing a two-dimensional array
+and checks whether all elements in the array are sorted in ascending order
+both row-wise and column-wise.</p>
+<pre><code class="language-python">def isSorted(a):
+    # ADD ADDITIONAL CODE HERE!
+test1 = [[2,3,7,9,11,12],
+         [5,6,8,10,12,15],
+         [7,7,8,10,12,15],
+         [8,9,10,10,13,17]]
+test2 = [[2,3,7,9,11,12],
+         [5,6,8,10,12,15],
+         [7,7,8,10,12,18],
+         [8,9,10,10,13,17]]
+print(isSorted(test1))  # True
+print(isSorted(test2))  # False
 </code></pre>
-<h2 id="getters-and-setters"><a class="header" href="#getters-and-setters">Getters and Setters</a></h2>
-<p>You <em>can</em> read/write <code>p1.x</code> directly, but the convention is to go through
-<strong>getter</strong>/<strong>setter</strong> methods instead:</p>
-<pre><code class="language-python">def getX(self):
-    return self.x
-def setX(self, v):
-    self.x = v
-
-p1 = Point(1, 2)
-print(p1.getX())    # 1
-p1.setX(5)
-print(p1)             # (5,2)
+<p><strong>3-1. Point in Rectangle: checking if a point is inside a rectangle.</strong>
+Write a function <code>withinRect</code> that takes as parameters the values <code>top</code>,
+<code>bottom</code>, <code>left</code>, <code>right</code> representing a rectangle in the 2D plane whose
+sides are parallel to the x-axis and y-axis, along with the coordinates
+<code>x</code>, <code>y</code> of a point. The function should return <code>True</code> if the point lies
+inside or on the boundary of the rectangle, and <code>False</code> otherwise. For
+example, <code>(top,bottom,left,right) = (2,-4,-5,6)</code> represents one such
+rectangle.</p>
+<pre><code class="language-python">def withinRect(top, bottom, left, right, x, y):
+    # ADD ADDITIONAL CODE HERE!
+print(withinRect(2,-4,-5,6, -5,2))  # True
+print(withinRect(2,-4,-5,6, 6,-1))  # True
+print(withinRect(2,-4,-5,6, 0,1))   # True
+print(withinRect(2,-4,-5,6, -6,0))  # False
+print(withinRect(2,-4,-5,6, 0,3))   # False
 </code></pre>
-<p>(<code>setX</code>, like any function without an explicit <code>return</code>, gives back <code>None</code>
-— printing its result directly is a bug, not a way to see the new value.)</p>
-<h2 id="methods-that-take-another-object-as-a-parameter"><a class="header" href="#methods-that-take-another-object-as-a-parameter">Methods That Take Another Object as a Parameter</a></h2>
-<p>A method’s parameters can themselves be objects of the same class:</p>
-<pre><code class="language-python">def distance(self, p):
-    dx = self.x - p.x
-    dy = self.y - p.y
-    return (dx**2 + dy**2)**0.5
-
-print(p1.distance(p2))   # 5.0
-print(p2.distance(p1))   # 5.0 — symmetric, as expected
+<p><strong>3-2. Counting points inside a rectangle.</strong> Using <code>withinRect</code> above,
+write a function <code>countWithinRect</code> that takes as input integer values
+<code>top</code>, <code>bottom</code>, <code>left</code>, <code>right</code> representing a rectangle parallel to the
+coordinate axes, along with a list <code>p</code> containing the coordinates of points
+in the plane. The function should count and return the number of points
+from the list that lie inside or on the boundary of the rectangle.</p>
+<pre><code class="language-python">def countWithinRect(top, bottom, left, right, p):
+    # ADD ADDITIONAL CODE HERE!
+points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],[-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+print(countWithinRect(2,-4,-5,6, points))  # 7
 </code></pre>
-<h2 id="pure-functions-vs-modifiers"><a class="header" href="#pure-functions-vs-modifiers">Pure Functions vs. Modifiers</a></h2>
-<p>A <strong>pure function</strong> leaves the object unchanged and returns a new result.
-<code>add</code> below builds and returns a brand-new <code>Point</code> — <code>p1</code> and <code>p2</code> are
-untouched:</p>
-<pre><code class="language-python">def add(self, p):
-    x = self.x + p.x
-    y = self.y + p.y
-    return Point(x, y)
-
-p3 = p1.add(p2)
-print(p1)   # (1,2) — unchanged
-print(p2)   # (4,6) — unchanged
-print(p3)   # (5,8) — the new object
+<p><strong>4. Closest pair of points.</strong> Write a function <code>closestPair</code> that takes as
+input a list of points in the 2D plane, where each point is represented as
+a list <code>[x,y]</code>. The function should compute and return the distance
+between the two closest points among them.</p>
+<pre><code class="language-python">def distSquared(p1, p2):
+    return ((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2) ** 0.5
+def closestPair(p):
+    n = len(p)
+    best = distSquared(p[0], p[1])  # start with the first pair, then improve
+    # ADD ADDITIONAL CODE HERE!
+points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
+print(closestPair(points))  # 4.47213595499958
 </code></pre>
-<p>A <strong>modifier</strong> does the opposite: it changes <code>self</code> in place and returns
-<code>None</code>:</p>
-<pre><code class="language-python">def add_as_modifier(self, p):
-    self.x = self.x + p.x
-    self.y = self.y + p.y
-
-p3 = p1.add_as_modifier(p2)
-print(p3)   # None — modifiers don't return the new state
-print(p1)   # (5,8) — p1 itself changed
+<p><strong>5. Checking for negative numbers in each row.</strong> Write a function <code>check</code>
+that takes as input a two-dimensional list of integers <code>M</code> and checks
+whether <em>every</em> row contains <em>at least one</em> negative number (both a “for
+all” and a “for some” condition need to be satisfied).</p>
+<pre><code class="language-python">def check(M):
+    # ADD ADDITIONAL CODE HERE!
+M1 = [[1,9,-1,0,2],
+      [-3,7,1,1,4],
+      [3,9,1,-9,-2]]
+M2 = [[1,9,1,0,2],
+      [-3,7,1,1,4],
+      [3,9,-1,-9,2]]
+print(check(M1))  # True
+print(check(M2))  # False
 </code></pre>
-<p>Know, for every method you write, which one it is — and say so in how you
-use it: call a pure function for its return value, call a modifier for its
-side effect, never both at once.</p>
-<h2 id="putting-a-class-under-test"><a class="header" href="#putting-a-class-under-test">Putting a Class Under Test</a></h2>
-<p>A common pattern: keep a <code>..._main()</code> function with your test/demo calls,
-and only run it when the file is executed directly (not when it’s
-imported):</p>
-<pre><code class="language-python">def point_main():
-    p1 = Point(1, 2)
-    p2 = Point(4, 6)
-    print(p1, p2)
-    print(p1.distance(p2))
-    p3 = p1.add(p2)
-    print(p3)
-
-if __name__ == '__main__':
-    point_main()
+<p><strong>6. 1D mine-field array.</strong> Write a function <code>countMines</code> that takes as
+input a list of boolean values, where <code>T</code> represents a location with a mine
+and <code>F</code> a location without one. The function should produce a mine-field
+array where each position holds the total number of mines among its
+neighboring positions — here, neighbors are the position itself plus the
+two immediately adjacent positions (left and right).</p>
+<p><em>Use a helper function <code>withinBoundary</code> to check whether an index is
+within the valid range of the list, to avoid accessing out-of-bounds
+elements.</em></p>
+<pre><code class="language-python">def withinBoundary(size, i):
+    return i &gt;= 0 and i &lt; size
+def countMines(mineField):
+    # ADD ADDITIONAL CODE HERE!
+T = True
+F = False
+mineField1 = [T, F, F, T, T, T, T, F, T, F]
+mineField2 = [T, F, T, T, T, F, F]
+print(countMines(mineField1))  # [1,1,1,2,3,3,2,2,1,1]
+print(countMines(mineField2))  # [1,2,2,3,2,1,0]
+</code></pre>
+<p><strong>7. 2D mine-field array.</strong> Extend problem 6 to two dimensions. Write a
+function <code>countMines</code> that takes as input a two-dimensional list of boolean
+values, where <code>T</code> indicates a cell with a mine and <code>F</code> a cell without one,
+and produces a mine-field array showing, for each cell, the number of
+neighboring mines — here, neighbors are the cell itself plus the eight
+immediately adjacent cells (up, down, left, right, and the four diagonals),
+9 cells in total.</p>
+<pre><code class="language-python">def withinBoundary(height, width, i, j):
+    return i &gt;= 0 and i &lt; height and j &gt;= 0 and j &lt; width
+def countMines(mineField):
+    # ADD ADDITIONAL CODE HERE!
+def main():  # for test
+    T = True
+    F = False
+    mineField = [
+        [T, F, F, F, F, T],
+        [F, F, F, F, F, T],
+        [T, T, F, T, F, T],
+        [T, F, F, F, F, F],
+        [F, F, T, F, F, F],
+        [F, F, F, F, F, F]]
+    mines = countMines(mineField)
+    for i in range(len(mines)):
+        print(mines[i])
+main()
+</code></pre>
+<p>Output:</p>
+<pre><code>[1, 1, 0, 0, 2, 2]
+[3, 3, 2, 1, 4, 3]
+[3, 3, 2, 1, 3, 2]
+[3, 4, 3, 2, 2, 1]
+[1, 2, 1, 1, 0, 0]
+[0, 1, 1, 1, 0, 0]
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../intl/lecture15.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../intl/lecture13-topics.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../intl/lecture15-problems.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../intl/lecture14.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -302,11 +337,11 @@ if __name__ == '__main__':
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../intl/lecture15.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../intl/lecture13-topics.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../intl/lecture15-problems.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../intl/lecture14.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
