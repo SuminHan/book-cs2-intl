@@ -1,6 +1,6 @@
 # For Loops I
 
-## 6.1. Opener: An Annoying Question
+## 5.1. Opener: An Annoying Question
 
 ```python
 for i in range(10):
@@ -32,7 +32,7 @@ write `+1`.
 **Whenever you catch yourself typing `range(1, n+1)`, stop and ask whether
 you are fighting the language — and whether the `+1` is about to cost you.**
 
-## 6.2. Topics Covered
+## 5.2. Topics Covered
 
 - Increment/decrement operators
 - `for` loops with `range(·)` (various forms: start/stop/step)

@@ -4,7 +4,6 @@
 
 # International
 
-- [Why Programming Matters](intl/week01.md)
 - [Basic Elements](intl/week02.md)
 - [Functions](intl/week03.md)
 - [Conditionals](intl/week04.md)

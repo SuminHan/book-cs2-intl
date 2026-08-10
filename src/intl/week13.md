@@ -1,6 +1,6 @@
 # Break / Continue
 
-## 13.1. Opener: Find Where the Target Is
+## 12.1. Opener: Find Where the Target Is
 
 Return the position of the first `target` in a grid, or `(-1,-1)` if it is
 not there.
@@ -48,7 +48,7 @@ loop, and inside nested loops that is almost never what you meant.
 
 *Choosing the input that exposes it — that was the real skill.*
 
-## 13.2. Topics Covered
+## 12.2. Topics Covered
 
 - `break` — exits the innermost loop only
 - `continue` — skips the rest of the current iteration
