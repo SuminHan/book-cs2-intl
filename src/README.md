@@ -45,8 +45,18 @@ you made a wish.**
 ## The Gap
 
 Ask an AI to "write me a grade calculator" and you get something clean,
-readable, that runs fine — and is wrong for this specific course, because
-it can't know:
+readable, that runs fine:
+
+```python
+def final_grade(scores, attendance_rate):
+    average = sum(scores) / len(scores)
+    if attendance_rate < 0.75:
+        return "Fail"
+    return "Pass" if average >= 70 else "Fail"
+```
+
+Looks right. Runs. No errors. And it's wrong for this specific course,
+because it can't know:
 
 - how a medical-excuse make-up score should be weighted (80%) vs. an
   official absence (100%) — the generated code has neither rule
@@ -60,8 +70,17 @@ code to see the holes.**
 
 ## The Trap
 
-A function that checks for leap years passes the test you throw at it
-(`is_leap_year(2024)` → `True`, correct!). Ship it?
+**Task:** write a function that returns `True` if a year is a leap year.
+
+```python
+def is_leap_year(year):
+    if year % 4 == 0:
+        return True
+    else:
+        return False
+```
+
+Test it: `is_leap_year(2024)` → `True`, correct! Ship it?
 
 Try `is_leap_year(1900)` — expected `False` (1900 was *not* a leap year:
 divisible by 4, but a century not divisible by 400), and the naive version

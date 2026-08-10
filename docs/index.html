@@ -38,7 +38,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-42cb563f.js";
+            window.path_to_searchindex_js = "searchindex-24d50d43.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-58861ff6.js"></script>
@@ -218,8 +218,15 @@ is always code — there is no human-language version of the output.
 you made a wish.</strong></p>
 <h2 id="the-gap"><a class="header" href="#the-gap">The Gap</a></h2>
 <p>Ask an AI to “write me a grade calculator” and you get something clean,
-readable, that runs fine — and is wrong for this specific course, because
-it can’t know:</p>
+readable, that runs fine:</p>
+<pre><code class="language-python">def final_grade(scores, attendance_rate):
+    average = sum(scores) / len(scores)
+    if attendance_rate &lt; 0.75:
+        return "Fail"
+    return "Pass" if average &gt;= 70 else "Fail"
+</code></pre>
+<p>Looks right. Runs. No errors. And it’s wrong for this specific course,
+because it can’t know:</p>
 <ul>
 <li>how a medical-excuse make-up score should be weighted (80%) vs. an
 official absence (100%) — the generated code has neither rule</li>
@@ -231,8 +238,14 @@ just quietly computes the wrong grade</strong> — and you only know to fix the
 prompt if you already noticed the rule was missing. <strong>You had to read the
 code to see the holes.</strong></p>
 <h2 id="the-trap"><a class="header" href="#the-trap">The Trap</a></h2>
-<p>A function that checks for leap years passes the test you throw at it
-(<code>is_leap_year(2024)</code> → <code>True</code>, correct!). Ship it?</p>
+<p><strong>Task:</strong> write a function that returns <code>True</code> if a year is a leap year.</p>
+<pre><code class="language-python">def is_leap_year(year):
+    if year % 4 == 0:
+        return True
+    else:
+        return False
+</code></pre>
+<p>Test it: <code>is_leap_year(2024)</code> → <code>True</code>, correct! Ship it?</p>
 <p>Try <code>is_leap_year(1900)</code> — expected <code>False</code> (1900 was <em>not</em> a leap year:
 divisible by 4, but a century not divisible by 400), and the naive version
 returns <code>True</code>. The bug was always there; the test just never looked in the
