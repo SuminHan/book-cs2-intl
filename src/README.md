@@ -13,11 +13,9 @@ The Korean track (국내반) is maintained separately in [book-cs2](https://gith
 
 ---
 
-## Why Programming Matters
-
 *Computer Science 2*
 
-### 1. The Question
+## Why Programming Matters
 
 "AI writes code now. It writes it faster than me, and honestly better than
 me. So why am I sitting in a programming class?"
@@ -26,7 +24,7 @@ That's a fair question — and the answer isn't "AI is bad at coding."
 **It isn't. It's very good, and it's getting better every month.** The
 answer is about **what job just opened up** because of that.
 
-### 2. What Changed
+## What Changed
 
 Ask an AI for a binary search and you get one — instantly, correct. Ten
 years ago that was a week of the course. Now it's four seconds. So what got
@@ -59,7 +57,7 @@ is always code — there is no human-language version of the output.
 **If you cannot read what comes back, you did not give an instruction —
 you made a wish.**
 
-### 3. The Gap
+## The Gap
 
 Ask an AI to "write me a grade calculator" and you get something clean,
 readable, that runs fine — and is wrong for this specific course, because
@@ -75,7 +73,7 @@ just quietly computes the wrong grade** — and you only know to fix the
 prompt if you already noticed the rule was missing. **You had to read the
 code to see the holes.**
 
-### 4. The Trap
+## The Trap
 
 A function that checks for leap years passes the test you throw at it
 (`is_leap_year(2024)` → `True`, correct!). Ship it?
@@ -93,7 +91,7 @@ newtons — off by a factor of 4.45, for ten months, at a cost of $125
 million. **Every line of that code ran perfectly. Nobody checked what the
 number *meant*.**
 
-### 5. Your Job
+## Your Job
 
 In 1950 Alan Turing asked "Can machines think?" — and refused to answer it
 directly. He turned it into a test instead: a human judge questions both

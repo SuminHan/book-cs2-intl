@@ -1,6 +1,6 @@
 # Basic Elements
 
-## 1.1. Opener: A Very Easy Question
+## Opener: A Very Easy Question
 
 You have just learned variables, expressions, and `print`. So this should be easy:
 
@@ -57,7 +57,7 @@ The computer did the arithmetic perfectly. It still gave you an answer you
 did not expect. Knowing what the machine will actually do is a different
 skill from telling it what to do.
 
-## 1.2. Topics Covered
+## Topics Covered
 
 - Computation in math vs. Python
 - Variables & values
