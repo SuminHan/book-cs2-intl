@@ -11,6 +11,7 @@ def sumSquares(a):
     n = len(a)
     total = 0
     # ADD ADDITIONAL CODE HERE!
+
 print(sumSquares([3,5,4]))               # 50
 print(sumSquares([2,5,4,0,1,-1,5,1]))    # 73
 ```
@@ -24,6 +25,7 @@ def computePolynomial(a, x):
     n = len(a)
     total = 0
     # ADD ADDITIONAL CODE HERE!
+
 print(computePolynomial([3,5,4], 5))            # 128
 print(computePolynomial([2,0,4,0,1,-1,5,1], 3)) # 5708
 ```
@@ -39,6 +41,7 @@ print(computePolynomial([2,0,4,0,1,-1,5,1], 3)) # 5708
 def harmonicMean(a):
     n = len(a)
     # ADD ADDITIONAL CODE HERE!
+
 numbers = [2, 4, 3, 10, 7, 2, 5, 6]
 print(harmonicMean(numbers))  # 3.648208469055375
 ```
@@ -54,6 +57,7 @@ def geometricMean(a):
     n = len(a)
     prod = 1
     # ADD ADDITIONAL CODE HERE!
+
 print(geometricMean([3,2,6,4,7]))           # 3.987421134470927
 print(geometricMean([2,4,3,10,7,2,5,6]))    # 4.221167313317658
 ```
@@ -70,6 +74,7 @@ def reverse(a):
     for i in range(n):
         b[i] = a[??]  # ADD ADDITIONAL CODE HERE!
     return b
+
 print(reverse([3,1,5,2,4]))          # [4,2,5,1,3]
 print(reverse([7,6,3,1,5,8,2,4]))    # [4,2,8,5,1,3,6,7]
 ```
@@ -83,6 +88,7 @@ print(reverse([7,6,3,1,5,8,2,4]))    # [4,2,8,5,1,3,6,7]
 ```python
 def square(a):
     # ADD ADDITIONAL CODE HERE!
+
 L = [7,6,3,1,5,8,2,4]
 print(square(L))  # [49,36,9,1,25,64,4,16]
 print(L)          # [7,6,3,1,5,8,2,4]  -- L itself unchanged
@@ -101,8 +107,10 @@ def accumulate(a):
     b = [None] * n
     b[0] = a[0]
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(1, n):  # note that i starts from 1, not 0
         ...
+
 print(accumulate([1,2,3,4,5]))        # [1,3,6,10,15]
 print(accumulate([7,6,3,1,5,8,2,4]))  # [7,13,16,17,22,30,32,36]
 ```
@@ -122,8 +130,10 @@ def fibonacci(n):
     b[0] = 1
     b[1] = 1
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(??):  # note that i starts from 2
         ...
+
 print(fibonacci(5))   # [1,1,2,3,5]
 print(fibonacci(10))  # [1,1,2,3,5,8,13,21,34,55]
 ```
@@ -146,8 +156,10 @@ def area(p):
     n = len(p)
     total = 0
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(n):
         ...
+
 points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
 print(area(points))  # 22.0
 ```
@@ -160,6 +172,7 @@ print(area(points))  # 22.0
 
 ```python
 # ADD FUNCTION HERE!
+
 points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
 print(perimeter(points))  # 23.85332583138582
 ```
@@ -173,9 +186,11 @@ print(perimeter(points))  # 23.85332583138582
 def findMin(a):
     best = a[0]
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(1, len(a)):
         if a[i] < best:
             ...
+
 print(findMin([7,8,3,4,3,6]))        # 3
 print(findMin([3,5,7,2,7,2,3,8,6]))  # 2
 ```
@@ -191,15 +206,18 @@ print(findMin([3,5,7,2,7,2,3,8,6]))  # 2
 ```python
 def distSquared(p1, p2):
     return (p2[0]-p1[0])**2 + (p2[1]-p1[1])**2
+
 def closestPair(p):
     n = len(p)
     best = distSquared(p[0], p[1])
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(n):
         for j in range(i+1, n):
             d = distSquared(p[i], p[j])
             if d < best:
                 ...
+
 points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
 print(closestPair(points))  # 4.47213595499958  (between [2,1] and [-2,-1])
 ```

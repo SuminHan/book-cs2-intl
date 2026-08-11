@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d7f3802a.js";
+            window.path_to_searchindex_js = "../searchindex-fe01de7a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-6b7ca9ac.js"></script>
@@ -189,6 +189,7 @@
 </ul>
 <pre><code class="language-python">def countZero(numbers):
     # ADD ADDITIONAL CODE HERE!
+
 print(countZero([0,4,0,-2,4,0]))          # 3
 print(countZero([1,0,-2,4,0,0,-7,0,5]))   # 4
 </code></pre>
@@ -200,6 +201,7 @@ print(countZero([1,0,-2,4,0,0,-7,0,5]))   # 4
 </ul>
 <pre><code class="language-python">def countRange(numbers, lower, upper):
     # ADD ADDITIONAL CODE HERE!
+
 print(countRange([0,6,2,1,3,4,7], 2, 5))                      # 3
 print(countRange([8,9,10,2,4,5,9,7,2,3,7], 3, 7))             # 5
 </code></pre>
@@ -215,8 +217,10 @@ print(countRange([8,9,10,2,4,5,9,7,2,3,7], 3, 7))             # 5
 </ul>
 <pre><code class="language-python">def countSecondQuadrant(p):
     # ADD ADDITIONAL CODE HERE!
+
 points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
           [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+
 print(countSecondQuadrant(points))  # 3
 </code></pre>
 <p><strong>4.</strong> Write a function <code>countWithinCircle</code> defined by:</p>
@@ -227,8 +231,10 @@ positive integer <code>r</code></li>
 </ul>
 <pre><code class="language-python">def countWithinCircle(p, r):
     # ADD ADDITIONAL CODE HERE!
+
 points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
           [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+
 print(countWithinCircle(points, 3))  # 2
 print(countWithinCircle(points, 5))  # 4
 print(countWithinCircle(points, 8))  # 9
@@ -243,6 +249,7 @@ print(countWithinCircle(points, 8))  # 9
 </ul>
 <pre><code class="language-python">def withinRect(top, bottom, left, right, x, y):
     # ADD ADDITIONAL CODE HERE!
+
 print(withinRect(2,-4,-5,6, -5,2))  # True
 print(withinRect(2,-4,-5,6, 6,-1))  # True
 print(withinRect(2,-4,-5,6, 0,1))   # True
@@ -261,9 +268,12 @@ included)</li>
     for i in range(len(p)):
         if withinRect(top, bottom, left, right, p[i][0], p[i][1]):
             # ADD ADDITIONAL CODE HERE!
+
             ...
+
 points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
           [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+
 print(countWithinRect(2,-4,-5,6, points))  # 7
 </code></pre>
 <p><strong>6.</strong> Write a function <code>countLeapYear</code> defined by:</p>
@@ -278,6 +288,7 @@ a year</li>
 </ul>
 <pre><code class="language-python">def countLeapYear(numbers):
     # ADD ADDITIONAL CODE HERE!
+
 print(countLeapYear([2008,2011,2012,2000]))  # 3
 print(countLeapYear([2100,2300,2400,2200]))  # 1
 </code></pre>
@@ -295,8 +306,10 @@ print(countLeapYear([2100,2300,2400,2200]))  # 1
         if p % i == 0:
             return False
     return True
+
 def countComposite(numbers):
     # ADD ADDITIONAL CODE HERE!
+
 num = [217, 287, 181, 143, 163, 319, 233, 399, 203]
 print(countComposite(num))  # 6
 </code></pre>
@@ -314,14 +327,18 @@ steps forward; <code>zigzag()</code> makes Hubo zig-zag one round).</em></li>
 <pre><code class="language-python">def move9steps():
     for i in range(9):
         hubo.move()
+
 def zigzag():
     move9steps()
     hubo.turn_left(); hubo.move(); hubo.turn_left()
     move9steps()
     hubo.turn_right(); hubo.move(); hubo.turn_right()
+
 def zigzagEntireWorld():
     # ADD ADDITIONAL CODE HERE!
+
     zigzag()
+
 zigzagEntireWorld()
 </code></pre>
 <p><strong>9.</strong> Write a function <code>whirlEntireWorld</code> defined by:</p>
@@ -338,8 +355,10 @@ forward,” Hubo’s full action sequence is:</em>
 </ul>
 <pre><code class="language-python">def whirlEntireWorld():
     # ADD ADDITIONAL CODE HERE!
+
     for n in range(1, 10):
         ...
+
 whirlEntireWorld()
 </code></pre>
 <p><strong>10.</strong> Write a function <code>zigzagEntireWorld</code> defined by (a different
@@ -359,9 +378,11 @@ many steps forward,” Hubo’s full action sequence is:</em>
 <pre><code class="language-python">def zigzagEntireWorld():
     hubo.turn_right()
     # ADD ADDITIONAL CODE HERE!
+
     for n in range(1, 9):
         if n % 2 == 1:
             ...
+
 zigzagEntireWorld()
 </code></pre>
 <h3 id="optional-problems"><a class="header" href="#optional-problems">Optional Problems</a></h3>

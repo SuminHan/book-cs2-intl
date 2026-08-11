@@ -9,6 +9,7 @@
 ```python
 def countZero(numbers):
     # ADD ADDITIONAL CODE HERE!
+
 print(countZero([0,4,0,-2,4,0]))          # 3
 print(countZero([1,0,-2,4,0,0,-7,0,5]))   # 4
 ```
@@ -21,6 +22,7 @@ print(countZero([1,0,-2,4,0,0,-7,0,5]))   # 4
 ```python
 def countRange(numbers, lower, upper):
     # ADD ADDITIONAL CODE HERE!
+
 print(countRange([0,6,2,1,3,4,7], 2, 5))                      # 3
 print(countRange([8,9,10,2,4,5,9,7,2,3,7], 3, 7))             # 5
 ```
@@ -34,8 +36,10 @@ print(countRange([8,9,10,2,4,5,9,7,2,3,7], 3, 7))             # 5
 ```python
 def countSecondQuadrant(p):
     # ADD ADDITIONAL CODE HERE!
+
 points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
           [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+
 print(countSecondQuadrant(points))  # 3
 ```
 
@@ -47,8 +51,10 @@ print(countSecondQuadrant(points))  # 3
 ```python
 def countWithinCircle(p, r):
     # ADD ADDITIONAL CODE HERE!
+
 points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
           [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+
 print(countWithinCircle(points, 3))  # 2
 print(countWithinCircle(points, 5))  # 4
 print(countWithinCircle(points, 8))  # 9
@@ -64,6 +70,7 @@ print(countWithinCircle(points, 8))  # 9
 ```python
 def withinRect(top, bottom, left, right, x, y):
     # ADD ADDITIONAL CODE HERE!
+
 print(withinRect(2,-4,-5,6, -5,2))  # True
 print(withinRect(2,-4,-5,6, 6,-1))  # True
 print(withinRect(2,-4,-5,6, 0,1))   # True
@@ -83,9 +90,12 @@ def countWithinRect(top, bottom, left, right, p):
     for i in range(len(p)):
         if withinRect(top, bottom, left, right, p[i][0], p[i][1]):
             # ADD ADDITIONAL CODE HERE!
+
             ...
+
 points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],
           [-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
+
 print(countWithinRect(2,-4,-5,6, points))  # 7
 ```
 
@@ -98,6 +108,7 @@ print(countWithinRect(2,-4,-5,6, points))  # 7
 ```python
 def countLeapYear(numbers):
     # ADD ADDITIONAL CODE HERE!
+
 print(countLeapYear([2008,2011,2012,2000]))  # 3
 print(countLeapYear([2100,2300,2400,2200]))  # 1
 ```
@@ -113,8 +124,10 @@ def isPrime(p):
         if p % i == 0:
             return False
     return True
+
 def countComposite(numbers):
     # ADD ADDITIONAL CODE HERE!
+
 num = [217, 287, 181, 143, 163, 319, 233, 399, 203]
 print(countComposite(num))  # 6
 ```
@@ -130,14 +143,18 @@ print(countComposite(num))  # 6
 def move9steps():
     for i in range(9):
         hubo.move()
+
 def zigzag():
     move9steps()
     hubo.turn_left(); hubo.move(); hubo.turn_left()
     move9steps()
     hubo.turn_right(); hubo.move(); hubo.turn_right()
+
 def zigzagEntireWorld():
     # ADD ADDITIONAL CODE HERE!
+
     zigzag()
+
 zigzagEntireWorld()
 ```
 
@@ -152,8 +169,10 @@ zigzagEntireWorld()
 ```python
 def whirlEntireWorld():
     # ADD ADDITIONAL CODE HERE!
+
     for n in range(1, 10):
         ...
+
 whirlEntireWorld()
 ```
 
@@ -171,9 +190,11 @@ pattern from problem 8):
 def zigzagEntireWorld():
     hubo.turn_right()
     # ADD ADDITIONAL CODE HERE!
+
     for n in range(1, 9):
         if n % 2 == 1:
             ...
+
 zigzagEntireWorld()
 ```
 

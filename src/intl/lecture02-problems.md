@@ -9,6 +9,7 @@
 ```python
 def f(x, y):
     # ADD ADDITIONAL CODE HERE!
+
 print(f(1, 2))  # 0.25
 print(f(3, 6))  # 0.25
 ```
@@ -34,10 +35,13 @@ print(f(64, 6))  # 2.0
 
 ```python
 import math
+
 def f(x):
     # ADD ADDITIONAL CODE HERE!
+
 def g(x, y):
     # ADD ADDITIONAL CODE HERE!
+
 print(f(2), f(3))    # 0.8108255774981366 -0.43822461448665007
 print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
 ```
@@ -52,6 +56,7 @@ print(g(2,3), g(3,5)) # 1.0292401354314726 1.0139040096665841
 def force(m1, m2, r):
     G = 6.67 * 10**(-11)
     # ADD ADDITIONAL CODE HERE!
+
 print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
 ```
 
@@ -64,8 +69,10 @@ print(force(1.5, 1.6, 100.5))  # 1.5849112645726593e-14
 ```python
 def f(a, b, c, x):
     return a*x**2 + b*x + c
+
 def minValue(a, b, c):
     # ADD ADDITIONAL CODE HERE!
+
 print(minValue(1, 5, 10))   # 3.75
 print(minValue(1, -5, 10))  # 3.75
 print(minValue(3, 7, 5))    # 0.9166666666666661
@@ -81,6 +88,7 @@ print(minValue(3, 7, 5))    # 0.9166666666666661
 
 ```python
 # ADD FUNCTION HERE!
+
 print(reverse(3702))  # 2073
 print(reverse(3710))  # 173
 print(reverse(3700))  # 73
@@ -98,6 +106,7 @@ Write a function `countCoins` defined by:
 
 ```python
 # ADD FUNCTION HERE!
+
 print(countCoins(730))  # 6
 print(countCoins(790))  # 8
 print(countCoins(260))  # 4

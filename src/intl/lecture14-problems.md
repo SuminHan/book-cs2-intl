@@ -49,18 +49,25 @@ position.
 class Circle:
     def __init__(self, c, r):
         # ADD ADDITIONAL CODE HERE!
+
     def __str__(self):
         # ADD ADDITIONAL CODE HERE!
+
     def area(self):
         # ADD ADDITIONAL CODE HERE!
+
     def getRadius(self):
         # ADD ADDITIONAL CODE HERE!
+
     def getCenter(self):
         # ADD ADDITIONAL CODE HERE!
+
     def setRadius(self, r):
         # ADD ADDITIONAL CODE HERE!
+
     def moveTo(self, x, y):
         # ADD ADDITIONAL CODE HERE!
+
     def move(self, dx, dy):
         # ADD ADDITIONAL CODE HERE!
 ```
@@ -116,18 +123,25 @@ pure** — `self` and `r` remain unchanged.
 class Rational:
     def __init__(self, n, d):
         # ADD ADDITIONAL CODE HERE!
+
     def __str__(self):
         # ADD ADDITIONAL CODE HERE!
+
     def toFloat(self):
         # ADD ADDITIONAL CODE HERE!
+
     def negate(self):
         # ADD ADDITIONAL CODE HERE!
+
     def invert(self):
         # ADD ADDITIONAL CODE HERE!
+
     def reduce(self):
         # ADD ADDITIONAL CODE HERE!
+
     def add(self, r):
         # ADD ADDITIONAL CODE HERE!
+
     def mul(self, r):
         # ADD ADDITIONAL CODE HERE!
 ```

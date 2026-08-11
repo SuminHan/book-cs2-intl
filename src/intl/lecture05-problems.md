@@ -11,6 +11,7 @@
 ```python
 def printMultTable1():
     # ADD ADDITIONAL CODE HERE!
+
 printMultTable1()
 ```
 Output:
@@ -25,6 +26,7 @@ Output:
 ```python
 def printMultTable2():
     # ADD ADDITIONAL CODE HERE!
+
 printMultTable2()
 ```
 Output:
@@ -46,6 +48,7 @@ Output:
 def sumNumbers(a, b):
     total = 0
     # ADD ADDITIONAL CODE HERE!
+
 print(sumNumbers(5, 10))   # 45
 print(sumNumbers(15, 100)) # 4945
 ```
@@ -59,6 +62,7 @@ print(sumNumbers(15, 100)) # 4945
 def factorial(n):
     prod = 1
     # ADD ADDITIONAL CODE HERE!
+
 print(factorial(8))   # 40320
 print(factorial(12))  # 479001600
 ```
@@ -78,6 +82,7 @@ Write a function `exp` defined by:
 def exp(x):
     total = 1
     # ADD ADDITIONAL CODE HERE!
+
 print(exp(1.0))  # 2.7182818284590455
 print(exp(2.0))  # 7.389056098930649
 print(exp(4.0))  # 54.598150033144265
@@ -94,7 +99,9 @@ def withinCircle(r):
     for x in range(-r, r+1):
         for y in range(-r, r+1):
             # ADD ADDITIONAL CODE HERE!
+
     return counter
+
 print(withinCircle(100) / 100**2)    # 3.1417
 print(withinCircle(1000) / 1000**2)  # 3.141549
 ```
@@ -119,6 +126,7 @@ def dayOfWeek(year, month, day):
     if n == 0:
         return "Sat"
     # step 4: complete the code for the other cases
+
 print(dayOfWeek(2001, 1, 28))  # Sun
 print(dayOfWeek(2002, 11, 21)) # Thu
 print(dayOfWeek(2004, 3, 4))   # Thu
@@ -137,12 +145,15 @@ Write a function `findMax` defined by:
 ```python
 def f(i, j):
     return (i**5 + 2*(i**3)*(j**2) + 5*i**2 + j + 5000) % 10000
+
 def findMax():
     best = f(0, 0)
     for i in range(100):
         for j in range(100):
             # ADD ADDITIONAL CODE HERE!
+
     return best
+
 print("max value:", findMax())  # 9997
 ```
 

@@ -10,6 +10,7 @@ def countZero(a):
     height = len(a[0])
     width = len(a[0][0])
     # ADD ADDITIONAL CODE HERE!
+
 print(countZero([[[1,2],[0,0]],[[0,0],[0,0]]]))                # 6
 print(countZero([[[1,2],[0,0]],[[0,0],[0,0]],[[0,0],[0,0]]]))  # 10
 ```
@@ -22,14 +23,17 @@ both row-wise and column-wise.
 ```python
 def isSorted(a):
     # ADD ADDITIONAL CODE HERE!
+
 test1 = [[2,3,7,9,11,12],
          [5,6,8,10,12,15],
          [7,7,8,10,12,15],
          [8,9,10,10,13,17]]
+
 test2 = [[2,3,7,9,11,12],
          [5,6,8,10,12,15],
          [7,7,8,10,12,18],
          [8,9,10,10,13,17]]
+
 print(isSorted(test1))  # True
 print(isSorted(test2))  # False
 ```
@@ -46,6 +50,7 @@ rectangle.
 ```python
 def withinRect(top, bottom, left, right, x, y):
     # ADD ADDITIONAL CODE HERE!
+
 print(withinRect(2,-4,-5,6, -5,2))  # True
 print(withinRect(2,-4,-5,6, 6,-1))  # True
 print(withinRect(2,-4,-5,6, 0,1))   # True
@@ -63,6 +68,7 @@ from the list that lie inside or on the boundary of the rectangle.
 ```python
 def countWithinRect(top, bottom, left, right, p):
     # ADD ADDITIONAL CODE HERE!
+
 points = [[2,1],[7,5],[-5,2],[-3,5],[-7,4],[-2,-1],[-2,-4],[-4,-2],[-6,-4],[4,-4],[6,-2]]
 print(countWithinRect(2,-4,-5,6, points))  # 7
 ```
@@ -75,10 +81,12 @@ between the two closest points among them.
 ```python
 def distSquared(p1, p2):
     return ((p2[0]-p1[0])**2 + (p2[1]-p1[1])**2) ** 0.5
+
 def closestPair(p):
     n = len(p)
     best = distSquared(p[0], p[1])  # start with the first pair, then improve
     # ADD ADDITIONAL CODE HERE!
+
 points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
 print(closestPair(points))  # 4.47213595499958
 ```
@@ -91,12 +99,15 @@ all" and a "for some" condition need to be satisfied).
 ```python
 def check(M):
     # ADD ADDITIONAL CODE HERE!
+
 M1 = [[1,9,-1,0,2],
       [-3,7,1,1,4],
       [3,9,1,-9,-2]]
+
 M2 = [[1,9,1,0,2],
       [-3,7,1,1,4],
       [3,9,-1,-9,2]]
+
 print(check(M1))  # True
 print(check(M2))  # False
 ```
@@ -115,8 +126,10 @@ elements.*
 ```python
 def withinBoundary(size, i):
     return i >= 0 and i < size
+
 def countMines(mineField):
     # ADD ADDITIONAL CODE HERE!
+
 T = True
 F = False
 mineField1 = [T, F, F, T, T, T, T, F, T, F]
@@ -136,8 +149,10 @@ immediately adjacent cells (up, down, left, right, and the four diagonals),
 ```python
 def withinBoundary(height, width, i, j):
     return i >= 0 and i < height and j >= 0 and j < width
+
 def countMines(mineField):
     # ADD ADDITIONAL CODE HERE!
+
 def main():  # for test
     T = True
     F = False
@@ -151,6 +166,7 @@ def main():  # for test
     mines = countMines(mineField)
     for i in range(len(mines)):
         print(mines[i])
+
 main()
 ```
 Output:

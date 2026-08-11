@@ -10,11 +10,13 @@
 ```python
 def sumOfThreeSquares(n):
     # ADD ADDITIONAL CODE HERE!
+
     b = int(n**0.5)
     for i in range(1, b+1):
         for j in range(1, b+1):
             for k in range(1, b+1):
                 ...
+
 for n in range(20, 31):
     print(n, sumOfThreeSquares(n))
 ```
@@ -33,6 +35,7 @@ defined by:
 ```python
 def sumOfThreeDistinctSquares(n):
     # ADD ADDITIONAL CODE HERE!
+
 for n in range(20, 31):
     print(n, sumOfThreeDistinctSquares(n))
 ```
@@ -50,12 +53,15 @@ def isPrime(p):
         if p % i == 0:
             return False
     return True
+
 def sumOfTwoPrimes(n):
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(2, n-1):
         for j in range(2, n-1):
             if isPrime(i) and isPrime(j) and n == i+j:
                 ...
+
 for n in range(20, 31):
     print(n, sumOfTwoPrimes(n))
 ```
@@ -74,8 +80,10 @@ def isPrime(p):
         if p % i == 0:
             return False
     return True
+
 def sumOfTwoPrimeSquares(n):
     # ADD ADDITIONAL CODE HERE!
+
 for n in range(50, 61):
     print(n, sumOfTwoPrimeSquares(n))
 ```
@@ -95,15 +103,19 @@ def isPrime(p):
         if p % i == 0:
             return False
     return True
+
 # "for some" pattern
 def somePrime(numbers):
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(len(numbers)):
         if isPrime(numbers[i]):
             ...
+
 # "for all" pattern
 def allPrime(numbers):
     # ADD ADDITIONAL CODE HERE!
+
 num1 = [217, 287, 143, 163, 319]
 num2 = [217, 287, 143, 169, 319]
 num3 = [223, 281, 227, 151, 149]
@@ -120,9 +132,11 @@ print(somePrime(num3), allPrime(num3))  # True True
 ```python
 def allDistinct(numbers):
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(len(numbers)):
         for j in range(i+1, len(numbers)):
             ...
+
 print(allDistinct([1,3,2,5,2,1]))  # False
 print(allDistinct([1,0,2,5,3,4]))  # True
 ```
@@ -135,6 +149,7 @@ Write a function `allWithinRange` ("for all" pattern) defined by:
 ```python
 def allWithinRange(numbers, lower, upper):
     # ADD ADDITIONAL CODE HERE!
+
 print(allWithinRange([1,0,2,6,3,4], 0, 5))  # False
 print(allWithinRange([1,0,2,5,3,4], 0, 5))  # True
 ```
@@ -166,8 +181,10 @@ def move_and_pick():
     hubo.move()
     if hubo.on_beeper():
         hubo.pick_beeper()
+
 def walk_square_picking_all_beepers():
     # ADD ADDITIONAL CODE HERE!
+
 walk_square_picking_all_beepers()
 ```
 
@@ -181,6 +198,7 @@ walk_square_picking_all_beepers()
 ```python
 def whirl_picking_all_beepers():
     # ADD ADDITIONAL CODE HERE!
+
 whirl_picking_all_beepers()
 ```
 
@@ -197,7 +215,9 @@ def move_and_drop():
     hubo.move()
     if hubo.carries_beepers():
         hubo.drop_beeper()
+
 def whirl_dropping_beepers():
     # ADD ADDITIONAL CODE HERE!
+
 whirl_dropping_beepers()
 ```

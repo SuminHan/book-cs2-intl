@@ -10,6 +10,7 @@ times `c` appears in `s`.
 ```python
 def countChar(s, c):
     # ADD ADDITIONAL CODE HERE!
+
 print(countChar("AbAA","b"))         # 1
 print(countChar("AbAA","A"))         # 3
 print(countChar("DbDD","D"))         # 3
@@ -26,6 +27,7 @@ concatenating characters one by one with `+`.*
 ```python
 def reverse(s):
     # ADD ADDITIONAL CODE HERE!
+
 print(reverse("abc"))    # cba
 print(reverse("abcDF"))  # FDcba
 print(reverse("abcd"))   # dcba
@@ -38,6 +40,7 @@ longest common prefix.
 ```python
 def lenPrefix(s1, s2):
     # ADD ADDITIONAL CODE HERE!
+
 print(lenPrefix("ababade", "ababeee"))       # 4
 print(lenPrefix("predicate", "prediction"))  # 6
 print(lenPrefix("ababade", "xabds"))         # 0
@@ -55,6 +58,7 @@ provided — hours 0-23, minutes 0-59.)*
 ```python
 def duration(t1, t2):
     # ADD ADDITIONAL CODE HERE!
+
 print(duration("1800","0920"))  # 8 h 40 m
 print(duration("0910","0910"))  # 0 m
 print(duration("0910","1310"))  # 4 h
@@ -71,6 +75,7 @@ occurrence of `x` in `L`.*
 ```python
 def sortId(L):
     # ADD ADDITIONAL CODE HERE!
+
 print(sortId(["20-012","Kim","20-009","Kang","22-005","Na","21-003","Kim"]))
 # ['20-009','Kang','20-012','Kim','21-003','Kim','22-005','Na']
 ```

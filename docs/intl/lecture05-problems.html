@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d7f3802a.js";
+            window.path_to_searchindex_js = "../searchindex-fe01de7a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-6b7ca9ac.js"></script>
@@ -195,6 +195,7 @@
 </ul>
 <pre><code class="language-python">def printMultTable1():
     # ADD ADDITIONAL CODE HERE!
+
 printMultTable1()
 </code></pre>
 <p>Output:</p>
@@ -206,6 +207,7 @@ printMultTable1()
 </code></pre>
 <pre><code class="language-python">def printMultTable2():
     # ADD ADDITIONAL CODE HERE!
+
 printMultTable2()
 </code></pre>
 <p>Output:</p>
@@ -220,13 +222,14 @@ printMultTable2()
 <li>input parameter: two integers <code>a</code> and <code>b</code> where <code>a &lt;= b</code></li>
 <li>return value: the sum of integers from <code>a</code> to <code>b</code>
 <ul>
-<li><em>What does <code>for i in range(a,b):</code> do? What about <code>for i in range(a,b+1):</code>?</em></li>
+<li><em>What does <code>for i in range(a,b):</code> do? What about <code>for i in  range(a,b+1):</code>?</em></li>
 </ul>
 </li>
 </ul>
 <pre><code class="language-python">def sumNumbers(a, b):
     total = 0
     # ADD ADDITIONAL CODE HERE!
+
 print(sumNumbers(5, 10))   # 45
 print(sumNumbers(15, 100)) # 4945
 </code></pre>
@@ -239,6 +242,7 @@ print(sumNumbers(15, 100)) # 4945
 <pre><code class="language-python">def factorial(n):
     prod = 1
     # ADD ADDITIONAL CODE HERE!
+
 print(factorial(8))   # 40320
 print(factorial(12))  # 479001600
 </code></pre>
@@ -259,6 +263,7 @@ for greater precision).</p>
 def exp(x):
     total = 1
     # ADD ADDITIONAL CODE HERE!
+
 print(exp(1.0))  # 2.7182818284590455
 print(exp(2.0))  # 7.389056098930649
 print(exp(4.0))  # 54.598150033144265
@@ -274,7 +279,9 @@ print(exp(4.0))  # 54.598150033144265
     for x in range(-r, r+1):
         for y in range(-r, r+1):
             # ADD ADDITIONAL CODE HERE!
+
     return counter
+
 print(withinCircle(100) / 100**2)    # 3.1417
 print(withinCircle(1000) / 1000**2)  # 3.141549
 </code></pre>
@@ -301,6 +308,7 @@ from <code>2015/Apr/1</code> to <code>2015/Apr/12</code>.</em></li>
     if n == 0:
         return "Sat"
     # step 4: complete the code for the other cases
+
 print(dayOfWeek(2001, 1, 28))  # Sun
 print(dayOfWeek(2002, 11, 21)) # Thu
 print(dayOfWeek(2004, 3, 4))   # Thu
@@ -317,12 +325,15 @@ print(dayOfWeek(2013, 3, 23))  # Sat
 </ul>
 <pre><code class="language-python">def f(i, j):
     return (i**5 + 2*(i**3)*(j**2) + 5*i**2 + j + 5000) % 10000
+
 def findMax():
     best = f(0, 0)
     for i in range(100):
         for j in range(100):
             # ADD ADDITIONAL CODE HERE!
+
     return best
+
 print("max value:", findMax())  # 9997
 </code></pre>
 <p><strong>8.</strong> Write a function <code>combination</code> defined by:</p>

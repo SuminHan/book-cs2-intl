@@ -12,6 +12,7 @@
 ```python
 def countSevens(n):
     # ADD ADDITIONAL CODE HERE!
+
 print(countSevens(1723))        # 1
 print(countSevens(1357924770))  # 3
 ```
@@ -24,6 +25,7 @@ print(countSevens(1357924770))  # 3
 
 ```python
 # ADD FUNCTION HERE!
+
 print(countEvenDigits(2723))        # 2
 print(countEvenDigits(1326924870))  # 6
 ```
@@ -43,11 +45,13 @@ def gcd(a, b):
     if a < b:  # swap so that a >= b
         a, b = b, a
     # ADD ADDITIONAL CODE HERE!
+
     while b != 0:
         r = a % b
         a = ??
         b = ??
     return ??
+
 print(gcd(36, 20))          # 4
 print(gcd(2408208, 2790876)) # 132
 ```
@@ -77,6 +81,7 @@ def collect_garbages():
     # move upwards
     # put all the beepers down
     # move to the starting position
+
 collect_garbages()
 ```
 
@@ -98,6 +103,7 @@ collect_garbages()
 ```python
 def putNumber(num):
     # ADD ADDITIONAL CODE HERE!
+
 putNumber(2291)
 ```
 

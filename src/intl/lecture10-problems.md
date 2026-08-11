@@ -11,6 +11,7 @@ add only the values that are not `3`.*
 ```python
 def deleteThree(L):
     # ADD ADDITIONAL CODE HERE!
+
 print(deleteThree([2,5,7,3,2,8,3,3]))  # [2,5,7,2,8]
 print(deleteThree([3,3,7,3,2,8,3,3]))  # [7,2,8]
 ```
@@ -26,6 +27,7 @@ desired element.*
 ```python
 def kthSmallest(L, k):
     # ADD ADDITIONAL CODE HERE!
+
 print(kthSmallest([3,4,2,8,8], 1))  # 2
 print(kthSmallest([3,4,2,8,8], 3))  # 4
 print(kthSmallest([3,4,2,8,8], 4))  # 8
@@ -43,6 +45,7 @@ their order are identical.*
 ```python
 def same(L1, L2):
     # ADD ADDITIONAL CODE HERE!
+
 print(same([2,3,2,7], [2,7,2,3]))  # True
 print(same([2,5,7,8], [2,3,4,5]))  # False
 ```
@@ -58,6 +61,7 @@ instead.*
 ```python
 def makeSet(L):
     # ADD ADDITIONAL CODE HERE!
+
 print(makeSet([1,1,3,5]))          # [1,3,5]
 print(makeSet([2,1,2,8,8]))        # [1,2,8]
 print(makeSet([3,4,5,6,7,3,4]))    # [3,4,5,6,7]
@@ -77,6 +81,7 @@ because `14` and `35` are multiples of `7`, `24` and `18` are multiples of
 ```python
 def multiple(L1, L2):
     # ADD ADDITIONAL CODE HERE!
+
 print(multiple([14,24,18,35,39], [6,13,7]))  # True
 print(multiple([14,24,18,35,39], [5,13,7]))  # False
 ```

@@ -9,6 +9,7 @@
 ```python
 def maximum(n1, n2):
     # ADD ADDITIONAL CODE HERE!
+
 print(maximum(5, 7))  # 7
 print(maximum(7, 5))  # 7
 print(maximum(5, 5))  # 5
@@ -26,6 +27,7 @@ def countZeros(n1, n2, n3, n4, n5):
     if n2 == 0:
         counter = counter + 1
     # ADD ADDITIONAL CODE HERE!
+
 print(countZeros(1, 0, 3, 0, 0))  # 3
 print(countZeros(0, 2, 2, 0, 4))  # 2
 print(countZeros(1, 2, 3, 0, 4))  # 1
@@ -40,6 +42,7 @@ print(countZeros(1, 2, 3, 5, 4))  # 0
 ```python
 def smaller(n1, n2):
     # ADD ADDITIONAL CODE HERE!
+
 print(smaller(5, 7))  # left
 print(smaller(7, 5))  # right
 print(smaller(5, 5))  # equal
@@ -53,6 +56,7 @@ print(smaller(5, 5))  # equal
 
 ```python
 # ADD FUNCTION HERE!
+
 print(quadrant(10, 5))   # First Quadrant
 print(quadrant(-5, 3))   # Second Quadrant
 print(quadrant(-5, -7))  # Third Quadrant
@@ -70,6 +74,7 @@ print(quadrant(0, -3))   # On the Boundary
 def round(x):
     fraction = x - int(x)
     # ADD ADDITIONAL CODE HERE!
+
 print(round(2.4))  # 2
 print(round(2.5))  # 3
 print(round(2.6))  # 3
@@ -82,6 +87,7 @@ print(round(2.6))  # 3
 
 ```python
 # ADD FUNCTION HERE!
+
 print(ceiling(2.0))              # 2
 print(ceiling(2.0000000000001))  # 3
 print(ceiling(2.99))             # 3
@@ -96,9 +102,11 @@ print(ceiling(2.99))             # 3
 def quadratic(a, b, c):
     if a == 0:
         # ADD ADDITIONAL CODE HERE!
+
     else:
         D = b**2 - 4*a*c
         # ADD ADDITIONAL CODE HERE!
+
 print(quadratic(0, 0, 1))   # 0
 print(quadratic(0, 1, 1))   # 1
 print(quadratic(1, -2, 1))  # 1
@@ -116,9 +124,11 @@ print(quadratic(1, -4, 1))  # 2
 ```python
 def f(a, b, c, x):
     return a*x**2 + b*x + c
+
 def minX(a, b, c):
     x0 = int(-b / (2*a))
     # ADD ADDITIONAL CODE HERE!
+
 print(minX(1, -9, 2))   # 4
 print(minX(9, -5, 0))   # 0
 print(minX(9, -15, 0))  # 1
@@ -136,7 +146,9 @@ def rock_paper_scissors(first, second):
     if first == second:
         return "Tie"
     # ADD ADDITIONAL CODE HERE!
+
     # if first == "R" ...
+
 print(rock_paper_scissors("R","R"))  # Tie
 print(rock_paper_scissors("R","S"))  # First
 print(rock_paper_scissors("R","P"))  # Second
@@ -163,6 +175,7 @@ def better(gold1, silver1, bronze1, gold2, silver2, bronze2):
     if gold1 < gold2:
         return "Second"
     # ADD ADDITIONAL CODE HERE!
+
 print(better(10,4,24, 1,35,25))    # First
 print(better(1,35,25, 10,4,24))    # Second
 print(better(10,18,0, 10,4,24))    # First

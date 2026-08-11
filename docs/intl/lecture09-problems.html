@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d7f3802a.js";
+            window.path_to_searchindex_js = "../searchindex-fe01de7a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-6b7ca9ac.js"></script>
@@ -195,6 +195,7 @@ each iteration? Increment the counter only when <code>n % 10 == 7</code>.</em></
 </ul>
 <pre><code class="language-python">def countSevens(n):
     # ADD ADDITIONAL CODE HERE!
+
 print(countSevens(1723))        # 1
 print(countSevens(1357924770))  # 3
 </code></pre>
@@ -209,6 +210,7 @@ give you on each iteration?</em></li>
 </li>
 </ul>
 <pre><code class="language-python"># ADD FUNCTION HERE!
+
 print(countEvenDigits(2723))        # 2
 print(countEvenDigits(1326924870))  # 6
 </code></pre>
@@ -226,15 +228,17 @@ the GCD is then the other number.</p>
     if a &lt; b:  # swap so that a &gt;= b
         a, b = b, a
     # ADD ADDITIONAL CODE HERE!
+
     while b != 0:
         r = a % b
         a = ??
         b = ??
     return ??
+
 print(gcd(36, 20))          # 4
 print(gcd(2408208, 2790876)) # 132
 </code></pre>
-<p><em>Hint: during the loop, <code>a,b</code> should take the values <code>36,20 → 20,16 → 16,4 → 4,0</code>.</em></p>
+<p><em>Hint: during the loop, <code>a,b</code> should take the values <code>36,20 → 20,16 →  16,4 → 4,0</code>.</em></p>
 <p><strong>4.</strong> Write a function <code>walk_square_picking_all_beepers</code> defined by:</p>
 <ul>
 <li>input parameter: none</li>
@@ -262,6 +266,7 @@ put it in the garbage can, located north of the starting point</li>
     # move upwards
     # put all the beepers down
     # move to the starting position
+
 collect_garbages()
 </code></pre>
 <p><strong>6.</strong> Write a function <code>putNumber</code> defined by:</p>
@@ -284,6 +289,7 @@ with code that drops beepers and moves forward.</em></li>
 </ul>
 <pre><code class="language-python">def putNumber(num):
     # ADD ADDITIONAL CODE HERE!
+
 putNumber(2291)
 </code></pre>
 <h3 id="optional-problems"><a class="header" href="#optional-problems">Optional Problems</a></h3>

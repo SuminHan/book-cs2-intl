@@ -9,6 +9,7 @@
 ```python
 def inSecondQuadrant(x, y):
     # ADD ADDITIONAL CODE HERE!
+
 print(type(inSecondQuadrant(0, 0)))  # <class 'bool'>
 print(inSecondQuadrant(-1, 2))   # True
 print(inSecondQuadrant(-1, -2))  # False
@@ -29,7 +30,9 @@ def exactlyTwoSecondQuadrant(x1, y1, x2, y2, x3, y3):
     if inSecondQuadrant(x1, y1):
         counter = counter + 1
     # ADD ADDITIONAL CODE HERE!
+
     return (counter == 2)
+
 print(exactlyTwoSecondQuadrant(-1,2, 2,1, -2,1))  # True
 print(exactlyTwoSecondQuadrant(1,2, -2,1, -3,3))  # True
 print(exactlyTwoSecondQuadrant(1,2, -2,-1, -2,1)) # False
@@ -44,6 +47,7 @@ print(exactlyTwoSecondQuadrant(-1,2, -2,1, -2,2)) # False
 ```python
 def withinInterval(lower, upper, n):
     # ADD ADDITIONAL CODE HERE!
+
 print(type(withinInterval(1, 5, 0)))  # <class 'bool'>
 print(withinInterval(1, 5, 0))  # False
 print(withinInterval(1, 5, 1))  # True
@@ -65,6 +69,7 @@ def exactlyThreeWithinInterval(lower, upper, n1, n2, n3, n4, n5):
     if withinInterval(lower, upper, n1):
         counter = counter + 1
     # ADD ADDITIONAL CODE HERE!
+
 print(exactlyThreeWithinInterval(1,5, 1,0,6,5,3))  # True
 print(exactlyThreeWithinInterval(1,5, 6,1,0,3,5))  # True
 print(exactlyThreeWithinInterval(1,5, 6,1,0,7,2))  # False
@@ -78,6 +83,7 @@ print(exactlyThreeWithinInterval(1,5, 6,7,0,1,2))  # False
 
 ```python
 # ADD FUNCTION HERE!
+
 print(triangle(-3, -2))  # True
 print(triangle(3, 0))    # False
 print(triangle(0, 2))    # False
@@ -93,6 +99,7 @@ print(triangle(0, 0))    # False
 
 ```python
 # ADD FUNCTION HERE!
+
 print(triangle(3, 4, 5))  # True
 print(triangle(1, 5, 2))  # False
 print(triangle(3, 1, 1))  # False
@@ -110,6 +117,7 @@ def rightAngled(x1, y1, x2, y2, x3, y3):
     b = (x3-x2)**2 + (y3-y2)**2
     c = (x1-x3)**2 + (y1-y3)**2
     # ADD ADDITIONAL CODE HERE!
+
 print(rightAngled(1, 1, 5, 2, -1, 9))  # True
 print(rightAngled(1, 2, 4, 2, 5, 4))   # False
 print(rightAngled(1, 2, 4, 2, 4, 3))   # True
@@ -123,6 +131,7 @@ print(rightAngled(1, 2, 4, 2, 4, 3))   # True
 
 ```python
 # ADD FUNCTION HERE!
+
 print(acuteAngled(1, 2, 4, 3, 2, 7))  # True
 print(acuteAngled(1, 2, 4, 2, 5, 4))  # False
 print(acuteAngled(1, 2, 4, 2, 4, 3))  # False
@@ -138,6 +147,7 @@ print(acuteAngled(1, 2, 4, 2, 4, 3))  # False
 
 ```python
 # ADD FUNCTION HERE!
+
 print(intersect(1, 1, 3, 5, 4, 2))  # False
 print(intersect(1, 1, 3, 4, 3, 2))  # True
 print(intersect(1, 1, 3, 2, 1, 2))  # False
@@ -158,6 +168,7 @@ def leapYear(year):
         return False
     # now, year is divisible by 4
     # ADD ADDITIONAL CODE HERE!
+
 print(leapYear(2008), leapYear(2011), leapYear(2012))  # True False True
 print(leapYear(2000), leapYear(2100), leapYear(2200))  # True False False
 print(leapYear(2300), leapYear(2400), leapYear(3200))  # False True True
@@ -174,6 +185,7 @@ def numDays(year, month):
        month == 8 or month == 10 or month == 12:
         return 31
     # ADD ADDITIONAL CODE HERE!
+
 print(numDays(2000,1), numDays(2001,4), numDays(2004,8))  # 31 30 31
 print(numDays(2004,9), numDays(2005,3), numDays(2005,7))  # 30 31 31
 print(numDays(2008,2), numDays(2011,2), numDays(2012,2))  # 29 28 29
@@ -211,6 +223,7 @@ def blood(supplyO, supplyA, supplyB, supplyAB,
     if supplyO < demandO:
         return False
     # ADD ADDITIONAL CODE HERE!
+
 print(blood(50, 36, 11, 8, 45, 42, 10, 3))  # False
 print(blood(50, 36, 11, 3, 45, 38, 10, 7))  # True
 ```

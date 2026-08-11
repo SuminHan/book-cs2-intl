@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d7f3802a.js";
+            window.path_to_searchindex_js = "../searchindex-fe01de7a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-6b7ca9ac.js"></script>
@@ -195,6 +195,7 @@ squares of the elements of <code>a</code>
     n = len(a)
     total = 0
     # ADD ADDITIONAL CODE HERE!
+
 print(sumSquares([3,5,4]))               # 50
 print(sumSquares([2,5,4,0,1,-1,5,1]))    # 73
 </code></pre>
@@ -207,6 +208,7 @@ print(sumSquares([2,5,4,0,1,-1,5,1]))    # 73
     n = len(a)
     total = 0
     # ADD ADDITIONAL CODE HERE!
+
 print(computePolynomial([3,5,4], 5))            # 128
 print(computePolynomial([2,0,4,0,1,-1,5,1], 3)) # 5708
 </code></pre>
@@ -216,13 +218,14 @@ print(computePolynomial([2,0,4,0,1,-1,5,1], 3)) # 5708
 <li>return value: the harmonic mean of the values in <code>a</code>,
 \(\dfrac{n}{\frac{1}{a_0}+\frac{1}{a_1}+\cdots+\frac{1}{a_{n-1}}}\)
 <ul>
-<li><em>First write code to compute the sum of reciprocals, then return <code>n / sum</code>.</em></li>
+<li><em>First write code to compute the sum of reciprocals, then return <code>n /  sum</code>.</em></li>
 </ul>
 </li>
 </ul>
 <pre><code class="language-python">def harmonicMean(a):
     n = len(a)
     # ADD ADDITIONAL CODE HERE!
+
 numbers = [2, 4, 3, 10, 7, 2, 5, 6]
 print(harmonicMean(numbers))  # 3.648208469055375
 </code></pre>
@@ -240,6 +243,7 @@ print(harmonicMean(numbers))  # 3.648208469055375
     n = len(a)
     prod = 1
     # ADD ADDITIONAL CODE HERE!
+
 print(geometricMean([3,2,6,4,7]))           # 3.987421134470927
 print(geometricMean([2,4,3,10,7,2,5,6]))    # 4.221167313317658
 </code></pre>
@@ -258,6 +262,7 @@ print(geometricMean([2,4,3,10,7,2,5,6]))    # 4.221167313317658
     for i in range(n):
         b[i] = a[??]  # ADD ADDITIONAL CODE HERE!
     return b
+
 print(reverse([3,1,5,2,4]))          # [4,2,5,1,3]
 print(reverse([7,6,3,1,5,8,2,4]))    # [4,2,8,5,1,3,6,7]
 </code></pre>
@@ -273,6 +278,7 @@ print(reverse([7,6,3,1,5,8,2,4]))    # [4,2,8,5,1,3,6,7]
 </ul>
 <pre><code class="language-python">def square(a):
     # ADD ADDITIONAL CODE HERE!
+
 L = [7,6,3,1,5,8,2,4]
 print(square(L))  # [49,36,9,1,25,64,4,16]
 print(L)          # [7,6,3,1,5,8,2,4]  -- L itself unchanged
@@ -293,12 +299,14 @@ print(L)          # [7,6,3,1,5,8,2,4]  -- L itself unchanged
     b = [None] * n
     b[0] = a[0]
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(1, n):  # note that i starts from 1, not 0
         ...
+
 print(accumulate([1,2,3,4,5]))        # [1,3,6,10,15]
 print(accumulate([7,6,3,1,5,8,2,4]))  # [7,13,16,17,22,30,32,36]
 </code></pre>
-<p><strong>8.</strong> Fibonacci numbers form the sequence <code>1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, ...</code>.</p>
+<p><strong>8.</strong> Fibonacci numbers form the sequence <code>1, 1, 2, 3, 5, 8, 13, 21, 34, 55,  89, 144, ...</code>.</p>
 <p>Write a function <code>fibonacci</code> defined by:</p>
 <ul>
 <li>input parameter: an integer <code>n</code></li>
@@ -314,8 +322,10 @@ print(accumulate([7,6,3,1,5,8,2,4]))  # [7,13,16,17,22,30,32,36]
     b[0] = 1
     b[1] = 1
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(??):  # note that i starts from 2
         ...
+
 print(fibonacci(5))   # [1,1,2,3,5]
 print(fibonacci(10))  # [1,1,2,3,5,8,13,21,34,55]
 </code></pre>
@@ -343,8 +353,10 @@ is the input polygon?</em></li>
     n = len(p)
     total = 0
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(n):
         ...
+
 points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
 print(area(points))  # 22.0
 </code></pre>
@@ -359,6 +371,7 @@ previous problem</li>
 </li>
 </ul>
 <pre><code class="language-python"># ADD FUNCTION HERE!
+
 points = [[3,1],[6,3],[4,4],[7,6],[2,7],[0,5],[2,3],[1,2]]
 print(perimeter(points))  # 23.85332583138582
 </code></pre>
@@ -374,9 +387,11 @@ print(perimeter(points))  # 23.85332583138582
 <pre><code class="language-python">def findMin(a):
     best = a[0]
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(1, len(a)):
         if a[i] &lt; best:
             ...
+
 print(findMin([7,8,3,4,3,6]))        # 3
 print(findMin([3,5,7,2,7,2,3,8,6]))  # 2
 </code></pre>
@@ -394,15 +409,18 @@ pairwise distance)</li>
 </ul>
 <pre><code class="language-python">def distSquared(p1, p2):
     return (p2[0]-p1[0])**2 + (p2[1]-p1[1])**2
+
 def closestPair(p):
     n = len(p)
     best = distSquared(p[0], p[1])
     # ADD ADDITIONAL CODE HERE!
+
     for i in range(n):
         for j in range(i+1, n):
             d = distSquared(p[i], p[j])
             if d &lt; best:
                 ...
+
 points = [[4,-4],[7,5],[2,1],[-2,-1],[-3,5]]
 print(closestPair(points))  # 4.47213595499958  (between [2,1] and [-2,-1])
 </code></pre>

@@ -9,6 +9,7 @@ a = input("Enter a: ")
 b = input("Enter b: ")
 print("Before swapping:", a, b)
 # ADD ADDITIONAL CODE HERE!
+
 print("After swapping: ", a, b)
 ```
 
@@ -25,6 +26,7 @@ d = input("Enter d: ")
 e = input("Enter e: ")
 print("Before swapping:", a, b, c, d, e)
 # ADD ADDITIONAL CODE HERE!
+
 print("After swapping: ", a, b, c, d, e)
 ```
 
@@ -42,6 +44,7 @@ b = int(b)
 c = int(c)
 x = int(x)
 # ADD ADDITIONAL CODE HERE!
+
 # y = ...
 print("Value of the quadratic formula:", y)
 ```
@@ -58,6 +61,7 @@ y1 = int(input("Enter y1: "))
 x2 = int(input("Enter x2: "))
 y2 = int(input("Enter y2: "))
 # ADD ADDITIONAL CODE HERE!
+
 # area = ...
 print("Area of rectangle:", area)
 ```
@@ -74,6 +78,7 @@ a = float(input("Enter a: "))
 b = float(input("Enter b: "))
 c = float(input("Enter c: "))
 # ADD ADDITIONAL CODE HERE!
+
 # s = ...
 # area = ...
 print("Area of triangle:", area)
@@ -90,6 +95,7 @@ print("Area of triangle:", area)
 a = int(input("Enter a: "))
 b = int(input("Enter b: "))
 # ADD ADDITIONAL CODE HERE!
+
 # r = ...
 print("Remainder:", r)
 ```
@@ -102,6 +108,7 @@ print("Remainder:", r)
 ```python
 x = float(input("Enter x: "))
 # ADD ADDITIONAL CODE HERE!
+
 # y = ...
 print(x, "is rounded off to", y)
 ```
@@ -115,6 +122,7 @@ print(x, "is rounded off to", y)
 ```python
 F = int(input("Enter F: "))
 # ADD ADDITIONAL CODE HERE!
+
 # C = ...
 print("Temperature in Celcius:", C)
 ```

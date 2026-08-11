@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d7f3802a.js";
+            window.path_to_searchindex_js = "../searchindex-fe01de7a.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-6b7ca9ac.js"></script>
@@ -189,6 +189,7 @@
 </ul>
 <pre><code class="language-python">def maximum(n1, n2):
     # ADD ADDITIONAL CODE HERE!
+
 print(maximum(5, 7))  # 7
 print(maximum(7, 5))  # 7
 print(maximum(5, 5))  # 5
@@ -205,6 +206,7 @@ print(maximum(5, 5))  # 5
     if n2 == 0:
         counter = counter + 1
     # ADD ADDITIONAL CODE HERE!
+
 print(countZeros(1, 0, 3, 0, 0))  # 3
 print(countZeros(0, 2, 2, 0, 4))  # 2
 print(countZeros(1, 2, 3, 0, 4))  # 1
@@ -218,6 +220,7 @@ print(countZeros(1, 2, 3, 5, 4))  # 0
 </ul>
 <pre><code class="language-python">def smaller(n1, n2):
     # ADD ADDITIONAL CODE HERE!
+
 print(smaller(5, 7))  # left
 print(smaller(7, 5))  # right
 print(smaller(5, 5))  # equal
@@ -225,9 +228,10 @@ print(smaller(5, 5))  # equal
 <p><strong>4.</strong> Write a function <code>quadrant</code> defined by:</p>
 <ul>
 <li>input parameter: two integers <code>x, y</code> (the x/y coordinates of a point)</li>
-<li>return value: a string — <code>"First Quadrant"</code> if <code>x,y &gt; 0</code>, <code>"Second Quadrant"</code> if <code>x &lt; 0, y &gt; 0</code>, <code>"Third Quadrant"</code> if <code>x,y &lt; 0</code>, <code>"Fourth Quadrant"</code> if <code>x &gt; 0, y &lt; 0</code>, <code>"On the Boundary"</code> otherwise</li>
+<li>return value: a string — <code>"First Quadrant"</code> if <code>x,y &gt; 0</code>, <code>"Second  Quadrant"</code> if <code>x &lt; 0, y &gt; 0</code>, <code>"Third Quadrant"</code> if <code>x,y &lt; 0</code>, <code>"Fourth  Quadrant"</code> if <code>x &gt; 0, y &lt; 0</code>, <code>"On the Boundary"</code> otherwise</li>
 </ul>
 <pre><code class="language-python"># ADD FUNCTION HERE!
+
 print(quadrant(10, 5))   # First Quadrant
 print(quadrant(-5, 3))   # Second Quadrant
 print(quadrant(-5, -7))  # Third Quadrant
@@ -247,6 +251,7 @@ print(quadrant(0, -3))   # On the Boundary
 <pre><code class="language-python">def round(x):
     fraction = x - int(x)
     # ADD ADDITIONAL CODE HERE!
+
 print(round(2.4))  # 2
 print(round(2.5))  # 3
 print(round(2.6))  # 3
@@ -258,6 +263,7 @@ print(round(2.6))  # 3
 <code>2</code>, <code>2.1</code> → <code>3</code>, <code>2.6</code> → <code>3</code></li>
 </ul>
 <pre><code class="language-python"># ADD FUNCTION HERE!
+
 print(ceiling(2.0))              # 2
 print(ceiling(2.0000000000001))  # 3
 print(ceiling(2.99))             # 3
@@ -274,9 +280,11 @@ print(ceiling(2.99))             # 3
 <pre><code class="language-python">def quadratic(a, b, c):
     if a == 0:
         # ADD ADDITIONAL CODE HERE!
+
     else:
         D = b**2 - 4*a*c
         # ADD ADDITIONAL CODE HERE!
+
 print(quadratic(0, 0, 1))   # 0
 print(quadratic(0, 1, 1))   # 1
 print(quadratic(1, -2, 1))  # 1
@@ -296,9 +304,11 @@ such integer, if there’s a tie)
 </ul>
 <pre><code class="language-python">def f(a, b, c, x):
     return a*x**2 + b*x + c
+
 def minX(a, b, c):
     x0 = int(-b / (2*a))
     # ADD ADDITIONAL CODE HERE!
+
 print(minX(1, -9, 2))   # 4
 print(minX(9, -5, 0))   # 0
 print(minX(9, -15, 0))  # 1
@@ -315,7 +325,9 @@ wins, <code>"Tie"</code> if the game is tied</li>
     if first == second:
         return "Tie"
     # ADD ADDITIONAL CODE HERE!
+
     # if first == "R" ...
+
 print(rock_paper_scissors("R","R"))  # Tie
 print(rock_paper_scissors("R","S"))  # First
 print(rock_paper_scissors("R","P"))  # Second
@@ -341,6 +353,7 @@ gold-silver-bronze order (<strong>not</strong> by total medal count)</li>
     if gold1 &lt; gold2:
         return "Second"
     # ADD ADDITIONAL CODE HERE!
+
 print(better(10,4,24, 1,35,25))    # First
 print(better(1,35,25, 10,4,24))    # Second
 print(better(10,18,0, 10,4,24))    # First
