@@ -10,9 +10,16 @@ level, the question Week 2 raised but didn't fully resolve: **why does
 A computer stores everything as bits (0s and 1s). An `n`-bit **unsigned**
 integer is just binary place value — bit `i` contributes `2^i` if it's 1:
 
-```
-unsigned 8-bit:  00000101  =  0·128 + 0·64 + 0·32 + 0·16 + 0·8 + 1·4 + 0·2 + 1·1  =  5
-```
+<table>
+<tr><td>bit</td>
+<td style="color:#888">0</td><td style="color:#888">0</td><td style="color:#888">0</td><td style="color:#888">0</td><td style="color:#888">0</td>
+<td style="color:#d6336c"><b>1</b></td><td style="color:#888">0</td><td style="color:#d6336c"><b>1</b></td></tr>
+<tr><td>place value</td>
+<td style="color:#888">128</td><td style="color:#888">64</td><td style="color:#888">32</td><td style="color:#888">16</td><td style="color:#888">8</td>
+<td style="color:#d6336c"><b>4</b></td><td style="color:#888">2</td><td style="color:#d6336c"><b>1</b></td></tr>
+</table>
+
+Only the colored (`1`) bits contribute — the rest add `0`: `4 + 1 = 5`.
 
 With `n` bits you can represent `2^n` distinct values, so an unsigned
 `n`-bit integer ranges over `[0, 2^n - 1]`. For `n=8`: `[0, 255]`
@@ -58,25 +65,41 @@ A float isn't stored as "the digits after the decimal point" — it's
 stored the way scientific notation works, in binary: **sign, exponent,
 mantissa** (also called the significand).
 
-\\[\text{value} = (-1)^{\text{sign}} \times 1.\text{mantissa}_2 \times
-2^{\text{exponent} - \text{bias}}\\]
+\\[\text{value} = (-1)^{\text{sign}} \times \left(1 + 0.m_1m_2\ldots
+m_n\right)_2 \times 2^{\text{exponent} - \text{bias}}\\]
 
-| Type | Sign | Exponent | Mantissa | Total | Bias |
-|---|---|---|---|---|---|
-| `float16` (half) | 1 | 5 | 10 | 16 | 15 |
-| `float32` (single) | 1 | 8 | 23 | 32 | 127 |
-| `float64` (double) | 1 | 11 | 52 | 64 | 1023 |
+where `m_1 m_2 ... m_n` are exactly the mantissa bits as stored, read as
+a binary fraction (`0.m_1m_2...`) — the leading `1 +` is never stored,
+it's implied for free on every normal number.
 
-The exponent field is stored with a **bias** added, so it can represent
-both very large and very small numbers using only unsigned bits (e.g. a
-stored exponent of `130` in `float32` means an actual exponent of
-`130 - 127 = 3`). The mantissa always assumes a leading `1.` that isn't
-stored (for normal numbers) — that's a free extra bit of precision.
+| Type | Sign bits | Exponent bits | Mantissa bits (`n`) | Total bits |
+|---|---|---|---|---|
+| `float16` (half) | 1 | 5 | 10 | 16 |
+| `float32` (single) | 1 | 8 | 23 | 32 |
+| `float64` (double) | 1 | 11 | 52 | 64 |
+
+**Bias is a different kind of thing from the bit-counts above** — it's not
+a width, it's a *value* added to the true exponent before storing it, so
+the stored exponent (which is unsigned — no sign bit of its own) can still
+represent negative true exponents:
+
+\\[\text{stored exponent} = \text{true exponent} + \text{bias}, \qquad
+\text{bias} = 2^{\,\text{exponent bits}-1} - 1\\]
+
+| Type | Exponent bits | Bias |
+|---|---|---|
+| `float16` | 5 | \\(2^4-1=15\\) |
+| `float32` | 8 | \\(2^7-1=127\\) |
+| `float64` | 11 | \\(2^{10}-1=1023\\) |
+
+E.g. in `float32`, a stored exponent of `130` means a true exponent of
+`130 - 127 = 3`.
 
 **Special values** are encoded with reserved exponent patterns: all-zero
-exponent means `0` or a *denormal* (a number too small to have a leading
-`1.`); all-one exponent means `±infinity` (mantissa `0`) or `NaN`
-(mantissa nonzero — this is what you get from `0/0` or `math.sqrt(-1)`).
+exponent means `0` or a *denormal* (a number too small to have that
+implicit leading `1 +`); all-one exponent means `±infinity` (mantissa
+`0`) or `NaN` (mantissa nonzero — this is what you get from `0/0` or
+`math.sqrt(-1)`).
 
 ## Why `0.1 + 0.2 != 0.3`
 
