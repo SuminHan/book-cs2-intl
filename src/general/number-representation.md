@@ -63,17 +63,17 @@ overhead.
 
 A float isn't stored as "the digits after the decimal point" — it's
 stored the way scientific notation works, in binary, as three bit
-groups: sign bit `s`, exponent bits `e_1e_2...e_k`, mantissa bits
-`m_1m_2...m_n`.
+groups: sign bit \\(s\\), exponent bits \\(e_1e_2\ldots e_k\\), mantissa
+bits \\(m_1m_2\ldots m_n\\).
 
 \\[\text{value} = (-1)^s \times \left(1 + 0.m_1m_2\ldots
 m_n\right)_2 \times 2^{(e_1e_2\ldots e_k)_2 - b}\\]
 
-`m_1 m_2 ... m_n` are exactly the mantissa bits as stored, read as a
-binary fraction (`0.m_1m_2...`) — the leading `1 +` is never stored, it's
-implied for free on every normal number. Likewise `(e_1e_2...e_k)_2` is
-just the exponent bits read as a plain unsigned binary number — call
-that value `E` for short.
+\\(m_1 m_2 \ldots m_n\\) are exactly the mantissa bits as stored, read as
+a binary fraction (\\(0.m_1m_2\ldots\\)) — the leading `1 +` is never
+stored, it's implied for free on every normal number. Likewise
+\\((e_1e_2\ldots e_k)_2\\) is just the exponent bits read as a plain
+unsigned binary number — call that value `E` for short.
 
 | Type | Sign bit | Exponent bits (`k`) | Mantissa bits (`n`) | Total bits |
 |---|---|---|---|---|

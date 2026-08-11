@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-50a6a2ba.js";
+            window.path_to_searchindex_js = "../searchindex-bcf4da6f.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-6b7ca9ac.js"></script>
@@ -240,15 +240,15 @@ overhead.</p>
 <h2 id="ieee-754-floating-point-numbers"><a class="header" href="#ieee-754-floating-point-numbers">IEEE 754: Floating-Point Numbers</a></h2>
 <p>A float isn’t stored as “the digits after the decimal point” — it’s
 stored the way scientific notation works, in binary, as three bit
-groups: sign bit <code>s</code>, exponent bits <code>e_1e_2...e_k</code>, mantissa bits
-<code>m_1m_2...m_n</code>.</p>
+groups: sign bit \(s\), exponent bits \(e_1e_2\ldots e_k\), mantissa
+bits \(m_1m_2\ldots m_n\).</p>
 <p>\[\text{value} = (-1)^s \times \left(1 + 0.m_1m_2\ldots
 m_n\right)_2 \times 2^{(e_1e_2\ldots e_k)_2 - b}\]</p>
-<p><code>m_1 m_2 ... m_n</code> are exactly the mantissa bits as stored, read as a
-binary fraction (<code>0.m_1m_2...</code>) — the leading <code>1 +</code> is never stored, it’s
-implied for free on every normal number. Likewise <code>(e_1e_2...e_k)_2</code> is
-just the exponent bits read as a plain unsigned binary number — call
-that value <code>E</code> for short.</p>
+<p>\(m_1 m_2 \ldots m_n\) are exactly the mantissa bits as stored, read as
+a binary fraction (\(0.m_1m_2\ldots\)) — the leading <code>1 +</code> is never
+stored, it’s implied for free on every normal number. Likewise
+\((e_1e_2\ldots e_k)_2\) is just the exponent bits read as a plain
+unsigned binary number — call that value <code>E</code> for short.</p>
 <div class="table-wrapper">
 <table>
 <thead>
