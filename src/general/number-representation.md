@@ -188,18 +188,7 @@ on a single consumer GPU instead of a data-center rack. The tradeoff is
 real: fewer bits means less precision per weight, so quantized models are
 slightly less accurate than their full-precision originals — the same
 "hair of error" from the `0.1 + 0.2` story above, just deliberately
-accepted in exchange for the model fitting in memory at all. (To actually
-measure that accuracy drop, people use benchmarks like [EleutherAI's
-lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)
-— the same tool behind Hugging Face's [Open LLM
-Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard)
-— or, for standardized hardware/inference performance,
-[MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/). To
-estimate how much VRAM and throughput a specific model/quantization/GPU
-combination needs before ever running it, tools like [ApX Machine
-Learning's VRAM & Performance
-Calculator](https://apxml.com/tools/vram-calculator) do that math for
-you.)
+accepted in exchange for the model fitting in memory at all.
 
 ![Screenshot of ApX Machine Learning's VRAM & Performance Calculator —
 pick a model, a quantization scheme, and a GPU, and it estimates the

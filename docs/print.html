@@ -39,7 +39,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-bcf4da6f.js";
+            window.path_to_searchindex_js = "searchindex-ea866d61.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-6b7ca9ac.js"></script>
@@ -4271,18 +4271,7 @@ on a single consumer GPU instead of a data-center rack. The tradeoff is
 real: fewer bits means less precision per weight, so quantized models are
 slightly less accurate than their full-precision originals — the same
 “hair of error” from the <code>0.1 + 0.2</code> story above, just deliberately
-accepted in exchange for the model fitting in memory at all. (To actually
-measure that accuracy drop, people use benchmarks like <a href="https://github.com/EleutherAI/lm-evaluation-harness">EleutherAI’s
-lm-evaluation-harness</a>
-— the same tool behind Hugging Face’s <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard">Open LLM
-Leaderboard</a>
-— or, for standardized hardware/inference performance,
-<a href="https://mlcommons.org/benchmarks/inference-datacenter/">MLPerf</a>. To
-estimate how much VRAM and throughput a specific model/quantization/GPU
-combination needs before ever running it, tools like <a href="https://apxml.com/tools/vram-calculator">ApX Machine
-Learning’s VRAM &amp; Performance
-Calculator</a> do that math for
-you.)</p>
+accepted in exchange for the model fitting in memory at all.</p>
 <p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="general/assets/vram-calculator-screenshot.png" alt="Screenshot of ApX Machine Learning’s VRAM &amp; Performance Calculator — pick a model, a quantization scheme, and a GPU, and it estimates the VRAM needed and expected speed"><span class="img-wrapper"><img src="general/assets/vram-calculator-screenshot.png" alt="Screenshot of ApX Machine Learning’s VRAM &amp; Performance Calculator — pick a model, a quantization scheme, and a GPU, and it estimates the VRAM needed and expected speed"></span></label></p>
 <p><em>The <a href="https://apxml.com/tools/vram-calculator">VRAM &amp; Performance Calculator</a>
 in action. Pick a model, a quantization scheme (<code>FP32</code>, <code>FP16</code>, <code>Q8</code>,
