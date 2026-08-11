@@ -39,7 +39,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-faf4d793.js";
+            window.path_to_searchindex_js = "searchindex-4a435f11.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-6b7ca9ac.js"></script>
@@ -4160,7 +4160,7 @@ overhead.</p>
 stored the way scientific notation works, in binary: <strong>sign, exponent,
 mantissa</strong> (also called the significand).</p>
 <p>\[\text{value} = (-1)^{\text{sign}} \times \left(1 + 0.m_1m_2\ldots
-m_n\right)_2 \times 2^{\text{exponent} - \text{bias}}\]</p>
+m_n\right)_2 \times 2^{\text{exponent} - b}\]</p>
 <p>where <code>m_1 m_2 ... m_n</code> are exactly the mantissa bits as stored, read as
 a binary fraction (<code>0.m_1m_2...</code>) — the leading <code>1 +</code> is never stored,
 it’s implied for free on every normal number.</p>
@@ -4256,18 +4256,26 @@ when <code>int8</code>/<code>float32</code> would hold the same data is one of t
 avoidable memory blowups in real data pipelines — for a column of ages
 (0-120), <code>int8</code> uses 1/8th the memory of the <code>int64</code> default, with zero
 loss of information.</p>
-<p>This same tradeoff, at a much larger scale, is exactly what <strong>model
-quantization</strong> in machine learning is about. A large language model’s
-weights are originally trained in <code>float16</code> or <code>float32</code> — a 3.6-billion-
-parameter model in <code>float16</code> needs about <code>3.6B × 2 bytes ≈ 7.2 GB</code> just
-to hold the weights, before you’ve run anything. Quantizing that model to
-<code>int8</code> (or even <code>int4</code>, packing two values per byte) roughly halves — or
-quarters — that footprint, which is exactly what lets a model that size
-run on a laptop or phone instead of a server GPU. The tradeoff is real:
-fewer bits means less precision per weight, so quantized models are
-slightly less accurate than their <code>float16</code> originals — the same “hair of
-error” from the <code>0.1 + 0.2</code> story above, just deliberately accepted in
-exchange for the model fitting in memory at all.</p>
+<p>This same tradeoff, at a much larger scale, is exactly what <strong>model quantization</strong> in machine learning is about.
+A large language model’s weights are originally trained in <code>float16</code> or
+<code>float32</code>. For example, take a real model published on Hugging Face:
+<a href="https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF">Qwen2.5-3B-Instruct (about 3 billion
+parameters)</a> needs
+about 6.2 GB in its original <code>float16</code> weights, but only about 3.6 GB
+quantized to 8-bit (<code>Q8_0</code>), or about 2 GB quantized to 4-bit (<code>Q4_0</code>) —
+exactly the “fewer bits, less memory” pattern from the tables above,
+just at model-weight scale. That’s exactly what lets a model that size run
+on a laptop or phone instead of a server GPU. The tradeoff is real: fewer
+bits means less precision per weight, so quantized models are slightly
+less accurate than their <code>float16</code> originals — the same “hair of error”
+from the <code>0.1 + 0.2</code> story above, just deliberately accepted in exchange
+for the model fitting in memory at all. (To actually measure that
+accuracy drop, people use benchmarks like <a href="https://github.com/EleutherAI/lm-evaluation-harness">EleutherAI’s
+lm-evaluation-harness</a>
+— the same tool behind Hugging Face’s <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard">Open LLM
+Leaderboard</a>
+— or, for standardized hardware/inference performance,
+<a href="https://mlcommons.org/benchmarks/inference-datacenter/">MLPerf</a>.)</p>
 <p>Every dtype table above — <code>int8</code> vs <code>int64</code>, <code>float16</code> vs <code>float32</code> — is
 the same underlying idea you just learned, just chosen for a different
 tradeoff each time.</p>

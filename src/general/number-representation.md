@@ -66,7 +66,7 @@ stored the way scientific notation works, in binary: **sign, exponent,
 mantissa** (also called the significand).
 
 \\[\text{value} = (-1)^{\text{sign}} \times \left(1 + 0.m_1m_2\ldots
-m_n\right)_2 \times 2^{\text{exponent} - \text{bias}}\\]
+m_n\right)_2 \times 2^{\text{exponent} - b}\\]
 
 where `m_1 m_2 ... m_n` are exactly the mantissa bits as stored, read as
 a binary fraction (`0.m_1m_2...`) — the leading `1 +` is never stored,
@@ -173,18 +173,26 @@ avoidable memory blowups in real data pipelines — for a column of ages
 (0-120), `int8` uses 1/8th the memory of the `int64` default, with zero
 loss of information.
 
-This same tradeoff, at a much larger scale, is exactly what **model
-quantization** in machine learning is about. A large language model's
-weights are originally trained in `float16` or `float32` — a 3.6-billion-
-parameter model in `float16` needs about `3.6B × 2 bytes ≈ 7.2 GB` just
-to hold the weights, before you've run anything. Quantizing that model to
-`int8` (or even `int4`, packing two values per byte) roughly halves — or
-quarters — that footprint, which is exactly what lets a model that size
-run on a laptop or phone instead of a server GPU. The tradeoff is real:
-fewer bits means less precision per weight, so quantized models are
-slightly less accurate than their `float16` originals — the same "hair of
-error" from the `0.1 + 0.2` story above, just deliberately accepted in
-exchange for the model fitting in memory at all.
+This same tradeoff, at a much larger scale, is exactly what **model quantization** in machine learning is about.
+A large language model's weights are originally trained in `float16` or
+`float32`. For example, take a real model published on Hugging Face:
+[Qwen2.5-3B-Instruct (about 3 billion
+parameters)](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF) needs
+about 6.2 GB in its original `float16` weights, but only about 3.6 GB
+quantized to 8-bit (`Q8_0`), or about 2 GB quantized to 4-bit (`Q4_0`) —
+exactly the "fewer bits, less memory" pattern from the tables above,
+just at model-weight scale. That's exactly what lets a model that size run
+on a laptop or phone instead of a server GPU. The tradeoff is real: fewer
+bits means less precision per weight, so quantized models are slightly
+less accurate than their `float16` originals — the same "hair of error"
+from the `0.1 + 0.2` story above, just deliberately accepted in exchange
+for the model fitting in memory at all. (To actually measure that
+accuracy drop, people use benchmarks like [EleutherAI's
+lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)
+— the same tool behind Hugging Face's [Open LLM
+Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard)
+— or, for standardized hardware/inference performance,
+[MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/).)
 
 Every dtype table above — `int8` vs `int64`, `float16` vs `float32` — is
 the same underlying idea you just learned, just chosen for a different
