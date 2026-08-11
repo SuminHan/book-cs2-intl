@@ -81,12 +81,24 @@ it's implied for free on every normal number.
 **Bias is a different kind of thing from the bit-counts above** — it's not
 a width, it's a *value* added to the true exponent before storing it, so
 the stored exponent (which is unsigned — no sign bit of its own) can still
-represent negative true exponents:
+represent negative true exponents. Call the number of exponent bits `k`,
+and the bias itself just `b` (a plain constant, like any other):
 
-\\[\text{stored exponent} = \text{true exponent} + \text{bias}, \qquad
-\text{bias} = 2^{\,\text{exponent bits}-1} - 1\\]
+\\[\text{stored exponent} = \text{true exponent} + b, \qquad
+b = 2^{k-1} - 1\\]
 
-| Type | Exponent bits | Bias |
+**Why that particular value?** With `k` bits, the stored exponent can be
+anywhere from `0` to \\(2^k-1\\) — but the two extreme values (`0` and
+\\(2^k-1\\)) are reserved for special cases (zero/denormals and
+infinity/NaN), not ordinary numbers. To let the *true* exponent range as
+far negative as it ranges positive — so the format represents huge and
+tiny numbers equally well — `b` is set to roughly half of that total
+range: `2^(k-1)`, minus 1 to line up with the reserved values. For
+`float32` (`k=8`): `b = 2^7-1 = 127`, which places the true exponent of
+ordinary numbers at roughly `-128` to `+127` — almost exactly symmetric
+around `0`.
+
+| Type | `k` (exponent bits) | `b` (bias) |
 |---|---|---|
 | `float16` | 5 | \\(2^4-1=15\\) |
 | `float32` | 8 | \\(2^7-1=127\\) |
