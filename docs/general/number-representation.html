@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-4a435f11.js";
+            window.path_to_searchindex_js = "../searchindex-d4162386.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-6b7ca9ac.js"></script>
@@ -340,24 +340,30 @@ avoidable memory blowups in real data pipelines — for a column of ages
 loss of information.</p>
 <p>This same tradeoff, at a much larger scale, is exactly what <strong>model quantization</strong> in machine learning is about.
 A large language model’s weights are originally trained in <code>float16</code> or
-<code>float32</code>. For example, take a real model published on Hugging Face:
-<a href="https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF">Qwen2.5-3B-Instruct (about 3 billion
-parameters)</a> needs
-about 6.2 GB in its original <code>float16</code> weights, but only about 3.6 GB
-quantized to 8-bit (<code>Q8_0</code>), or about 2 GB quantized to 4-bit (<code>Q4_0</code>) —
+<code>float32</code>. For example, take a real model released by OpenAI:
+<a href="https://huggingface.co/openai/gpt-oss-20b">gpt-oss-20b</a> (about 21
+billion parameters, of which only about 3.6 billion are actually used
+per token) would need roughly 40 GB just for its weights stored naively
+at 16-bit — but the official release ships natively quantized to
+4-bit-ish precision (<code>MXFP4</code>), weighing in at only about 12.8 GB —
 exactly the “fewer bits, less memory” pattern from the tables above,
 just at model-weight scale. That’s exactly what lets a model that size run
-on a laptop or phone instead of a server GPU. The tradeoff is real: fewer
-bits means less precision per weight, so quantized models are slightly
-less accurate than their <code>float16</code> originals — the same “hair of error”
-from the <code>0.1 + 0.2</code> story above, just deliberately accepted in exchange
-for the model fitting in memory at all. (To actually measure that
-accuracy drop, people use benchmarks like <a href="https://github.com/EleutherAI/lm-evaluation-harness">EleutherAI’s
+on a single consumer GPU instead of a data-center rack. The tradeoff is
+real: fewer bits means less precision per weight, so quantized models are
+slightly less accurate than their full-precision originals — the same
+“hair of error” from the <code>0.1 + 0.2</code> story above, just deliberately
+accepted in exchange for the model fitting in memory at all. (To actually
+measure that accuracy drop, people use benchmarks like <a href="https://github.com/EleutherAI/lm-evaluation-harness">EleutherAI’s
 lm-evaluation-harness</a>
 — the same tool behind Hugging Face’s <a href="https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard">Open LLM
 Leaderboard</a>
 — or, for standardized hardware/inference performance,
-<a href="https://mlcommons.org/benchmarks/inference-datacenter/">MLPerf</a>.)</p>
+<a href="https://mlcommons.org/benchmarks/inference-datacenter/">MLPerf</a>. To
+estimate how much VRAM and throughput a specific model/quantization/GPU
+combination needs before ever running it, tools like <a href="https://apxml.com/tools/vram-calculator">ApX Machine
+Learning’s VRAM &amp; Performance
+Calculator</a> do that math for
+you.)</p>
 <p>Every dtype table above — <code>int8</code> vs <code>int64</code>, <code>float16</code> vs <code>float32</code> — is
 the same underlying idea you just learned, just chosen for a different
 tradeoff each time.</p>

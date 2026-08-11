@@ -175,24 +175,30 @@ loss of information.
 
 This same tradeoff, at a much larger scale, is exactly what **model quantization** in machine learning is about.
 A large language model's weights are originally trained in `float16` or
-`float32`. For example, take a real model published on Hugging Face:
-[Qwen2.5-3B-Instruct (about 3 billion
-parameters)](https://huggingface.co/Qwen/Qwen2.5-3B-Instruct-GGUF) needs
-about 6.2 GB in its original `float16` weights, but only about 3.6 GB
-quantized to 8-bit (`Q8_0`), or about 2 GB quantized to 4-bit (`Q4_0`) —
+`float32`. For example, take a real model released by OpenAI:
+[gpt-oss-20b](https://huggingface.co/openai/gpt-oss-20b) (about 21
+billion parameters, of which only about 3.6 billion are actually used
+per token) would need roughly 40 GB just for its weights stored naively
+at 16-bit — but the official release ships natively quantized to
+4-bit-ish precision (`MXFP4`), weighing in at only about 12.8 GB —
 exactly the "fewer bits, less memory" pattern from the tables above,
 just at model-weight scale. That's exactly what lets a model that size run
-on a laptop or phone instead of a server GPU. The tradeoff is real: fewer
-bits means less precision per weight, so quantized models are slightly
-less accurate than their `float16` originals — the same "hair of error"
-from the `0.1 + 0.2` story above, just deliberately accepted in exchange
-for the model fitting in memory at all. (To actually measure that
-accuracy drop, people use benchmarks like [EleutherAI's
+on a single consumer GPU instead of a data-center rack. The tradeoff is
+real: fewer bits means less precision per weight, so quantized models are
+slightly less accurate than their full-precision originals — the same
+"hair of error" from the `0.1 + 0.2` story above, just deliberately
+accepted in exchange for the model fitting in memory at all. (To actually
+measure that accuracy drop, people use benchmarks like [EleutherAI's
 lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness)
 — the same tool behind Hugging Face's [Open LLM
 Leaderboard](https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard)
 — or, for standardized hardware/inference performance,
-[MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/).)
+[MLPerf](https://mlcommons.org/benchmarks/inference-datacenter/). To
+estimate how much VRAM and throughput a specific model/quantization/GPU
+combination needs before ever running it, tools like [ApX Machine
+Learning's VRAM & Performance
+Calculator](https://apxml.com/tools/vram-calculator) do that math for
+you.)
 
 Every dtype table above — `int8` vs `int64`, `float16` vs `float32` — is
 the same underlying idea you just learned, just chosen for a different
