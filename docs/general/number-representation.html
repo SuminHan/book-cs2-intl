@@ -38,7 +38,7 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-d4162386.js";
+            window.path_to_searchindex_js = "../searchindex-50a6a2ba.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="../toc-6b7ca9ac.js"></script>
@@ -239,17 +239,20 @@ contrast, use fixed-width types (see below) specifically to avoid that
 overhead.</p>
 <h2 id="ieee-754-floating-point-numbers"><a class="header" href="#ieee-754-floating-point-numbers">IEEE 754: Floating-Point Numbers</a></h2>
 <p>A float isn’t stored as “the digits after the decimal point” — it’s
-stored the way scientific notation works, in binary: <strong>sign, exponent,
-mantissa</strong> (also called the significand).</p>
-<p>\[\text{value} = (-1)^{\text{sign}} \times \left(1 + 0.m_1m_2\ldots
-m_n\right)_2 \times 2^{\text{exponent} - b}\]</p>
-<p>where <code>m_1 m_2 ... m_n</code> are exactly the mantissa bits as stored, read as
-a binary fraction (<code>0.m_1m_2...</code>) — the leading <code>1 +</code> is never stored,
-it’s implied for free on every normal number.</p>
+stored the way scientific notation works, in binary, as three bit
+groups: sign bit <code>s</code>, exponent bits <code>e_1e_2...e_k</code>, mantissa bits
+<code>m_1m_2...m_n</code>.</p>
+<p>\[\text{value} = (-1)^s \times \left(1 + 0.m_1m_2\ldots
+m_n\right)_2 \times 2^{(e_1e_2\ldots e_k)_2 - b}\]</p>
+<p><code>m_1 m_2 ... m_n</code> are exactly the mantissa bits as stored, read as a
+binary fraction (<code>0.m_1m_2...</code>) — the leading <code>1 +</code> is never stored, it’s
+implied for free on every normal number. Likewise <code>(e_1e_2...e_k)_2</code> is
+just the exponent bits read as a plain unsigned binary number — call
+that value <code>E</code> for short.</p>
 <div class="table-wrapper">
 <table>
 <thead>
-<tr><th>Type</th><th>Sign bits</th><th>Exponent bits</th><th>Mantissa bits (<code>n</code>)</th><th>Total bits</th></tr>
+<tr><th>Type</th><th>Sign bit</th><th>Exponent bits (<code>k</code>)</th><th>Mantissa bits (<code>n</code>)</th><th>Total bits</th></tr>
 </thead>
 <tbody>
 <tr><td><code>float16</code> (half)</td><td>1</td><td>5</td><td>10</td><td>16</td></tr>
@@ -261,14 +264,13 @@ it’s implied for free on every normal number.</p>
 <p><strong>Bias is a different kind of thing from the bit-counts above</strong> — it’s not
 a width, it’s a <em>value</em> added to the true exponent before storing it, so
 the stored exponent (which is unsigned — no sign bit of its own) can still
-represent negative true exponents. Call the number of exponent bits <code>k</code>,
-and the bias itself just <code>b</code> (a plain constant, like any other):</p>
-<p>\[\text{stored exponent} = \text{true exponent} + b, \qquad
-b = 2^{k-1} - 1\]</p>
-<p><strong>Why that particular value?</strong> With <code>k</code> bits, the stored exponent can be
-anywhere from <code>0</code> to \(2^k-1\) — but the two extreme values (<code>0</code> and
-\(2^k-1\)) are reserved for special cases (zero/denormals and
-infinity/NaN), not ordinary numbers. To let the <em>true</em> exponent range as
+represent negative true exponents:</p>
+<p>\[E = \text{true exponent} + b \quad\Longleftrightarrow\quad
+\text{true exponent} = E - b, \qquad b = 2^{k-1} - 1\]</p>
+<p><strong>Why that particular value?</strong> With <code>k</code> bits, <code>E</code> can be anywhere from
+<code>0</code> to \(2^k-1\) — but the two extreme values (<code>E=0</code> and
+<code>E=</code>\(2^k-1\)) are reserved for special cases (zero/denormals and
+infinity/NaN), not ordinary numbers. To let the true exponent range as
 far negative as it ranges positive — so the format represents huge and
 tiny numbers equally well — <code>b</code> is set to roughly half of that total
 range: <code>2^(k-1)</code>, minus 1 to line up with the reserved values. For
@@ -287,13 +289,12 @@ around <code>0</code>.</p>
 </tbody>
 </table>
 </div>
-<p>E.g. in <code>float32</code>, a stored exponent of <code>130</code> means a true exponent of
-<code>130 - 127 = 3</code>.</p>
-<p><strong>Special values</strong> are encoded with reserved exponent patterns: all-zero
-exponent means <code>0</code> or a <em>denormal</em> (a number too small to have that
-implicit leading <code>1 +</code>); all-one exponent means <code>±infinity</code> (mantissa
-<code>0</code>) or <code>NaN</code> (mantissa nonzero — this is what you get from <code>0/0</code> or
-<code>math.sqrt(-1)</code>).</p>
+<p>E.g. in <code>float32</code>, <code>E=130</code> means a true exponent of <code>130 - 127 = 3</code>.</p>
+<p><strong>Special values</strong> are encoded with reserved <code>E</code> patterns: <code>E=0</code> means
+<code>0</code> or a <em>denormal</em> (a number too small to have that implicit leading
+<code>1 +</code>); <code>E=</code>\(2^k-1\) (all exponent bits set) means <code>±infinity</code>
+(mantissa <code>0</code>) or <code>NaN</code> (mantissa nonzero — this is what you get from
+<code>0/0</code> or <code>math.sqrt(-1)</code>).</p>
 <h2 id="why-01--02--03"><a class="header" href="#why-01--02--03">Why <code>0.1 + 0.2 != 0.3</code></a></h2>
 <p><code>0.1</code> in decimal is <code>1/10</code> — and <code>10 = 2 × 5</code>, so in <em>binary</em> it’s a
 repeating fraction, the same way <code>1/3</code> repeats forever in decimal. It gets
@@ -364,6 +365,12 @@ combination needs before ever running it, tools like <a href="https://apxml.com/
 Learning’s VRAM &amp; Performance
 Calculator</a> do that math for
 you.)</p>
+<p><label class="checkbox-label"><input class="checkbox-img" type="checkbox"><img src="assets/vram-calculator-screenshot.png" alt="Screenshot of ApX Machine Learning’s VRAM &amp; Performance Calculator — pick a model, a quantization scheme, and a GPU, and it estimates the VRAM needed and expected speed"><span class="img-wrapper"><img src="assets/vram-calculator-screenshot.png" alt="Screenshot of ApX Machine Learning’s VRAM &amp; Performance Calculator — pick a model, a quantization scheme, and a GPU, and it estimates the VRAM needed and expected speed"></span></label></p>
+<p><em>The <a href="https://apxml.com/tools/vram-calculator">VRAM &amp; Performance Calculator</a>
+in action. Pick a model, a quantization scheme (<code>FP32</code>, <code>FP16</code>, <code>Q8</code>,
+<code>Q4</code>, etc.), and a GPU on the left, and it computes the actual VRAM and
+speed on the right — the “fewer bits, less memory” idea from above, but
+interactive.</em></p>
 <p>Every dtype table above — <code>int8</code> vs <code>int64</code>, <code>float16</code> vs <code>float32</code> — is
 the same underlying idea you just learned, just chosen for a different
 tradeoff each time.</p>

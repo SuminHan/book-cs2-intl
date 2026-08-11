@@ -62,17 +62,20 @@ overhead.
 ## IEEE 754: Floating-Point Numbers
 
 A float isn't stored as "the digits after the decimal point" — it's
-stored the way scientific notation works, in binary: **sign, exponent,
-mantissa** (also called the significand).
+stored the way scientific notation works, in binary, as three bit
+groups: sign bit `s`, exponent bits `e_1e_2...e_k`, mantissa bits
+`m_1m_2...m_n`.
 
-\\[\text{value} = (-1)^{\text{sign}} \times \left(1 + 0.m_1m_2\ldots
-m_n\right)_2 \times 2^{\text{exponent} - b}\\]
+\\[\text{value} = (-1)^s \times \left(1 + 0.m_1m_2\ldots
+m_n\right)_2 \times 2^{(e_1e_2\ldots e_k)_2 - b}\\]
 
-where `m_1 m_2 ... m_n` are exactly the mantissa bits as stored, read as
-a binary fraction (`0.m_1m_2...`) — the leading `1 +` is never stored,
-it's implied for free on every normal number.
+`m_1 m_2 ... m_n` are exactly the mantissa bits as stored, read as a
+binary fraction (`0.m_1m_2...`) — the leading `1 +` is never stored, it's
+implied for free on every normal number. Likewise `(e_1e_2...e_k)_2` is
+just the exponent bits read as a plain unsigned binary number — call
+that value `E` for short.
 
-| Type | Sign bits | Exponent bits | Mantissa bits (`n`) | Total bits |
+| Type | Sign bit | Exponent bits (`k`) | Mantissa bits (`n`) | Total bits |
 |---|---|---|---|---|
 | `float16` (half) | 1 | 5 | 10 | 16 |
 | `float32` (single) | 1 | 8 | 23 | 32 |
@@ -81,16 +84,15 @@ it's implied for free on every normal number.
 **Bias is a different kind of thing from the bit-counts above** — it's not
 a width, it's a *value* added to the true exponent before storing it, so
 the stored exponent (which is unsigned — no sign bit of its own) can still
-represent negative true exponents. Call the number of exponent bits `k`,
-and the bias itself just `b` (a plain constant, like any other):
+represent negative true exponents:
 
-\\[\text{stored exponent} = \text{true exponent} + b, \qquad
-b = 2^{k-1} - 1\\]
+\\[E = \text{true exponent} + b \quad\Longleftrightarrow\quad
+\text{true exponent} = E - b, \qquad b = 2^{k-1} - 1\\]
 
-**Why that particular value?** With `k` bits, the stored exponent can be
-anywhere from `0` to \\(2^k-1\\) — but the two extreme values (`0` and
-\\(2^k-1\\)) are reserved for special cases (zero/denormals and
-infinity/NaN), not ordinary numbers. To let the *true* exponent range as
+**Why that particular value?** With `k` bits, `E` can be anywhere from
+`0` to \\(2^k-1\\) — but the two extreme values (`E=0` and
+`E=`\\(2^k-1\\)) are reserved for special cases (zero/denormals and
+infinity/NaN), not ordinary numbers. To let the true exponent range as
 far negative as it ranges positive — so the format represents huge and
 tiny numbers equally well — `b` is set to roughly half of that total
 range: `2^(k-1)`, minus 1 to line up with the reserved values. For
@@ -104,14 +106,13 @@ around `0`.
 | `float32` | 8 | \\(2^7-1=127\\) |
 | `float64` | 11 | \\(2^{10}-1=1023\\) |
 
-E.g. in `float32`, a stored exponent of `130` means a true exponent of
-`130 - 127 = 3`.
+E.g. in `float32`, `E=130` means a true exponent of `130 - 127 = 3`.
 
-**Special values** are encoded with reserved exponent patterns: all-zero
-exponent means `0` or a *denormal* (a number too small to have that
-implicit leading `1 +`); all-one exponent means `±infinity` (mantissa
-`0`) or `NaN` (mantissa nonzero — this is what you get from `0/0` or
-`math.sqrt(-1)`).
+**Special values** are encoded with reserved `E` patterns: `E=0` means
+`0` or a *denormal* (a number too small to have that implicit leading
+`1 +`); `E=`\\(2^k-1\\) (all exponent bits set) means `±infinity`
+(mantissa `0`) or `NaN` (mantissa nonzero — this is what you get from
+`0/0` or `math.sqrt(-1)`).
 
 ## Why `0.1 + 0.2 != 0.3`
 
@@ -199,6 +200,16 @@ combination needs before ever running it, tools like [ApX Machine
 Learning's VRAM & Performance
 Calculator](https://apxml.com/tools/vram-calculator) do that math for
 you.)
+
+![Screenshot of ApX Machine Learning's VRAM & Performance Calculator —
+pick a model, a quantization scheme, and a GPU, and it estimates the
+VRAM needed and expected speed](assets/vram-calculator-screenshot.png)
+
+*The [VRAM & Performance Calculator](https://apxml.com/tools/vram-calculator)
+in action. Pick a model, a quantization scheme (`FP32`, `FP16`, `Q8`,
+`Q4`, etc.), and a GPU on the left, and it computes the actual VRAM and
+speed on the right — the "fewer bits, less memory" idea from above, but
+interactive.*
 
 Every dtype table above — `int8` vs `int64`, `float16` vs `float32` — is
 the same underlying idea you just learned, just chosen for a different
