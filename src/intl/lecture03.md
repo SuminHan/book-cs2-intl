@@ -25,8 +25,9 @@ different — and nobody deleted the old branch.
 On deployment day the new code reached 7 of the 8 servers. The eighth still
 had the 2003 branch. When the flag went up, that server did what it was told.
 
-> Widely documented; see the SEC administrative proceeding against Knight
-> Capital (2013).
+> Widely documented; see the [SEC administrative proceeding against
+> Knight Capital](https://www.sec.gov/files/litigation/admin/2013/34-70694.pdf)
+> (2013).
 
 ### What an `if` really is
 

@@ -20,8 +20,9 @@ and into Ontario. **About 55 million people** lost power.
 *The software was a widely used energy management system. The loop had run
 correctly for years — it only misbehaved when two things happened at once.*
 
-> Sources: US–Canada Power System Outage Task Force final report (2004);
-> contemporaneous reporting on the GE XA/21 alarm failure.
+> Sources: [US–Canada Power System Outage Task Force final
+> report](https://www.energy.gov/sites/prod/files/oeprod/DocumentsandMedia/BlackoutFinal-Web.pdf)
+> (2004); contemporaneous reporting on the GE XA/21 alarm failure.
 
 ### Why `while` deserves your respect
 

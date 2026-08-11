@@ -21,8 +21,9 @@ A 2016 study checked 35,175 spreadsheets from 3,597 published papers: about
 one paper in five carried these corrupted names. A follow-up covering
 2014–2020 found over 30%.
 
-> Sources: Ziemann et al., *Genome Biology* (2016); Abeysooriya et al.,
-> *PLOS Computational Biology* (2021).
+> Sources: Ziemann et al., [*Genome Biology*](https://doi.org/10.1186/s13059-016-1044-7)
+> (2016); Abeysooriya et al., [*PLOS Computational
+> Biology*](https://doi.org/10.1371/journal.pcbi.1008984) (2021).
 
 ### The lesson for this week
 
