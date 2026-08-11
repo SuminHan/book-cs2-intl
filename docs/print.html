@@ -39,7 +39,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-fe01de7a.js";
+            window.path_to_searchindex_js = "searchindex-124535c2.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-6b7ca9ac.js"></script>
@@ -835,15 +835,30 @@ times per second.</p>
 <p>Forty-five minutes later the company had lost <strong>$440 million</strong> — more than
 it was worth.</p>
 <h3 id="the-cause-was-an-if"><a class="header" href="#the-cause-was-an-if">The cause was an <code>if</code></a></h3>
-<p>Back in 2003 the code had a switch that turned on an old feature called
-<em>Power Peg</em>:</p>
+<p>Back in 2003, Knight built an internal test tool called <em>Power Peg</em>: fire
+off small, repeated buy-high/sell-low orders just to probe how the market
+reacted — it was never supposed to touch real trading. By 2005 it was
+retired. Nobody deleted the code. It just sat there, dormant, behind an
+<code>if</code>:</p>
 <pre><code class="language-python">if flag:
     run_power_peg()      # 2003: an old testing feature
 </code></pre>
-<p>Years later that same <code>flag</code> was reused to mean something completely
-different — and nobody deleted the old branch.</p>
-<p>On deployment day the new code reached 7 of the 8 servers. The eighth still
-had the 2003 branch. When the flag went up, that server did what it was told.</p>
+<p>In 2012, Knight needed that exact same <code>flag</code> for something new: routing
+orders for the NYSE’s incoming Retail Liquidity Program. Same variable,
+completely different meaning now. Nobody deleted the old branch — they
+just wrote the new one and assumed the flag would only ever mean the new
+thing.</p>
+<p>On deployment day the new code reached 7 of the company’s 8 order-routing
+servers. The eighth didn’t get the update — so on that one server, <code>flag</code>
+still meant <em>Power Peg</em>. And the safety counter that used to stop
+<code>run_power_peg()</code> after one small round of test trades? Years earlier,
+that counter had been quietly repurposed for something else entirely.
+Nothing was left to stop it.</p>
+<p>Every incoming customer order that morning re-triggered the dormant code
+on that one server — over and over, buying high and selling low, exactly
+as designed back in 2003, except now with real money and no limit. In 45
+minutes: more than 4 million trades across 154 stocks, most of them
+losing money by design.</p>
 <blockquote>
 <p>Widely documented; see the <a href="https://www.sec.gov/files/litigation/admin/2013/34-70694.pdf">SEC administrative proceeding against
 Knight Capital</a>

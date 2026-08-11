@@ -11,19 +11,35 @@ it was worth.
 
 ### The cause was an `if`
 
-Back in 2003 the code had a switch that turned on an old feature called
-*Power Peg*:
+Back in 2003, Knight built an internal test tool called *Power Peg*: fire
+off small, repeated buy-high/sell-low orders just to probe how the market
+reacted — it was never supposed to touch real trading. By 2005 it was
+retired. Nobody deleted the code. It just sat there, dormant, behind an
+`if`:
 
 ```python
 if flag:
     run_power_peg()      # 2003: an old testing feature
 ```
 
-Years later that same `flag` was reused to mean something completely
-different — and nobody deleted the old branch.
+In 2012, Knight needed that exact same `flag` for something new: routing
+orders for the NYSE's incoming Retail Liquidity Program. Same variable,
+completely different meaning now. Nobody deleted the old branch — they
+just wrote the new one and assumed the flag would only ever mean the new
+thing.
 
-On deployment day the new code reached 7 of the 8 servers. The eighth still
-had the 2003 branch. When the flag went up, that server did what it was told.
+On deployment day the new code reached 7 of the company's 8 order-routing
+servers. The eighth didn't get the update — so on that one server, `flag`
+still meant *Power Peg*. And the safety counter that used to stop
+`run_power_peg()` after one small round of test trades? Years earlier,
+that counter had been quietly repurposed for something else entirely.
+Nothing was left to stop it.
+
+Every incoming customer order that morning re-triggered the dormant code
+on that one server — over and over, buying high and selling low, exactly
+as designed back in 2003, except now with real money and no limit. In 45
+minutes: more than 4 million trades across 154 stocks, most of them
+losing money by design.
 
 > Widely documented; see the [SEC administrative proceeding against
 > Knight Capital](https://www.sec.gov/files/litigation/admin/2013/34-70694.pdf)
