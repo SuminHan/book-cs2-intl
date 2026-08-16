@@ -4,6 +4,9 @@
 
 # International
 
+- [CS1 Review](intl/lecture00.md)
+    - [Topics Covered](intl/lecture00-topics.md)
+    - [Problem Set](intl/lecture00-problems.md)
 - [Basic Elements](intl/lecture01.md)
     - [Topics Covered](intl/lecture01-topics.md)
     - [Problem Set](intl/lecture01-problems.md)

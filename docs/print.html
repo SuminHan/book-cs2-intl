@@ -39,10 +39,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-2b6e8b4d.js";
+            window.path_to_searchindex_js = "searchindex-0ffe5d80.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-8217f9dc.js"></script>
+        <script src="toc-f36e1e5f.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -294,6 +294,474 @@ and <a href="http://newsletter.pragmaticengineer.com/p/the-job-market-in-2026-pa
 </li>
 </ol>
 <div style="break-before: page; page-break-before: always;"></div>
+<h1 id="cs1-review"><a class="header" href="#cs1-review">CS1 Review</a></h1>
+<p>This is a review, not new material — a chance to check that the tools you
+already built in CS1 are still in your hands before this semester starts
+stacking new ones on top.</p>
+<h2 id="where-this-semester-goes"><a class="header" href="#where-this-semester-goes">Where this semester goes</a></h2>
+<p>CS2 takes the language of CS1 — functions, conditionals, loops, lists — and
+starts building real programs with it. The chapters ahead work through
+lists and strings, nested loops over 2-D grids, and eventually classes and
+objects.</p>
+<h2 id="why-start-with-review"><a class="header" href="#why-start-with-review">Why start with review</a></h2>
+<p>Every one of those chapters assumes you can already call a function
+correctly, branch on a condition correctly, and design a loop correctly.
+If that assumption doesn’t hold, the later material turns into a fight
+with syntax instead of a fight with the actual problem. The five ideas
+below — functions, conditionals, loops, lists, and the loop patterns that
+combine them (min/max, counter, “for some”/“for all”) — get reused, without
+re-explanation, in every chapter that follows.</p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<p>Most of the time you’ll write functions that <code>return</code> a value:</p>
+<pre><code class="language-python">def distance(x1,y1,x2,y2):
+    u, v = (x2-x1)**2, (y2-y1)**2
+    return math.sqrt(u+v)
+
+print(distance(0,0,3,4))    # prints 5
+</code></pre>
+<p>Sometimes a function has no return value — it just <code>print</code>s from inside
+the function instead. If a function never hits a <code>return</code>, it returns
+<code>None</code> automatically:</p>
+<pre><code class="language-python">def distance(x1,y1,x2,y2):
+    u, v = (x2-x1)**2, (y2-y1)**2
+    print(math.sqrt(u+v))    # prints 5 here
+
+distance(0,0,3,4)             # no return value
+print(distance(0,0,3,4))      # prints None
+</code></pre>
+<h2 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h2>
+<p><strong><code>if</code>-<code>else</code> syntax</strong> — the <code>else</code> block is optional:</p>
+<pre><code class="language-python">def f(x,y):
+    if x &gt; 0:
+        print("positive")
+    else:
+        print("zero/negative")
+
+    if x &gt; 0 and y &gt; 0:
+        print("both positive")
+</code></pre>
+<p><strong>Chained <code>if</code>-<code>elif</code>-<code>else</code></strong>: <code>elif b2</code> runs when <code>b1</code> is <code>False</code> and <code>b2</code>
+is <code>True</code>; the next <code>elif b3</code> runs when neither <code>b1</code> nor <code>b2</code> held but <code>b3</code>
+does — only the first matching branch, top to bottom, runs.</p>
+<pre><code class="language-python">def f(x):
+    if x &gt; 0:
+        print("positive")
+    elif x &lt; 0:
+        print("negative")
+    else:
+        print("zero")
+</code></pre>
+<p><strong>Nested vs. flat (pruning)</strong>: a nested <code>if</code> can often be flattened by
+“pruning” — the two forms below are equivalent:</p>
+<pre><code class="language-python">def absoluteValue(x):
+    if x &lt; 0:
+        return -x
+    else:
+        return x
+
+# equivalent: if the else-block is the only thing left, the else itself
+# can be dropped
+def absoluteValue(x):
+    if x &lt; 0:
+        return -x
+    return x
+</code></pre>
+<p><strong>Boolean functions</strong> — useful for hiding a complicated test inside an
+<code>if</code>:</p>
+<pre><code class="language-python">def onePositive(x,y,z):
+    if x &gt; 0 and y &lt;= 0 and z &lt;= 0:
+        return True
+    if x &lt;= 0 and y &gt; 0 and z &lt;= 0:
+        return True
+    if x &lt;= 0 and y &lt;= 0 and z &gt; 0:
+        return True
+    return False
+
+if onePositive(x,y,z):
+    print("Exactly one number is positive.")
+</code></pre>
+<p>A boolean expression is already a value, so <code>if ...: return True / else: return False</code> collapses to <code>return boolean_expr</code>:</p>
+<pre><code class="language-python">def lessThan(x,y):
+    if x &lt; y:
+        return True
+    else:
+        return False
+
+# equivalent
+def lessThan(x,y):
+    return x &lt; y
+</code></pre>
+<p>For the same reason, <code>b == True</code> is just <code>b</code>, and <code>b == False</code> is <code>not b</code>
+— drop <code>== True</code>/<code>== False</code> (it also protects you from typing <code>=</code> when you
+meant <code>==</code>):</p>
+<pre><code class="language-python">def singleDigit(x):
+    return 0 &lt;= x &lt; 10
+
+# instead of singleDigit(a) == True and singleDigit(b) == False
+if singleDigit(a) and not singleDigit(b):
+    ...
+</code></pre>
+<h2 id="loops"><a class="header" href="#loops">Loops</a></h2>
+<p><strong><code>for</code> with <code>range(·)</code></strong>: <code>range(m,n)</code> is short for <code>range(m,n,1)</code>, and
+<code>range(n)</code> is short for <code>range(0,n,1)</code>.</p>
+<pre><code class="language-python">for k in range(n):
+    print(k)              # 0 1 ... n-1
+
+for k in range(1, n+1):
+    print(k)              # 1 2 ... n
+
+for k in range(10, 21, 2):
+    print(k)              # 10 12 14 16 18 20
+
+for k in range(n, 0, -1):
+    print(k)              # n n-1 ... 2 1
+</code></pre>
+<p><strong>Accumulating a sum or product</strong>:</p>
+<pre><code class="language-python">def sum(n):
+    x = 0          # identity element for addition is 0
+    for i in range(1,n+1):
+        x += i
+    return x
+
+def factorial(n):
+    x = 1          # identity element for multiplication is 1
+    for i in range(1,n+1):
+        x *= i
+    return x
+</code></pre>
+<p><strong>Nested <code>for</code> loops</strong> build 2-D output, like a multiplication table:</p>
+<pre><code class="language-python">for i in range(1, 10):
+    for j in range(1, 10):
+        print(i*j, end=" ")
+    print()
+</code></pre>
+<p><strong><code>while</code> loops</strong> repeat as long as a boolean expression holds:</p>
+<pre><code class="language-python">def countDigits(n):
+    counter = 0
+    while n &gt; 0:
+        counter += 1
+        n = n // 10
+    return counter
+
+print(countDigits(713))   # 3
+</code></pre>
+<h2 id="lists"><a class="header" href="#lists">Lists</a></h2>
+<p><strong>Creating a list</strong>: either with initial values, or with <code>[None]*n</code> to
+reserve empty slots to fill in later.</p>
+<pre><code class="language-python">number = [2, 5, 8, 11, 14]
+
+number = [None] * 5   # [None, None, None, None, None]
+number[0] = 2
+</code></pre>
+<p><strong>Reading/writing with <code>len(·)</code> and <code>[i]</code></strong>: indices run from <code>0</code> to
+<code>len(·)-1</code> (not starting at <code>1</code>).</p>
+<pre><code class="language-python">for i in range(len(number)):
+    number[i] = 3*i + 2
+</code></pre>
+<p><strong>Lists as function input/output</strong>:</p>
+<pre><code class="language-python">def func(b):
+    a = [None] * len(b)
+    for i in range(len(a)):
+        a[i] = b[i] + 1
+    return a
+
+num = [2, 4, 3, 1, 7, 2, 5, 6]
+c = func(num)
+print(c)    # [3, 5, 4, 2, 8, 3, 6, 7]
+</code></pre>
+<h2 id="loop-patterns"><a class="header" href="#loop-patterns">Loop Patterns</a></h2>
+<p>Most <code>for</code> loops you’ll write are some combination of the patterns below.</p>
+<p><strong>1. Minimum/maximum pattern</strong> — you may need the <strong>index</strong> of the extreme
+value, not just the value itself:</p>
+<pre><code class="language-python">def findMin(numbers):
+    min = numbers[0]
+    for i in range(len(numbers)):
+        if numbers[i] &lt; min:
+            min = numbers[i]
+    return min
+
+def findMinIndex(numbers):
+    minIndex = 0
+    for i in range(len(numbers)):
+        if numbers[i] &lt; numbers[minIndex]:
+            minIndex = i
+    return minIndex
+</code></pre>
+<p><strong>2. Counter pattern</strong> — count how many elements satisfy some condition:</p>
+<pre><code class="language-python">def countPrime(numbers):
+    counter = 0
+    for i in range(len(numbers)):
+        if isPrime(numbers[i]):    # boolean function
+            counter += 1
+    return counter
+</code></pre>
+<p><strong>3. Quantifier pattern (“for some” / “for all”)</strong> — by De Morgan’s laws,
+\(\forall x, p(x) \equiv \neg(\exists x, \neg p(x))\), so “for all” can
+be built as the negation of “for some”:</p>
+<pre><code class="language-python">def somePositive(numbers):
+    for i in range(len(numbers)):
+        if numbers[i] &gt; 0:
+            return True
+    return False
+
+def allPositive(numbers):
+    for i in range(len(numbers)):
+        if not (numbers[i] &gt; 0):   # numbers[i] &lt;= 0
+            return False
+    return True
+</code></pre>
+<p>A “for all” pattern you’ll see a lot this semester is primality testing
+(“<code>p</code> is prime” ≡ “<code>p%i != 0</code> for all <code>i</code>”):</p>
+<pre><code class="language-python">def isPrime(p):
+    if p &lt; 2:
+        return False
+    for i in range(2, p//2+1):
+        if not (p%i != 0):    # p%i == 0
+            return False
+    return True
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h1>
+<p><strong>1.</strong> Write a function <code>add</code>:</p>
+<ul>
+<li>input parameter: two integers <code>n1</code>, <code>n2</code></li>
+<li>return value: the sum of <code>n1</code> and <code>n2</code></li>
+</ul>
+<pre><code class="language-python">def add(n1,n2):
+    # ADD ADDITIONAL CODE HERE!
+
+print(add(3,4))  # 7
+print(add(3,5))  # 8
+</code></pre>
+<p><strong>2.</strong> Write a function <code>printAdd</code>:</p>
+<ul>
+<li>input parameter: two integers <code>n1</code>, <code>n2</code></li>
+<li>return value: none</li>
+<li>action: <strong>print</strong> out the sum of <code>n1</code> and <code>n2</code>
+<ul>
+<li><em>Hint: use <code>print</code>, not <code>return</code> — a function that never hits <code>return</code>
+gives back <code>None</code> automatically.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def printAdd(n1,n2):
+    # ADD ADDITIONAL CODE HERE!
+
+printAdd(3,4)             # 7
+printAdd(3,5)             # 8
+print(printAdd(3,4))      # 7 None
+</code></pre>
+<p><strong>3.</strong> Write a function <code>maximum</code>:</p>
+<ul>
+<li>input parameter: two integers <code>n1</code>, <code>n2</code></li>
+<li>return value: the maximum value among <code>n1</code> and <code>n2</code>
+<ul>
+<li><em>Hint: use an <code>if</code>-<code>else</code> statement.</em></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def maximum(n1,n2):
+    # ADD ADDITIONAL CODE HERE!
+
+print(maximum(5,7))  # 7
+print(maximum(7,5))  # 7
+print(maximum(5,5))  # 5
+</code></pre>
+<p><strong>4.</strong> Write functions <code>printMultTable1</code> and <code>printMultTable2</code>:</p>
+<ul>
+<li>input parameter / return value: none</li>
+<li>action: print out parts of the multiplication table as in the outputs
+below
+<ul>
+<li><em>Hint: copy and slightly modify <code>printMultTable0</code>.</em>
+<ul>
+<li>what does <code>for i in range(1, 10, 2)</code> do?</li>
+<li>what does
+<pre><code class="language-python">for i in range(1, 10, 2):
+    for j in range(1, i+1):
+</code></pre>
+do?</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p>Output of <code>printMultTable1()</code>:</p>
+<pre><code>1 2 3 4 5 6 7 8 9
+3 6 9 12 15 18 21 24 27
+5 10 15 20 25 30 35 40 45
+7 14 21 28 35 42 49 56 63
+9 18 27 36 45 54 63 72 81
+</code></pre>
+<p>Output of <code>printMultTable2()</code>:</p>
+<pre><code>1
+3 6 9
+5 10 15 20 25
+7 14 21 28 35 42 49
+9 18 27 36 45 54 63 72 81
+</code></pre>
+<p><strong>5.</strong> Write a function <code>sumSquares</code>:</p>
+<ul>
+<li>input parameter: an integer list <code>a</code> (of length <code>n</code>)</li>
+<li>return value: the value of \(a[0]^2 + a[1]^2 + a[2]^2 + \ldots +
+a[n-1]^2\)
+<ul>
+<li>i.e. the sum of squares of elements in the list <code>a</code></li>
+<li>e.g. <code>sumSquares([4,3,12])</code> returns 169 (\(=4^2+3^2+12^2\))</li>
+<li>recall that the Python code to compute \(x^2\) is <code>x**2</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def sumSquares(a):
+    n = len(a)
+    sum = 0
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(n):
+
+print(sumSquares([3,5,4]))          # 50
+print(sumSquares([2,5,4,0,1,-1,5,1]))  # 73
+</code></pre>
+<p><strong>6.</strong> Write a function <code>square</code>:</p>
+<ul>
+<li>input parameter: a list of integers</li>
+<li>return value: a new list with the same length where each element is
+squared
+<ul>
+<li>e.g. <code>square([1,3,5,6,7])</code> returns <code>[1,9,25,36,49]</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def square(a):
+    n = len(a)
+    b = [None] * n    # empty list of length n = len(a)
+
+    # ADD ADDITIONAL CODE HERE!
+
+    return b
+
+L = [3,1,5,2,4]
+print(square(L))   # [9,1,25,4,16]
+print(L)            # [3,1,5,2,4]
+print(square([7,6,3,1,5,8,2,4]))   # [49,36,9,1,25,64,4,16]
+</code></pre>
+<p><strong>7.</strong> Write a function <code>findMin</code>: (min/max pattern)</p>
+<ul>
+<li>input parameter: a list of integers</li>
+<li>return value: the minimum value in the list elements</li>
+</ul>
+<pre><code class="language-python">def findMin(a):
+    min = a[0]
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(1,len(a)):
+
+print(findMin([7,8,3,4,3,6]))     # 3
+print(findMin([3,5,7,2,7,2,3,8,6]))  # 2
+</code></pre>
+<p><strong>8.</strong> Write a function <code>countZero</code>: (counter pattern)</p>
+<ul>
+<li>input parameter: an integer list <code>numbers</code></li>
+<li>return value: the number of occurrences of <code>0</code> in <code>numbers</code></li>
+</ul>
+<pre><code class="language-python">def countZero(numbers):
+    # ADD ADDITIONAL CODE HERE!
+
+print(countZero([0,4,0,-2,4,0]))        # 3
+print(countZero([1,0,-2,4,0,0,-7,0,5])) # 4
+</code></pre>
+<p><strong>9.</strong> Write functions <code>somePrime</code> and <code>allPrime</code>: (“for some” and “for
+all” pattern)</p>
+<ul>
+<li>input parameter: a list of positive integers</li>
+<li>return value: a boolean
+<ul>
+<li>True: <code>somePrime</code>: if there is a prime in the list</li>
+<li>True: <code>allPrime</code>: if all the numbers in the list are primes</li>
+<li>False: otherwise</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python"># "for all" pattern
+def isPrime(p):
+    if p &lt;= 1: return False
+    for i in range(2, p//2+1):
+        if p % i == 0:      # not (p % i != 0)
+            return ??
+    return ??
+
+# "for some" pattern
+def somePrime(numbers):
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(len(numbers)):
+        if isPrime(numbers[i]):
+
+# "for all" pattern
+def allPrime(numbers):
+    # ADD ADDITIONAL CODE HERE!
+
+num1 = [217, 287, 143, 163, 319]
+num2 = [217, 287, 143, 169, 319]
+num3 = [223, 281, 227, 151, 149]
+print(somePrime(num1), allPrime(num1))  # True False
+print(somePrime(num2), allPrime(num2))  # False False
+print(somePrime(num3), allPrime(num3))  # True True
+</code></pre>
+<p><strong>10.</strong> Write a function <code>allDistinct</code>: (“for all” pattern)</p>
+<ul>
+<li>input parameter: an integer list <code>numbers</code></li>
+<li>return value: a boolean
+<ul>
+<li>True: if all <code>numbers[0]</code>, <code>numbers[1]</code>, <code>numbers[2]</code>, … are distinct</li>
+<li>False: otherwise</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def allDistinct(numbers):
+    # ADD ADDITIONAL CODE HERE!
+    for i in range(len(numbers)):
+        for j in range(i+1,len(numbers)):
+
+print(allDistinct([1,3,2,5,2,1]))  # False
+print(allDistinct([1,0,2,5,3,4]))  # True
+</code></pre>
+<p>Write a function <code>allWithinRange</code>: (“for all” pattern)</p>
+<ul>
+<li>input parameter: an integer list <code>numbers</code>, and two integers <code>lower</code>,
+<code>upper</code></li>
+<li>return value: a boolean
+<ul>
+<li>True: if <code>lower &lt;= numbers[i] &lt;= upper</code> for all \(i=0,1,\ldots\)</li>
+<li>False: otherwise</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">def allWithinRange(numbers, lower, upper):
+    # ADD ADDITIONAL CODE HERE!
+
+print(allWithinRange([1,0,2,6,3,4], 0,5))  # False
+print(allWithinRange([1,0,2,5,3,4], 0,5))  # True
+</code></pre>
+<p>Write a function <code>isPermutation</code> using the functions <code>allDistinct</code> and
+<code>allWithinRange</code> implemented above: (very simple — you can implement it
+in just one line!)</p>
+<ul>
+<li>input parameter: an integer list <code>numbers</code></li>
+<li>return value: <code>True</code> if the list <code>numbers</code> is a <strong>permutation</strong>, <code>False</code>
+otherwise
+<ul>
+<li>An integer list <code>numbers</code> with length <code>n</code> is called a <strong>permutation</strong>
+if all <code>numbers[0]</code>, <code>numbers[1]</code>, \(\ldots\), <code>numbers[n-1]</code> are
+distinct and \(0 \le\) <code>numbers[i]</code> \(\le n-1\) for all
+\(i=0,1,\ldots,n-1\)</li>
+</ul>
+</li>
+</ul>
+<pre><code class="language-python">print(isPermutation([1,3,2,5,2,1]))  # False
+print(isPermutation([1,0,2,5,3,4]))  # True
+print(isPermutation([1,0,2,6,3,4]))  # False
+</code></pre>
+<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="basic-elements"><a class="header" href="#basic-elements">Basic Elements</a></h1>
 <p>You have just learned variables, expressions, and <code>print</code>. So this should be easy:</p>
 <pre><code class="language-python">print(0.1 + 0.2)
@@ -330,7 +798,7 @@ Ask whether the gap is small enough instead: <code>abs(a - b) &lt; 0.000001</cod
 did not expect. Knowing what the machine will actually do is a different
 skill from telling it what to do.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
+<h1 id="topics-covered-1"><a class="header" href="#topics-covered-1">Topics Covered</a></h1>
 <h2 id="values--variables"><a class="header" href="#values--variables">Values &amp; Variables</a></h2>
 <p>Every piece of data a program works with is a <strong>value</strong>, and every value has
 a <strong>type</strong>:</p>
@@ -441,7 +909,7 @@ n = int(s)          # input() gives str, not int
 print(n**2)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set"><a class="header" href="#problem-set">Problem Set</a></h1>
+<h1 id="problem-set-1"><a class="header" href="#problem-set-1">Problem Set</a></h1>
 <p><strong>1.</strong> Add additional code to the following program so that:</p>
 <ul>
 <li>the values of the two variables <code>a</code>, <code>b</code> are changed (swapped).
@@ -580,7 +1048,7 @@ Fahrenheit;</li>
 print("Temperature in Celcius:", C)
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="functions"><a class="header" href="#functions">Functions</a></h1>
+<h1 id="functions-1"><a class="header" href="#functions-1">Functions</a></h1>
 <p>A function takes something in and gives something back. Usually that is
 exactly what you want.</p>
 <p>Biologists study a gene called <code>SEPT2</code>. Another is called <code>MARCH1</code>. They
@@ -608,7 +1076,7 @@ different job than the biologists thought it was doing.</p>
 <p><strong>When you write a function this week, ask: could someone read the name and
 expect something else?</strong></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-1"><a class="header" href="#topics-covered-1">Topics Covered</a></h1>
+<h1 id="topics-covered-2"><a class="header" href="#topics-covered-2">Topics Covered</a></h1>
 <h2 id="indentation"><a class="header" href="#indentation">Indentation</a></h2>
 <p>The body of a function (and later, of <code>if</code>/<code>for</code>/<code>while</code>) is marked purely
 by <strong>indentation</strong> — there are no <code>{ }</code> or <code>end</code> keywords. Use Tab (not the
@@ -706,7 +1174,7 @@ variables (its parameters, plus anything it assigns inside its body) —
 a variable named <code>y</code> inside one function is unrelated to a variable
 named <code>y</code> inside another, or at the top level.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-1"><a class="header" href="#problem-set-1">Problem Set</a></h1>
+<h1 id="problem-set-2"><a class="header" href="#problem-set-2">Problem Set</a></h1>
 <p><em>Use interactive mode (the Python shell) whenever a formula isn’t clear.</em></p>
 <p><strong>1.</strong> Write a function <code>f</code> defined by:</p>
 <ul>
@@ -827,7 +1295,7 @@ print(countCoins(260))  # 4
 print(countCoins(70))   # 3
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h1>
+<h1 id="conditionals-1"><a class="header" href="#conditionals-1">Conditionals</a></h1>
 <p><strong>1 August 2012, 9:30 a.m.</strong> Knight Capital was the largest trader of US
 stocks. Its software started buying high and selling low — thousands of
 times per second.</p>
@@ -872,7 +1340,7 @@ changed — and a condition cannot notice that.</p>
 <p><strong>Every <code>if</code> you write this week is a promise that has to stay true after
 you forget you wrote it.</strong></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-2"><a class="header" href="#topics-covered-2">Topics Covered</a></h1>
+<h1 id="topics-covered-3"><a class="header" href="#topics-covered-3">Topics Covered</a></h1>
 <h2 id="boolean-type--expressions"><a class="header" href="#boolean-type--expressions">Boolean Type &amp; Expressions</a></h2>
 <p>A fourth type joins <code>int</code>/<code>float</code>/<code>str</code>: <code>bool</code>, whose only two values are
 <code>True</code> and <code>False</code>.</p>
@@ -955,7 +1423,7 @@ else:
 <p>Fewer nesting levels, same behavior — easier to read, easier to extend with
 one more case later.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-2"><a class="header" href="#problem-set-2">Problem Set</a></h1>
+<h1 id="problem-set-3"><a class="header" href="#problem-set-3">Problem Set</a></h1>
 <h3 id="required"><a class="header" href="#required">Required</a></h3>
 <p><strong>1.</strong> Write a function <code>maximum</code> defined by:</p>
 <ul>
@@ -1185,7 +1653,7 @@ print(x == 1 or x == 2)     # False
 just quietly says yes to everything — and an <code>if</code> that is always true looks
 exactly like an <code>if</code> that works.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-3"><a class="header" href="#topics-covered-3">Topics Covered</a></h1>
+<h1 id="topics-covered-4"><a class="header" href="#topics-covered-4">Topics Covered</a></h1>
 <h2 id="boolean-functions-1"><a class="header" href="#boolean-functions-1">Boolean Functions</a></h2>
 <p>A <strong>boolean function</strong> is one that returns <code>True</code>/<code>False</code> — useful for
 hiding a complicated yes/no test behind a readable name, so the calling
@@ -1276,7 +1744,7 @@ if d == dist**2:
 <p>When you truly can’t avoid a float comparison, compare with a tolerance
 instead of <code>==</code> — see Week 2’s Introduction essay for why.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-3"><a class="header" href="#problem-set-3">Problem Set</a></h1>
+<h1 id="problem-set-4"><a class="header" href="#problem-set-4">Problem Set</a></h1>
 <p><strong>1.</strong> Write a function <code>inSecondQuadrant</code> defined by:</p>
 <ul>
 <li>input parameter: two integers <code>x, y</code></li>
@@ -1533,7 +2001,7 @@ write <code>+1</code>.</p>
 <p><strong>Whenever you catch yourself typing <code>range(1, n+1)</code>, stop and ask whether
 you are fighting the language — and whether the <code>+1</code> is about to cost you.</strong></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-4"><a class="header" href="#topics-covered-4">Topics Covered</a></h1>
+<h1 id="topics-covered-5"><a class="header" href="#topics-covered-5">Topics Covered</a></h1>
 <h2 id="why-for-loops"><a class="header" href="#why-for-loops">Why <code>for</code> Loops</a></h2>
 <p>Computing <code>1 + 2 + ... + n</code> without a loop means writing one line per
 term — it doesn’t even work unless you already know <code>n</code> in advance:</p>
@@ -1612,7 +2080,7 @@ def findMax():
 best” pattern will come back constantly for the rest of the course — get
 comfortable with it now.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-4"><a class="header" href="#problem-set-4">Problem Set</a></h1>
+<h1 id="problem-set-5"><a class="header" href="#problem-set-5">Problem Set</a></h1>
 <p><strong>1.</strong> Write functions <code>printMultTable1</code> and <code>printMultTable2</code> defined by:</p>
 <ul>
 <li>input parameter: none</li>
@@ -1798,7 +2266,7 @@ both \(y \le -ax^2+c\) and \(y \ge ax^2-c\) (points within the region
 bounded by the two parabolas)</li>
 </ul>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="lists"><a class="header" href="#lists">Lists</a></h1>
+<h1 id="lists-1"><a class="header" href="#lists-1">Lists</a></h1>
 <p>You want a 3×3 grid of zeros. You already know that <code>[0]*3</code> gives
 <code>[0, 0, 0]</code>, so:</p>
 <pre><code class="language-python">grid = [[0]*3] * 3
@@ -1824,7 +2292,7 @@ print(grid)   # [[1,0,0], [0,0,0], [0,0,0]]
 The grid <em>looks</em> right until you change one cell — and then it is wrong
 everywhere at once.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-5"><a class="header" href="#topics-covered-5">Topics Covered</a></h1>
+<h1 id="topics-covered-6"><a class="header" href="#topics-covered-6">Topics Covered</a></h1>
 <h2 id="why-lists"><a class="header" href="#why-lists">Why Lists</a></h2>
 <p>Without a list, summing eight numbers means eight separately-named
 variables — and code that can’t scale to a variable amount of data:</p>
@@ -1900,7 +2368,7 @@ print(incrementAll([2, 4, 3, 1, 7, 2, 5, 6]))   # [3, 5, 4, 2, 8, 3, 6, 7]
 <p>This “make a same-length output list, fill it in with one loop” shape is
 the pattern behind most of this week’s Problem Set.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-5"><a class="header" href="#problem-set-5">Problem Set</a></h1>
+<h1 id="problem-set-6"><a class="header" href="#problem-set-6">Problem Set</a></h1>
 <p><strong>1.</strong> Write a function <code>sumSquares</code> defined by:</p>
 <ul>
 <li>input parameter: an integer list <code>a</code> (of length <code>n</code>)</li>
@@ -2174,7 +2642,7 @@ print(count)      # 3
 <em>once</em>, or <em>every time around</em>?” Setting up belongs outside. Only the
 counting belongs inside.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-6"><a class="header" href="#topics-covered-6">Topics Covered</a></h1>
+<h1 id="topics-covered-7"><a class="header" href="#topics-covered-7">Topics Covered</a></h1>
 <h2 id="the-counter-pattern"><a class="header" href="#the-counter-pattern">The Counter Pattern</a></h2>
 <p>Given a set (a list), count how many elements satisfy some condition — i.e.
 the size of <code>{x in numbers | condition(x)}</code>. This is the <strong>counter</strong>
@@ -2249,7 +2717,7 @@ same idea with a <code>turn_left()</code>/<code>turn_right()</code> pair around 
 of one long straight run — trace it step by step on paper before you trust
 your code to get the corners right.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-6"><a class="header" href="#problem-set-6">Problem Set</a></h1>
+<h1 id="problem-set-7"><a class="header" href="#problem-set-7">Problem Set</a></h1>
 <h3 id="required-1"><a class="header" href="#required-1">Required</a></h3>
 <p><strong>1.</strong> Write a function <code>countZero</code> defined by:</p>
 <ul>
@@ -2544,7 +3012,7 @@ everyone passed.</p>
 <p><strong>The empty case is not an edge case you forgot. It is the first case you
 should test.</strong></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-7"><a class="header" href="#topics-covered-7">Topics Covered</a></h1>
+<h1 id="topics-covered-8"><a class="header" href="#topics-covered-8">Topics Covered</a></h1>
 <h2 id="recap-three-for-loop-patterns-so-far"><a class="header" href="#recap-three-for-loop-patterns-so-far">Recap: Three <code>for</code>-Loop Patterns So Far</a></h2>
 <ul>
 <li><strong>Max/min</strong> (Week 6) — track a running best value.</li>
@@ -2628,7 +3096,7 @@ go:</p>
         hubo.pick_beeper()
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-7"><a class="header" href="#problem-set-7">Problem Set</a></h1>
+<h1 id="problem-set-8"><a class="header" href="#problem-set-8">Problem Set</a></h1>
 <p><strong>1.</strong> Write a function <code>sumOfThreeSquares</code> (“for some” pattern) defined by:</p>
 <ul>
 <li>input parameter: a positive integer <code>n</code></li>
@@ -2881,7 +3349,7 @@ while n &gt; 0:
 loop that will eventually make the condition false?” If you cannot point at
 that line, you have written an infinite loop.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-8"><a class="header" href="#topics-covered-8">Topics Covered</a></h1>
+<h1 id="topics-covered-9"><a class="header" href="#topics-covered-9">Topics Covered</a></h1>
 <h2 id="while-loops-1"><a class="header" href="#while-loops-1"><code>while</code> Loops</a></h2>
 <pre><code class="language-python">while boolean_expression:
     statements
@@ -2951,7 +3419,7 @@ while hubo.on_beeper():
     hubo.pick_beeper()
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-8"><a class="header" href="#problem-set-8">Problem Set</a></h1>
+<h1 id="problem-set-9"><a class="header" href="#problem-set-9">Problem Set</a></h1>
 <h3 id="required-2"><a class="header" href="#required-2">Required</a></h3>
 <p><strong>1.</strong> Write a function <code>countSevens</code> defined by:</p>
 <ul>
@@ -3170,7 +3638,7 @@ def remove_negatives(L):
 <p>Make a new one, or walk it backwards.</p>
 <p><em>And notice again: no crash, no warning. Just a quietly wrong answer.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-9"><a class="header" href="#topics-covered-9">Topics Covered</a></h1>
+<h1 id="topics-covered-10"><a class="header" href="#topics-covered-10">Topics Covered</a></h1>
 <h2 id="append"><a class="header" href="#append"><code>.append(·)</code></a></h2>
 <p>A second way to build a list, growing it one element at a time instead of
 pre-sizing with <code>[None] * n</code>:</p>
@@ -3235,7 +3703,7 @@ which row, the inner loop filling that row:</p>
 <code>.append()</code> also does. Use whichever reads more clearly for the problem at
 hand; a <code>for</code>-loop version is never wrong.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-9"><a class="header" href="#problem-set-9">Problem Set</a></h1>
+<h1 id="problem-set-10"><a class="header" href="#problem-set-10">Problem Set</a></h1>
 <p><strong>1. Removing all 3’s from a list.</strong> Write a function <code>deleteThree</code> that
 takes as input a list <code>L</code> consisting of integer values, and returns a new
 list containing all elements of <code>L</code> except those equal to the integer <code>3</code>.</p>
@@ -3331,7 +3799,7 @@ one option: build a new string and return it.</p>
 <p><em>This is why lists and strings behave differently. <code>L.append(x)</code> changes
 <code>L</code>; <code>s.upper()</code> cannot change <code>s</code>.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-10"><a class="header" href="#topics-covered-10">Topics Covered</a></h1>
+<h1 id="topics-covered-11"><a class="header" href="#topics-covered-11">Topics Covered</a></h1>
 <h2 id="strings-as-immutable-lists-of-characters"><a class="header" href="#strings-as-immutable-lists-of-characters">Strings as Immutable Lists of Characters</a></h2>
 <p>A string behaves like a list of characters — <code>len(·)</code>, indexing, and
 slicing all work the same way — with one crucial difference: <strong>you cannot
@@ -3396,7 +3864,7 @@ the middle matches, the rest are guaranteed to match too:</p>
 print(is_palindrome("radar"))   # True
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-10"><a class="header" href="#problem-set-10">Problem Set</a></h1>
+<h1 id="problem-set-11"><a class="header" href="#problem-set-11">Problem Set</a></h1>
 <p><strong>1. Counting occurrences of a character in a string.</strong> Write a function
 <code>countChar</code> that takes as input a string <code>s</code> consisting of alphabetic
 characters and a single-character string <code>c</code>, and returns the number of
@@ -3491,7 +3959,7 @@ and the bug never showed.</p>
 loop, and inside nested loops that is almost never what you meant.</p>
 <p><em>Choosing the input that exposes it — that was the real skill.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-11"><a class="header" href="#topics-covered-11">Topics Covered</a></h1>
+<h1 id="topics-covered-12"><a class="header" href="#topics-covered-12">Topics Covered</a></h1>
 <h2 id="break-and-continue"><a class="header" href="#break-and-continue"><code>break</code> and <code>continue</code></a></h2>
 <ul>
 <li><strong><code>break</code></strong> — exits the loop immediately. Nothing else in the loop body
@@ -3585,7 +4053,7 @@ it, you will be reading cells that have already changed</li>
 <p>That last point is this week’s real trap, and it is the same trap as
 Week 11: do not modify the thing you are walking through.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-12"><a class="header" href="#topics-covered-12">Topics Covered</a></h1>
+<h1 id="topics-covered-13"><a class="header" href="#topics-covered-13">Topics Covered</a></h1>
 <h2 id="creating-a-2d-list"><a class="header" href="#creating-a-2d-list">Creating a 2D List</a></h2>
 <p>A 2D list is a list of lists — directly:</p>
 <pre><code class="language-python">table = [[1,2,3], [4,5,6]]
@@ -3645,7 +4113,7 @@ a result that’s fully independent of the original. When you need a true,
 independent copy of a nested list, <code>deepcopy</code> is the only one of the three
 that actually gives you one.</p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-11"><a class="header" href="#problem-set-11">Problem Set</a></h1>
+<h1 id="problem-set-12"><a class="header" href="#problem-set-12">Problem Set</a></h1>
 <p><strong>1. Counting zeros in a 3D array.</strong> Write a function <code>countZero</code> that
 takes as input a list of integers representing a three-dimensional array
 and counts the number of zeros contained in the array.</p>
@@ -3834,7 +4302,7 @@ class, or <em>one per object</em>?” One per object → it belongs inside
 <code>__init__</code>, with <code>self.</code></p>
 <p><em>Once again: no error message. Just two students quietly sharing a report card.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="topics-covered-13"><a class="header" href="#topics-covered-13">Topics Covered</a></h1>
+<h1 id="topics-covered-14"><a class="header" href="#topics-covered-14">Topics Covered</a></h1>
 <h2 id="classes-and-objects"><a class="header" href="#classes-and-objects">Classes and Objects</a></h2>
 <p>Python is object-oriented: every piece of data — <code>123</code>, <code>"hello"</code>, <code>[1,2,3]</code>
 — is an <strong>object</strong> belonging to a <strong>class</strong> (<code>int</code>, <code>str</code>, <code>list</code>
@@ -3938,7 +4406,7 @@ if __name__ == '__main__':
     point_main()
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="problem-set-12"><a class="header" href="#problem-set-12">Problem Set</a></h1>
+<h1 id="problem-set-13"><a class="header" href="#problem-set-13">Problem Set</a></h1>
 <p><strong>1. Class <code>Circle</code>.</strong> Create a class <code>Circle</code> that represents a circle in
 a two-dimensional coordinate system, and implement the methods below.
 Assume a <code>Point</code> class already exists (<code>from point import Point</code> or

@@ -181,118 +181,225 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="topics-covered"><a class="header" href="#topics-covered">Topics Covered</a></h1>
-<h2 id="classes-and-objects"><a class="header" href="#classes-and-objects">Classes and Objects</a></h2>
-<p>Python is object-oriented: every piece of data — <code>123</code>, <code>"hello"</code>, <code>[1,2,3]</code>
-— is an <strong>object</strong> belonging to a <strong>class</strong> (<code>int</code>, <code>str</code>, <code>list</code>
-respectively). A class is a blueprint; an object is one specific instance
-built from it. Analogy: the Sonata <em>blueprint</em> specifies an engine, a
-color, an efficiency rating, and behaviors like accelerating and braking —
-<em>your</em> Sonata is one object built from that blueprint, with its own
-specific attribute values, that can perform the behaviors the blueprint
-defines.</p>
-<p>You can define your own classes:</p>
-<pre><code class="language-python">class Point:                      # class name, capitalized by convention
-    def __init__(self, px, py):
-        self.x = px                # attribute
-        self.y = py
+<h2 id="functions"><a class="header" href="#functions">Functions</a></h2>
+<p>Most of the time you’ll write functions that <code>return</code> a value:</p>
+<pre><code class="language-python">def distance(x1,y1,x2,y2):
+    u, v = (x2-x1)**2, (y2-y1)**2
+    return math.sqrt(u+v)
 
-p1 = Point(1, 2)
-p2 = Point(4, 6)
+print(distance(0,0,3,4))    # prints 5
 </code></pre>
-<h2 id="__init__-and-self"><a class="header" href="#__init__-and-self"><code>__init__</code> and <code>self</code></a></h2>
-<p><code>__init__</code> is the <strong>constructor</strong> — it runs automatically whenever you
-create a new object (<code>Point(1, 2)</code> calls it). Every method’s first
-parameter is, by convention, <code>self</code> — it refers to <em>this</em> object, and
-Python passes it automatically; you never write it explicitly at the call
-site. <code>self.x</code>, <code>self.y</code> are <strong>state variables</strong> (attributes): data that
-belongs to this specific object, distinct from any local variable of the
-same name inside a method that isn’t written as <code>self.something</code>.</p>
-<h2 id="__str__"><a class="header" href="#__str__"><code>__str__</code></a></h2>
-<p>By default, <code>print</code>ing an object shows you a memory address — not useful.
-Defining <code>__str__</code> tells Python how to turn the object into a readable
-string; it’s called automatically whenever the object is printed:</p>
-<pre><code class="language-python">def __str__(self):
-    return "(" + str(self.x) + "," + str(self.y) + ")"
+<p>Sometimes a function has no return value — it just <code>print</code>s from inside
+the function instead. If a function never hits a <code>return</code>, it returns
+<code>None</code> automatically:</p>
+<pre><code class="language-python">def distance(x1,y1,x2,y2):
+    u, v = (x2-x1)**2, (y2-y1)**2
+    print(math.sqrt(u+v))    # prints 5 here
 
-print(p1)   # (1,2)
+distance(0,0,3,4)             # no return value
+print(distance(0,0,3,4))      # prints None
 </code></pre>
-<h2 id="getters-and-setters"><a class="header" href="#getters-and-setters">Getters and Setters</a></h2>
-<p>You <em>can</em> read/write <code>p1.x</code> directly, but the convention is to go through
-<strong>getter</strong>/<strong>setter</strong> methods instead:</p>
-<pre><code class="language-python">def getX(self):
-    return self.x
-def setX(self, v):
-    self.x = v
+<h2 id="conditionals"><a class="header" href="#conditionals">Conditionals</a></h2>
+<p><strong><code>if</code>-<code>else</code> syntax</strong> — the <code>else</code> block is optional:</p>
+<pre><code class="language-python">def f(x,y):
+    if x &gt; 0:
+        print("positive")
+    else:
+        print("zero/negative")
 
-p1 = Point(1, 2)
-print(p1.getX())    # 1
-p1.setX(5)
-print(p1)             # (5,2)
+    if x &gt; 0 and y &gt; 0:
+        print("both positive")
 </code></pre>
-<p>(<code>setX</code>, like any function without an explicit <code>return</code>, gives back <code>None</code>
-— printing its result directly is a bug, not a way to see the new value.)</p>
-<h2 id="methods-that-take-another-object-as-a-parameter"><a class="header" href="#methods-that-take-another-object-as-a-parameter">Methods That Take Another Object as a Parameter</a></h2>
-<p>A method’s parameters can themselves be objects of the same class:</p>
-<pre><code class="language-python">def distance(self, p):
-    dx = self.x - p.x
-    dy = self.y - p.y
-    return (dx**2 + dy**2)**0.5
-
-print(p1.distance(p2))   # 5.0
-print(p2.distance(p1))   # 5.0 — symmetric, as expected
+<p><strong>Chained <code>if</code>-<code>elif</code>-<code>else</code></strong>: <code>elif b2</code> runs when <code>b1</code> is <code>False</code> and <code>b2</code>
+is <code>True</code>; the next <code>elif b3</code> runs when neither <code>b1</code> nor <code>b2</code> held but <code>b3</code>
+does — only the first matching branch, top to bottom, runs.</p>
+<pre><code class="language-python">def f(x):
+    if x &gt; 0:
+        print("positive")
+    elif x &lt; 0:
+        print("negative")
+    else:
+        print("zero")
 </code></pre>
-<h2 id="pure-functions-vs-modifiers"><a class="header" href="#pure-functions-vs-modifiers">Pure Functions vs. Modifiers</a></h2>
-<p>A <strong>pure function</strong> leaves the object unchanged and returns a new result.
-<code>add</code> below builds and returns a brand-new <code>Point</code> — <code>p1</code> and <code>p2</code> are
-untouched:</p>
-<pre><code class="language-python">def add(self, p):
-    x = self.x + p.x
-    y = self.y + p.y
-    return Point(x, y)
+<p><strong>Nested vs. flat (pruning)</strong>: a nested <code>if</code> can often be flattened by
+“pruning” — the two forms below are equivalent:</p>
+<pre><code class="language-python">def absoluteValue(x):
+    if x &lt; 0:
+        return -x
+    else:
+        return x
 
-p3 = p1.add(p2)
-print(p1)   # (1,2) — unchanged
-print(p2)   # (4,6) — unchanged
-print(p3)   # (5,8) — the new object
+# equivalent: if the else-block is the only thing left, the else itself
+# can be dropped
+def absoluteValue(x):
+    if x &lt; 0:
+        return -x
+    return x
 </code></pre>
-<p>A <strong>modifier</strong> does the opposite: it changes <code>self</code> in place and returns
-<code>None</code>:</p>
-<pre><code class="language-python">def add_as_modifier(self, p):
-    self.x = self.x + p.x
-    self.y = self.y + p.y
+<p><strong>Boolean functions</strong> — useful for hiding a complicated test inside an
+<code>if</code>:</p>
+<pre><code class="language-python">def onePositive(x,y,z):
+    if x &gt; 0 and y &lt;= 0 and z &lt;= 0:
+        return True
+    if x &lt;= 0 and y &gt; 0 and z &lt;= 0:
+        return True
+    if x &lt;= 0 and y &lt;= 0 and z &gt; 0:
+        return True
+    return False
 
-p3 = p1.add_as_modifier(p2)
-print(p3)   # None — modifiers don't return the new state
-print(p1)   # (5,8) — p1 itself changed
+if onePositive(x,y,z):
+    print("Exactly one number is positive.")
 </code></pre>
-<p>Know, for every method you write, which one it is — and say so in how you
-use it: call a pure function for its return value, call a modifier for its
-side effect, never both at once.</p>
-<h2 id="putting-a-class-under-test"><a class="header" href="#putting-a-class-under-test">Putting a Class Under Test</a></h2>
-<p>A common pattern: keep a <code>..._main()</code> function with your test/demo calls,
-and only run it when the file is executed directly (not when it’s
-imported):</p>
-<pre><code class="language-python">def point_main():
-    p1 = Point(1, 2)
-    p2 = Point(4, 6)
-    print(p1, p2)
-    print(p1.distance(p2))
-    p3 = p1.add(p2)
-    print(p3)
+<p>A boolean expression is already a value, so <code>if ...: return True / else: return False</code> collapses to <code>return boolean_expr</code>:</p>
+<pre><code class="language-python">def lessThan(x,y):
+    if x &lt; y:
+        return True
+    else:
+        return False
 
-if __name__ == '__main__':
-    point_main()
+# equivalent
+def lessThan(x,y):
+    return x &lt; y
+</code></pre>
+<p>For the same reason, <code>b == True</code> is just <code>b</code>, and <code>b == False</code> is <code>not b</code>
+— drop <code>== True</code>/<code>== False</code> (it also protects you from typing <code>=</code> when you
+meant <code>==</code>):</p>
+<pre><code class="language-python">def singleDigit(x):
+    return 0 &lt;= x &lt; 10
+
+# instead of singleDigit(a) == True and singleDigit(b) == False
+if singleDigit(a) and not singleDigit(b):
+    ...
+</code></pre>
+<h2 id="loops"><a class="header" href="#loops">Loops</a></h2>
+<p><strong><code>for</code> with <code>range(·)</code></strong>: <code>range(m,n)</code> is short for <code>range(m,n,1)</code>, and
+<code>range(n)</code> is short for <code>range(0,n,1)</code>.</p>
+<pre><code class="language-python">for k in range(n):
+    print(k)              # 0 1 ... n-1
+
+for k in range(1, n+1):
+    print(k)              # 1 2 ... n
+
+for k in range(10, 21, 2):
+    print(k)              # 10 12 14 16 18 20
+
+for k in range(n, 0, -1):
+    print(k)              # n n-1 ... 2 1
+</code></pre>
+<p><strong>Accumulating a sum or product</strong>:</p>
+<pre><code class="language-python">def sum(n):
+    x = 0          # identity element for addition is 0
+    for i in range(1,n+1):
+        x += i
+    return x
+
+def factorial(n):
+    x = 1          # identity element for multiplication is 1
+    for i in range(1,n+1):
+        x *= i
+    return x
+</code></pre>
+<p><strong>Nested <code>for</code> loops</strong> build 2-D output, like a multiplication table:</p>
+<pre><code class="language-python">for i in range(1, 10):
+    for j in range(1, 10):
+        print(i*j, end=" ")
+    print()
+</code></pre>
+<p><strong><code>while</code> loops</strong> repeat as long as a boolean expression holds:</p>
+<pre><code class="language-python">def countDigits(n):
+    counter = 0
+    while n &gt; 0:
+        counter += 1
+        n = n // 10
+    return counter
+
+print(countDigits(713))   # 3
+</code></pre>
+<h2 id="lists"><a class="header" href="#lists">Lists</a></h2>
+<p><strong>Creating a list</strong>: either with initial values, or with <code>[None]*n</code> to
+reserve empty slots to fill in later.</p>
+<pre><code class="language-python">number = [2, 5, 8, 11, 14]
+
+number = [None] * 5   # [None, None, None, None, None]
+number[0] = 2
+</code></pre>
+<p><strong>Reading/writing with <code>len(·)</code> and <code>[i]</code></strong>: indices run from <code>0</code> to
+<code>len(·)-1</code> (not starting at <code>1</code>).</p>
+<pre><code class="language-python">for i in range(len(number)):
+    number[i] = 3*i + 2
+</code></pre>
+<p><strong>Lists as function input/output</strong>:</p>
+<pre><code class="language-python">def func(b):
+    a = [None] * len(b)
+    for i in range(len(a)):
+        a[i] = b[i] + 1
+    return a
+
+num = [2, 4, 3, 1, 7, 2, 5, 6]
+c = func(num)
+print(c)    # [3, 5, 4, 2, 8, 3, 6, 7]
+</code></pre>
+<h2 id="loop-patterns"><a class="header" href="#loop-patterns">Loop Patterns</a></h2>
+<p>Most <code>for</code> loops you’ll write are some combination of the patterns below.</p>
+<p><strong>1. Minimum/maximum pattern</strong> — you may need the <strong>index</strong> of the extreme
+value, not just the value itself:</p>
+<pre><code class="language-python">def findMin(numbers):
+    min = numbers[0]
+    for i in range(len(numbers)):
+        if numbers[i] &lt; min:
+            min = numbers[i]
+    return min
+
+def findMinIndex(numbers):
+    minIndex = 0
+    for i in range(len(numbers)):
+        if numbers[i] &lt; numbers[minIndex]:
+            minIndex = i
+    return minIndex
+</code></pre>
+<p><strong>2. Counter pattern</strong> — count how many elements satisfy some condition:</p>
+<pre><code class="language-python">def countPrime(numbers):
+    counter = 0
+    for i in range(len(numbers)):
+        if isPrime(numbers[i]):    # boolean function
+            counter += 1
+    return counter
+</code></pre>
+<p><strong>3. Quantifier pattern (“for some” / “for all”)</strong> — by De Morgan’s laws,
+\(\forall x, p(x) \equiv \neg(\exists x, \neg p(x))\), so “for all” can
+be built as the negation of “for some”:</p>
+<pre><code class="language-python">def somePositive(numbers):
+    for i in range(len(numbers)):
+        if numbers[i] &gt; 0:
+            return True
+    return False
+
+def allPositive(numbers):
+    for i in range(len(numbers)):
+        if not (numbers[i] &gt; 0):   # numbers[i] &lt;= 0
+            return False
+    return True
+</code></pre>
+<p>A “for all” pattern you’ll see a lot this semester is primality testing
+(“<code>p</code> is prime” ≡ “<code>p%i != 0</code> for all <code>i</code>”):</p>
+<pre><code class="language-python">def isPrime(p):
+    if p &lt; 2:
+        return False
+    for i in range(2, p//2+1):
+        if not (p%i != 0):    # p%i == 0
+            return False
+    return True
 </code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../intl/lecture14.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../intl/lecture00.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../intl/lecture14-problems.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../intl/lecture00-problems.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -302,11 +409,11 @@ if __name__ == '__main__':
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../intl/lecture14.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../intl/lecture00.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../intl/lecture14-problems.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../intl/lecture00-problems.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>
