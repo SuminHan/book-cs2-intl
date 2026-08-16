@@ -1,5 +1,7 @@
 # Topics Covered
 
+*Original slides: [lecture00-slides.pdf](lecture00-slides.pdf)*
+
 ## Functions
 
 Most of the time you'll write functions that `return` a value:
