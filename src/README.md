@@ -2,6 +2,8 @@
 
 ## Why Programming Matters
 
+*Original slides: [why-programming-matters.pdf](why-programming-matters.pdf)*
+
 "AI writes code now. It writes it faster than me, and honestly better than
 me. So why am I sitting in a programming class?"
 
