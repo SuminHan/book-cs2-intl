@@ -1,5 +1,8 @@
 # Problem Set
 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture02.ipynb)
+
 *Use interactive mode (the Python shell) whenever a formula isn't clear.*
 
 **1.** Write a function `f` defined by:

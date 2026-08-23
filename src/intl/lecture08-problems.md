@@ -1,5 +1,8 @@
 # Problem Set
 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture08.ipynb)
+
 **1.** Write a function `sumOfThreeSquares` ("for some" pattern) defined by:
 - input parameter: a positive integer `n`
 - return value: a boolean — `True` if `n` can be written as a sum of squares

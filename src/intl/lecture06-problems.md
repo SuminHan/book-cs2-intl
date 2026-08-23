@@ -1,5 +1,8 @@
 # Problem Set
 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture06.ipynb)
+
 **1.** Write a function `sumSquares` defined by:
 - input parameter: an integer list `a` (of length `n`)
 - return value: \\(a_0^2 + a_1^2 + a_2^2 + \cdots + a_{n-1}^2\\) — the sum of

@@ -1,5 +1,8 @@
 # Problem Set
 
+
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture05.ipynb)
+
 **1.** Write functions `printMultTable1` and `printMultTable2` defined by:
 - input parameter: none
 - return value: none
