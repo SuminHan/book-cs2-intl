@@ -40,22 +40,27 @@ the `0011` pattern just repeats forever:
 A computer doesn't store it in that raw form, though — like scientific
 notation, it *normalizes* first (slide the point so there's a single `1`
 in front) and stores the piece after the point (the **mantissa**) and how
-far the point moved (the **exponent**) separately:
+far the point moved (the **exponent**) separately. Python's `float` is
+64 bits wide (52-bit mantissa), which is too long to read comfortably, so
+here's the same idea shrunk down to **float16** (1 sign bit, 5 exponent
+bits, 10 mantissa bits) — small enough to see every bit at once:
 
 ```
-0.1  =  1.1001100110011001100110011001100110011001100110011010 x 2^(01111111011)
-0.2  =  1.1001100110011001100110011001100110011001100110011010 x 2^(01111111100)
-0.3  =  1.0011001100110011001100110011001100110011001100110011 x 2^(01111111101)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^^^^^^^^^^
+0.1  =  1.1001100110 x 2^(-100)
+0.2  =  1.1001100110 x 2^(-011)
+0.3  =  1.0011001101 x 2^(-010)
+          ^^^^^^^^^^      ^^^^
 ```
 
-The 52-bit part after `1.` is exactly the **mantissa** field in memory; the
-11-bit binary number inside `2^(...)` is exactly the **exponent** field —
-except it isn't the true exponent yet. It's stored with `1023` already
-added to it (so `01111111011` = 1019 means a true exponent of
-`1019 - 1023 = -4`). *Why 1023, specifically? See [How Numbers Live in
+The 10 bits after `1.` are exactly the **mantissa** field; `2^(...)` is the
+true, signed **exponent** — `-100` is just `-4` written in binary. (In
+memory there's no sign bit for the exponent at all: it's stored as an
+*unsigned* number with a fixed bias already added, e.g. `-4` becomes
+`01011` because float16's bias is `15` and `15 - 4 = 11 = 01011`. *Why a
+bias, specifically? See [How Numbers Live in
 Memory](../general/number-representation.md) for the reference-level
-version of all of this.*
+version of all of this, worked out for the real 64-bit format Python
+uses.*)
 
 Because the mantissa only has 52 bits to work with, each of these gets
 cut off and rounded to the nearest value that *does* fit — which, converted
