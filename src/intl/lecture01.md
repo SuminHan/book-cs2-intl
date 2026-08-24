@@ -62,8 +62,10 @@ Memory](../general/number-representation.md) for the reference-level
 version of all of this, worked out for the real 64-bit format Python
 uses.*)
 
-Because the mantissa only has 52 bits to work with, each of these gets
-cut off and rounded to the nearest value that *does* fit — which, converted
+Back in Python's real `float` (64 bits, not the float16 toy version
+above), the mantissa has 52 bits instead of 10 — much more room, but
+still not infinite. So each of these still gets cut off and rounded to
+the nearest value that *does* fit — which, converted
 back to decimal, is:
 
 ```

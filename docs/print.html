@@ -39,7 +39,7 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-3d73f487.js";
+            window.path_to_searchindex_js = "searchindex-56bb3513.js";
         </script>
         <!-- Start loading toc.js asap -->
         <script src="toc-a87dd65c.js"></script>
@@ -246,8 +246,10 @@ bias, specifically? See <a href="#how-numbers-live-in-memory">How Numbers Live i
 Memory</a> for the reference-level
 version of all of this, worked out for the real 64-bit format Python
 uses.</em>)</p>
-<p>Because the mantissa only has 52 bits to work with, each of these gets
-cut off and rounded to the nearest value that <em>does</em> fit — which, converted
+<p>Back in Python’s real <code>float</code> (64 bits, not the float16 toy version
+above), the mantissa has 52 bits instead of 10 — much more room, but
+still not infinite. So each of these still gets cut off and rounded to
+the nearest value that <em>does</em> fit — which, converted
 back to decimal, is:</p>
 <pre><code>0.1  -&gt;  0.10000000000000000555
 0.2  -&gt;  0.20000000000000001110
