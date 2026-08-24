@@ -28,8 +28,18 @@ This is not a bug. Every computer on Earth agrees with Python here.
 
 Write \\(1/3\\) in decimal: \\(0.3333\ldots\\) — it never ends. You have to stop
 somewhere, so you store something slightly wrong. A computer stores numbers
-in **binary**, and in binary \\(0.1\\) is a number that never ends either. Here
-is what is really in memory:
+in **binary**, and in binary \\(0.1\\) is a number that never ends either —
+the `0011` pattern just repeats forever:
+
+```
+0.1  ->  0.0001 1001 1001 1001 1001 1001 1001 ...  (binary)
+0.2  ->  0.0011 0011 0011 0011 0011 0011 0011 ...  (binary)
+0.3  ->  0.0100 1100 1100 1100 1100 1100 1100 ...  (binary)
+```
+
+A `float` only has 52 bits of mantissa to work with, so each of these gets
+cut off and rounded to the nearest value that *does* fit — which, converted
+back to decimal, is:
 
 ```
 0.1  ->  0.10000000000000000555
