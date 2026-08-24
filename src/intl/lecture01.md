@@ -37,7 +37,27 @@ the `0011` pattern just repeats forever:
 0.3  ->  0.0100 1100 1100 1100 1100 1100 1100 ...  (binary)
 ```
 
-A `float` only has 52 bits of mantissa to work with, so each of these gets
+A computer doesn't store it in that raw form, though — like scientific
+notation, it *normalizes* first (slide the point so there's a single `1`
+in front) and stores the piece after the point (the **mantissa**) and how
+far the point moved (the **exponent**) separately:
+
+```
+0.1  =  1.1001100110011001100110011001100110011001100110011010 x 2^(01111111011)
+0.2  =  1.1001100110011001100110011001100110011001100110011010 x 2^(01111111100)
+0.3  =  1.0011001100110011001100110011001100110011001100110011 x 2^(01111111101)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^      ^^^^^^^^^^^
+```
+
+The 52-bit part after `1.` is exactly the **mantissa** field in memory; the
+11-bit binary number inside `2^(...)` is exactly the **exponent** field —
+except it isn't the true exponent yet. It's stored with `1023` already
+added to it (so `01111111011` = 1019 means a true exponent of
+`1019 - 1023 = -4`). *Why 1023, specifically? See [How Numbers Live in
+Memory](../general/number-representation.md) for the reference-level
+version of all of this.*
+
+Because the mantissa only has 52 bits to work with, each of these gets
 cut off and rounded to the nearest value that *does* fit — which, converted
 back to decimal, is:
 
