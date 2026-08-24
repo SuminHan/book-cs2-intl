@@ -1,5 +1,8 @@
 # CS1 Review
 
+<a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture00.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#2e3192;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a>
+
+
 This is a review, not new material — a chance to check that the tools you
 already built in CS1 are still in your hands before this semester starts
 stacking new ones on top.

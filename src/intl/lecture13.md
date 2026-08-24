@@ -1,5 +1,8 @@
 # Multi-Dimensional Lists
 
+<a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture13.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#2e3192;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a>
+
+
 A 2-D list of cells. Each is alive (`#`) or dead (`.`). Every step, every
 cell looks at its 8 neighbours and follows three rules:
 

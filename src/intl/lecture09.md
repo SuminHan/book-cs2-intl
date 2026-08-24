@@ -1,5 +1,8 @@
 # While Loops
 
+<a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture09.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#2e3192;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a>
+
+
 **14 August 2003, 2:14 p.m.** A control room in Ohio. A program whose only
 job is to raise an alarm when the power grid is in trouble.
 

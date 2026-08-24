@@ -1,5 +1,8 @@
 # Conditionals
 
+<a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture03.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#2e3192;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a>
+
+
 **1 August 2012, 9:30 a.m.** Knight Capital was the largest trader of US
 stocks. Its software started buying high and selling low — thousands of
 times per second.
