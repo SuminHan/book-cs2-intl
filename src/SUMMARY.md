@@ -11,14 +11,13 @@
 - [Boolean Functions](intl/lecture04.md)
 - [For Loops I](intl/lecture05.md)
 - [Lists](intl/lecture06.md)
-- [For Loops II](intl/lecture07.md)
-- [For Loops III](intl/lecture08.md)
-- [While Loops](intl/lecture09.md)
-- [List II](intl/lecture10.md)
-- [Strings](intl/lecture11.md)
-- [Break / Continue](intl/lecture12.md)
+- [For Loops II](intl/lecture09.md)
+- [While Loops](intl/lecture10.md)
+- [List II](intl/lecture11.md)
+- [Strings](intl/lecture12.md)
 - [Multi-Dimensional Lists](intl/lecture13.md)
 - [Classes & Objects](intl/lecture14.md)
+- [Wrap Up](intl/lecture15.md)
 
 # Reference
 

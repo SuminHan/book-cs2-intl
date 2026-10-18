@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>For Loops II - CS2 International Supplement</title>
+        <title>Wrap Up - CS2 International Supplement</title>
 
 
         <!-- Custom HTML head -->
@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-56bb3513.js";
+            window.path_to_searchindex_js = "../searchindex-3d32c0dd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-a87dd65c.js"></script>
+        <script src="../toc-675a415d.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -180,45 +180,84 @@
 
                 <div id="mdbook-content" class="content">
                     <main>
-                        <h1 id="for-loops-ii"><a class="header" href="#for-loops-ii">For Loops II</a></h1>
-<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture07-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
-<pre><code class="language-python">L = [3, -1, 4, -5, 2]
-
+                        <h1 id="wrap-up"><a class="header" href="#wrap-up">Wrap Up</a></h1>
+<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture15.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<p>Look back at the bugs from every page since the midterm. Almost none of
+them crashed. They ran, printed something reasonable, and were wrong.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Page</th><th>The code looked fine, but…</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="lecture09.html">For Loops II</a></td><td><code>count = 0</code> inside the loop counts only the last item</td></tr>
+<tr><td><a href="lecture09.html">For Loops II</a></td><td><code>all_positive([])</code> is <code>True</code> — and that is correct</td></tr>
+<tr><td><a href="lecture10.html">While Loops</a></td><td>a loop whose condition never changes never ends</td></tr>
+<tr><td><a href="lecture11.html">List II</a></td><td>removing from a list while walking it skips elements</td></tr>
+<tr><td><a href="lecture12.html">Strings</a></td><td><code>s.replace(...)</code> alone changes nothing</td></tr>
+<tr><td><a href="lecture13.html">Multi-Dimensional Lists</a></td><td><code>break</code> leaves one loop, not both</td></tr>
+<tr><td><a href="lecture14.html">Classes &amp; Objects</a></td><td>an attribute under <code>class</code> is shared by every object</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="one-habit-that-catches-most-of-them"><a class="header" href="#one-habit-that-catches-most-of-them">One habit that catches most of them</a></h3>
+<p>Before you trust a function, run it on the inputs that are easy to forget:</p>
+<ul>
+<li>the <strong>empty</strong> list / string</li>
+<li><strong>one</strong> element</li>
+<li>the answer at the <strong>first</strong> position, at the <strong>last</strong> position, and <strong>nowhere</strong></li>
+<li>every element <strong>equal</strong></li>
+</ul>
+<p>The bugs above all hide in exactly these cases.</p>
+<h3 id="five-loop-shapes-to-write-without-thinking"><a class="header" href="#five-loop-shapes-to-write-without-thinking">Five loop shapes to write without thinking</a></h3>
+<pre><code class="language-python">total = 0                      # accumulate / count
 for x in L:
-    count = 0
-    if x &gt; 0:
-        count = count + 1
+    if cond(x):
+        total += 1
 
-print(count)
+for x in L:                    # for some
+    if cond(x):
+        return True
+return False
+
+for x in L:                    # for all
+    if not cond(x):
+        return False
+return True
+
+for i in range(n):             # every pair once
+    for j in range(i + 1, n):
+        ...
+
+while n &gt; 0:                   # digit by digit
+    d = n % 10
+    n = n // 10
 </code></pre>
-<p>There are three positive numbers. Does this print 3?</p>
-<p><strong>It prints 1.</strong></p>
-<p><code>count = 0</code> sits inside the loop. So every single time around, the count is
-thrown away and started again.</p>
-<p>The number you see at the end is not a total. It is just whatever happened
-on the last item — and <code>2</code> is positive, so you get 1.</p>
-<p><em>Try <code>L = [3, -1, 4, -5, -2]</code> and it prints <code>0</code>. Same code, different last item.</em></p>
-<h3 id="one-space-is-the-whole-bug"><a class="header" href="#one-space-is-the-whole-bug">One space is the whole bug</a></h3>
-<pre><code class="language-python"># Correct -- set up before the loop
-count = 0
-for x in L:
-    if x &gt; 0:
-        count = count + 1
-print(count)      # 3
-</code></pre>
-<p><strong>The question to ask every counter:</strong> “Does this line need to happen
-<em>once</em>, or <em>every time around</em>?” Setting up belongs outside. Only the
-counting belongs inside.</p>
+<h3 id="changes-it-or-returns-a-new-one"><a class="header" href="#changes-it-or-returns-a-new-one">Changes it, or returns a new one?</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th>changes the object (returns <code>None</code>)</th><th>returns a new value</th></tr>
+</thead>
+<tbody>
+<tr><td>list</td><td><code>L.append(x)</code>, <code>L.sort()</code>, <code>L.remove(x)</code>, <code>L[i] = x</code></td><td><code>sorted(L)</code>, <code>L + M</code>, <code>L[i:j]</code></td></tr>
+<tr><td>string</td><td>nothing — strings are immutable</td><td><code>s.upper()</code>, <code>s.replace(a, b)</code>, <code>s + t</code></td></tr>
+<tr><td>your class</td><td>modifier methods</td><td>pure methods</td></tr>
+</tbody>
+</table>
+</div>
+<p><code>L = L.sort()</code> makes <code>L</code> equal to <code>None</code>. <code>s.upper()</code> on its own line is
+thrown away. Both run without an error.</p>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="prev" href="../intl/lecture06.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                            <a rel="prev" href="../intl/lecture14.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                             </a>
 
-                            <a rel="next prefetch" href="../intl/lecture08.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="next prefetch" href="../general/number-representation.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                             </a>
 
@@ -228,11 +267,11 @@ counting belongs inside.</p>
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="prev" href="../intl/lecture06.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                    <a rel="prev" href="../intl/lecture14.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
                     </a>
 
-                    <a rel="next prefetch" href="../intl/lecture08.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="next prefetch" href="../general/number-representation.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
                     </a>
             </nav>

@@ -1,49 +1,45 @@
-# Strings
+# List II
 
-<a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture11-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a>
+<a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture11.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a>
 
 
 
-You have just met `.replace()`. The name says exactly what you want, so:
-
-```python
-s = "hello world"
-s.replace("world", "python")
-print(s)
-```
-
-What prints?
-
-**Nothing changed:**
-
-```
-hello world
-```
-
-`.replace()` did its job perfectly — it built the new sentence and handed
-it back to you. You just did not catch it, so it was thrown away.
+You have just learned `.remove()`. This reads perfectly:
 
 ```python
-# Correct -- catch the return value
-s = s.replace("world", "python")
-print(s)          # hello python
+def remove_negatives(L):
+    for x in L:
+        if x < 0:
+            L.remove(x)
+    return L
+
+print(remove_negatives([1, -2, -3, 4, -5, -6]))
 ```
 
-### Why it works that way
+Expected: `[1, 4]`
 
-In Python a string can never be edited. Not by `replace`, not by you:
+**Half of them survived:**
+
+```
+[1, -3, 4, -6]
+```
+
+A `for` loop walks by position: 0, 1, 2, ... But `remove` pulls everything
+after it one step left.
+
+So when `-2` at position 1 is deleted, `-3` slides into position 1 — and
+the loop has already moved on to position 2. Every second negative is skipped.
 
 ```python
-s = "Hello"
-s[0] = "J"
+# Correct -- build a new list instead
+def remove_negatives(L):
+    return [x for x in L if x >= 0]
 ```
 
-```
-TypeError: 'str' object does not support item assignment
-```
+### The rule
 
-So every string method — `.upper()`, `.strip()`, `.replace()` — has only
-one option: build a new string and return it.
+> Never change a list while you are walking through it.
 
-*This is why lists and strings behave differently. `L.append(x)` changes
-`L`; `s.upper()` cannot change `s`.*
+Make a new one, or walk it backwards.
+
+*And notice again: no crash, no warning. Just a quietly wrong answer.*

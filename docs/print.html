@@ -39,10 +39,10 @@
             const path_to_root = "";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "searchindex-56bb3513.js";
+            window.path_to_searchindex_js = "searchindex-3d32c0dd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="toc-a87dd65c.js"></script>
+        <script src="toc-675a415d.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -425,7 +425,9 @@ The grid <em>looks</em> right until you change one cell — and then it is wrong
 everywhere at once.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="for-loops-ii"><a class="header" href="#for-loops-ii">For Loops II</a></h1>
-<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture07-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture09.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<h2 id="warm-up-the-counter-you-already-know"><a class="header" href="#warm-up-the-counter-you-already-know">Warm-up: the counter you already know</a></h2>
+<p>You wrote counters on the midterm (<code>countLeapYears</code>, <code>countPeaks</code>). Here is the bug that breaks most of them.</p>
 <pre><code class="language-python">L = [3, -1, 4, -5, 2]
 
 for x in L:
@@ -453,10 +455,8 @@ print(count)      # 3
 <p><strong>The question to ask every counter:</strong> “Does this line need to happen
 <em>once</em>, or <em>every time around</em>?” Setting up belongs outside. Only the
 counting belongs inside.</p>
-<div style="break-before: page; page-break-before: always;"></div>
-<h1 id="for-loops-iii"><a class="header" href="#for-loops-iii">For Loops III</a></h1>
-<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture08-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
-<p>This is the quantifier pattern you just learned — “for all”.</p>
+<h2 id="for-some--for-all"><a class="header" href="#for-some--for-all">For some / for all</a></h2>
+<p>This is the quantifier pattern from today’s class — “for all”.</p>
 <pre><code class="language-python">def all_positive(L):
     for x in L:
         if x &lt;= 0:
@@ -481,8 +481,8 @@ everyone passed.</p>
 <p><strong>The empty case is not an edge case you forgot. It is the first case you
 should test.</strong></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="while-loops"><a class="header" href="#while-loops">While Loops</a></h1>
-<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture09-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<h1 id="while-loops-break-and-continue"><a class="header" href="#while-loops-break-and-continue">While Loops, break and continue</a></h1>
+<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture10.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
 <p><strong>14 August 2003, 2:14 p.m.</strong> A control room in Ohio. A program whose only
 job is to raise an alarm when the power grid is in trouble.</p>
 <p>Two parts of that program reached for the same piece of data at the same
@@ -512,9 +512,21 @@ while n &gt; 0:
 <p><strong>Ask this every single time you write <code>while</code>:</strong> “What changes inside the
 loop that will eventually make the condition false?” If you cannot point at
 that line, you have written an infinite loop.</p>
+<h3 id="break-and-continue"><a class="header" href="#break-and-continue"><code>break</code> and <code>continue</code></a></h3>
+<pre><code class="language-python">for i in range(8):
+    if i == 5:
+        break          # leave the loop now
+    print(i, end=" ")      # 0 1 2 3 4
+</code></pre>
+<pre><code class="language-python">for i in range(8):
+    if i == 3 or i == 5:
+        continue       # skip the rest of this round only
+    print(i, end=" ")      # 0 1 2 4 6 7
+</code></pre>
+<p>Both act on the <strong>innermost</strong> loop only. Inside nested loops that matters a lot — you will see why in <a href="#multi-dimensional-lists">Multi-Dimensional Lists</a>.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="list-ii"><a class="header" href="#list-ii">List II</a></h1>
-<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture10-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture11.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
 <p>You have just learned <code>.remove()</code>. This reads perfectly:</p>
 <pre><code class="language-python">def remove_negatives(L):
     for x in L:
@@ -544,7 +556,7 @@ def remove_negatives(L):
 <p><em>And notice again: no crash, no warning. Just a quietly wrong answer.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="strings"><a class="header" href="#strings">Strings</a></h1>
-<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture11-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture12.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
 <p>You have just met <code>.replace()</code>. The name says exactly what you want, so:</p>
 <pre><code class="language-python">s = "hello world"
 s.replace("world", "python")
@@ -572,7 +584,40 @@ one option: build a new string and return it.</p>
 <p><em>This is why lists and strings behave differently. <code>L.append(x)</code> changes
 <code>L</code>; <code>s.upper()</code> cannot change <code>s</code>.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="break--continue"><a class="header" href="#break--continue">Break / Continue</a></h1>
+<h1 id="multi-dimensional-lists"><a class="header" href="#multi-dimensional-lists">Multi-Dimensional Lists</a></h1>
+<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture13.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<p>A 2-D list of cells. Each is alive (<code>#</code>) or dead (<code>.</code>). Every step, every
+cell looks at its 8 neighbours and follows three rules:</p>
+<ul>
+<li>Alive with 2 or 3 living neighbours → stays alive.</li>
+<li>Alive with anything else → dies.</li>
+<li>Dead with exactly 3 living neighbours → becomes alive.</li>
+</ul>
+<p>That is the whole program. No randomness, no AI, nothing else. What can
+three rules possibly do?</p>
+<h3 id="watch-this-shape"><a class="header" href="#watch-this-shape">Watch this shape</a></h3>
+<pre><code>step 0        step 1        step 2        step 3        step 4
+.#....        ......        ......        ......        ......
+..#...        #.#...        ..#...        .#....        ..#...
+###...        .##...        #.#...        ..##..        ...#..
+......        .#....        .##...        .##...        .###..
+</code></pre>
+<p>Step 4 is the same shape as step 0 — moved one square down and one square
+right.</p>
+<p><strong>It walks. Nobody wrote “walk.”</strong> (This is the classic <em>glider</em> from
+Conway’s Game of Life.)</p>
+<h3 id="why-this-is-your-week"><a class="header" href="#why-this-is-your-week">Why this is your week</a></h3>
+<p>Everything you need is what you are learning right now:</p>
+<ul>
+<li>a <strong>2-D list</strong> to hold the grid</li>
+<li><strong>nested <code>for</code> loops</strong> to visit every cell</li>
+<li>an <strong><code>if</code></strong> for the three rules</li>
+<li>and <strong>a second grid</strong> — because if you edit the first one while reading
+it, you will be reading cells that have already changed</li>
+</ul>
+<p>That last point is this week’s real trap, and it is the same trap as
+<a href="#list-ii">List II</a>: do not modify the thing you are walking through.</p>
+<h2 id="break-in-a-grid"><a class="header" href="#break-in-a-grid"><code>break</code> in a grid</a></h2>
 <p>Return the position of the first <code>target</code> in a grid, or <code>(-1,-1)</code> if it is
 not there.</p>
 <pre><code class="language-python">def find_position(M, target):
@@ -604,42 +649,8 @@ and the bug never showed.</p>
 loop, and inside nested loops that is almost never what you meant.</p>
 <p><em>Choosing the input that exposes it — that was the real skill.</em></p>
 <div style="break-before: page; page-break-before: always;"></div>
-<h1 id="multi-dimensional-lists"><a class="header" href="#multi-dimensional-lists">Multi-Dimensional Lists</a></h1>
-<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture13-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
-<p>A 2-D list of cells. Each is alive (<code>#</code>) or dead (<code>.</code>). Every step, every
-cell looks at its 8 neighbours and follows three rules:</p>
-<ul>
-<li>Alive with 2 or 3 living neighbours → stays alive.</li>
-<li>Alive with anything else → dies.</li>
-<li>Dead with exactly 3 living neighbours → becomes alive.</li>
-</ul>
-<p>That is the whole program. No randomness, no AI, nothing else. What can
-three rules possibly do?</p>
-<h3 id="watch-this-shape"><a class="header" href="#watch-this-shape">Watch this shape</a></h3>
-<pre><code>step 0        step 1        step 2        step 3        step 4
-.#....        ......        ......        ......        ......
-..#...        #.#...        ..#...        .#....        ..#...
-###...        .##...        #.#...        ..##..        ...#..
-......        .#....        .##...        .##...        .###..
-</code></pre>
-<p>Step 4 is the same shape as step 0 — moved one square down and one square
-right.</p>
-<p><strong>It walks. Nobody wrote “walk.”</strong> (This is the classic <em>glider</em> from
-Conway’s Game of Life.)</p>
-<h3 id="why-this-is-your-week"><a class="header" href="#why-this-is-your-week">Why this is your week</a></h3>
-<p>Everything you need is what you are learning right now:</p>
-<ul>
-<li>a <strong>2-D list</strong> to hold the grid</li>
-<li><strong>nested <code>for</code> loops</strong> to visit every cell</li>
-<li>an <strong><code>if</code></strong> for the three rules</li>
-<li>and <strong>a second grid</strong> — because if you edit the first one while reading
-it, you will be reading cells that have already changed</li>
-</ul>
-<p>That last point is this week’s real trap, and it is the same trap as
-Week 11: do not modify the thing you are walking through.</p>
-<div style="break-before: page; page-break-before: always;"></div>
 <h1 id="classes--objects"><a class="header" href="#classes--objects">Classes &amp; Objects</a></h1>
-<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture14-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture14.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
 <pre><code class="language-python">class Student:
     scores = []
 
@@ -672,6 +683,75 @@ because it was created in a different place.</p>
 class, or <em>one per object</em>?” One per object → it belongs inside
 <code>__init__</code>, with <code>self.</code></p>
 <p><em>Once again: no error message. Just two students quietly sharing a report card.</em></p>
+<div style="break-before: page; page-break-before: always;"></div>
+<h1 id="wrap-up"><a class="header" href="#wrap-up">Wrap Up</a></h1>
+<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture15.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<p>Look back at the bugs from every page since the midterm. Almost none of
+them crashed. They ran, printed something reasonable, and were wrong.</p>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th>Page</th><th>The code looked fine, but…</th></tr>
+</thead>
+<tbody>
+<tr><td><a href="#for-loops-ii">For Loops II</a></td><td><code>count = 0</code> inside the loop counts only the last item</td></tr>
+<tr><td><a href="#for-loops-ii">For Loops II</a></td><td><code>all_positive([])</code> is <code>True</code> — and that is correct</td></tr>
+<tr><td><a href="#while-loops-break-and-continue">While Loops</a></td><td>a loop whose condition never changes never ends</td></tr>
+<tr><td><a href="#list-ii">List II</a></td><td>removing from a list while walking it skips elements</td></tr>
+<tr><td><a href="#strings">Strings</a></td><td><code>s.replace(...)</code> alone changes nothing</td></tr>
+<tr><td><a href="#multi-dimensional-lists">Multi-Dimensional Lists</a></td><td><code>break</code> leaves one loop, not both</td></tr>
+<tr><td><a href="#classes--objects">Classes &amp; Objects</a></td><td>an attribute under <code>class</code> is shared by every object</td></tr>
+</tbody>
+</table>
+</div>
+<h3 id="one-habit-that-catches-most-of-them"><a class="header" href="#one-habit-that-catches-most-of-them">One habit that catches most of them</a></h3>
+<p>Before you trust a function, run it on the inputs that are easy to forget:</p>
+<ul>
+<li>the <strong>empty</strong> list / string</li>
+<li><strong>one</strong> element</li>
+<li>the answer at the <strong>first</strong> position, at the <strong>last</strong> position, and <strong>nowhere</strong></li>
+<li>every element <strong>equal</strong></li>
+</ul>
+<p>The bugs above all hide in exactly these cases.</p>
+<h3 id="five-loop-shapes-to-write-without-thinking"><a class="header" href="#five-loop-shapes-to-write-without-thinking">Five loop shapes to write without thinking</a></h3>
+<pre><code class="language-python">total = 0                      # accumulate / count
+for x in L:
+    if cond(x):
+        total += 1
+
+for x in L:                    # for some
+    if cond(x):
+        return True
+return False
+
+for x in L:                    # for all
+    if not cond(x):
+        return False
+return True
+
+for i in range(n):             # every pair once
+    for j in range(i + 1, n):
+        ...
+
+while n &gt; 0:                   # digit by digit
+    d = n % 10
+    n = n // 10
+</code></pre>
+<h3 id="changes-it-or-returns-a-new-one"><a class="header" href="#changes-it-or-returns-a-new-one">Changes it, or returns a new one?</a></h3>
+<div class="table-wrapper">
+<table>
+<thead>
+<tr><th></th><th>changes the object (returns <code>None</code>)</th><th>returns a new value</th></tr>
+</thead>
+<tbody>
+<tr><td>list</td><td><code>L.append(x)</code>, <code>L.sort()</code>, <code>L.remove(x)</code>, <code>L[i] = x</code></td><td><code>sorted(L)</code>, <code>L + M</code>, <code>L[i:j]</code></td></tr>
+<tr><td>string</td><td>nothing — strings are immutable</td><td><code>s.upper()</code>, <code>s.replace(a, b)</code>, <code>s + t</code></td></tr>
+<tr><td>your class</td><td>modifier methods</td><td>pure methods</td></tr>
+</tbody>
+</table>
+</div>
+<p><code>L = L.sort()</code> makes <code>L</code> equal to <code>None</code>. <code>s.upper()</code> on its own line is
+thrown away. Both run without an error.</p>
 <div style="break-before: page; page-break-before: always;"></div>
 <h1 id="how-numbers-live-in-memory"><a class="header" href="#how-numbers-live-in-memory">How Numbers Live in Memory</a></h1>
 <p>This page is a reference, not required reading for any single week — come

@@ -38,10 +38,10 @@
             const path_to_root = "../";
             const default_light_theme = "light";
             const default_dark_theme = "navy";
-            window.path_to_searchindex_js = "../searchindex-56bb3513.js";
+            window.path_to_searchindex_js = "../searchindex-3d32c0dd.js";
         </script>
         <!-- Start loading toc.js asap -->
-        <script src="../toc-a87dd65c.js"></script>
+        <script src="../toc-675a415d.js"></script>
     </head>
     <body>
     <div id="mdbook-help-container">
@@ -181,7 +181,7 @@
                 <div id="mdbook-content" class="content">
                     <main>
                         <h1 id="multi-dimensional-lists"><a class="header" href="#multi-dimensional-lists">Multi-Dimensional Lists</a></h1>
-<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture13-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
+<p><a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture13.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a></p>
 <p>A 2-D list of cells. Each is alive (<code>#</code>) or dead (<code>.</code>). Every step, every
 cell looks at its 8 neighbours and follows three rules:</p>
 <ul>
@@ -212,7 +212,38 @@ Conway’s Game of Life.)</p>
 it, you will be reading cells that have already changed</li>
 </ul>
 <p>That last point is this week’s real trap, and it is the same trap as
-Week 11: do not modify the thing you are walking through.</p>
+<a href="lecture11.html">List II</a>: do not modify the thing you are walking through.</p>
+<h2 id="break-in-a-grid"><a class="header" href="#break-in-a-grid"><code>break</code> in a grid</a></h2>
+<p>Return the position of the first <code>target</code> in a grid, or <code>(-1,-1)</code> if it is
+not there.</p>
+<pre><code class="language-python">def find_position(M, target):
+    pos = (-1, -1)
+    for i in range(len(M)):
+        for j in range(len(M[i])):
+            if M[i][j] == target:
+                pos = (i, j)
+                break
+    return pos
+</code></pre>
+<p>You test it: <code>find_position([[1,2],[3,4]], 9)</code> gives <code>(-1,-1)</code>. Correct. Ship it?</p>
+<h3 id="now-a-grid-that-has-the-target"><a class="header" href="#now-a-grid-that-has-the-target">Now a grid that has the target</a></h3>
+<pre><code class="language-python">find_position([[7,1],[2,7],[7,3]], 7)
+</code></pre>
+<p><strong>Expected:</strong> <code>(0, 0)</code> — 7 is right there in the corner.</p>
+<p><strong>Execution result:</strong> <code>(2, 0)</code></p>
+<p>Why: <code>break</code> leaves <em>one</em> loop — the inner one. The outer loop keeps going,
+finds 7 again on the next row, and overwrites the answer. You get the
+<em>last</em> match, not the first.</p>
+<p>The test you ran had no target in it at all, so the inner loop never broke
+and the bug never showed.</p>
+<h3 id="two-fixes-one-lesson"><a class="header" href="#two-fixes-one-lesson">Two fixes, one lesson</a></h3>
+<pre><code class="language-python"># Leave the whole function at once
+            if M[i][j] == target:
+                return (i, j)     # not break
+</code></pre>
+<p><strong>The lesson:</strong> <code>break</code> is smaller than it looks. It escapes exactly one
+loop, and inside nested loops that is almost never what you meant.</p>
+<p><em>Choosing the input that exposes it — that was the real skill.</em></p>
 
                     </main>
 

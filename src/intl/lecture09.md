@@ -1,45 +1,87 @@
-# While Loops
+# For Loops II
 
-<a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture09-old.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a>
+<a href="https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture09.ipynb" target="_blank" rel="noopener" style="display:inline-block;padding:7px 16px;margin:2px 0 14px;background:#F37626;color:#ffffff;border-radius:6px;text-decoration:none;font-weight:600;font-size:0.92em;">📓 Open Jupyter Notebook</a>
 
 
 
-**14 August 2003, 2:14 p.m.** A control room in Ohio. A program whose only
-job is to raise an alarm when the power grid is in trouble.
+## Warm-up: the counter you already know
 
-Two parts of that program reached for the same piece of data at the same
-moment. The program did not crash. It did not print an error. It started
-going round and round, and never came back out.
-
-The screens kept showing the last thing they had seen: everything normal.
-
-### Nobody knew anything was wrong
-
-Power lines were failing. The operators could not see it, because the
-thing that tells them was stuck in a loop.
-
-By the end of the evening the failure had cascaded across eight US states
-and into Ontario. **About 55 million people** lost power.
-
-*The software was a widely used energy management system. The loop had run
-correctly for years — it only misbehaved when two things happened at once.*
-
-> Sources: [US–Canada Power System Outage Task Force final
-> report](https://www.energy.gov/sites/prod/files/oeprod/DocumentsandMedia/BlackoutFinal-Web.pdf)
-> (2004); contemporaneous reporting on the GE XA/21 alarm failure.
-
-### Why `while` deserves your respect
-
-A `for` loop always ends: the list runs out. A `while` loop ends only if
-you make it end.
+You wrote counters on the midterm (`countLeapYears`, `countPeaks`). Here is the bug that breaks most of them.
 
 ```python
-n = 10
-while n > 0:
-    print(n)
-    n = n - 1        # remove this line and it never stops
+L = [3, -1, 4, -5, 2]
+
+for x in L:
+    count = 0
+    if x > 0:
+        count = count + 1
+
+print(count)
 ```
 
-**Ask this every single time you write `while`:** "What changes inside the
-loop that will eventually make the condition false?" If you cannot point at
-that line, you have written an infinite loop.
+There are three positive numbers. Does this print 3?
+
+**It prints 1.**
+
+`count = 0` sits inside the loop. So every single time around, the count is
+thrown away and started again.
+
+The number you see at the end is not a total. It is just whatever happened
+on the last item — and `2` is positive, so you get 1.
+
+*Try `L = [3, -1, 4, -5, -2]` and it prints `0`. Same code, different last item.*
+
+### One space is the whole bug
+
+```python
+# Correct -- set up before the loop
+count = 0
+for x in L:
+    if x > 0:
+        count = count + 1
+print(count)      # 3
+```
+
+**The question to ask every counter:** "Does this line need to happen
+*once*, or *every time around*?" Setting up belongs outside. Only the
+counting belongs inside.
+
+## For some / for all
+
+This is the quantifier pattern from today's class — "for all".
+
+```python
+def all_positive(L):
+    for x in L:
+        if x <= 0:
+            return False
+    return True
+```
+
+`all_positive([1, 2, 3])` is `True`. `all_positive([1, -2])` is `False`. Good.
+
+Now: `all_positive([])` — the empty list. Is every number in it positive?
+
+**Python says `True`.**
+
+Follow the code: the loop body never runs, so nothing ever returns `False`,
+so it falls through to `return True`.
+
+And that is *not a bug* — it is the correct answer. To prove "all of them
+are positive" false, you must point at one that isn't. In an empty list
+there is nothing to point at.
+
+*Mathematicians call this a vacuous truth. Python's own `all([])` is `True`
+for the same reason, and `any([])` is `False`.*
+
+### Where it will bite you
+
+```python
+if all_passed(students): print("Everyone passed!")
+```
+
+Run that on a class with no students and it happily announces that
+everyone passed.
+
+**The empty case is not an edge case you forgot. It is the first case you
+should test.**
