@@ -1,7 +1,7 @@
 # Problem Set
 
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture11.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture11-old.ipynb)
 
 **1. Counting occurrences of a character in a string.** Write a function
 `countChar` that takes as input a string `s` consisting of alphabetic

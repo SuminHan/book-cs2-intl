@@ -1,7 +1,7 @@
 # Problem Set
 
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture13.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture13-old.ipynb)
 
 **1. Counting zeros in a 3D array.** Write a function `countZero` that
 takes as input a list of integers representing a three-dimensional array

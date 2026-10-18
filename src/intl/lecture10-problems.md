@@ -1,7 +1,7 @@
 # Problem Set
 
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture10.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture10-old.ipynb)
 
 **1. Removing all 3's from a list.** Write a function `deleteThree` that
 takes as input a list `L` consisting of integer values, and returns a new

@@ -1,7 +1,7 @@
 # Problem Set
 
 
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture14.ipynb)
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/SuminHan/book-cs2-intl/blob/main/notebooks/intl/lecture14-old.ipynb)
 
 **1. Class `Circle`.** Create a class `Circle` that represents a circle in
 a two-dimensional coordinate system, and implement the methods below.
